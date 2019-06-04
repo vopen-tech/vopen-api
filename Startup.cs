@@ -20,8 +20,15 @@ namespace vopen_api
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        { 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
 
             // Add Swagger generation
             services.AddSwaggerGen(c =>
@@ -41,6 +48,8 @@ namespace vopen_api
                     License = new License { Name = "MIT" }
                 });
             });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +66,7 @@ namespace vopen_api
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseCors("CorsPolicy");
 
             // Setup Static files server
             // (see https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.2)
@@ -81,6 +90,8 @@ namespace vopen_api
                 c.SwaggerEndpoint("/api/v1/swagger/swagger.json", "vOpen API V1");
                 c.RoutePrefix = "api/swagger";
             });
+
+            app.UseMvc();
         }
     }
 }
