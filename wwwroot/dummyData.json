@@ -1,0 +1,16 @@
+﻿[
+  { 
+    "id": "vopen-uy", 
+    "name": "vOpen UY", 
+    "editions":  [
+      { "id": "vopen-uy-2019", "name": "vOpen UY 2019" }
+    ]
+  },
+  {
+    "id": "vopen-ar",
+    "name": "vOpen AR",
+    "editions": [
+      { "id": "vopen-ar-2019", "name": "vOpen AR 2019" }
+    ]
+  }
+]
