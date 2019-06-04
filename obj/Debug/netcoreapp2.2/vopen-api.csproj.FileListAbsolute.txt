@@ -1,0 +1,13 @@
+/Users/mvazquez/projects/vopen-api/bin/Debug/netcoreapp2.2/vopen-api.deps.json
+/Users/mvazquez/projects/vopen-api/bin/Debug/netcoreapp2.2/vopen-api.runtimeconfig.json
+/Users/mvazquez/projects/vopen-api/bin/Debug/netcoreapp2.2/vopen-api.runtimeconfig.dev.json
+/Users/mvazquez/projects/vopen-api/bin/Debug/netcoreapp2.2/vopen-api.dll
+/Users/mvazquez/projects/vopen-api/bin/Debug/netcoreapp2.2/vopen-api.pdb
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.csproj.CoreCompileInputs.cache
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.RazorAssemblyInfo.cache
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.RazorAssemblyInfo.cs
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.AssemblyInfoInputs.cache
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.AssemblyInfo.cs
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.RazorTargetAssemblyInfo.cache
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.dll
+/Users/mvazquez/projects/vopen-api/obj/Debug/netcoreapp2.2/vopen-api.pdb
