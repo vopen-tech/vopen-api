@@ -9,7 +9,7 @@ using vopen_api.Repositories;
 
 namespace vopen_api.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/conferences")]
     [ApiController]
     public class ConferencesController : ControllerBase
     {
