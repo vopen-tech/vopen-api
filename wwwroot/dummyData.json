@@ -2,11 +2,41 @@
   {
     "id": "vopen-uy",
     "name": "vOpen UY",
-    "editions": [{ "id": "vopen-uy-2019", "name": "2019.uy" }]
+    "editions": [
+      {
+        "id": "vopen-uy-2019",
+        "name": "2019.uy",
+        "location": {
+          "fullAddress": "Montevideo, Uruguay",
+          "venueName": "Próximamente",
+          "description": "Montevideo, Uruguay"
+        },
+        "date": "",
+        "ticketsInfo": {
+          "ticketsType": "",
+          "isTicketsSaleOpen": false
+        }
+      }
+    ]
   },
   {
     "id": "vopen-ar",
     "name": "vOpen AR",
-    "editions": [{ "id": "vopen-ar-2019", "name": "2019.ar" }]
+    "editions": [
+      {
+        "id": "vopen-ar-2019",
+        "name": "2019.ar",
+        "location": {
+          "fullAddress": "Buenos Aires, Argentina",
+          "venueName": "Próximamente",
+          "description": "Buenos Aires, Argentina"
+        },
+        "date": "",
+        "ticketsInfo": {
+          "ticketsType": "",
+          "isTicketsSaleOpen": false
+        }
+      }
+    ]
   }
 ]
