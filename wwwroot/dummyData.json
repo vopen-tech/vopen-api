@@ -38,5 +38,85 @@
         }
       }
     ]
+  },
+  {
+    "id": "vopen-co",
+    "name": "vOpen CO",
+    "editions": [
+      {
+        "id": "vopen-co-2019",
+        "name": "2019.co",
+        "location": {
+          "fullAddress": "Colombia",
+          "venueName": "Próximamente",
+          "description": "Colombia"
+        },
+        "date": "",
+        "ticketsInfo": {
+          "ticketsType": "",
+          "isTicketsSaleOpen": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "vopen-cl",
+    "name": "vOpen CL",
+    "editions": [
+      {
+        "id": "vopen-cl-2019",
+        "name": "2019.cl",
+        "location": {
+          "fullAddress": "Santiago, Chile",
+          "venueName": "Próximamente",
+          "description": "Santiago, Chile"
+        },
+        "date": "",
+        "ticketsInfo": {
+          "ticketsType": "",
+          "isTicketsSaleOpen": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "vopen-pe",
+    "name": "vOpen PE",
+    "editions": [
+      {
+        "id": "vopen-pe-2019",
+        "name": "2019.pe",
+        "location": {
+          "fullAddress": "Perú",
+          "venueName": "Próximamente",
+          "description": "Perú"
+        },
+        "date": "",
+        "ticketsInfo": {
+          "ticketsType": "",
+          "isTicketsSaleOpen": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "vopen-cl",
+    "name": "vOpen CL",
+    "editions": [
+      {
+        "id": "vopen-cl-2019",
+        "name": "2019.cl",
+        "location": {
+          "fullAddress": "Chile",
+          "venueName": "Próximamente",
+          "description": "Chile"
+        },
+        "date": "",
+        "ticketsInfo": {
+          "ticketsType": "",
+          "isTicketsSaleOpen": false
+        }
+      }
+    ]
   }
 ]
