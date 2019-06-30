@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace vopen_api.Models
 {
@@ -10,6 +11,7 @@ namespace vopen_api.Models
         public Location Location { get; set; }
         public string Date { get; set; }
         public TicketsInfo TicketsInfo { get; set; }
+        public ICollection<Organizer> organizers { get; set; }
     }
 
     public class Location

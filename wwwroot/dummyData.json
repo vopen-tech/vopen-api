@@ -15,7 +15,35 @@
         "ticketsInfo": {
           "ticketsType": "",
           "isTicketsSaleOpen": false
-        }
+        },
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Federico Bernasconi",
+            "imageUrl": "http://uy.netconf.global/Content/images/demo/organizers/FedericoBernasconi.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/federico-bernasconi-48087b56/"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Brian Hardy",
+            "imageUrl": "http://uy.netconf.global/Content/images/demo/organizers/BrianHardy.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/brian-hardy-382a9484/"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/hardyr93"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -31,31 +59,133 @@
           "venueName": "Próximamente",
           "description": "Buenos Aires, Argentina"
         },
-        "date": "",
+        "date": "Octubre",
         "ticketsInfo": {
           "ticketsType": "",
           "isTicketsSaleOpen": false
-        }
-      }
-    ]
-  },
-  {
-    "id": "vopen-co",
-    "name": "vOpen CO",
-    "editions": [
-      {
-        "id": "vopen-co-2019",
-        "name": "2019.co",
-        "location": {
-          "fullAddress": "Colombia",
-          "venueName": "Próximamente",
-          "description": "Colombia"
         },
-        "date": "",
-        "ticketsInfo": {
-          "ticketsType": "",
-          "isTicketsSaleOpen": false
-        }
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Nahir Iberra",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/NahirIberra.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/niberra"
+              },
+              {
+                "type": "twitter",
+                "url": " https://twitter.com/na_iberra"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Jorge Bramajo",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/JorgeBramajo.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/jobramajo"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/jorbramajo"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Esteban Yañez",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/EstebanYanez.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/eyanez89"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/Teban3010"
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Sebastián Pérez",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/SebastianPerez.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/sebasti%C3%A1n-leonardo-p%C3%A9rez-68816599"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/garudasla"
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "name": "Mariano Vazquez",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/marianovazquez.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/nanovazquez/"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/nanovazquez87"
+              }
+            ]
+          },
+          {
+            "id": "6",
+            "name": "Guillermo Bellmann",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/guillermobellmann.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://ar.linkedin.com/in/gbellmann"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/gjbellmann"
+              }
+            ]
+          },
+          {
+            "id": "7",
+            "name": "Pablo Di Loreto",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://ar.linkedin.com/in/pablodiloreto"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/pablodiloreto"
+              }
+            ]
+          },
+          {
+            "id": "8",
+            "name": "Gabriel Barzola",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/GabrielBarzola.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/gbarzola/"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/barzolaGabriel"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -75,7 +205,45 @@
         "ticketsInfo": {
           "ticketsType": "",
           "isTicketsSaleOpen": false
-        }
+        },
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Sergio Borromei",
+            "imageUrl": "http://cl.netconf.global/Content/images/demo/organizers/SergioBorromei.jpgg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://twitter.com/SergioBLagash"
+              },
+              {
+                "type": "twitter",
+                "url": "https://www.linkedin.com/in/sergioborromei"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vopen-co",
+    "name": "vOpen CO",
+    "editions": [
+      {
+        "id": "vopen-co-2019",
+        "name": "2019.co",
+        "location": {
+          "fullAddress": "Colombia",
+          "venueName": "Próximamente",
+          "description": "Colombia"
+        },
+        "date": "",
+        "ticketsInfo": {
+          "ticketsType": "",
+          "isTicketsSaleOpen": false
+        },
+        "organizers": []
       }
     ]
   },
@@ -95,27 +263,8 @@
         "ticketsInfo": {
           "ticketsType": "",
           "isTicketsSaleOpen": false
-        }
-      }
-    ]
-  },
-  {
-    "id": "vopen-cl",
-    "name": "vOpen CL",
-    "editions": [
-      {
-        "id": "vopen-cl-2019",
-        "name": "2019.cl",
-        "location": {
-          "fullAddress": "Chile",
-          "venueName": "Próximamente",
-          "description": "Chile"
         },
-        "date": "",
-        "ticketsInfo": {
-          "ticketsType": "",
-          "isTicketsSaleOpen": false
-        }
+        "organizers": []
       }
     ]
   }
