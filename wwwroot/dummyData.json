@@ -1,5 +1,95 @@
 ﻿[
   {
+    "id": "vopen-global",
+    "name": "vOpen Global",
+    "editions": [
+      {
+        "id": "vopen-global-2019",
+        "name": "2019.global",
+        "location": {},
+        "date": "",
+        "ticketsInfo": {},
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Mariano Vazquez",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/marianovazquez.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/nanovazquez/"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/nanovazquez87"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Guillermo Bellmann",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/guillermobellmann.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://ar.linkedin.com/in/gbellmann"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/gjbellmann"
+              }
+            ]
+          },
+          {
+              "id": "3",
+              "name": "Pablo Di Loreto",
+              "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
+              "socialLinks": [
+                  {
+                      "type": "linkedin",
+                      "url": "https://ar.linkedin.com/in/pablodiloreto"
+                  },
+                  {
+                      "type": "twitter",
+                      "url": "https://twitter.com/pablodiloreto"
+                  }
+              ]
+          },
+          {
+            "id": "4",
+            "name": "Fabian Imaz",
+            "imageUrl": "http://uy.netconf.global/Content/images/demo/organizers/FabianImaz.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "http://uy.linkedin.com/in/siderys"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/fabianimaz"
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "name": "Fabian Fernandez",
+            "imageUrl": "https://i.imgur.com/vXLIy95.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "http://uy.linkedin.com/in/kzfabi"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/kzfabi"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "vopen-uy",
     "name": "vOpen UY",
     "editions": [
@@ -127,51 +217,6 @@
           },
           {
             "id": "5",
-            "name": "Mariano Vazquez",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/marianovazquez.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://www.linkedin.com/in/nanovazquez/"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/nanovazquez87"
-              }
-            ]
-          },
-          {
-            "id": "6",
-            "name": "Guillermo Bellmann",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/guillermobellmann.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://ar.linkedin.com/in/gbellmann"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/gjbellmann"
-              }
-            ]
-          },
-          {
-            "id": "7",
-            "name": "Pablo Di Loreto",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://ar.linkedin.com/in/pablodiloreto"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/pablodiloreto"
-              }
-            ]
-          },
-          {
-            "id": "8",
             "name": "Gabriel Barzola",
             "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/GabrielBarzola.jpg",
             "socialLinks": [
