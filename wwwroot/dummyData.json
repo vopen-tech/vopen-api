@@ -41,19 +41,19 @@
             ]
           },
           {
-              "id": "3",
-              "name": "Pablo Di Loreto",
-              "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
-              "socialLinks": [
-                  {
-                      "type": "linkedin",
-                      "url": "https://ar.linkedin.com/in/pablodiloreto"
-                  },
-                  {
-                      "type": "twitter",
-                      "url": "https://twitter.com/pablodiloreto"
-                  }
-              ]
+            "id": "3",
+            "name": "Pablo Di Loreto",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://ar.linkedin.com/in/pablodiloreto"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/pablodiloreto"
+              }
+            ]
           },
           {
             "id": "4",
@@ -212,21 +212,6 @@
               {
                 "type": "twitter",
                 "url": "https://twitter.com/garudasla"
-              }
-            ]
-          },
-          {
-            "id": "5",
-            "name": "Gabriel Barzola",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/GabrielBarzola.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://www.linkedin.com/in/gbarzola/"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/barzolaGabriel"
               }
             ]
           }
