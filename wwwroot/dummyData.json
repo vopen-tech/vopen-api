@@ -333,7 +333,53 @@
           "ticketsType": "",
           "isTicketsSaleOpen": false
         },
-        "organizers": []
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Mayra Badillo",
+            "imageUrl": "https://i.imgur.com/Xtwd1U6.png",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/mabvill"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/mabvill"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Andres Rojas",
+            "imageUrl": "https://i.imgur.com/DQevp7d.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Rogger Rodriguez",
+            "imageUrl": "https://i.imgur.com/U4HO5Py.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -359,6 +405,36 @@
             "id": "1",
             "name": "Miguel Almeyda",
             "imageUrl": "https://i.imgur.com/idbCxF9.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/miguelalmeyda"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/miguelalmeyda"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Alberto De Rossi",
+            "imageUrl": "https://i.imgur.com/Hnp1yAr.png",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/alberto-de-rossi-46814244/"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/albertoderossi"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "German Cayo",
+            "imageUrl": "https://i.imgur.com/1NLCUGy.png",
             "socialLinks": [
               {
                 "type": "linkedin",
