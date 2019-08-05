@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Swashbuckle.AspNetCore.Swagger;
+using vopen_api.Data;
+using vopen_api.Repositories;
 
 namespace vopen_api
 {
@@ -20,7 +23,7 @@ namespace vopen_api
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        { 
+        {
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -50,6 +53,11 @@ namespace vopen_api
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<VOpenDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<EventsRepository, EventsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,12 +89,14 @@ namespace vopen_api
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             // {documentname} is the c.SwaggerDoc name ("v1", see services.AddSwaggerGen)
-            app.UseSwagger(c => {
+            app.UseSwagger(c =>
+            {
                 c.RouteTemplate = "api/{documentname}/swagger/swagger.json";
             });
 
             // Enable middleware to serve the Swagger UI, specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/api/v1/swagger/swagger.json", "vOpen API V1");
                 c.RoutePrefix = "api/swagger";
             });

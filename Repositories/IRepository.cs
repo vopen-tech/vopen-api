@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using vopen_api.Models;
 
 namespace vopen_api.Repositories
 {
-    public interface IRepository<T>
+    public interface IMultiLanguageRepository<T> where T : class
     {
-        T GetById(String id);
+        Task<IReadOnlyCollection<T>> GetAllByLanguage(string language);
 
-        ICollection<T> GetAll();
+        Task<T> GetByLanguageAndId(string language, string id);
 
-        void Create(T entity);
+        Task<T> Create(T entity);
 
-        void Delete(T entity);
+        Task<T> Update(T entity);
 
-        void Update(T entity);
-
+        Task Delete(string id);
     }
 }
