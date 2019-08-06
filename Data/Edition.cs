@@ -18,9 +18,10 @@ namespace vopen_api.Data
         [Required]
         public Event Event { get; set; }
 
-        public Location Location { get; set; }
-
+        [Required]
         public EditionTicketInfo TicketInfo { get; set; }
+
+        public Location Location { get; set; }
 
         [Required]
         public ICollection<EditionOrganizer> Organizers { get; set; }
@@ -40,6 +41,7 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("EditionId")]
         public Edition Edition { get; set; }
 
         [Required]
@@ -60,6 +62,7 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("EditionId")]
         public Edition Edition { get; set; }
 
         [Required]
@@ -80,6 +83,7 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("EditionId")]
         public Edition Edition { get; set; }
 
         [Required]
@@ -94,9 +98,11 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("EditionId")]
         public Edition Edition { get; set; }
 
         [Required]
+        [ForeignKey("SponsorId")]
         public Sponsor Sponsor { get; set; }
 
         [Required]
@@ -111,18 +117,78 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("EditionId")]
         public Edition Edition { get; set; }
 
         [Required]
-        public Activity Activity { get; set; }
+        public ICollection<EditionActivityScore> Scores { get; set; }
 
         [Required]
         public ICollection<User> Presenters { get; set; }
+
+        [Required]
+        public ICollection<EditionActivityDetail> Details { get; set; }
+
+        [Required]
+        public string Type { get; set; }
 
         [Required]
         public string Date { get; set; }
 
         [Required]
         public string Duration { get; set; }
+    }
+
+    [Table("EditionsActivitiesDetails")]
+    public class EditionActivityDetail
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
+
+        [Required]
+        [ForeignKey("EditionActivityId")]
+        public EditionActivity EditionActivity { get; set; }
+
+        [Required]
+        public string Language { get; set; }
+
+        [Required]
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+    }
+
+    [Table("EditionsActivitiesPresenters")]
+
+    public class EditionActivityPresenter
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
+
+        [Required]
+        [ForeignKey("EditionsActivityId")]
+        public EditionActivity EditionActivity { get; set; }
+
+        [Required]
+        [ForeignKey("UserId")]
+        public User User { get; set; }
+    }
+
+    [Table("EditionsActivitiesScores")]
+    public class EditionActivityScore
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
+
+        [Required]
+        public EditionActivity EditionActivity { get; set; }
+
+        [Required]
+        public int Score { get; set; }
+
+        public string Comments { get; set; }
     }
 }

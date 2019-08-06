@@ -4,15 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vopen_api.Data
 {
-    [Table("Activities")]
-    public class Activity
+    [Table("UsersProposals")]
+    public class UserProposal
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
         [Required]
-        public ICollection<ActivityDetail> Details { get; set; }
+        public ICollection<UserProposalDetails> Details { get; set; }
 
         [Required]
         public User User { get; set; }
@@ -21,15 +21,15 @@ namespace vopen_api.Data
         public string Type { get; set; }
     }
 
-    [Table("ActivitiesDetails")]
-    public class ActivityDetail
+    [Table("UsersProposalsDetails")]
+    public class UserProposalDetails
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
         [Required]
-        public Activity Activity { get; set; }
+        public UserProposal UserProposal { get; set; }
 
         [Required]
         public string Language { get; set; }

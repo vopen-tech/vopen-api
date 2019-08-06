@@ -16,7 +16,11 @@ namespace vopen_api.Data
         [Required]
         public ICollection<UserDetail> Details { get; set; }
 
+        [Required]
         public ICollection<UserSocialLink> SocialLinks { get; set; }
+
+        [Required]
+        public ICollection<UserProposal> Proposals { get; set; }
     }
 
     [Table("UsersDetails")]
@@ -35,6 +39,8 @@ namespace vopen_api.Data
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public string Country { get; set; }
     }
 
     [Table("UsersSocialLinks")]

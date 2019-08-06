@@ -9,12 +9,6 @@ namespace vopen_api.Data
         {
         }
 
-        public DbSet<Activity> Activities { get; set; }
-
-        public DbSet<ActivityDetail> ActivitiesDetails { get; set; }
-
-        public DbSet<ActivityScore> ActivitiesScores { get; set; }
-
         public DbSet<Edition> Editions { get; set; }
 
         public DbSet<EditionDetail> EditionsDetails { get; set; }
@@ -26,6 +20,10 @@ namespace vopen_api.Data
         public DbSet<EditionSponsor> EditionSponsors { get; set; }
 
         public DbSet<EditionActivity> EditionsActivities { get; set; }
+
+        public DbSet<EditionActivityPresenter> EditionsActivitiesPresenters { get; set; }
+
+        public DbSet<EditionActivityScore> EditionsActivitiesScores { get; set; }
 
         public DbSet<Event> Events { get; set; }
 
@@ -41,16 +39,20 @@ namespace vopen_api.Data
 
         public DbSet<UserSocialLink> UsersSocialLinks { get; set; }
 
+        public DbSet<UserProposal> UserProposals { get; set; }
+
+        public DbSet<UserProposalDetails> UsersProposalsDetails { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             // Custom configurations not supported by DataAnnotations
-            modelBuilder.Entity<ActivityDetail>().HasIndex(item => new { item.Activity.Id, item.Language }).IsUnique();
-            modelBuilder.Entity<EditionDetail>().HasIndex(item => new { item.Edition.Id, item.Language }).IsUnique();
-            modelBuilder.Entity<EventDetail>().HasIndex(item => new { item.Event.Id, item.Language }).IsUnique();
-            modelBuilder.Entity<LocationDetail>().HasIndex(item => new { item.Location.Id, item.Language }).IsUnique();
-            modelBuilder.Entity<UserDetail>().HasIndex(item => new { item.User.Id, item.Language }).IsUnique();
+            // modelBuilder.Entity<ActivityDetail>().HasIndex(item => new { item.Activity.Id, item.Language }).IsUnique();
+            // modelBuilder.Entity<EditionDetail>().HasIndex(item => new { item.Edition.Id, item.Language }).IsUnique();
+            // modelBuilder.Entity<EventDetail>().HasIndex(item => new { item.Event.Id, item.Language }).IsUnique();
+            // modelBuilder.Entity<LocationDetail>().HasIndex(item => new { item.Location.Id, item.Language }).IsUnique();
+            // modelBuilder.Entity<UserDetail>().HasIndex(item => new { item.User.Id, item.Language }).IsUnique();
         }
     }
 }
