@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using vopen_api.Data;
 
 namespace vopen_api.Models
 {
@@ -60,5 +63,32 @@ namespace vopen_api.Models
         public string Date { get; set; }
 
         public string Duration { get; set; }
+    }
+
+    public static class EditionUtils
+    {
+        public static EditionDTO ToEditionDTO(Edition edition, string language)
+        {
+            var languageDetails = edition.Details.FirstOrDefault(item => item.Language == language);
+
+            return new EditionDTO
+            {
+                Id = edition.Id,
+                Language = language,
+                Name = languageDetails.Name,
+                Description = languageDetails.Description,
+                Date = languageDetails.Date,
+                // TicketInfo = EditionUtils.ToEditionTicketInfoDTO(edition.TicketInfo),
+                // Location = LocationUtils.ToLocationDTO(edition.Location),
+                // Organizers = edition.Organizers != null ? edition.Organizers.Select(item => UserUtils.ToUserDTO(item)) : new List<UserDTO>(),
+                // Sponsors = edition.Sponsors != null ? edition.Organizers.Select(item => EditionUtils.ToEditionSponsorDTO(item)) : new List<EditionSponsorDTO>(),
+                // Activities = edition.Activities != null ? edition.Organizers.Select(item => EditionUtils.ToEditionActivityDTO(item)) : new List<EditionActivityDTO>(),
+            };
+        }
+
+        public static Event FromEventDTO(EditionDTO eventDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

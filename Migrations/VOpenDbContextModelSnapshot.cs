@@ -321,10 +321,13 @@ namespace vopen_api.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<string>("Language")
                         .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("UserId")
                         .IsRequired();

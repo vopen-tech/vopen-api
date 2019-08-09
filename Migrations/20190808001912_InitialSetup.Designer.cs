@@ -9,7 +9,7 @@ using vopen_api.Data;
 namespace vopen_api.Migrations
 {
     [DbContext(typeof(VOpenDbContext))]
-    [Migration("20190806153205_InitialSetup")]
+    [Migration("20190808001912_InitialSetup")]
     partial class InitialSetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -323,10 +323,13 @@ namespace vopen_api.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<string>("Language")
                         .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("UserId")
                         .IsRequired();
