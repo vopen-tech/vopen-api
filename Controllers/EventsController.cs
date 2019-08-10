@@ -22,7 +22,7 @@ namespace vopen_api.Controllers
         [HttpGet]
         public async Task<IEnumerable<EventDTO>> GetAllAsync()
         {
-            var language = (string)Request.Headers["Accept-Language"] ?? "es-AR";
+            var language = this.GetLanguage();
             return await this.eventsRepository.GetAllByLanguage(language);
         }
 
@@ -30,7 +30,7 @@ namespace vopen_api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(string id)
         {
-            var language = (string)Request.Headers["Accept-Language"] ?? "es-AR";
+            var language = this.GetLanguage();
             var result = await this.eventsRepository.GetByLanguageAndId(language, id);
 
             if (result == null)
@@ -80,6 +80,16 @@ namespace vopen_api.Controllers
         {
             await this.eventsRepository.Delete(id);
             return NoContent();
+        }
+
+        private string GetLanguage()
+        {
+            if (Request.Headers["Accept-Language"].ToString() == "")
+            {
+                return "es-AR";
+            }
+
+            return Request.Headers["Accept-Language"].ToString().Split(',')[0];
         }
     }
 }

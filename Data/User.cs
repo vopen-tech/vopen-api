@@ -13,6 +13,10 @@ namespace vopen_api.Data
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        public string Country { get; set; }
+
         [Required]
         public ICollection<UserDetail> Details { get; set; }
 
@@ -36,11 +40,10 @@ namespace vopen_api.Data
         [Required]
         public string Language { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        public string Country { get; set; }
     }
 
     [Table("UsersSocialLinks")]

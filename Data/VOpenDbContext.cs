@@ -29,9 +29,11 @@ namespace vopen_api.Data
 
         public DbSet<EventDetail> EventsDetails { get; set; }
 
-        public DbSet<Location> Location { get; set; }
+        public DbSet<Location> Locations { get; set; }
 
         public DbSet<LocationDetail> LocationsDetails { get; set; }
+
+        public DbSet<Sponsor> Sponsors { get; set; }
 
         public DbSet<User> Users { get; set; }
 

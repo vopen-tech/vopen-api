@@ -247,6 +247,8 @@ namespace vopen_api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
                     EditionActivityId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -317,9 +319,8 @@ namespace vopen_api.Migrations
                     Id = table.Column<string>(nullable: false),
                     UserId = table.Column<string>(nullable: false),
                     Language = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

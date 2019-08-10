@@ -41,6 +41,5 @@ namespace vopen_api.Models
 
             return toReturn;
         }
-
     }
 }

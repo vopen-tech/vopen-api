@@ -54,8 +54,13 @@ namespace vopen_api
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<VOpenDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<VOpenDbContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // TODO: remove
+            var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
+            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            VOpenDbInitializer.Cleanup(optionsBuilder.Options);
+            VOpenDbInitializer.Seed(optionsBuilder.Options);
 
             services.AddScoped<EventsRepository, EventsRepository>();
         }

@@ -305,7 +305,11 @@ namespace vopen_api.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Country");
+
                     b.Property<string>("EditionActivityId");
+
+                    b.Property<string>("ImageUrl");
 
                     b.HasKey("Id");
 
@@ -319,14 +323,13 @@ namespace vopen_api.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Country");
-
                     b.Property<string>("Description");
 
                     b.Property<string>("Language")
                         .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("UserId")
                         .IsRequired();
