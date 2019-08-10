@@ -63,6 +63,7 @@ namespace vopen_api
             VOpenDbInitializer.Seed(optionsBuilder.Options);
 
             services.AddScoped<EventsRepository, EventsRepository>();
+            services.AddScoped<EditionsRepository, EditionsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
