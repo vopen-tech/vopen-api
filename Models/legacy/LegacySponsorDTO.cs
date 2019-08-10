@@ -5,14 +5,7 @@ using System.Threading.Tasks;
 
 namespace vopen_api.Models.legacy
 {
-    public class LegacySponsors
-    {
-        public string imageBaseURL { get; set; }
-        public string info { get; set; }
-        public IList<Sponsor> sponsors { get; set; }
-    }
-
-    public class Sponsor
+    public class LegacySponsor
     {
         public long SponsorId { get; set; }
         public long GlobalRanking { get; set; }

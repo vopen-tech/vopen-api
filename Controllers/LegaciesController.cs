@@ -44,7 +44,7 @@ namespace vopen_api.Controllers
             throw new NotImplementedException();
         }
 
-        //devuelve modelo LegacySpronsor
+        //devuelve modelo ConfSponsors
         [HttpPost("ConfSponsors")]
         public string ConfSponsors(LegacyApiCredentialsDTO dto)
         {

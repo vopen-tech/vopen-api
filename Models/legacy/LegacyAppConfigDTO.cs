@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace vopen_api.Models.legacy
 {
-    public class LegacyAppConfig
+    public class LegacyAppConfigDTO
     {
         public int[] HighlightedSponsorsIds { get; set; }
-        public Sponsor[] HighlightedSponsors { get; set; }
+        public LegacySponsor[] HighlightedSponsors { get; set; }
         public Texts[] Texts { get; set; }
     }
 
