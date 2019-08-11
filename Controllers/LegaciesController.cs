@@ -41,10 +41,17 @@ namespace vopen_api.Controllers
 
         //devuelve modelo LegacySpronsor
         [HttpPost("Sponsors")]
-        public string Sponsors(LegacyApiCredentialsDTO dto)
+        public async Task<IActionResult> Sponsors(LegacyApiCredentialsDTO dto)
         {
 
             this.ValidateRequest(dto);
+
+            var edition = await editionsRepository.GetByLanguageAndId("es", country);
+
+            var result = new LegacySponsorsDTO();
+            result.imageBaseURL = configuration.GetSection("SiteUrl").Value
+                                            + "Content/images/demo/sponsor-logos/";
+            result.info = "All images are .png";
 
             throw new NotImplementedException();
         }
