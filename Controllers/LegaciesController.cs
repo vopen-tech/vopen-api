@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using vopen_api.Models.legacy;
 using vopen_api.Repositories;
 
@@ -15,10 +16,14 @@ namespace vopen_api.Controllers
     {
 
         private readonly EditionsRepository editionsRepository;
+        private readonly IConfiguration configuration;
+        private readonly string country;
         
-        public LegaciesController(EditionsRepository editionsRepository)
+        public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration)
         {
-            this.editionsRepository = editionsRepository;            
+            this.editionsRepository = editionsRepository;
+            this.configuration = configuration;
+            this.country = configuration.GetSection("Country").Value;
         }
 
         private void ValidateRequest(LegacyApiCredentialsDTO dto)
