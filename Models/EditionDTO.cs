@@ -39,8 +39,6 @@ namespace vopen_api.Models
 
     public class EditionSponsorDTO
     {
-        public string Id { get; set; }
-
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -52,8 +50,6 @@ namespace vopen_api.Models
 
     public class EditionActivityDTO
     {
-        public string Id { get; set; }
-
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -69,20 +65,45 @@ namespace vopen_api.Models
     {
         public static EditionDTO ToEditionDTO(Edition edition, string language)
         {
-            var languageDetails = edition.Details.FirstOrDefault(item => item.Language == language);
+            var details = edition.Details.FirstOrDefault(item => item.Language == language);
 
             return new EditionDTO
             {
                 Id = edition.Id,
                 Language = language,
-                Name = languageDetails.Name,
-                Description = languageDetails.Description,
-                Date = languageDetails.Date,
-                // TicketInfo = EditionUtils.ToEditionTicketInfoDTO(edition.TicketInfo),
-                // Location = LocationUtils.ToLocationDTO(edition.Location),
-                // Organizers = edition.Organizers != null ? edition.Organizers.Select(item => UserUtils.ToUserDTO(item)) : new List<UserDTO>(),
-                // Sponsors = edition.Sponsors != null ? edition.Organizers.Select(item => EditionUtils.ToEditionSponsorDTO(item)) : new List<EditionSponsorDTO>(),
-                // Activities = edition.Activities != null ? edition.Organizers.Select(item => EditionUtils.ToEditionActivityDTO(item)) : new List<EditionActivityDTO>(),
+                Name = details.Name,
+                Description = details.Description,
+                Date = details.Date,
+                TicketInfo = new EditionTicketInfoDTO { Type = edition.TicketInfo.Type, Price = edition.TicketInfo.Price, TicketSaleStartDate = edition.TicketInfo.TicketSaleStartDate, TicketSaleEndDate = edition.TicketInfo.TicketSaleEndDate },
+                Location = LocationUtils.ToLocationDTO(edition.Location, language),
+                Organizers = UserUtils.ToUsersDTO(edition.Organizers.Select(item => item.User).ToList(), language),
+                Sponsors = edition.Sponsors != null ? edition.Sponsors.Select(item => EditionUtils.ToEditionSponsorDTO(item)).ToList() : new List<EditionSponsorDTO>(),
+                Activities = edition.Activities != null ? edition.Activities.Select(item => EditionUtils.ToEditionActivityDTO(item, language)).ToList() : new List<EditionActivityDTO>(),
+            };
+        }
+
+        public static EditionSponsorDTO ToEditionSponsorDTO(EditionSponsor editionSponsor)
+        {
+            return new EditionSponsorDTO
+            {
+                Type = editionSponsor.Type,
+                Name = editionSponsor.Sponsor.Name,
+                Description = editionSponsor.Sponsor.Description,
+                Url = editionSponsor.Sponsor.Url
+            };
+        }
+
+        public static EditionActivityDTO ToEditionActivityDTO(EditionActivity editionActivity, string language)
+        {
+            var details = editionActivity.Details.FirstOrDefault(item => item.Language == language);
+
+            return new EditionActivityDTO
+            {
+                Date = editionActivity.Date,
+                Presenters = UserUtils.ToUsersDTO(editionActivity.Presenters, language),
+                Duration = editionActivity.Duration,
+                Description = details.Description,
+                Title = details.Title,
             };
         }
 

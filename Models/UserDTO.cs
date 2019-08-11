@@ -33,6 +33,16 @@ namespace vopen_api.Models
             };
         }
 
+        public static ICollection<UserDTO> ToUsersDTO(ICollection<User> users, string language)
+        {
+            if (users == null)
+            {
+                return new List<UserDTO>();
+            }
+
+            return users.Select(user => UserUtils.ToUserDTO(user, language)).ToList();
+        }
+
         public static User FromUserDTO(UserDTO userDTO)
         {
             var toReturn = new User()

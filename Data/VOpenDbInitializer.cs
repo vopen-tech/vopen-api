@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -225,7 +226,7 @@ namespace vopen_api.Data
                     }
                 };
 
-                // CH
+                // CL
 
                 var user16 = new User
                 {
@@ -342,30 +343,153 @@ namespace vopen_api.Data
                 context.Users.Add(user21);
                 context.Users.Add(user22);
 
-
                 // Create locations
-                var argLocation = new Location
+                var arLocation = new Location
                 {
                     Details = new LocationDetail[]
                      {
-                         new LocationDetail { Language = "es-AR", Name = "Auditorio de la Casa del GCBA", FullAddress = "Uspallata 3160, C1437JCL CABA", Country = "Argentina" },
-                         new LocationDetail { Language = "en-US", Name = "Auditorio de la Casa del GCBA", FullAddress = "Uspallata 3160, C1437JCL CABA", Country = "Argentina" }
+                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Auditorio de la Casa del GCBA", FullAddress = "Uspallata 3160, C1437JCL CABA", Country = "Argentina" },
+                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Auditorio de la Casa del GCBA", FullAddress = "Uspallata 3160, C1437JCL CABA", Country = "Argentina" }
                      }
                 };
+                var uyLocation = new Location
+                {
+                    Details = new LocationDetail[]
+                    {
+                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Montevideo, Uruguay", Country = "Uruguay" },
+                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Montevideo, Uruguay", Country = "Uruguay" },
+                    }
+                };
+                var clLocation = new Location
+                {
+                    Details = new LocationDetail[]
+                    {
+                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Santiago de Chile, Chile", Country = "Chile" },
+                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Santiago de Chile, Chile", Country = "Chile" },
+                    }
+                };
+                var coLocation = new Location
+                {
+                    Details = new LocationDetail[]
+                    {
+                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Bogotá, Colombia", Country = "Chile" },
+                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Bogotá, Colombia", Country = "Chile" },
+                    }
+                };
+                var peLocation = new Location
+                {
+                    Details = new LocationDetail[]
+                    {
+                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Lima, Perú", Country = "Perú" },
+                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Lima, Perú", Country = "Perú" },
+                    }
+                };
 
-                context.Locations.Add(argLocation);
+                context.Locations.Add(arLocation);
+                context.Locations.Add(uyLocation);
+                context.Locations.Add(clLocation);
+                context.Locations.Add(coLocation);
+                context.Locations.Add(peLocation);
 
                 // TODO: create sponsors
 
-                // Create AR Edition
-
                 // Create UY Edition
+                var uyEdition = new Edition
+                {
+                    Id = "vopen-uy-2019",
+                    Details = new EditionDetail[]
+                    {
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019", Date = "Próximamente" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019", Date = "Soon" }
+                    },
+                    Location = uyLocation,
+                    Organizers = new List<EditionOrganizer>
+                    {
+                        new EditionOrganizer { User = user6 },
+                        new EditionOrganizer { User = user7 },
+                        new EditionOrganizer { User = user8 },
+                        new EditionOrganizer { User = user9 },
+                        new EditionOrganizer { User = user10 },
+                        new EditionOrganizer { User = user11 },
+                    }
+                };
 
-                // Create CHI Edition
+                // Create AR Edition
+                var arEdition = new Edition
+                {
+                    Id = "vopen-ar-2019",
+                    Details = new EditionDetail[]
+                    {
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen AR 2019", Date = "3, 4 y 5 de Octubre" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen AR 2019", Date = "October 3rd, 4th and 5th" }
+                    },
+                    Location = arLocation,
+                    Organizers = new List<EditionOrganizer>
+                    {
+                        new EditionOrganizer { User = user12 },
+                        new EditionOrganizer { User = user13 },
+                        new EditionOrganizer { User = user14 },
+                        new EditionOrganizer { User = user15 },
+                    }
+                };
+
+                // Create CL Edition
+                var clEdition = new Edition
+                {
+                    Id = "vopen-cl-2019",
+                    Details = new EditionDetail[]
+                    {
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CL 2019", Date = "Próximamente" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CL 2019", Date = "Soon" }
+                    },
+                    Location = clLocation,
+                    Organizers = new List<EditionOrganizer>
+                    {
+                        new EditionOrganizer { User = user16 },
+                    }
+                };
 
                 // Create CO Edition
+                var coEdition = new Edition
+                {
+                    Id = "vopen-co-2019",
+                    Details = new EditionDetail[]
+                    {
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CO 2019", Date = "Próximamente" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CO 2019", Date = "Soon" }
+                    },
+                    Location = coLocation,
+                    Organizers = new List<EditionOrganizer>
+                    {
+                        new EditionOrganizer { User = user17 },
+                        new EditionOrganizer { User = user18 },
+                        new EditionOrganizer { User = user19 },
+                    }
+                };
 
                 // Create PE Edition
+                var peEdition = new Edition
+                {
+                    Id = "vopen-pe-2019",
+                    Details = new EditionDetail[]
+                    {
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen PE 2019", Date = "Próximamente" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen PE 2019", Date = "Soon" }
+                    },
+                    Location = coLocation,
+                    Organizers = new List<EditionOrganizer>
+                    {
+                        new EditionOrganizer { User = user20 },
+                        new EditionOrganizer { User = user21 },
+                        new EditionOrganizer { User = user22 },
+                    }
+                };
+
+                context.Editions.Add(arEdition);
+                context.Editions.Add(uyEdition);
+                context.Editions.Add(clEdition);
+                context.Editions.Add(coEdition);
+                context.Editions.Add(peEdition);
 
                 context.SaveChanges();
             }
