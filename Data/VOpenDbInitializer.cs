@@ -37,8 +37,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/nanovazquez/" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/nanovazquez87" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/nanovazquez/" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/nanovazquez87" },
                     }
                 };
                 var user2 = new User
@@ -51,8 +51,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://ar.linkedin.com/in/gbellmann" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/gjbellmann" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://ar.linkedin.com/in/gbellmann" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/gjbellmann" },
                     }
                 };
                 var user3 = new User
@@ -65,8 +65,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://ar.linkedin.com/in/pablodiloreto" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/pablodiloreto" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://ar.linkedin.com/in/pablodiloreto" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/pablodiloreto" },
                     }
                 };
                 var user4 = new User
@@ -79,8 +79,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "http://uy.linkedin.com/in/siderys" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/fabianimaz" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "http://uy.linkedin.com/in/siderys" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/fabianimaz" },
                     }
                 };
                 var user5 = new User
@@ -93,8 +93,8 @@ namespace vopen_api.Data
                      },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "http://uy.linkedin.com/in/kzfabi" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/kzfabi" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "http://uy.linkedin.com/in/kzfabi" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/kzfabi" },
                     }
                 };
 
@@ -110,7 +110,10 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/federico-bernasconi-48087b56/" },
+                        new UserSocialLink
+                        {
+                            Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/federico-bernasconi-48087b56/"
+                        },
                     }
                 };
                 var user7 = new User
@@ -123,8 +126,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/brian-hardy-382a9484/" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/hardyr93" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/brian-hardy-382a9484" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/hardyr93" },
                     }
                 };
                 var user8 = new User
@@ -135,7 +138,10 @@ namespace vopen_api.Data
                     {
                         new UserDetail { Name = "Pablo Marcano", Description = "", Language = Constants.LANGUAGES_SPANISH, }
                     },
-                    SocialLinks = new UserSocialLink[] { }
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/pablo-m-1b2366124/" },
+                    }
                 };
                 var user9 = new User
                 {
@@ -145,7 +151,10 @@ namespace vopen_api.Data
                     {
                         new UserDetail { Name = "Victor Silva", Description = "", Language = Constants.LANGUAGES_SPANISH }
                     },
-                    SocialLinks = new UserSocialLink[] { }
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/vmsilvamolina/" },
+                    }
                 };
                 var user10 = new User
                 {
@@ -165,7 +174,50 @@ namespace vopen_api.Data
                     {
                         new UserDetail { Name = "Diego Bellora",  Description = "", Language = Constants.LANGUAGES_SPANISH }
                     },
-                    SocialLinks = new UserSocialLink[] { }
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/diego-bellora-21175882/"}
+                    }
+                };
+                var user23 = new User
+                {
+                    Country = Constants.COUNTRIES_URUGUAY,
+                    ImageUrl = "https://i.imgur.com/g1l8I4s.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Pablo Terevinto",  Description = "", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/pterevinto/"}
+                    }
+                };
+                var user24 = new User
+                {
+                    Country = Constants.COUNTRIES_URUGUAY,
+                    ImageUrl = "https://i.imgur.com/SO2Vnqj.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Victoria Mato",  Description = "", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/Victoria-Mato"}
+                    }
+                };
+                var user25 = new User
+                {
+                    Country = Constants.COUNTRIES_URUGUAY,
+                    ImageUrl = "https://i.imgur.com/3p2UAdT.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Martin Mato",  Description = "", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/martinmato/" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = " https://twitter.com/otamnitram" }
+                    }
                 };
 
                 //// AR
@@ -179,8 +231,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/niberra" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/na_iberra" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/niberra" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/na_iberra" },
                     }
                 };
                 var user13 = new User
@@ -193,8 +245,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/jobramajo" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/jorbramajo" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jobramajo" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jorbramajo" },
                     }
                 };
                 var user14 = new User
@@ -207,8 +259,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/eyanez89" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/Teban3010" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/eyanez89" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/Teban3010" },
                     }
                 };
                 var user15 = new User
@@ -221,8 +273,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/sebasti%C3%A1n-leonardo-p%C3%A9rez-68816599" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/garudasla" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebasti%C3%A1n-leonardo-p%C3%A9rez-68816599" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/garudasla" },
                     }
                 };
 
@@ -238,8 +290,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://twitter.com/SergioBLagash" },
-                        new UserSocialLink { Type = "twitter", Url = "https://www.linkedin.com/in/sergioborromei" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://twitter.com/SergioBLagash" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://www.linkedin.com/in/sergioborromei" },
                     }
                 };
 
@@ -254,8 +306,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/mabvill" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/mabvill" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/mabvill" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/mabvill" },
                     }
                 };
                 var user18 = new User
@@ -291,8 +343,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/miguelalmeyda" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/miguelalmeyda" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/miguelalmeyda" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/miguelalmeyda" },
                     }
                 };
                 var user21 = new User
@@ -305,8 +357,8 @@ namespace vopen_api.Data
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = "linkedin", Url = "https://www.linkedin.com/in/alberto-de-rossi-46814244/" },
-                        new UserSocialLink { Type = "twitter", Url = "https://twitter.com/albertoderossi" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/alberto-de-rossi-46814244/" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/albertoderossi" },
                     }
                 };
                 var user22 = new User
@@ -342,6 +394,9 @@ namespace vopen_api.Data
                 context.Users.Add(user20);
                 context.Users.Add(user21);
                 context.Users.Add(user22);
+                context.Users.Add(user23);
+                context.Users.Add(user24);
+                context.Users.Add(user25);
 
                 // TODO: create sponsors
 
@@ -372,11 +427,11 @@ namespace vopen_api.Data
                     Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019" }
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019", Date = "21, 22 y 23 de Octubre" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019", Date = "October 21st, 22nd and 23rd" }
                     },
-                    LocationName = "",
-                    LocationFullAddress = "Montevideo, Uruguay",
+                    LocationName = "Torre de las Telecomunicaciones, Antel",
+                    LocationFullAddress = "Telecommunications Tower, 11800 Montevideo, Departamento de Montevideo, Uruguay",
                     TicketSaleStartDate = "",
                     TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
@@ -387,6 +442,9 @@ namespace vopen_api.Data
                         new EditionOrganizer { User = user9 },
                         new EditionOrganizer { User = user10 },
                         new EditionOrganizer { User = user11 },
+                        new EditionOrganizer { User = user23 },
+                        new EditionOrganizer { User = user24 },
+                        new EditionOrganizer { User = user25 },
                     }
                 };
 
