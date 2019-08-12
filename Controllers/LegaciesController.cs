@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using vopen_api.Models;
 using vopen_api.Models.legacy;
 using vopen_api.Repositories;
 
@@ -17,13 +19,15 @@ namespace vopen_api.Controllers
 
         private readonly EditionsRepository editionsRepository;
         private readonly IConfiguration configuration;
+        private IMemoryCache _cache;
         private readonly string country;
         private readonly string edition;
 
-        public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration)
+        public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration, IMemoryCache memoryCache)
         {
             this.editionsRepository = editionsRepository;
             this.configuration = configuration;
+            this._cache = memoryCache;
             this.country = configuration.GetSection("Country").Value;
             this.edition = configuration.GetSection("Edition").Value;
         }
@@ -48,22 +52,31 @@ namespace vopen_api.Controllers
 
             this.ValidateRequest(dto);
 
-            var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
+            LegacySponsorsDTO result;
 
-            var result = new LegacySponsorsDTO();
-            result.imageBaseURL = configuration.GetSection("SiteUrl").Value
-                                            + "Content/images/demo/sponsor-logos/";
-            result.info = "All images are .png";
+            if (!_cache.TryGetValue(this.edition, out result)){
 
-            result.sponsors = (from r in edition.Sponsors select 
-                                   (new LegacySponsor() {
-                                        Name = r.Name,                             
-                                        GlobalRanking = 1,
-                                        LogoFileName = "",
-                                        SponsorId = 0,
-                                        WebSite = r.Url
-                                   })).ToList();
+                var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
+                result = new LegacySponsorsDTO();
+                result.imageBaseURL = configuration.GetSection("SiteUrl").Value
+                                                + "Content/images/demo/sponsor-logos/";
+                result.info = "All images are .png";
 
+                result.sponsors = (from r in edition.Sponsors
+                                   select
+                    (new LegacySponsor()
+                    {
+                        Name = r.Name,
+                        GlobalRanking = 1,
+                        LogoFileName = "",
+                        SponsorId = 0,
+                        WebSite = r.Url
+                    })).ToList();
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(300));
+                _cache.Set(this.edition, result, cacheEntryOptions);
+            }
+            
             return Ok(result);
         }
 

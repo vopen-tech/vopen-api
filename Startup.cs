@@ -58,6 +58,8 @@ namespace vopen_api
             services.AddScoped<EventsRepository, EventsRepository>();
             services.AddScoped<EditionsRepository, EditionsRepository>();
 
+            services.AddMemoryCache();
+
             // TODO: remove
             var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
             optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
