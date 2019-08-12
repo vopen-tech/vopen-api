@@ -35,6 +35,7 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("UserId")]
         public User User { get; set; }
 
         [Required]
@@ -54,6 +55,7 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("UserId")]
         public User User { get; set; }
 
         [Required]

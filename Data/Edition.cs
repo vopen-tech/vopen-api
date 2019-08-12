@@ -18,10 +18,17 @@ namespace vopen_api.Data
         [Required]
         public Event Event { get; set; }
 
-        [Required]
-        public EditionTicketInfo TicketInfo { get; set; }
+        public string LocationName { get; set; }
 
-        public Location Location { get; set; }
+        public string LocationFullAddress { get; set; }
+
+        public string TicketType { get; set; }
+
+        public string TicketPrice { get; set; }
+
+        public string TicketSaleStartDate { get; set; }
+
+        public string TicketSaleEndDate { get; set; }
 
         [Required]
         public ICollection<EditionOrganizer> Organizers { get; set; }
@@ -52,27 +59,6 @@ namespace vopen_api.Data
         public string Description { get; set; }
 
         public string Date { get; set; }
-    }
-
-    [Table("EditionsTicketInfos")]
-    public class EditionTicketInfo
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
-
-        [Required]
-        [ForeignKey("EditionId")]
-        public Edition Edition { get; set; }
-
-        [Required]
-        public string Type { get; set; }
-
-        public string Price { get; set; }
-
-        public string TicketSaleStartDate { get; set; }
-
-        public string TicketSaleEndDate { get; set; }
     }
 
     [Table("EditionsOrganizers")]

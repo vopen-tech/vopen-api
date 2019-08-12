@@ -26,13 +26,21 @@ namespace vopen_api.Migrations
                     b.Property<string>("EventId")
                         .IsRequired();
 
-                    b.Property<string>("LocationId");
+                    b.Property<string>("LocationFullAddress");
+
+                    b.Property<string>("LocationName");
+
+                    b.Property<string>("TicketPrice");
+
+                    b.Property<string>("TicketSaleEndDate");
+
+                    b.Property<string>("TicketSaleStartDate");
+
+                    b.Property<string>("TicketType");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
-
-                    b.HasIndex("LocationId");
 
                     b.ToTable("Editions");
                 });
@@ -190,31 +198,6 @@ namespace vopen_api.Migrations
                     b.ToTable("EditionsSponsors");
                 });
 
-            modelBuilder.Entity("vopen_api.Data.EditionTicketInfo", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("EditionId")
-                        .IsRequired();
-
-                    b.Property<string>("Price");
-
-                    b.Property<string>("TicketSaleEndDate");
-
-                    b.Property<string>("TicketSaleStartDate");
-
-                    b.Property<string>("Type")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EditionId")
-                        .IsUnique();
-
-                    b.ToTable("EditionsTicketInfos");
-                });
-
             modelBuilder.Entity("vopen_api.Data.Event", b =>
                 {
                     b.Property<string>("Id")
@@ -245,40 +228,6 @@ namespace vopen_api.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("EventsDetails");
-                });
-
-            modelBuilder.Entity("vopen_api.Data.Location", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("vopen_api.Data.LocationDetail", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Country");
-
-                    b.Property<string>("FullAddress");
-
-                    b.Property<string>("Language")
-                        .IsRequired();
-
-                    b.Property<string>("LocationId")
-                        .IsRequired();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
-
-                    b.ToTable("LocationsDetails");
                 });
 
             modelBuilder.Entity("vopen_api.Data.Sponsor", b =>
@@ -407,10 +356,6 @@ namespace vopen_api.Migrations
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("vopen_api.Data.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId");
                 });
 
             modelBuilder.Entity("vopen_api.Data.EditionActivity", b =>
@@ -484,27 +429,11 @@ namespace vopen_api.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("vopen_api.Data.EditionTicketInfo", b =>
-                {
-                    b.HasOne("vopen_api.Data.Edition", "Edition")
-                        .WithOne("TicketInfo")
-                        .HasForeignKey("vopen_api.Data.EditionTicketInfo", "EditionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("vopen_api.Data.EventDetail", b =>
                 {
                     b.HasOne("vopen_api.Data.Event", "Event")
                         .WithMany("Details")
                         .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("vopen_api.Data.LocationDetail", b =>
-                {
-                    b.HasOne("vopen_api.Data.Location", "Location")
-                        .WithMany("Details")
-                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

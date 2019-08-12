@@ -26,8 +26,8 @@ namespace vopen_api.Data
         // Sponsor Type
         public static string SPONSOR_DIAMOND = "Diamond";
         public static string SPONSOR_GOLD = "Gold";
-        public static string TICKET_SILVER = "Silver";
-        public static string TICKET_DIGITAL = "Digital";
+        public static string SPONSOR_SILVER = "Silver";
+        public static string SPONSOR_DIGITAL = "Digital";
 
         // Activity Type
         public static string ACTIVITY_TALK = "Talk";

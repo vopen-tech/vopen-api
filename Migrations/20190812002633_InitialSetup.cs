@@ -18,17 +18,6 @@ namespace vopen_api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Locations",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Locations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Sponsors",
                 columns: table => new
                 {
@@ -40,6 +29,30 @@ namespace vopen_api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sponsors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Editions",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EventId = table.Column<string>(nullable: false),
+                    LocationName = table.Column<string>(nullable: true),
+                    LocationFullAddress = table.Column<string>(nullable: true),
+                    TicketType = table.Column<string>(nullable: true),
+                    TicketPrice = table.Column<string>(nullable: true),
+                    TicketSaleStartDate = table.Column<string>(nullable: true),
+                    TicketSaleEndDate = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Editions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Editions_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,53 +72,6 @@ namespace vopen_api.Migrations
                         name: "FK_EventsDetails_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Editions",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EventId = table.Column<string>(nullable: false),
-                    LocationId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Editions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Editions_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Editions_Locations_LocationId",
-                        column: x => x.LocationId,
-                        principalTable: "Locations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LocationsDetails",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    LocationId = table.Column<string>(nullable: false),
-                    Language = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    FullAddress = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LocationsDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LocationsDetails_Locations_LocationId",
-                        column: x => x.LocationId,
-                        principalTable: "Locations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -175,28 +141,6 @@ namespace vopen_api.Migrations
                         name: "FK_EditionsSponsors_Sponsors_SponsorId",
                         column: x => x.SponsorId,
                         principalTable: "Sponsors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsTicketInfos",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionId = table.Column<string>(nullable: false),
-                    Type = table.Column<string>(nullable: false),
-                    Price = table.Column<string>(nullable: true),
-                    TicketSaleStartDate = table.Column<string>(nullable: true),
-                    TicketSaleEndDate = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsTicketInfos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsTicketInfos_Editions_EditionId",
-                        column: x => x.EditionId,
-                        principalTable: "Editions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -399,11 +343,6 @@ namespace vopen_api.Migrations
                 column: "EventId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Editions_LocationId",
-                table: "Editions",
-                column: "LocationId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_EditionsActivities_EditionId",
                 table: "EditionsActivities",
                 column: "EditionId");
@@ -454,20 +393,9 @@ namespace vopen_api.Migrations
                 column: "SponsorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EditionsTicketInfos_EditionId",
-                table: "EditionsTicketInfos",
-                column: "EditionId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_EventsDetails_EventId",
                 table: "EventsDetails",
                 column: "EventId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LocationsDetails_LocationId",
-                table: "LocationsDetails",
-                column: "LocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_EditionActivityId",
@@ -516,13 +444,7 @@ namespace vopen_api.Migrations
                 name: "EditionsSponsors");
 
             migrationBuilder.DropTable(
-                name: "EditionsTicketInfos");
-
-            migrationBuilder.DropTable(
                 name: "EventsDetails");
-
-            migrationBuilder.DropTable(
-                name: "LocationsDetails");
 
             migrationBuilder.DropTable(
                 name: "UsersDetails");
@@ -550,9 +472,6 @@ namespace vopen_api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Events");
-
-            migrationBuilder.DropTable(
-                name: "Locations");
         }
     }
 }

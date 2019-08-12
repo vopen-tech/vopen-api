@@ -12,14 +12,20 @@ namespace vopen_api.Models
         public string ImageUrl { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<UserSocialLink> SocialLinks { get; set; }
+        public ICollection<UserSocialLinkDTO> SocialLinks { get; set; }
+    }
+
+    public class UserSocialLinkDTO
+    {
+        public string Type { get; set; }
+        public string Url { get; set; }
     }
 
     public static class UserUtils
     {
         public static UserDTO ToUserDTO(User user, string language)
         {
-            var userDetail = user.Details.FirstOrDefault(item => item.Language == language);
+            var userDetail = user.Details.FirstOrDefault(item => item.Language == language) ?? user.Details.First();
 
             return new UserDTO
             {
@@ -29,7 +35,7 @@ namespace vopen_api.Models
                 ImageUrl = user.ImageUrl,
                 Name = userDetail.Name,
                 Description = userDetail.Description,
-                SocialLinks = user.SocialLinks
+                SocialLinks = user.SocialLinks.Select(c => new UserSocialLinkDTO { Type = c.Type, Url = c.Url }).ToList()
             };
         }
 
@@ -41,29 +47,6 @@ namespace vopen_api.Models
             }
 
             return users.Select(user => UserUtils.ToUserDTO(user, language)).ToList();
-        }
-
-        public static User FromUserDTO(UserDTO userDTO)
-        {
-            var toReturn = new User()
-            {
-                Id = userDTO.Id,
-                Country = userDTO.Country,
-                ImageUrl = userDTO.ImageUrl,
-                SocialLinks = userDTO.SocialLinks
-            };
-
-            toReturn.Details = new UserDetail[]
-            {
-                new UserDetail()
-                {
-                    Language = userDTO.Language,
-                    Name = userDTO.Name,
-                    Description = userDTO.Description
-                }
-            };
-
-            return toReturn;
         }
     }
 }

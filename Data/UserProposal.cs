@@ -15,6 +15,7 @@ namespace vopen_api.Data
         public ICollection<UserProposalDetails> Details { get; set; }
 
         [Required]
+        [ForeignKey("UserId")]
         public User User { get; set; }
 
         [Required]

@@ -343,66 +343,42 @@ namespace vopen_api.Data
                 context.Users.Add(user21);
                 context.Users.Add(user22);
 
-                // Create locations
-                var arLocation = new Location
-                {
-                    Details = new LocationDetail[]
-                     {
-                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Auditorio de la Casa del GCBA", FullAddress = "Uspallata 3160, C1437JCL CABA", Country = "Argentina" },
-                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Auditorio de la Casa del GCBA", FullAddress = "Uspallata 3160, C1437JCL CABA", Country = "Argentina" }
-                     }
-                };
-                var uyLocation = new Location
-                {
-                    Details = new LocationDetail[]
-                    {
-                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Montevideo, Uruguay", Country = "Uruguay" },
-                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Montevideo, Uruguay", Country = "Uruguay" },
-                    }
-                };
-                var clLocation = new Location
-                {
-                    Details = new LocationDetail[]
-                    {
-                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Santiago de Chile, Chile", Country = "Chile" },
-                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Santiago de Chile, Chile", Country = "Chile" },
-                    }
-                };
-                var coLocation = new Location
-                {
-                    Details = new LocationDetail[]
-                    {
-                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Bogotá, Colombia", Country = "Chile" },
-                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Bogotá, Colombia", Country = "Chile" },
-                    }
-                };
-                var peLocation = new Location
-                {
-                    Details = new LocationDetail[]
-                    {
-                         new LocationDetail { Language = Constants.LANGUAGES_SPANISH, Name = "Próximamente", FullAddress = "Lima, Perú", Country = "Perú" },
-                         new LocationDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "Soon", FullAddress = "Lima, Perú", Country = "Perú" },
-                    }
-                };
-
-                context.Locations.Add(arLocation);
-                context.Locations.Add(uyLocation);
-                context.Locations.Add(clLocation);
-                context.Locations.Add(coLocation);
-                context.Locations.Add(peLocation);
-
                 // TODO: create sponsors
+
+                // Create global edition
+                var globalEdition = new Edition
+                {
+                    Id = "vopen-global-2019",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                    {
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2019" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2019" }
+                    },
+                    Organizers = new List<EditionOrganizer>
+                    {
+                        new EditionOrganizer { User = user1 },
+                        new EditionOrganizer { User = user2 },
+                        new EditionOrganizer { User = user3 },
+                        new EditionOrganizer { User = user4 },
+                        new EditionOrganizer { User = user5 },
+                    }
+                };
 
                 // Create UY Edition
                 var uyEdition = new Edition
                 {
                     Id = "vopen-uy-2019",
+                    Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019", Date = "Próximamente" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019", Date = "Soon" }
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019" }
                     },
-                    Location = uyLocation,
+                    LocationName = "",
+                    LocationFullAddress = "Montevideo, Uruguay",
+                    TicketSaleStartDate = "",
+                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user6 },
@@ -418,12 +394,17 @@ namespace vopen_api.Data
                 var arEdition = new Edition
                 {
                     Id = "vopen-ar-2019",
+                    Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
                        new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen AR 2019", Date = "3, 4 y 5 de Octubre" },
                        new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen AR 2019", Date = "October 3rd, 4th and 5th" }
                     },
-                    Location = arLocation,
+                    LocationName = "Auditorio de la Casa del GCBA",
+                    LocationFullAddress = "Uspallata 3160, Ciudad Autónoma de Buenos Aires, Argentina",
+                    TicketType = Constants.TICKET_FREE,
+                    TicketSaleStartDate = "",
+                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user12 },
@@ -437,12 +418,16 @@ namespace vopen_api.Data
                 var clEdition = new Edition
                 {
                     Id = "vopen-cl-2019",
+                    Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CL 2019", Date = "Próximamente" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CL 2019", Date = "Soon" }
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CL 2019" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CL 2019" }
                     },
-                    Location = clLocation,
+                    LocationName = "",
+                    LocationFullAddress = "Santiago de Chile, Chile",
+                    TicketSaleStartDate = "",
+                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user16 },
@@ -453,12 +438,16 @@ namespace vopen_api.Data
                 var coEdition = new Edition
                 {
                     Id = "vopen-co-2019",
+                    Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CO 2019", Date = "Próximamente" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CO 2019", Date = "Soon" }
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CO 2019" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CO 2019" }
                     },
-                    Location = coLocation,
+                    LocationName = "",
+                    LocationFullAddress = "Bogotá, Colombia",
+                    TicketSaleStartDate = "",
+                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user17 },
@@ -471,12 +460,16 @@ namespace vopen_api.Data
                 var peEdition = new Edition
                 {
                     Id = "vopen-pe-2019",
+                    Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen PE 2019", Date = "Próximamente" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen PE 2019", Date = "Soon" }
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen PE 2019" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen PE 2019" }
                     },
-                    Location = coLocation,
+                    LocationName = "",
+                    LocationFullAddress = "Lima, Perú",
+                    TicketSaleStartDate = "",
+                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user20 },
@@ -485,6 +478,7 @@ namespace vopen_api.Data
                     }
                 };
 
+                context.Editions.Add(globalEdition);
                 context.Editions.Add(arEdition);
                 context.Editions.Add(uyEdition);
                 context.Editions.Add(clEdition);
@@ -501,10 +495,19 @@ namespace vopen_api.Data
             {
                 context.Database.EnsureCreated();
 
-                context.Events.RemoveRange(context.Events);
-                context.Locations.RemoveRange(context.Locations);
+                context.EditionsActivitiesScores.RemoveRange(context.EditionsActivitiesScores);
+                context.EditionsActivitiesPresenters.RemoveRange(context.EditionsActivitiesPresenters);
+                context.EditionsActivities.RemoveRange(context.EditionsActivities);
+                context.EditionOrganizers.RemoveRange(context.EditionOrganizers);
+                context.EditionsDetails.RemoveRange(context.EditionsDetails);
+                context.EditionSponsors.RemoveRange(context.EditionSponsors);
+
                 context.Sponsors.RemoveRange(context.Sponsors);
+                context.UsersProposalsDetails.RemoveRange(context.UsersProposalsDetails);
+                context.UsersDetails.RemoveRange(context.UsersDetails);
                 context.Users.RemoveRange(context.Users);
+                context.Editions.RemoveRange(context.Editions);
+                context.Events.RemoveRange(context.Events);
 
                 context.SaveChanges();
             }
