@@ -3,11 +3,15 @@ namespace vopen_api.Data
 {
     public static class Constants
     {
+        // Languages
+        public static string LANGUAGES_SPANISH = "es-AR";
+        public static string LANGUAGES_ENGLISH = "en-US";
+
         // Countries
         public static string COUNTRIES_ARGENTINA = "Argentina";
         public static string COUNTRIES_CHILE = "Chile";
         public static string COUNTRIES_COLOMBIA = "Colombia";
-        public static string COUNTRIES_PERU = "Peru";
+        public static string COUNTRIES_PERU = "Perú";
         public static string COUNTRIES_URUGUAY = "Uruguay";
 
         // Social link type
@@ -22,8 +26,8 @@ namespace vopen_api.Data
         // Sponsor Type
         public static string SPONSOR_DIAMOND = "Diamond";
         public static string SPONSOR_GOLD = "Gold";
-        public static string TICKET_SILVER = "Silver";
-        public static string TICKET_DIGITAL = "Digital";
+        public static string SPONSOR_SILVER = "Silver";
+        public static string SPONSOR_DIGITAL = "Digital";
 
         // Activity Type
         public static string ACTIVITY_TALK = "Talk";

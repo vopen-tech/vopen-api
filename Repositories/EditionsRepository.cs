@@ -17,15 +17,25 @@ namespace vopen_api.Repositories
             this.dbContext = dbContext;
         }
 
+        public Task<IReadOnlyCollection<EditionDTO>> GetAllByLanguage(string language)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<EditionDTO> GetByLanguageAndId(string language, string id)
         {
             var result = await this.dbContext
                 .Set<Edition>()
                 .Include(item => item.Details)
                 .Include(item => item.Event)
-                .Include(item => item.TicketInfo)
-                .Include(item => item.Location)
+                //.Include(item => item.Organizers.Select(c => c.User).Select(c => c.Details))
+                //.Include(item => item.Organizers.Select(c => c.User).Select(c => c.SocialLinks))
                 .Include(item => item.Organizers)
+                    .ThenInclude(organizer => organizer.User)
+                    .ThenInclude(user => user.Details)
+                .Include(item => item.Organizers)
+                    .ThenInclude(organizer => organizer.User)
+                    .ThenInclude(user => user.SocialLinks)
                 .Include(item => item.Sponsors)
                 .Include(item => item.Activities)
                 .FirstOrDefaultAsync(item => item.Id == id);
@@ -38,27 +48,17 @@ namespace vopen_api.Repositories
             return EditionUtils.ToEditionDTO(result, language);
         }
 
-        Task<EditionDTO> IMultiLanguageRepository<EditionDTO>.Create(EditionDTO entity)
+        public Task<EditionDTO> Create(EditionDTO entity)
         {
             throw new System.NotImplementedException();
         }
 
-        Task IMultiLanguageRepository<EditionDTO>.Delete(string id)
+        public Task<EditionDTO> Update(EditionDTO entity)
         {
             throw new System.NotImplementedException();
         }
 
-        Task<IReadOnlyCollection<EditionDTO>> IMultiLanguageRepository<EditionDTO>.GetAllByLanguage(string language)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Task<EditionDTO> IMultiLanguageRepository<EditionDTO>.GetByLanguageAndId(string language, string id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Task<EditionDTO> IMultiLanguageRepository<EditionDTO>.Update(EditionDTO entity)
+        public Task Delete(string id)
         {
             throw new System.NotImplementedException();
         }

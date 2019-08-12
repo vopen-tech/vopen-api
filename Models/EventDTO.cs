@@ -15,7 +15,7 @@ namespace vopen_api.Models
     {
         public static EventDTO ToEventDTO(Event evt, string language)
         {
-            var languageDetails = evt.Details.FirstOrDefault(item => item.Language == language);
+            var languageDetails = evt.Details.FirstOrDefault(item => item.Language == language) ?? evt.Details.First();
 
             return new EventDTO
             {

@@ -18,12 +18,14 @@ namespace vopen_api.Controllers
         private readonly EditionsRepository editionsRepository;
         private readonly IConfiguration configuration;
         private readonly string country;
-        
+        private readonly string edition;
+
         public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration)
         {
             this.editionsRepository = editionsRepository;
             this.configuration = configuration;
             this.country = configuration.GetSection("Country").Value;
+            this.edition = configuration.GetSection("Edition").Value;
         }
 
         private void ValidateRequest(LegacyApiCredentialsDTO dto)
@@ -46,14 +48,23 @@ namespace vopen_api.Controllers
 
             this.ValidateRequest(dto);
 
-            var edition = await editionsRepository.GetByLanguageAndId("es", country);
+            var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
 
             var result = new LegacySponsorsDTO();
             result.imageBaseURL = configuration.GetSection("SiteUrl").Value
                                             + "Content/images/demo/sponsor-logos/";
             result.info = "All images are .png";
 
-            throw new NotImplementedException();
+            result.sponsors = (from r in edition.Sponsors select 
+                                   (new LegacySponsor() {
+                                        Name = r.Name,                             
+                                        GlobalRanking = 1,
+                                        LogoFileName = "",
+                                        SponsorId = 0,
+                                        WebSite = r.Url
+                                   })).ToList();
+
+            return Ok(result);
         }
 
         //devuelve modelo ConfSponsors

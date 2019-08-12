@@ -12,12 +12,14 @@ namespace vopen_api.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Date { get; set; }
+        public string LocationName { get; set; }
+        public string LocationFullAddress { get; set; }
+        public string TicketType { get; set; }
+        public string TicketPrice { get; set; }
+        public string TicketSaleStartDate { get; set; }
+        public string TicketSaleEndDate { get; set; }
 
         public EventDTO Event { get; set; }
-
-        public LocationDTO Location { get; set; }
-
-        public EditionTicketInfoDTO TicketInfo { get; set; }
 
         public ICollection<UserDTO> Organizers { get; set; }
 
@@ -39,8 +41,6 @@ namespace vopen_api.Models
 
     public class EditionSponsorDTO
     {
-        public string Id { get; set; }
-
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -52,8 +52,6 @@ namespace vopen_api.Models
 
     public class EditionActivityDTO
     {
-        public string Id { get; set; }
-
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -69,26 +67,64 @@ namespace vopen_api.Models
     {
         public static EditionDTO ToEditionDTO(Edition edition, string language)
         {
-            var languageDetails = edition.Details.FirstOrDefault(item => item.Language == language);
+            var details = edition.Details.FirstOrDefault(item => item.Language == language) ?? edition.Details.First();
 
             return new EditionDTO
             {
                 Id = edition.Id,
                 Language = language,
-                Name = languageDetails.Name,
-                Description = languageDetails.Description,
-                Date = languageDetails.Date,
-                // TicketInfo = EditionUtils.ToEditionTicketInfoDTO(edition.TicketInfo),
-                // Location = LocationUtils.ToLocationDTO(edition.Location),
-                // Organizers = edition.Organizers != null ? edition.Organizers.Select(item => UserUtils.ToUserDTO(item)) : new List<UserDTO>(),
-                // Sponsors = edition.Sponsors != null ? edition.Organizers.Select(item => EditionUtils.ToEditionSponsorDTO(item)) : new List<EditionSponsorDTO>(),
-                // Activities = edition.Activities != null ? edition.Organizers.Select(item => EditionUtils.ToEditionActivityDTO(item)) : new List<EditionActivityDTO>(),
+                Name = details.Name,
+                Description = details.Description,
+                Date = details.Date,
+                LocationName = edition.LocationName,
+                LocationFullAddress = edition.LocationFullAddress,
+                TicketType = edition.TicketType,
+                TicketPrice = edition.TicketPrice,
+                TicketSaleStartDate = edition.TicketSaleStartDate,
+                TicketSaleEndDate = edition.TicketSaleEndDate,
+                Organizers = UserUtils.ToUsersDTO(edition.Organizers.Select(item => item.User).ToList(), language),
+                Sponsors = EditionUtils.ToEditionSponsorsDTO(edition.Sponsors),
+                Activities = EditionUtils.ToEditionActivitiesDTO(edition.Activities, language),
             };
         }
 
-        public static Event FromEventDTO(EditionDTO eventDTO)
+        public static ICollection<EditionSponsorDTO> ToEditionSponsorsDTO(ICollection<EditionSponsor> editionSponsors)
         {
-            throw new NotImplementedException();
+            if (editionSponsors == null)
+            {
+                return new List<EditionSponsorDTO>();
+            }
+
+            return editionSponsors.Select(editionSponsor => new EditionSponsorDTO
+            {
+                Type = editionSponsor.Type,
+                Name = editionSponsor.Sponsor.Name,
+                Description = editionSponsor.Sponsor.Description,
+                Url = editionSponsor.Sponsor.Url
+            })
+                .ToList();
+        }
+
+        public static ICollection<EditionActivityDTO> ToEditionActivitiesDTO(ICollection<EditionActivity> editionActivies, string language)
+        {
+            if (editionActivies != null)
+            {
+                return new List<EditionActivityDTO>();
+            }
+
+            return editionActivies.Select(editionActivity =>
+            {
+                var details = editionActivity.Details.FirstOrDefault(item => item.Language == language) ?? editionActivity.Details.First();
+                return new EditionActivityDTO
+                {
+                    Date = editionActivity.Date,
+                    Presenters = UserUtils.ToUsersDTO(editionActivity.Presenters, language),
+                    Duration = editionActivity.Duration,
+                    Description = details.Description,
+                    Title = details.Title,
+                };
+
+            }).ToList();
         }
     }
 }

@@ -13,8 +13,6 @@ namespace vopen_api.Data
 
         public DbSet<EditionDetail> EditionsDetails { get; set; }
 
-        public DbSet<EditionTicketInfo> EditionTicketInfos { get; set; }
-
         public DbSet<EditionOrganizer> EditionOrganizers { get; set; }
 
         public DbSet<EditionSponsor> EditionSponsors { get; set; }
@@ -28,10 +26,6 @@ namespace vopen_api.Data
         public DbSet<Event> Events { get; set; }
 
         public DbSet<EventDetail> EventsDetails { get; set; }
-
-        public DbSet<Location> Locations { get; set; }
-
-        public DbSet<LocationDetail> LocationsDetails { get; set; }
 
         public DbSet<Sponsor> Sponsors { get; set; }
 

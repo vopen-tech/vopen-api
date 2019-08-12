@@ -55,6 +55,8 @@ namespace vopen_api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<VOpenDbContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<EventsRepository, EventsRepository>();
+            services.AddScoped<EditionsRepository, EditionsRepository>();
 
             // TODO: remove
             var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
@@ -62,8 +64,6 @@ namespace vopen_api
             VOpenDbInitializer.Cleanup(optionsBuilder.Options);
             VOpenDbInitializer.Seed(optionsBuilder.Options);
 
-            services.AddScoped<EventsRepository, EventsRepository>();
-            services.AddScoped<EditionsRepository, EditionsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
