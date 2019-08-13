@@ -125,11 +125,24 @@ namespace vopen_api.Controllers
 
         //devuelte integer
         [HttpPost("Editions")]
-        public string Editions(LegacyApiCredentialsDTO dto)
+        public async Task<IActionResult> Editions(LegacyApiCredentialsDTO dto)
         {
             this.ValidateRequest(dto);
+            List<string> result;
+            string _cacheName = this.edition + "-editions";
 
-            throw new NotImplementedException();
+            if (!_cache.TryGetValue(_cacheName, out result))
+            {
+
+                var edition = await editionsRepository.GetAllByLanguage("es");
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(300));
+
+                result = (from r in edition select r.Name).ToList();
+
+                _cache.Set(_cacheName, result, cacheEntryOptions);
+            }
+
+            return Ok(result);
         }
 
         [HttpPost("AppConfig")]
