@@ -8,8 +8,8 @@ namespace vopen_api.Models.legacy
     public class LegacyAppConfigDTO
     {
         public int[] HighlightedSponsorsIds { get; set; }
-        public LegacySponsor[] HighlightedSponsors { get; set; }
-        public Texts[] Texts { get; set; }
+        public IList<LegacySponsor> HighlightedSponsors { get; set; }
+        public IList<Texts> Texts { get; set; }
     }
 
     public class Texts {

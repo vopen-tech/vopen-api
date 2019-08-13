@@ -53,7 +53,7 @@ namespace vopen_api.Controllers
             this.ValidateRequest(dto);
 
             LegacySponsorsDTO result;
-            string _cacheName = this.edition + "-sponsors";
+            var _cacheName = this.edition + "-sponsors";
 
             if (!_cache.TryGetValue(_cacheName, out result)){
 
@@ -88,7 +88,7 @@ namespace vopen_api.Controllers
             this.ValidateRequest(dto);
 
             LegacyConfSponsorsDTO result;
-            string _cacheName = this.edition + "-confsponsors";
+            var _cacheName = this.edition + "-confsponsors";
 
             if (!_cache.TryGetValue(_cacheName, out result))
             {
@@ -128,8 +128,8 @@ namespace vopen_api.Controllers
         public async Task<IActionResult> Editions(LegacyApiCredentialsDTO dto)
         {
             this.ValidateRequest(dto);
-            List<string> result;
-            string _cacheName = this.edition + "-editions";
+            IList<string> result;
+            var _cacheName = this.edition + "-editions";
 
             if (!_cache.TryGetValue(_cacheName, out result))
             {
@@ -146,11 +146,38 @@ namespace vopen_api.Controllers
         }
 
         [HttpPost("AppConfig")]
-        public string AppConfig(LegacyApiCredentialsDTO dto)
+        public async Task<IActionResult> AppConfig(LegacyApiCredentialsDTO dto)
         {
             this.ValidateRequest(dto);
 
-            throw new NotImplementedException();
+            var _cacheName = this.edition + "-appconfig";
+
+            LegacyAppConfigDTO appConfig;
+
+            if (!_cache.TryGetValue(_cacheName, out appConfig))
+            {
+
+                var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(300));
+
+                appConfig.HighlightedSponsors = (from r in edition.Sponsors
+                                   select
+                                        (new LegacySponsor()
+                                        {
+                                            Name = r.Name,
+                                            GlobalRanking = 1,
+                                            LogoFileName = "",
+                                            SponsorId = 0,
+                                            WebSite = r.Url
+                                        })).ToList();
+
+                //falta HighlightedSponsorsIds
+                //fatla Texts
+
+                _cache.Set(_cacheName, appConfig, cacheEntryOptions);
+            }
+
+            return Ok(appConfig);
         }
 
         //eventbrite
