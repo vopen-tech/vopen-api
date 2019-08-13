@@ -83,11 +83,44 @@ namespace vopen_api.Controllers
 
         //devuelve modelo ConfSponsors
         [HttpPost("ConfSponsors")]
-        public string ConfSponsors(LegacyApiCredentialsDTO dto)
+        public async Task<IActionResult> ConfSponsors(LegacyApiCredentialsDTO dto)
         {
             this.ValidateRequest(dto);
 
-            throw new NotImplementedException();
+            LegacyConfSponsorsDTO result;
+            string _cacheName = this.edition + "-confsponsors";
+
+            if (!_cache.TryGetValue(_cacheName, out result))
+            {
+
+                var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
+                result = new LegacyConfSponsorsDTO();
+                result.imageBaseURL = configuration.GetSection("SiteUrl").Value;
+                
+                //rebuild
+                result.confSponsors = (from r in edition.Sponsors
+                                   select
+                    (new ConfSponsors()
+                    {
+                      SponsorId = 0,
+                      Sponsor = new LegacySponsor() {
+                           Name = r.Name,
+                           GlobalRanking = 1,
+                           LogoFileName = "",
+                           SponsorId = 0,
+                           WebSite = r.Url
+                       },
+                      SponsorCategoryId = 0,
+                      SponsorCategory = new List<SponsorCategory>(),
+                      HasBooth = false
+
+                    })).ToList();
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(300));
+                _cache.Set(_cacheName, result, cacheEntryOptions);
+            }
+
+            return Ok(result);
         }
 
         //devuelte integer

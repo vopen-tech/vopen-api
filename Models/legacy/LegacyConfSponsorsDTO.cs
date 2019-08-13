@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace vopen_api.Models.legacy
 {
@@ -14,7 +11,7 @@ namespace vopen_api.Models.legacy
 
     public class ConfSponsors {
         public int SponsorId { get; set; }
-        public SponsorDTO Sponsor { get; set; }
+        public LegacySponsor Sponsor { get; set; }
         public int SponsorCategoryId { get; set; }
         public IList<SponsorCategory> SponsorCategory { get;set;}
         public bool HasBooth { get; set; }
