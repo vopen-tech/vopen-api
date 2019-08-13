@@ -53,8 +53,9 @@ namespace vopen_api.Controllers
             this.ValidateRequest(dto);
 
             LegacySponsorsDTO result;
+            string _cacheName = this.edition + "-sponsors";
 
-            if (!_cache.TryGetValue(this.edition, out result)){
+            if (!_cache.TryGetValue(_cacheName, out result)){
 
                 var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
                 result = new LegacySponsorsDTO();
@@ -74,7 +75,7 @@ namespace vopen_api.Controllers
                     })).ToList();
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(300));
-                _cache.Set(this.edition, result, cacheEntryOptions);
+                _cache.Set(_cacheName, result, cacheEntryOptions);
             }
             
             return Ok(result);
