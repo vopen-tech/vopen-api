@@ -34,8 +34,11 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+.DS_Store
 
 # Visual Studio
 .vs/
 .vs
 Properties/PublishProfiles/**
+appsettings.json
+appsettings.Development.json
