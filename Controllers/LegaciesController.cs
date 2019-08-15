@@ -112,9 +112,9 @@ namespace vopen_api.Controllers
                            SponsorId = 0,
                            WebSite = r.Url
                        },
-                      SponsorCategoryId = 0,
-                      SponsorCategory = new List<SponsorCategory>(),
-                      HasBooth = false
+                      SponsorCategoryId = 0, //Type es un string
+                      SponsorCategory = new List<SponsorCategory>(), // buscar en json y crear una enumeración
+                      HasBooth = false 
 
                     })).ToList();
 
@@ -173,8 +173,8 @@ namespace vopen_api.Controllers
                                             WebSite = r.Url
                                         })).ToList();
 
-                //falta HighlightedSponsorsIds
-                //fatla Texts
+                //falta HighlightedSponsorsIds 
+                //fatla Texts //tomar de los json por pais
 
                 _cache.Set(_cacheName, appConfig, cacheEntryOptions);
             }
