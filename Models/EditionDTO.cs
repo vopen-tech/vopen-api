@@ -76,13 +76,14 @@ namespace vopen_api.Models
                 Name = details.Name,
                 Description = details.Description,
                 Date = details.Date,
+                Event = EventUtils.ToEventDTO(edition.Event, language),
                 LocationName = edition.LocationName,
                 LocationFullAddress = edition.LocationFullAddress,
                 TicketType = edition.TicketType,
                 TicketPrice = edition.TicketPrice,
                 TicketSaleStartDate = edition.TicketSaleStartDate,
                 TicketSaleEndDate = edition.TicketSaleEndDate,
-                Organizers = UserUtils.ToUsersDTO(edition.Organizers.Select(item => item.User).ToList(), language),
+                Organizers = UserUtils.ToUsersDTO(edition.Organizers?.Select(item => item.User).ToList(), language),
                 Sponsors = EditionUtils.ToEditionSponsorsDTO(edition.Sponsors),
                 Activities = EditionUtils.ToEditionActivitiesDTO(edition.Activities, language),
             };
@@ -107,7 +108,7 @@ namespace vopen_api.Models
 
         public static ICollection<EditionActivityDTO> ToEditionActivitiesDTO(ICollection<EditionActivity> editionActivies, string language)
         {
-            if (editionActivies != null)
+            if (editionActivies == null)
             {
                 return new List<EditionActivityDTO>();
             }
@@ -128,3 +129,4 @@ namespace vopen_api.Models
         }
     }
 }
+ 

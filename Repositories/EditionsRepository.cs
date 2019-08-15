@@ -23,6 +23,7 @@ namespace vopen_api.Repositories
                 .Set<Edition>()
                 .Include(item => item.Details)
                 .Include(item => item.Event)
+                    .ThenInclude(item => item.Details)
                 .Select(item => EditionUtils.ToEditionDTO(item, language))
                 .ToListAsync();
 
@@ -35,6 +36,7 @@ namespace vopen_api.Repositories
                 .Set<Edition>()
                 .Include(item => item.Details)
                 .Include(item => item.Event)
+                    .ThenInclude(item => item.Details)
                 .Include(item => item.Organizers)
                     .ThenInclude(organizer => organizer.User)
                     .ThenInclude(user => user.Details)
