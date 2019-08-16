@@ -51,7 +51,7 @@ namespace vopen_api.Controllers
             result.sponsors = (from r in edition.Sponsors
                                 select(new LegacySponsor(){
                                                     Name = r.Name,
-                                                    GlobalRanking = 1,
+                                                    GlobalRanking = GlobalRanking(r.Type),
                                                     LogoFileName = r.ImageUrl,
                                                     SponsorId = r.Id,
                                                     WebSite = r.Url
@@ -145,6 +145,20 @@ namespace vopen_api.Controllers
             var isValidUser = attendeeInfo.User != null && attendeeInfo.User.ToLower() == this.MOBILE_APP_USER;
             var isValidToken = attendeeInfo.Token != null && attendeeInfo.Token.ToUpper() == this.MOBILE_APP_TOKEN;
             return isValidUser && isValidToken;
+        }
+   
+        private int GlobalRanking(string sponsorshipType) {
+
+            switch (sponsorshipType.ToLower()) {
+                case "diamond":
+                    return 1;
+                case "gold":
+                    return 2;
+                case "silver":
+                    return 3;
+                default: //digital
+                    return 4;                    
+            }
         }
     }
 }
