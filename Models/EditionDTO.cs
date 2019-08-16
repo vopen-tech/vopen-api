@@ -41,9 +41,13 @@ namespace vopen_api.Models
 
     public class EditionSponsorDTO
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public string Url { get; set; }
 
@@ -52,6 +56,8 @@ namespace vopen_api.Models
 
     public class EditionActivityDTO
     {
+        public string Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -96,14 +102,17 @@ namespace vopen_api.Models
                 return new List<EditionSponsorDTO>();
             }
 
-            return editionSponsors.Select(editionSponsor => new EditionSponsorDTO
-            {
-                Type = editionSponsor.Type,
-                Name = editionSponsor.Sponsor.Name,
-                Description = editionSponsor.Sponsor.Description,
-                Url = editionSponsor.Sponsor.Url
-            })
-                .ToList();
+            return editionSponsors
+                .Select(editionSponsor => new EditionSponsorDTO
+                    {
+                        Id = editionSponsor.Id,
+                        Type = editionSponsor.Type,
+                        Name = editionSponsor.Sponsor.Name,
+                        Description = editionSponsor.Sponsor.Description,
+                        Url = editionSponsor.Sponsor.Url,
+                        ImageUrl = editionSponsor.Sponsor.ImageUrl
+                    }
+                ).ToList();
         }
 
         public static ICollection<EditionActivityDTO> ToEditionActivitiesDTO(ICollection<EditionActivity> editionActivies, string language)
@@ -114,18 +123,20 @@ namespace vopen_api.Models
             }
 
             return editionActivies.Select(editionActivity =>
-            {
-                var details = editionActivity.Details.FirstOrDefault(item => item.Language == language) ?? editionActivity.Details.First();
-                return new EditionActivityDTO
                 {
-                    Date = editionActivity.Date,
-                    Presenters = UserUtils.ToUsersDTO(editionActivity.Presenters, language),
-                    Duration = editionActivity.Duration,
-                    Description = details.Description,
-                    Title = details.Title,
-                };
+                    var details = editionActivity.Details.FirstOrDefault(item => item.Language == language) ?? editionActivity.Details.First();
+                    return new EditionActivityDTO
+                    {
+                        Id = editionActivity.Id,
+                        Date = editionActivity.Date,
+                        Presenters = UserUtils.ToUsersDTO(editionActivity.Presenters, language),
+                        Duration = editionActivity.Duration,
+                        Description = details.Description,
+                        Title = details.Title,
+                    };
 
-            }).ToList();
+                }
+            ).ToList();
         }
     }
 }
