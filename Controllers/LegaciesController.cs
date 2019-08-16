@@ -20,8 +20,8 @@ namespace vopen_api.Controllers
         private readonly EditionsRepository editionsRepository;
         private readonly IConfiguration configuration;
         private readonly string eventbriteEdition;
-        private readonly string MOBILE_APP_USER = "app";
-        private readonly string MOBILE_APP_TOKEN = "66197FD1-6C77-4D20-A10D-D27BF2B7D053";
+        private readonly string MOBILE_APP_USER;
+        private readonly string MOBILE_APP_TOKEN;
 
         private readonly string country;
         private readonly string edition;
@@ -34,6 +34,9 @@ namespace vopen_api.Controllers
 
             this.country = configuration.GetSection("Country").Value;
             this.edition = configuration.GetSection("Edition").Value;
+
+            this.MOBILE_APP_USER = configuration.GetSection("MOBILE_APP_USER").Value;
+            this.MOBILE_APP_TOKEN = configuration.GetSection("MOBILE_APP_TOKEN").Value; ;
         }
 
         //devuelve modelo LegacySpronsor
