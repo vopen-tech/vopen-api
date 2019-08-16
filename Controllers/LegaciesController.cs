@@ -23,18 +23,41 @@ namespace vopen_api.Controllers
         private readonly string MOBILE_APP_USER = "app";
         private readonly string MOBILE_APP_TOKEN = "66197FD1-6C77-4D20-A10D-D27BF2B7D053";
 
+        private readonly string country;
+        private readonly string edition;
+
         public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration)
         {
             this.editionsRepository = editionsRepository;
             this.configuration = configuration;
             this.eventbriteEdition = configuration.GetSection("Edition").Value; // e.g vopen-ar-2019
+
+            this.country = configuration.GetSection("Country").Value;
+            this.edition = configuration.GetSection("Edition").Value;
         }
 
         //devuelve modelo LegacySpronsor
         [HttpPost("Sponsors")]
-        public async Task<IActionResult> Sponsors()
+        public async Task<IActionResult> Sponsors(LegacyApiCredentialsDTO dto)
         {
-            throw new NotImplementedException();
+            this.IsValidRequest(dto);
+
+            var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
+            var result = new LegacySponsorsDTO();
+            result.imageBaseURL = configuration.GetSection("SiteUrl").Value
+                                            + "Content/images/demo/sponsor-logos/";
+            result.info = "All images are .png";
+
+            result.sponsors = (from r in edition.Sponsors
+                                select(new LegacySponsor(){
+                                                    Name = r.Name,
+                                                    GlobalRanking = 1,
+                                                    LogoFileName = r.ImageUrl,
+                                                    SponsorId = r.Id,
+                                                    WebSite = r.Url
+                                                })).ToList();
+   
+            return Ok(result);
         }
 
         //devuelve modelo ConfSponsors

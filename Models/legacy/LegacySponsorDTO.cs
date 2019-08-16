@@ -7,7 +7,7 @@ namespace vopen_api.Models.legacy
 {
     public class LegacySponsor
     {
-        public long SponsorId { get; set; }
+        public string SponsorId { get; set; }
         public long GlobalRanking { get; set; }
         public string Name { get; set; }
         public string LogoFileName { get; set; }
