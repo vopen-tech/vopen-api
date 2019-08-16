@@ -17,9 +17,17 @@ namespace vopen_api.Repositories
             this.dbContext = dbContext;
         }
 
-        public Task<IReadOnlyCollection<EditionDTO>> GetAllByLanguage(string language)
+        public async Task<IReadOnlyCollection<EditionDTO>> GetAllByLanguage(string language)
         {
-            throw new System.NotImplementedException();
+            var result = await this.dbContext
+                .Set<Edition>()
+                .Include(item => item.Details)
+                .Include(item => item.Event)
+                    .ThenInclude(item => item.Details)
+                .Select(item => EditionUtils.ToEditionDTO(item, language))
+                .ToListAsync();
+
+            return new ReadOnlyCollection<EditionDTO>(result);
         }
 
         public async Task<EditionDTO> GetByLanguageAndId(string language, string id)
@@ -28,8 +36,7 @@ namespace vopen_api.Repositories
                 .Set<Edition>()
                 .Include(item => item.Details)
                 .Include(item => item.Event)
-                //.Include(item => item.Organizers.Select(c => c.User).Select(c => c.Details))
-                //.Include(item => item.Organizers.Select(c => c.User).Select(c => c.SocialLinks))
+                    .ThenInclude(item => item.Details)
                 .Include(item => item.Organizers)
                     .ThenInclude(organizer => organizer.User)
                     .ThenInclude(user => user.Details)

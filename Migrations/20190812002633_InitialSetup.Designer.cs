@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vopen_api.Data;
 
 namespace vopen_api.Migrations
 {
     [DbContext(typeof(VOpenDbContext))]
-    partial class VOpenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190812002633_InitialSetup")]
+    partial class InitialSetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,8 +238,6 @@ namespace vopen_api.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
-
-                    b.Property<string>("ImageUrl");
 
                     b.Property<string>("Name")
                         .IsRequired();

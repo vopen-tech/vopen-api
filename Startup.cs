@@ -14,12 +14,12 @@ namespace vopen_api
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -54,18 +54,15 @@ namespace vopen_api
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<VOpenDbContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<VOpenDbContext>(builder => builder.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<EventsRepository, EventsRepository>();
             services.AddScoped<EditionsRepository, EditionsRepository>();
 
-            services.AddMemoryCache();
-
             // TODO: remove
-            var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
-            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            VOpenDbInitializer.Cleanup(optionsBuilder.Options);
-            VOpenDbInitializer.Seed(optionsBuilder.Options);
-
+            // var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
+            // optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            // VOpenDbInitializer.Cleanup(optionsBuilder.Options);
+            // VOpenDbInitializer.Seed(optionsBuilder.Options);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

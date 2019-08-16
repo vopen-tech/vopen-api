@@ -45,8 +45,7 @@ namespace vopen_api.Repositories
 
         public async Task<EventDTO> Create(EventDTO entity)
         {
-            var newEvent = new Event() { Id = entity.Id };
-            var newEventDetail = EventUtils.FromEventDTO(entity);
+            var newEvent = EventUtils.FromEventDTO(entity);
             this.dbContext.Set<Event>().Add(newEvent);
             await this.dbContext.SaveChangesAsync();
 

@@ -42,45 +42,45 @@ namespace vopen_api.Controllers
         }
 
         // POST api/v1/edition
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] EditionDTO newEdition)
-        {
-            var result = await this.editionsRepository.Create(newEdition);
+        //[HttpPost]
+        //public async Task<IActionResult> Post([FromBody] EditionDTO newEdition)
+        //{
+        //    var result = await this.editionsRepository.Create(newEdition);
 
-            if (result == null)
-            {
-                return null;
-            }
+        //    if (result == null)
+        //    {
+        //        return null;
+        //    }
 
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = newEdition.Id }, newEdition);
-        }
+        //    return CreatedAtAction(nameof(GetByIdAsync), new { id = newEdition.Id }, newEdition);
+        //}
 
-        // PUT api/v1/edition/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(String id, [FromBody] EditionDTO updatedEdition)
-        {
-            if (id != updatedEdition.Id)
-            {
-                return BadRequest();
-            }
+        //// PUT api/v1/edition/5
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Put(String id, [FromBody] EditionDTO updatedEdition)
+        //{
+        //    if (id != updatedEdition.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            var result = await this.editionsRepository.Update(updatedEdition);
+        //    var result = await this.editionsRepository.Update(updatedEdition);
 
-            if (result == null)
-            {
-                return NotFound();
-            }
+        //    if (result == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
-        // DELETE api/v1/event/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
-        {
-            await this.editionsRepository.Delete(id);
-            return NoContent();
-        }
+        //// DELETE api/v1/event/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(string id)
+        //{
+        //    await this.editionsRepository.Delete(id);
+        //    return NoContent();
+        //}
 
         private string GetLanguage()
         {

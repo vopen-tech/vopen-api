@@ -1,5 +1,95 @@
 ﻿[
   {
+    "id": "vopen-global",
+    "name": "vOpen Global",
+    "editions": [
+      {
+        "id": "vopen-global-2019",
+        "name": "2019.global",
+        "location": {},
+        "date": "",
+        "ticketsInfo": {},
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Mariano Vazquez",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/marianovazquez.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/nanovazquez/"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/nanovazquez87"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Guillermo Bellmann",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/guillermobellmann.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://ar.linkedin.com/in/gbellmann"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/gjbellmann"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Pablo Di Loreto",
+            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://ar.linkedin.com/in/pablodiloreto"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/pablodiloreto"
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Fabian Imaz",
+            "imageUrl": "http://uy.netconf.global/Content/images/demo/organizers/FabianImaz.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "http://uy.linkedin.com/in/siderys"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/fabianimaz"
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "name": "Fabian Fernandez",
+            "imageUrl": "https://i.imgur.com/vXLIy95.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "http://uy.linkedin.com/in/kzfabi"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/kzfabi"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "vopen-uy",
     "name": "vOpen UY",
     "editions": [
@@ -42,6 +132,66 @@
                 "url": "https://twitter.com/hardyr93"
               }
             ]
+          },
+          {
+            "id": "3",
+            "name": "Pablo Marcano",
+            "imageUrl": "https://imgur.com/008xHsD.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Victor Silva",
+            "imageUrl": "https://imgur.com/TpW7cPF.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "name": "Fernanda Canepa",
+            "imageUrl": "https://i.imgur.com/NKOIFQK.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          },
+          {
+            "id": "6",
+            "name": "Diego Bellora",
+            "imageUrl": "https://i.imgur.com/9jleLkK.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
           }
         ]
       }
@@ -55,11 +205,11 @@
         "id": "vopen-ar-2019",
         "name": "2019.ar",
         "location": {
-          "fullAddress": "Buenos Aires, Argentina",
-          "venueName": "Próximamente",
+          "fullAddress": "Uspallata 3160, Ciudad Autónoma de Buenos Aires",
+          "venueName": "Auditorio de la Casa del GCBA",
           "description": "Buenos Aires, Argentina"
         },
-        "date": "Octubre",
+        "date": "3, 4 y 5 de Octubre",
         "ticketsInfo": {
           "ticketsType": "",
           "isTicketsSaleOpen": false
@@ -124,66 +274,6 @@
                 "url": "https://twitter.com/garudasla"
               }
             ]
-          },
-          {
-            "id": "5",
-            "name": "Mariano Vazquez",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/marianovazquez.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://www.linkedin.com/in/nanovazquez/"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/nanovazquez87"
-              }
-            ]
-          },
-          {
-            "id": "6",
-            "name": "Guillermo Bellmann",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/guillermobellmann.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://ar.linkedin.com/in/gbellmann"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/gjbellmann"
-              }
-            ]
-          },
-          {
-            "id": "7",
-            "name": "Pablo Di Loreto",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://ar.linkedin.com/in/pablodiloreto"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/pablodiloreto"
-              }
-            ]
-          },
-          {
-            "id": "8",
-            "name": "Gabriel Barzola",
-            "imageUrl": "http://ar.netconf.global/Content/images/demo/organizers/GabrielBarzola.jpg",
-            "socialLinks": [
-              {
-                "type": "linkedin",
-                "url": "https://www.linkedin.com/in/gbarzola/"
-              },
-              {
-                "type": "twitter",
-                "url": "https://twitter.com/barzolaGabriel"
-              }
-            ]
           }
         ]
       }
@@ -243,7 +333,53 @@
           "ticketsType": "",
           "isTicketsSaleOpen": false
         },
-        "organizers": []
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Mayra Badillo",
+            "imageUrl": "https://i.imgur.com/Xtwd1U6.png",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/mabvill"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/mabvill"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Andres Rojas",
+            "imageUrl": "https://i.imgur.com/DQevp7d.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Rogger Rodriguez",
+            "imageUrl": "https://i.imgur.com/U4HO5Py.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -264,7 +400,53 @@
           "ticketsType": "",
           "isTicketsSaleOpen": false
         },
-        "organizers": []
+        "organizers": [
+          {
+            "id": "1",
+            "name": "Miguel Almeyda",
+            "imageUrl": "https://i.imgur.com/idbCxF9.jpg",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/miguelalmeyda"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/miguelalmeyda"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Alberto De Rossi",
+            "imageUrl": "https://i.imgur.com/Hnp1yAr.png",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": "https://www.linkedin.com/in/alberto-de-rossi-46814244/"
+              },
+              {
+                "type": "twitter",
+                "url": "https://twitter.com/albertoderossi"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "German Cayo",
+            "imageUrl": "https://i.imgur.com/1NLCUGy.png",
+            "socialLinks": [
+              {
+                "type": "linkedin",
+                "url": ""
+              },
+              {
+                "type": "twitter",
+                "url": ""
+              }
+            ]
+          }
+        ]
       }
     ]
   }
