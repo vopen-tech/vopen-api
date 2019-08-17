@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using vopen_api.Models;
 
 namespace vopen_api.Data
 {
@@ -421,6 +421,13 @@ namespace vopen_api.Data
                 };
 
                 // Create UY Edition
+                var uyBuyLinks = new List<TicketLink>()
+                {
+                    new TicketLink { Label = "PayPal", Url = "https://www.eventbrite.com/e/vopen-19-uruguay-tickets-64989745077" },
+                    new TicketLink { Label = "CobrosYa", Url = "https://ks.uy/5c7FTJ2vnVytBeTm7" }
+                };
+                var uyBuyLinksJson = JsonConvert.SerializeObject(uyBuyLinks);
+
                 var uyEdition = new Edition
                 {
                     Id = "vopen-uy-2019",
@@ -432,8 +439,12 @@ namespace vopen_api.Data
                     },
                     LocationName = "Torre de las Telecomunicaciones, Antel",
                     LocationFullAddress = "Telecommunications Tower, 11800 Montevideo, Departamento de Montevideo, Uruguay",
-                    TicketSaleStartDate = "",
-                    TicketSaleEndDate = "",
+                    EditionTickets = new List<EditionTicket>()
+                    {
+                        new EditionTicket { Name = "Early birds", Price = "20USD", StartDate = "2019-08-17T16:00:00.000Z", EndDate = "2019-09-17T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
+                        new EditionTicket { Name = "Night owl", Price = "40USD", StartDate = "2019-09-17T00:00:00.000Z", EndDate = "2019-10-01T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
+                        new EditionTicket { Name = "Regular ticket", Price = "60USD", StartDate = "2019-10-01T00:00:00.000Z", EndDate = "2019-10-24T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
+                    },
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user6 },
@@ -460,9 +471,6 @@ namespace vopen_api.Data
                     },
                     LocationName = "Auditorio de la Casa del GCBA",
                     LocationFullAddress = "Uspallata 3160, Ciudad Autónoma de Buenos Aires, Argentina",
-                    TicketType = Constants.TICKET_FREE,
-                    TicketSaleStartDate = "",
-                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user12 },
@@ -484,8 +492,6 @@ namespace vopen_api.Data
                     },
                     LocationName = "",
                     LocationFullAddress = "Santiago de Chile, Chile",
-                    TicketSaleStartDate = "",
-                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user16 },
@@ -504,8 +510,6 @@ namespace vopen_api.Data
                     },
                     LocationName = "",
                     LocationFullAddress = "Bogotá, Colombia",
-                    TicketSaleStartDate = "",
-                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user17 },
@@ -526,8 +530,6 @@ namespace vopen_api.Data
                     },
                     LocationName = "",
                     LocationFullAddress = "Lima, Perú",
-                    TicketSaleStartDate = "",
-                    TicketSaleEndDate = "",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user20 },
@@ -556,9 +558,9 @@ namespace vopen_api.Data
                 context.EditionsActivitiesScores.RemoveRange(context.EditionsActivitiesScores);
                 context.EditionsActivitiesPresenters.RemoveRange(context.EditionsActivitiesPresenters);
                 context.EditionsActivities.RemoveRange(context.EditionsActivities);
-                context.EditionOrganizers.RemoveRange(context.EditionOrganizers);
+                context.EditionsOrganizers.RemoveRange(context.EditionsOrganizers);
                 context.EditionsDetails.RemoveRange(context.EditionsDetails);
-                context.EditionSponsors.RemoveRange(context.EditionSponsors);
+                context.EditionsSponsors.RemoveRange(context.EditionsSponsors);
 
                 context.Sponsors.RemoveRange(context.Sponsors);
                 context.UsersProposalsDetails.RemoveRange(context.UsersProposalsDetails);

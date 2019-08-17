@@ -37,6 +37,7 @@ namespace vopen_api.Repositories
                 .Include(item => item.Details)
                 .Include(item => item.Event)
                     .ThenInclude(item => item.Details)
+                .Include(item => item.EditionTickets)
                 .Include(item => item.Organizers)
                     .ThenInclude(organizer => organizer.User)
                     .ThenInclude(user => user.Details)

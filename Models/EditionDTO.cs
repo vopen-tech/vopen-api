@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using vopen_api.Data;
 
 namespace vopen_api.Models
@@ -14,12 +15,10 @@ namespace vopen_api.Models
         public string Date { get; set; }
         public string LocationName { get; set; }
         public string LocationFullAddress { get; set; }
-        public string TicketType { get; set; }
-        public string TicketPrice { get; set; }
-        public string TicketSaleStartDate { get; set; }
-        public string TicketSaleEndDate { get; set; }
 
         public EventDTO Event { get; set; }
+
+        public ICollection<EditionTicketDTO> EditionTickets { get; set; }
 
         public ICollection<UserDTO> Organizers { get; set; }
 
@@ -28,15 +27,23 @@ namespace vopen_api.Models
         public ICollection<EditionActivityDTO> Activities { get; set; }
     }
 
-    public class EditionTicketInfoDTO
+    public class EditionTicketDTO
     {
-        public string Type { get; set; }
+        public string Name { get; set; }
 
         public string Price { get; set; }
 
-        public string TicketSaleStartDate { get; set; }
+        public string StartDate { get; set; }
 
-        public string TicketSaleEndDate { get; set; }
+        public string EndDate { get; set; }
+
+        public TicketLink[] BuyLinks { get; set; }   
+    }
+
+    public class TicketLink
+    {
+        public string Label { get; set; }
+        public string Url { get; set; }
     }
 
     public class EditionSponsorDTO
@@ -82,17 +89,33 @@ namespace vopen_api.Models
                 Name = details.Name,
                 Description = details.Description,
                 Date = details.Date,
-                Event = EventUtils.ToEventDTO(edition.Event, language),
                 LocationName = edition.LocationName,
                 LocationFullAddress = edition.LocationFullAddress,
-                TicketType = edition.TicketType,
-                TicketPrice = edition.TicketPrice,
-                TicketSaleStartDate = edition.TicketSaleStartDate,
-                TicketSaleEndDate = edition.TicketSaleEndDate,
+                Event = EventUtils.ToEventDTO(edition.Event, language),
                 Organizers = UserUtils.ToUsersDTO(edition.Organizers?.Select(item => item.User).ToList(), language),
+                EditionTickets = EditionUtils.ToEditionTicketsDTO(edition.EditionTickets),
                 Sponsors = EditionUtils.ToEditionSponsorsDTO(edition.Sponsors),
                 Activities = EditionUtils.ToEditionActivitiesDTO(edition.Activities, language),
             };
+        }
+
+        public static ICollection<EditionTicketDTO> ToEditionTicketsDTO(ICollection<EditionTicket> editionTickets)
+        {
+            if (editionTickets == null)
+            {
+                return new List<EditionTicketDTO>();
+            }
+
+            return editionTickets
+                .Select(editionTicket => new EditionTicketDTO
+                    {
+                        Name = editionTicket.Name,
+                        Price = editionTicket.Price,
+                        StartDate = editionTicket.StartDate,
+                        EndDate = editionTicket.EndDate,
+                        BuyLinks = editionTicket.BuyLinks != null ? JsonConvert.DeserializeObject<List<TicketLink>>(editionTicket.BuyLinks).ToArray() : null
+                    }
+                ).ToList();
         }
 
         public static ICollection<EditionSponsorDTO> ToEditionSponsorsDTO(ICollection<EditionSponsor> editionSponsors)
