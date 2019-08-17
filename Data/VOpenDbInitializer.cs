@@ -160,16 +160,6 @@ namespace vopen_api.Data
                 var user10 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "https://i.imgur.com/NKOIFQK.jpg",
-                    Details = new UserDetail[]
-                    {
-                        new UserDetail { Name = "Fernanda Canepa", Description = "", Language = Constants.LANGUAGES_SPANISH }
-                    },
-                    SocialLinks = new UserSocialLink[] { }
-                };
-                var user11 = new User
-                {
-                    Country = Constants.COUNTRIES_URUGUAY,
                     ImageUrl = "https://i.imgur.com/9jleLkK.jpg",
                     Details = new UserDetail[]
                     {
@@ -383,7 +373,6 @@ namespace vopen_api.Data
                 context.Users.Add(user8);
                 context.Users.Add(user9);
                 context.Users.Add(user10);
-                context.Users.Add(user11);
                 context.Users.Add(user12);
                 context.Users.Add(user13);
                 context.Users.Add(user14);
