@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using vopen_api.Models;
 
 namespace vopen_api.Data
@@ -426,6 +427,9 @@ namespace vopen_api.Data
                     new TicketLink { Label = "PayPal", Url = "https://www.eventbrite.com/e/vopen-19-uruguay-tickets-64989745077" },
                     new TicketLink { Label = "CobrosYa", Url = "https://ks.uy/5c7FTJ2vnVytBeTm7" }
                 };
+
+                var camelCaseFormatter = new JsonSerializerSettings();
+                camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 var uyBuyLinksJson = JsonConvert.SerializeObject(uyBuyLinks);
 
                 var uyEdition = new Edition
@@ -441,9 +445,9 @@ namespace vopen_api.Data
                     LocationFullAddress = "Telecommunications Tower, 11800 Montevideo, Departamento de Montevideo, Uruguay",
                     EditionTickets = new List<EditionTicket>()
                     {
-                        new EditionTicket { Name = "Early birds", Price = "20USD", StartDate = "2019-08-17T16:00:00.000Z", EndDate = "2019-09-17T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
-                        new EditionTicket { Name = "Night owl", Price = "40USD", StartDate = "2019-09-17T00:00:00.000Z", EndDate = "2019-10-01T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
-                        new EditionTicket { Name = "Regular ticket", Price = "60USD", StartDate = "2019-10-01T00:00:00.000Z", EndDate = "2019-10-24T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
+                        new EditionTicket { Id = "early-birds", Name = "Early birds", Price = "20USD", StartDate = "2019-08-19T16:00:00.000Z", EndDate = "2019-09-19T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
+                        new EditionTicket { Id = "night-owl", Name = "Night owl", Price = "40USD", StartDate = "2019-09-19T00:00:00.000Z", EndDate = "2019-10-01T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
+                        new EditionTicket { Id = "regular", Name = "Regular ticket", Price = "60USD", StartDate = "2019-10-01T00:00:00.000Z", EndDate = "2019-10-24T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
                     },
                     Organizers = new List<EditionOrganizer>
                     {
