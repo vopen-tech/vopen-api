@@ -92,8 +92,7 @@ namespace vopen_api.Controllers
                         },
                         SponsorCategoryId = GetSponsorCategoryId(r.Type),
                         SponsorCategory = GetSponsorCategory(r.Type),
-                        HasBooth = false
-
+                        HasBooth = GetSponsorCategoryId(r.Type) == 1 ? false : true
                     })).ToList();
          
             return Ok(result);
@@ -182,48 +181,51 @@ namespace vopen_api.Controllers
         private IList<SponsorCategory> GetSponsorCategory(string sponsorshipType) {
 
             IList<SponsorCategory> listSponsorCategory = new List<SponsorCategory>();
-            SponsorCategory sponsorCategory = new SponsorCategory();
-
-            switch (sponsorshipType.ToLower())
-            {
-                case "diamond":
-                    sponsorCategory.SponsorCategoryId = 4;                    
-                    sponsorCategory.Name = "Diamond";
-                    sponsorCategory.HexColor = "FF0000";
-                    break;
-                case "gold":
-                    sponsorCategory.SponsorCategoryId = 3;
-                    sponsorCategory.Name = "GOLD";
-                    sponsorCategory.HexColor = "FFFF00";
-                    break;
-                case "silver": //starter/silver, 
-                    sponsorCategory.SponsorCategoryId = 2;
-                    sponsorCategory.Name = "Silver";
-                    sponsorCategory.HexColor = "0000FF";
-                    break;
-
-                default: //supporter/digital,
-                    sponsorCategory.SponsorCategoryId = 3;
-                    sponsorCategory.Name = "Digital";
-                    sponsorCategory.HexColor = "FF0000";
-                    break;
-            }
-
-            listSponsorCategory.Add(sponsorCategory);
+         
+            listSponsorCategory.Add(GetSponsorCategories()
+                                    .Where(p => p.Name == sponsorshipType.ToUpper())
+                                        .SingleOrDefault());
             return listSponsorCategory;
         }
+
         private int GetSponsorCategoryId(string sponsorshipType) {
 
-            switch (sponsorshipType.ToLower()) {
-                case "diamond":
-                    return 4;
-                case "gold": 
-                    return 3;
-                case "silver": //starter/silver, 
-                    return 2;
-                default: //supporter/digital,
-                    return 1;                    
-            }
+            return GetSponsorCategories()
+                        .Where(p => p.Name == sponsorshipType.ToUpper())
+                            .SingleOrDefault().SponsorCategoryId;
+        }
+
+        public IList<SponsorCategory> GetSponsorCategories() {
+
+            IList<SponsorCategory> listSponsorCategory = new List<SponsorCategory>();
+            listSponsorCategory.Add(new SponsorCategory(){
+                SponsorCategoryId = 4,
+                Name = "DIAMOND",
+                HexColor = "000000"
+            });
+
+            listSponsorCategory.Add(new SponsorCategory()
+            {
+                SponsorCategoryId = 3,
+                Name = "GOLD",
+                HexColor = "000000"
+            });
+
+            listSponsorCategory.Add(new SponsorCategory()
+            {
+                SponsorCategoryId = 2,
+                Name = "SILVER",
+                HexColor = "000000"
+            });
+
+            listSponsorCategory.Add(new SponsorCategory()
+            {
+                SponsorCategoryId = 1,
+                Name = "DIGITAL",
+                HexColor = "000000"
+            });
+
+            return listSponsorCategory;
         }
     }
 }
