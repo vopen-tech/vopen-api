@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -65,9 +66,37 @@ namespace vopen_api.Controllers
 
         //devuelve modelo ConfSponsors
         [HttpPost("ConfSponsors")]
-        public async Task<IActionResult> ConfSponsors()
+        public async Task<IActionResult> ConfSponsors(LegacyApiCredentialsDTO dto)
         {
-            throw new NotImplementedException();
+            this.IsValidRequest(dto);
+
+            LegacyConfSponsorsDTO result;
+            
+            var edition = await editionsRepository.GetByLanguageAndId("es", this.edition);
+            result = new LegacyConfSponsorsDTO();
+            result.imageBaseURL = configuration.GetSection("SiteUrl").Value;
+
+            //rebuild
+            result.confSponsors = (from r in edition.Sponsors
+                                    select
+                    (new ConfSponsors()
+                    {
+                        SponsorId = 0,
+                        Sponsor = new LegacySponsor()
+                        {
+                            Name = r.Name,
+                            GlobalRanking = 0, //no se utiliza en la app
+                            LogoFileName = r.ImageUrl,
+                            SponsorId = r.Id,
+                            WebSite = r.Url
+                        },
+                        SponsorCategoryId = GetSponsorCategoryId(r.Type),
+                        SponsorCategory = GetSponsorCategory(r.Type),
+                        HasBooth = false
+
+                    })).ToList();
+         
+            return Ok(result);
         }
 
         //devuelte integer
@@ -149,7 +178,40 @@ namespace vopen_api.Controllers
             var isValidToken = attendeeInfo.Token != null && attendeeInfo.Token.ToUpper() == this.MOBILE_APP_TOKEN;
             return isValidUser && isValidToken;
         }
-   
+
+        private IList<SponsorCategory> GetSponsorCategory(string sponsorshipType) {
+
+            IList<SponsorCategory> listSponsorCategory = new List<SponsorCategory>();
+            SponsorCategory sponsorCategory = new SponsorCategory();
+
+            switch (sponsorshipType.ToLower())
+            {
+                case "diamond":
+                    sponsorCategory.SponsorCategoryId = 4;                    
+                    sponsorCategory.Name = "Diamond";
+                    sponsorCategory.HexColor = "FF0000";
+                    break;
+                case "gold":
+                    sponsorCategory.SponsorCategoryId = 3;
+                    sponsorCategory.Name = "GOLD";
+                    sponsorCategory.HexColor = "FFFF00";
+                    break;
+                case "silver": //starter/silver, 
+                    sponsorCategory.SponsorCategoryId = 2;
+                    sponsorCategory.Name = "Silver";
+                    sponsorCategory.HexColor = "0000FF";
+                    break;
+
+                default: //supporter/digital,
+                    sponsorCategory.SponsorCategoryId = 3;
+                    sponsorCategory.Name = "Digital";
+                    sponsorCategory.HexColor = "FF0000";
+                    break;
+            }
+
+            listSponsorCategory.Add(sponsorCategory);
+            return listSponsorCategory;
+        }
         private int GetSponsorCategoryId(string sponsorshipType) {
 
             switch (sponsorshipType.ToLower()) {
