@@ -445,7 +445,7 @@ namespace vopen_api.Data
                         new EditionOrganizer { User = user8 },
                         new EditionOrganizer { User = user9 },
                         new EditionOrganizer { User = user10 },
-                        new EditionOrganizer { User = user11 },
+                        
                         new EditionOrganizer { User = user23 },
                         new EditionOrganizer { User = user24 },
                         new EditionOrganizer { User = user25 },
