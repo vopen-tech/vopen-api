@@ -191,13 +191,13 @@ namespace vopen_api.Controllers
             IList<SponsorCategory> listSponsorCategory = new List<SponsorCategory>();
             listSponsorCategory.Add(new SponsorCategory()
             {
-                SponsorCategoryId = 4,
+                SponsorCategoryId = 6,
                 Name = "DIAMOND"
             });
 
             listSponsorCategory.Add(new SponsorCategory()
             {
-                SponsorCategoryId = 3,
+                SponsorCategoryId = 4,
                 Name = "GOLD"
             });
 
