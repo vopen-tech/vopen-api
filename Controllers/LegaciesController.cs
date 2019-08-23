@@ -187,7 +187,6 @@ namespace vopen_api.Controllers
 
         public IList<SponsorCategory> GetSponsorCategories()
         {
-
             IList<SponsorCategory> listSponsorCategory = new List<SponsorCategory>();
             listSponsorCategory.Add(new SponsorCategory()
             {
