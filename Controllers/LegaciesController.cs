@@ -192,29 +192,25 @@ namespace vopen_api.Controllers
             listSponsorCategory.Add(new SponsorCategory()
             {
                 SponsorCategoryId = 4,
-                Name = "DIAMOND",
-                HexColor = "000000"
+                Name = "DIAMOND"
             });
 
             listSponsorCategory.Add(new SponsorCategory()
             {
                 SponsorCategoryId = 3,
-                Name = "GOLD",
-                HexColor = "000000"
+                Name = "GOLD"
             });
 
             listSponsorCategory.Add(new SponsorCategory()
             {
                 SponsorCategoryId = 2,
-                Name = "SILVER",
-                HexColor = "000000"
+                Name = "SILVER"
             });
 
             listSponsorCategory.Add(new SponsorCategory()
             {
                 SponsorCategoryId = 1,
-                Name = "DIGITAL",
-                HexColor = "000000"
+                Name = "DIGITAL"
             });
 
             return listSponsorCategory;

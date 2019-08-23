@@ -25,7 +25,6 @@ namespace vopen_api.Models.legacy
     public class SponsorCategory
     {
         public int SponsorCategoryId { get; set; }
-        public string Name { get; set; }
-        public string HexColor { get; set; }
+        public string Name { get; set; }        
     }
 }
