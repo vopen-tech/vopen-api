@@ -1,15 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using vopen_api.Models.legacy;
 using vopen_api.Repositories;
-using static vopen_api.Models.legacy.LegacyEventbriteAttendeesResponse;
 
 namespace vopen_api.Controllers
 {
@@ -19,15 +18,17 @@ namespace vopen_api.Controllers
     {
         private readonly EditionsRepository editionsRepository;
         private readonly IConfiguration configuration;
-        private readonly string eventbriteEdition;
-        private readonly string MOBILE_APP_USER = "app";
-        private readonly string MOBILE_APP_TOKEN = "66197FD1-6C77-4D20-A10D-D27BF2B7D053";
+        private readonly string mobileAppUser = "app";
+        private readonly string mobileAppToken = "66197FD1-6C77-4D20-A10D-D27BF2B7D053";
 
         public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration)
         {
             this.editionsRepository = editionsRepository;
             this.configuration = configuration;
-            this.eventbriteEdition = configuration.GetSection("Edition").Value; // e.g vopen-ar-2019
+
+            var configurationMobileApp = configuration.GetSection("MobileApp");
+            this.mobileAppUser = configurationMobileApp.GetSection("User").Value;
+            this.mobileAppToken = configurationMobileApp.GetSection("Token").Value;
         }
 
         [HttpPost("editions")]
@@ -40,33 +41,46 @@ namespace vopen_api.Controllers
             return Ok(editionIds);
         }
 
-        [HttpPost("{edition}/appconfig")]
-        public async Task<IActionResult> AppConfig()
+        [HttpPost("{editionId}/appconfig")]
+        public IActionResult AppConfig()
         {
-            throw new NotImplementedException();
+            return this.NoContent();
         }
 
-        [HttpPost("{edition}/Sponsors")]
-        public async Task<IActionResult> Sponsors()
+        [HttpPost("{editionId}/sponsors")]
+        public async Task<IActionResult> Sponsors(string editionId, LegacyRequestBody body)
         {
-            throw new NotImplementedException();
-        }
-
-        [HttpPost("{edition}/ConfSponsors")]
-        public async Task<IActionResult> ConfSponsors()
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPost("IsValidAttendee")]
-        public async Task<IActionResult> IsValidAttendee(LegacyIsValidAttendeeDTO attendeeInfo)
-        {
-            if (!this.IsValidRequest(attendeeInfo))
+            if (!this.IsValidRequest(body))
             {
                 return Unauthorized();
             }
 
-            Attendee result = null;
+            var language = this.GetLanguage();
+            var edition = await this.editionsRepository.GetByLanguageAndId(language, editionId);
+            var legacySponsors = LegacySponsorsUtils.ToLegacySponsorsDTO(edition.Sponsors);
+
+            return Ok(legacySponsors);
+        }
+
+        [HttpPost("{editionId}/confSponsors")]
+        public async Task<IActionResult> ConfSponsors(string editionId)
+        {
+            var language = this.GetLanguage();
+            var edition = await this.editionsRepository.GetByLanguageAndId(language, editionId);
+            var legacyConfSponsors = LegacyConfSponsorsUtils.ToLegacyConfSponsorsDTO(edition.Sponsors);
+
+            return Ok(legacyConfSponsors);
+        }
+
+        [HttpPost("IsValidAttendee")]
+        public async Task<IActionResult> IsValidAttendee(LegacyIsValidAttendeeRequestBody attendeeBody)
+        {
+            if (!this.IsValidRequest(attendeeBody))
+            {
+                return Unauthorized();
+            }
+
+            LegacyEventbriteAttendeesResponse.Attendee result = null;
 
             var configurationEventBrite = configuration.GetSection("EventBrite");
             var eventBriteId = configurationEventBrite.GetSection("EventbriteEventId").Value;
@@ -79,7 +93,7 @@ namespace vopen_api.Controllers
             var eventbriteTicketNamesAllowedInRaffle = configurationEventBrite.GetSection("EventbriteTicketNamesAllowedInRaffle").Value;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-            string attendeesRawResponse = "";
+            var attendeesRawResponse = "";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(eventBriteAttendeesAddress);
             request.Accept = "application/json";
 
@@ -101,7 +115,7 @@ namespace vopen_api.Controllers
                 }
                 else
                 {
-                    result = attendeesResponse.attendees.FirstOrDefault(a => a.profile.email.ToLowerInvariant() == attendeeInfo.Email.ToLowerInvariant());
+                    result = attendeesResponse.attendees.FirstOrDefault(a => a.profile.email.ToLowerInvariant() == attendeeBody.Email.ToLowerInvariant());
                 }
 
                 return Ok(result);
@@ -112,15 +126,15 @@ namespace vopen_api.Controllers
             }
         }
 
-        private bool IsValidRequest(LegacyApiCredentialsDTO attendeeInfo)
+        private bool IsValidRequest(LegacyRequestBody body)
         {
-            if (attendeeInfo == null)
+            if (body == null)
             {
                 return false;
             }
 
-            var isValidUser = attendeeInfo.User != null && attendeeInfo.User.ToLower() == this.MOBILE_APP_USER;
-            var isValidToken = attendeeInfo.Token != null && attendeeInfo.Token.ToUpper() == this.MOBILE_APP_TOKEN;
+            var isValidUser = body.User != null && body.User.ToLower() == this.mobileAppUser;
+            var isValidToken = body.Token != null && body.Token.ToUpper() == this.mobileAppToken;
             return isValidUser && isValidToken;
         }
 
@@ -132,6 +146,41 @@ namespace vopen_api.Controllers
             }
 
             return Request.Headers["Accept-Language"].ToString().Split(',')[0];
+        }
+    }
+
+    public class LegacyRequestBody
+    {
+        public string User { get; set; }
+        public string Token { get; set; }
+    }
+
+    public class LegacyIsValidAttendeeRequestBody : LegacyRequestBody
+    {
+        public string Email { get; set; }
+    }
+
+    public class LegacyEventbriteAttendeesResponse
+    {
+        public Pagination pagination { get; set; }
+        public List<Attendee> attendees { get; set; }
+
+        public class Attendee
+        {
+            public string ticket_class_name { get; set; }
+            public Profile profile { get; set; }
+            public class Profile
+            {
+                public string first_name { get; set; }
+                public string last_name { get; set; }
+                public string email { get; set; }
+            }
+        }
+
+        public class Pagination
+        {
+            public string continuation { get; set; }
+            public bool has_more_items { get; set; }
         }
     }
 }
