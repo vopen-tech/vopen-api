@@ -478,7 +478,8 @@ namespace vopen_api.Data
                     },
                     Sponsors = new List<EditionSponsor>()
                     {
-                        new EditionSponsor { Sponsor = mulesoft, Type = Constants.SPONSOR_SILVER }
+                        // use a number for the ID because it is needed for the app mobile (will be removed later on)
+                        new EditionSponsor { Id = "1", Sponsor = mulesoft, Type = Constants.SPONSOR_SILVER }
                     }
                 };
 

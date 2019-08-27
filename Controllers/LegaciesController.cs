@@ -31,40 +31,14 @@ namespace vopen_api.Controllers
             this.mobileAppToken = configurationMobileApp.GetSection("Token").Value;
         }
 
-        [HttpPost("editions")]
-        public async Task<IActionResult> Editions()
-        {
-            var language = this.GetLanguage();
-            var editions = await this.editionsRepository.GetAllByLanguage(language);
-            var editionIds = editions.Select(c => c.Id);
-
-            return Ok(editionIds);
-        }
-
-        [HttpPost("{editionId}/appconfig")]
-        public IActionResult AppConfig()
-        {
-            return this.NoContent();
-        }
-
-        [HttpPost("{editionId}/sponsors")]
-        public async Task<IActionResult> Sponsors(string editionId, LegacyRequestBody body)
+        [HttpPost("{editionId}/confSponsors")]
+        public async Task<IActionResult> ConfSponsors(string editionId, LegacyRequestBody body)
         {
             if (!this.IsValidRequest(body))
             {
                 return Unauthorized();
             }
 
-            var language = this.GetLanguage();
-            var edition = await this.editionsRepository.GetByLanguageAndId(language, editionId);
-            var legacySponsors = LegacySponsorsUtils.ToLegacySponsorsDTO(edition.Sponsors);
-
-            return Ok(legacySponsors);
-        }
-
-        [HttpPost("{editionId}/confSponsors")]
-        public async Task<IActionResult> ConfSponsors(string editionId)
-        {
             var language = this.GetLanguage();
             var edition = await this.editionsRepository.GetByLanguageAndId(language, editionId);
             var legacyConfSponsors = LegacyConfSponsorsUtils.ToLegacyConfSponsorsDTO(edition.Sponsors);

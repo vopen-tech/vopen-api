@@ -16,7 +16,7 @@ namespace vopen_api.Models.legacy
     public class LegacyConfSponsorDTO
     {
         [JsonProperty("SponsorId")]
-        public string SponsorId { get; set; }
+        public int SponsorId { get; set; }
 
         [JsonProperty("SponsorCategoryId")]
         public int SponsorCategoryId { get; set; }
@@ -29,6 +29,29 @@ namespace vopen_api.Models.legacy
 
         [JsonProperty("SponsorCategory")]
         public SponsorCategory SponsorCategory { get; set; }
+    }
+
+    public class LegacySponsorDTO
+    {
+        [JsonProperty("SponsorId")]
+        public int SponsorId { get; set; }
+
+        [JsonProperty("Name")]
+        public string Name { get; set; }
+
+        [JsonProperty("LogoFileName")]
+        public string LogoFileName { get; set; }
+
+        [JsonProperty("WebSite")]
+        public string Website { get; set; }
+
+        public LegacySponsorDTO(EditionSponsorDTO sponsor)
+        {
+            this.SponsorId = Int32.Parse(sponsor.Id);
+            this.Name = sponsor.Name;
+            this.LogoFileName = sponsor.ImageUrl;
+            this.Website = sponsor.Url;
+        }
     }
 
     public class SponsorCategory
@@ -52,7 +75,7 @@ namespace vopen_api.Models.legacy
                 ConfSponsors = sponsors.Select(
                     sponsor => new LegacyConfSponsorDTO
                     {
-                        SponsorId = sponsor.Id,
+                        SponsorId = Int32.Parse(sponsor.Id),
                         Sponsor = new LegacySponsorDTO(sponsor),
                         SponsorCategory = LegacyConfSponsorsUtils.GetSponsorCategory(sponsor.Type),
                         SponsorCategoryId = LegacyConfSponsorsUtils.GetSponsorCategory(sponsor.Type).SponsorCategoryId,
