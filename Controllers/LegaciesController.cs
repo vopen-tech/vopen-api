@@ -13,7 +13,7 @@ using static vopen_api.Models.legacy.LegacyEventbriteAttendeesResponse;
 
 namespace vopen_api.Controllers
 {
-    [Route("legacy/api/v1/{edition}")]
+    [Route("legacy/api/v1")]
     [ApiController]
     public class LegaciesController : ControllerBase
     {
@@ -30,34 +30,34 @@ namespace vopen_api.Controllers
             this.eventbriteEdition = configuration.GetSection("Edition").Value; // e.g vopen-ar-2019
         }
 
-        //devuelve modelo LegacySpronsor
-        [HttpPost("Sponsors")]
-        public async Task<IActionResult> Sponsors()
-        {
-            throw new NotImplementedException();
-        }
-
-        //devuelve modelo ConfSponsors
-        [HttpPost("ConfSponsors")]
-        public async Task<IActionResult> ConfSponsors()
-        {
-            throw new NotImplementedException();
-        }
-
-        //devuelte integer
-        [HttpPost("Editions")]
+        [HttpPost("editions")]
         public async Task<IActionResult> Editions()
         {
-            throw new NotImplementedException();
+            var language = this.GetLanguage();
+            var editions = await this.editionsRepository.GetAllByLanguage(language);
+            var editionIds = editions.Select(c => c.Id);
+
+            return Ok(editionIds);
         }
 
-        [HttpPost("AppConfig")]
+        [HttpPost("{edition}/appconfig")]
         public async Task<IActionResult> AppConfig()
         {
             throw new NotImplementedException();
         }
 
-        // Eventbrite endpoint 
+        [HttpPost("{edition}/Sponsors")]
+        public async Task<IActionResult> Sponsors()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost("{edition}/ConfSponsors")]
+        public async Task<IActionResult> ConfSponsors()
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpPost("IsValidAttendee")]
         public async Task<IActionResult> IsValidAttendee(LegacyIsValidAttendeeDTO attendeeInfo)
         {
@@ -122,6 +122,16 @@ namespace vopen_api.Controllers
             var isValidUser = attendeeInfo.User != null && attendeeInfo.User.ToLower() == this.MOBILE_APP_USER;
             var isValidToken = attendeeInfo.Token != null && attendeeInfo.Token.ToUpper() == this.MOBILE_APP_TOKEN;
             return isValidUser && isValidToken;
+        }
+
+        private string GetLanguage()
+        {
+            if (Request.Headers["Accept-Language"].ToString() == "")
+            {
+                return "es-AR";
+            }
+
+            return Request.Headers["Accept-Language"].ToString().Split(',')[0];
         }
     }
 }
