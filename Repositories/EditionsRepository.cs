@@ -45,7 +45,13 @@ namespace vopen_api.Repositories
                     .ThenInclude(organizer => organizer.User)
                     .ThenInclude(user => user.SocialLinks)
                 .Include(item => item.Sponsors)
+                    .ThenInclude(editionSponsor => editionSponsor.Sponsor)
                 .Include(item => item.Activities)
+                    .ThenInclude(editionActivity => editionActivity.Details)
+                .Include(item => item.Activities)
+                    .ThenInclude(editionActivity => editionActivity.Presenters)
+                .Include(item => item.Activities)
+                    .ThenInclude(editionActivity => editionActivity.Scores)
                 .FirstOrDefaultAsync(item => item.Id == id);
 
             if (result == null)

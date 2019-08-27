@@ -388,7 +388,13 @@ namespace vopen_api.Data
                 context.Users.Add(user24);
                 context.Users.Add(user25);
 
-                // TODO: create sponsors
+                // Create sponsors
+                var mulesoft = new Sponsor
+                {
+                    Name = "MuleSoft",
+                    ImageUrl = "https://i.imgur.com/5Frs26a.png",
+                    Url = "https://www.mulesoft.com"
+                };
 
                 // Create global edition
                 var globalEdition = new Edition
@@ -469,6 +475,10 @@ namespace vopen_api.Data
                         new EditionOrganizer { User = user13 },
                         new EditionOrganizer { User = user14 },
                         new EditionOrganizer { User = user15 },
+                    },
+                    Sponsors = new List<EditionSponsor>()
+                    {
+                        new EditionSponsor { Sponsor = mulesoft, Type = Constants.SPONSOR_SILVER }
                     }
                 };
 
