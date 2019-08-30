@@ -50,6 +50,10 @@ namespace vopen_api.Repositories
                     .ThenInclude(editionActivity => editionActivity.Details)
                 .Include(item => item.Activities)
                     .ThenInclude(editionActivity => editionActivity.Presenters)
+                        .ThenInclude(presenter => presenter.Details)
+                .Include(item => item.Activities)
+                    .ThenInclude(editionActivity => editionActivity.Presenters)
+                        .ThenInclude(presenter => presenter.SocialLinks)
                 .Include(item => item.Activities)
                     .ThenInclude(editionActivity => editionActivity.Scores)
                 .FirstOrDefaultAsync(item => item.Id == id);

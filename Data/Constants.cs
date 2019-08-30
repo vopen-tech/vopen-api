@@ -13,6 +13,9 @@ namespace vopen_api.Data
         public static string COUNTRIES_COLOMBIA = "Colombia";
         public static string COUNTRIES_PERU = "Perú";
         public static string COUNTRIES_URUGUAY = "Uruguay";
+        public static string COUNTRIES_UNITED_STATES = "United States";
+        public static string COUNTRIES_UNITED_KINGDOM = "United Kingdom";
+        public static string COUNTRIES_BRAZIL = "Brazil";
 
         // Social link type
         public static string SOCIAL_TWITTER = "Twitter";

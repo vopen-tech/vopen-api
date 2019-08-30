@@ -25,6 +25,8 @@ namespace vopen_api.Models
         public ICollection<EditionSponsorDTO> Sponsors { get; set; }
 
         public ICollection<EditionActivityDTO> Activities { get; set; }
+
+        public ICollection<UserDTO> Speakers { get; set; }
     }
 
     public class EditionTicketDTO
@@ -81,6 +83,8 @@ namespace vopen_api.Models
         public static EditionDTO ToEditionDTO(Edition edition, string language)
         {
             var details = edition.Details.FirstOrDefault(item => item.Language == language) ?? edition.Details.First();
+            var activities = EditionUtils.ToEditionActivitiesDTO(edition.Activities, language);
+            var speakers = activities.SelectMany(c => c.Presenters).Distinct().ToList();
 
             return new EditionDTO
             {
@@ -95,7 +99,8 @@ namespace vopen_api.Models
                 Organizers = UserUtils.ToUsersDTO(edition.Organizers?.Select(item => item.User).ToList(), language),
                 EditionTickets = EditionUtils.ToEditionTicketsDTO(edition.EditionTickets),
                 Sponsors = EditionUtils.ToEditionSponsorsDTO(edition.Sponsors),
-                Activities = EditionUtils.ToEditionActivitiesDTO(edition.Activities, language),
+                Activities = activities,
+                Speakers = speakers
             };
         }
 
