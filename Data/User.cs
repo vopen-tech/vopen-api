@@ -45,6 +45,8 @@ namespace vopen_api.Data
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public string JobTitle { get; set; }
     }
 
     [Table("UsersSocialLinks")]
