@@ -346,7 +346,7 @@ namespace vopen_api.Data
                 var user21 = new User
                 {
                     Country = Constants.COUNTRIES_PERU,
-                    ImageUrl = "https://i.imgur.com/Hnp1yAr.png",
+                    ImageUrl = "https://i.imgur.com/h1wbE8H.png",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Alberto De Rossi", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -567,7 +567,7 @@ namespace vopen_api.Data
                 var uySpeaker11 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "https://lh6.googleusercontent.com/E5Mbz9KX4BeY_872aDmDIkBVFmjcel8Wz6xI5sDaa0WiifD32L1wHimfTTzKLvMWTAvU1d0XMXm404h245lm=w3644-h2494-rw",
+                    ImageUrl = "https://i.imgur.com/dUdbx4k.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Victoria Perez", Description = "", JobTitle = "Dev con foco en UX", Company = "Pyxis", Language = Constants.LANGUAGES_SPANISH }
@@ -581,7 +581,7 @@ namespace vopen_api.Data
                 var uySpeaker12 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "https://lh6.googleusercontent.com/sJpyvLFRnc7uijni29Ud0DicSGSCJQxOQem7kcqVMkrmPSrWAlWHhCCd0SEJ70zsypnfO-AQPGJzsaH739vb=w3644-h2494-rw",
+                    ImageUrl = "https://i.imgur.com/hgdXyLu.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Josmell Chavarri", Description = "", JobTitle = "Especialista en Seguridad", Company = "GuayoyoLabs", Language = Constants.LANGUAGES_SPANISH }
