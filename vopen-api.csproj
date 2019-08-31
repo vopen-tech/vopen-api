@@ -38,6 +38,9 @@
     <Content Update="App_Data\dummyData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\dummyFile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Repositories\ConferencesRepository.cs" />
