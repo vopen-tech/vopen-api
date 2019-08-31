@@ -34,7 +34,7 @@ namespace vopen_api.Data
                 var user1 = new User
                 {
                     Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "http://ar.netconf.global/Content/images/demo/organizers/marianovazquez.jpg",
+                    ImageUrl = "https://i.imgur.com/14aAfJW.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Mariano Vazquez", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -48,7 +48,7 @@ namespace vopen_api.Data
                 var user2 = new User
                 {
                     Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "http://ar.netconf.global/Content/images/demo/organizers/guillermobellmann.jpg",
+                    ImageUrl = "https://i.imgur.com/4JpB16z.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Guillermo Bellmann", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -62,7 +62,7 @@ namespace vopen_api.Data
                 var user3 = new User
                 {
                     Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "http://ar.netconf.global/Content/images/demo/organizers/pablodiloreto.jpg",
+                    ImageUrl = "https://i.imgur.com/iY5beT7.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Pablo Di Loreto", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -76,14 +76,14 @@ namespace vopen_api.Data
                 var user4 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "http://uy.netconf.global/Content/images/demo/organizers/FabianImaz.jpg",
+                    ImageUrl = "https://i.imgur.com/KrNBexb.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Fabian Imaz", Description = "", Language = Constants.LANGUAGES_SPANISH }
                     },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "http://uy.linkedin.com/in/siderys" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://uy.linkedin.com/in/siderys" },
                         new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/fabianimaz" },
                     }
                 };
@@ -97,7 +97,7 @@ namespace vopen_api.Data
                      },
                     SocialLinks = new UserSocialLink[]
                     {
-                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "http://uy.linkedin.com/in/kzfabi" },
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://uy.linkedin.com/in/kzfabi" },
                         new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/kzfabi" },
                     }
                 };
@@ -107,7 +107,7 @@ namespace vopen_api.Data
                 var user6 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "http://uy.netconf.global/Content/images/demo/organizers/FedericoBernasconi.jpg",
+                    ImageUrl = "https://i.imgur.com/vSPaUor.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Federico Bernasconi", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
@@ -123,7 +123,7 @@ namespace vopen_api.Data
                 var user7 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "http://uy.netconf.global/Content/images/demo/organizers/BrianHardy.jpg",
+                    ImageUrl = "https://i.imgur.com/7WclQJ9.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Brian Hardy", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
@@ -219,7 +219,7 @@ namespace vopen_api.Data
                 var user12 = new User
                 {
                     Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "http://ar.netconf.global/Content/images/demo/organizers/NahirIberra.jpg",
+                    ImageUrl = "https://i.imgur.com/xxhanh1.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Nahir Iberra", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -233,7 +233,7 @@ namespace vopen_api.Data
                 var user13 = new User
                 {
                     Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "http://ar.netconf.global/Content/images/demo/organizers/JorgeBramajo.jpg",
+                    ImageUrl = "https://i.imgur.com/WTWvZct.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Jorge Bramajo", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -247,7 +247,7 @@ namespace vopen_api.Data
                 var user14 = new User
                 {
                     Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "http://ar.netconf.global/Content/images/demo/organizers/EstebanYanez.jpg",
+                    ImageUrl = "https://i.imgur.com/FB2hl5h.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Esteban Yañez",  Description = "", Language = Constants.LANGUAGES_SPANISH  }
@@ -261,7 +261,7 @@ namespace vopen_api.Data
                 var user15 = new User
                 {
                     Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "http://ar.netconf.global/Content/images/demo/organizers/SebastianPerez.jpg",
+                    ImageUrl = "https://i.imgur.com/4F8teHs.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Sebastián Pérez", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
@@ -278,7 +278,7 @@ namespace vopen_api.Data
                 var user16 = new User
                 {
                     Country = Constants.COUNTRIES_CHILE,
-                    ImageUrl = "http://cl.netconf.global/Content/images/demo/organizers/SergioBorromei.jpg",
+                    ImageUrl = "https://i.imgur.com/lVxUCBx.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Sergio Borromei", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
@@ -468,7 +468,7 @@ namespace vopen_api.Data
                 };
                 var uySpeaker4 = new User
                 {
-                    Country = Constants.COUNTRIES_URUGUAY,
+                    Country = Constants.COUNTRIES_ARGENTINA,
                     ImageUrl = "https://media.licdn.com/dms/image/C4E03AQGqrFkjImrUbg/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=9hZMihfvDIeiEZ839Xw__kGAD-2Uq700vXpWb3LUCk4",
                     Details = new UserDetail[]
                     {
@@ -497,7 +497,7 @@ namespace vopen_api.Data
                 var uySpeaker6 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "https://media.licdn.com/dms/image/C4E03AQGPcSiPZ4SEpw/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=DAyy4VlxpkUT4A_zafFmXNXGQzqphsu-XVnXTthZ31M",
+                    ImageUrl = "https://i.imgur.com/nTCQW4O.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Santiago Pastorino", Description = "", JobTitle = "Fundador", Company = "WyeWorks", Language = Constants.LANGUAGES_SPANISH }
@@ -528,7 +528,7 @@ namespace vopen_api.Data
                     ImageUrl = "https://media.licdn.com/dms/image/C5603AQHKK-ufaNYqrA/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=xT6qJNy6yvW6fxTun0IWoQwafEpspxSPr3s9GYuZlrQ",
                     Details = new UserDetail[]
                     {
-                        new UserDetail { Name = "David Revoledo", Description = "", JobTitle = "", Company = "", Language = Constants.LANGUAGES_SPANISH }
+                        new UserDetail { Name = "David Revoledo", Description = "", JobTitle = ".NET Azure Consultant", Company = "", Language = Constants.LANGUAGES_SPANISH }
                     },
                     SocialLinks = new UserSocialLink[]
                     {
@@ -538,7 +538,7 @@ namespace vopen_api.Data
                 };
                 var uySpeaker9 = new User
                 {
-                    Country = Constants.COUNTRIES_ARGENTINA,
+                    Country = Constants.COUNTRIES_BRAZIL,
                     ImageUrl = "https://media.licdn.com/dms/image/C4E03AQFEySIvDgebsA/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=_qxu87Ovo7WkFz5_BUmasXk9rmmiR8_lfnYr6r7VSR8",
                     Details = new UserDetail[]
                     {
@@ -580,7 +580,7 @@ namespace vopen_api.Data
                 };
                 var uySpeaker12 = new User
                 {
-                    Country = Constants.COUNTRIES_URUGUAY,
+                    Country = Constants.COUNTRIES_VENEZUELA,
                     ImageUrl = "https://i.imgur.com/hgdXyLu.jpg",
                     Details = new UserDetail[]
                     {
