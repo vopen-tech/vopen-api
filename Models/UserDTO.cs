@@ -11,6 +11,8 @@ namespace vopen_api.Models
         public string Country { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }
+        public string JobTitle { get; set; }
+        public string Company { get; set; }
         public string Description { get; set; }
         public ICollection<UserSocialLinkDTO> SocialLinks { get; set; }
     }
@@ -35,6 +37,8 @@ namespace vopen_api.Models
                 ImageUrl = user.ImageUrl,
                 Name = userDetail.Name,
                 Description = userDetail.Description,
+                JobTitle = userDetail.JobTitle,
+                Company = userDetail.Company,
                 SocialLinks = user.SocialLinks.Select(c => new UserSocialLinkDTO { Type = c.Type, Url = c.Url }).ToList()
             };
         }
