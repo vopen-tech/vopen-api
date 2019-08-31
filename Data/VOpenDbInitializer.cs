@@ -430,7 +430,7 @@ namespace vopen_api.Data
                     ImageUrl = "https://media.licdn.com/dms/image/C4E03AQEHm9QpksQ63w/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=Tz-_ZmHuWY99rdA3bIJ8ybHsuTfj6oO_vtBjt4bSjpc",
                     Details = new UserDetail[]
                     {
-                        new UserDetail { Name = "Guada Casuso", Description = "", JobTitle = "Lead PM - Microsoft autonomous systems and simulations", Company = "Microsoft", Language = Constants.LANGUAGES_SPANISH }
+                        new UserDetail { Name = "Guada Casuso", Description = "", JobTitle = "Lead PM", Company = "Microsoft", Language = Constants.LANGUAGES_SPANISH }
                     },
                     SocialLinks = new UserSocialLink[]
                     {
@@ -472,7 +472,7 @@ namespace vopen_api.Data
                     ImageUrl = "https://media.licdn.com/dms/image/C4E03AQGqrFkjImrUbg/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=9hZMihfvDIeiEZ839Xw__kGAD-2Uq700vXpWb3LUCk4",
                     Details = new UserDetail[]
                     {
-                        new UserDetail { Name = "Javier Villegas", Description = "", JobTitle = "DBA Manager", Company = "Mediterranean Shipping Company", Language = Constants.LANGUAGES_SPANISH }
+                        new UserDetail { Name = "Javier Villegas", Description = "", JobTitle = "DBA Manager", Company = "Mediterranean Shipping Co.", Language = Constants.LANGUAGES_SPANISH }
                     },
                     SocialLinks = new UserSocialLink[]
                     {
@@ -556,7 +556,7 @@ namespace vopen_api.Data
                     ImageUrl = "https://secure.meetupstatic.com/photos/member/7/1/0/c/highres_266188940.jpeg",
                     Details = new UserDetail[]
                     {
-                        new UserDetail { Name = "Nicolas Fernando Nakasone Roque", Description = "", JobTitle = "Technical Leader", Company = "Arkanosoft", Language = Constants.LANGUAGES_SPANISH }
+                        new UserDetail { Name = "Nicolas Nakasone", Description = "", JobTitle = "Technical Leader", Company = "Arkanosoft", Language = Constants.LANGUAGES_SPANISH }
                     },
                     SocialLinks = new UserSocialLink[]
                     {
