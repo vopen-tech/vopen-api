@@ -136,10 +136,19 @@ namespace vopen_api.Data
         public string Type { get; set; }
 
         [Required]
+        public string Day { get; set; }
+
+        [Required]
+        public string Track { get; set; }
+
+        [Required]
         public string Date { get; set; }
 
         [Required]
         public string Duration { get; set; }
+
+        [Required]
+        public string Tags { get; set; }
     }
 
     [Table("EditionsActivitiesDetails")]
