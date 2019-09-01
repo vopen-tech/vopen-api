@@ -649,77 +649,77 @@ namespace vopen_api.Data
                     {
                         new EditionActivity {
                             Presenters = new List<User> { uySpeaker1 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "tag1, tag2, tag3", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 1" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker2 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:30:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:30:00.000Z", Tags = "tag1, tag2", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 2" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker3 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T10:00:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T10:00:00.000Z", Tags = "tag1, tag2, tag3, tag4, tag5", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 3" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker4 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "tag1, tag2", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 2 - Talk 1" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker5 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T09:30:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T09:30:00.000Z", Tags = "tag1", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 2 - Talk 2" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker6 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T10:00:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T10:00:00.000Z", Tags = "tag1, tag2, tag3", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 2 - Talk 3" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker7 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T09:00:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T09:00:00.000Z", Tags = "tag1, tag2", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 1 - Talk 1" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker8 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T09:30:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T09:30:00.000Z", Tags = "tag1", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 1 - Talk 2" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker9 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T10:00:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T10:00:00.000Z", Tags = "tag1, tag2", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 1 - Talk 3" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker10 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-20T09:00:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-20T09:00:00.000Z", Tags = "tag1, tag2, tag3", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 2 - Talk 1" }
                             }
                         },
                         new EditionActivity { Presenters = new List<User> { uySpeaker11, uySpeaker12 },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-20T09:30:00.000Z", Tags = "", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-20T09:30:00.000Z", Tags = "tag1, tag2, tag3, tag4, tag5", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 2 - Talk 2" }
