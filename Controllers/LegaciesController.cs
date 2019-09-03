@@ -54,50 +54,63 @@ namespace vopen_api.Controllers
                 return Unauthorized();
             }
 
-            LegacyEventbriteAttendeesResponse.Attendee result = null;
-
-            var configurationEventBrite = configuration.GetSection("EventBrite");
-            var eventBriteId = configurationEventBrite.GetSection("EventbriteEventId").Value;
-            var eventBriteUSer = configurationEventBrite.GetSection("User").Value;
-            var eventBriteKey = configurationEventBrite.GetSection("Key").Value;
-            var eventBriteClientSecret = configurationEventBrite.GetSection("ClientSecret").Value;
-            var eventBriteOAuthTokenPersonal = configurationEventBrite.GetSection("OAuthTokenPersonal").Value;
-            var eventBriteOAuthTokenAnonymous = configurationEventBrite.GetSection("OAuthTokenAnonymous").Value;
-            var eventBriteAttendeesAddress = configurationEventBrite.GetSection("AttendeesAddress").Value + "attendees/?token=" + eventBriteOAuthTokenPersonal;
-            var eventbriteTicketNamesAllowedInRaffle = configurationEventBrite.GetSection("EventbriteTicketNamesAllowedInRaffle").Value;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-
-            var attendeesRawResponse = "";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(eventBriteAttendeesAddress);
-            request.Accept = "application/json";
-
             try
             {
-                using (WebResponse response = await request.GetResponseAsync())
-                using (Stream dataStream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(dataStream))
-                {
-                    attendeesRawResponse = reader.ReadToEnd();
-                }
+                var configurationEventbrite = configuration.GetSection("Eventbrite");
+                var ticketNamesAllowedInRaffle = configurationEventbrite.GetSection("TicketNamesAllowedInRaffle").Value;
 
-                var attendeesResponse = JsonConvert.DeserializeObject<LegacyEventbriteAttendeesResponse>(attendeesRawResponse);
+                var result = new LegacyIsValidAttendeeResponseBody { Email = attendeeBody.Email, IsValid = false };
+                bool attendeeFound = false;
+                bool hasMorePages = true;
+                int page = 1;
 
-                if (attendeesResponse != null && eventbriteTicketNamesAllowedInRaffle.ToLower().Contains(result.ticket_class_name.ToLower()) == false)
+                while(!attendeeFound && hasMorePages)
                 {
-                    // Found but ticket not allowed.
-                    result = null;
-                }
-                else
-                {
-                    result = attendeesResponse.attendees.FirstOrDefault(a => a.profile.email.ToLowerInvariant() == attendeeBody.Email.ToLowerInvariant());
-                }
+                    var response = await this.GetAttendeesInEvent(page);
+                    var attendee = response.attendees
+                        .FirstOrDefault(item =>
+                          item.Profile.Email.ToLowerInvariant() == attendeeBody.Email.ToLowerInvariant()
+                          && ticketNamesAllowedInRaffle.ToLower().Contains(item.TicketClassName.ToLowerInvariant())
+                        );
 
+                    attendeeFound = attendee != null;
+                    hasMorePages = response.Pagination.HasMoreItems;
+                    page += 1;
+                }
+               
+                result.IsValid = attendeeFound;
                 return Ok(result);
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
-                return BadRequest(exception);
+                return BadRequest(e);
             }
+        }
+
+        private async Task<LegacyEventbriteAttendeesResponse> GetAttendeesInEvent(int page = 1)
+        {
+
+            var configurationEventbrite = configuration.GetSection("Eventbrite");
+            var eventId = configurationEventbrite.GetSection("EventId").Value;
+            var token = configurationEventbrite.GetSection("Token").Value;
+            var eventsBasePath = configurationEventbrite.GetSection("EventsBasePath").Value;
+
+            var attendeesUrl = eventsBasePath + eventId + "/attendees/?token=" + token + "&page=" + page;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(attendeesUrl);
+            request.Accept = "application/json";
+
+            var rawResponse = "";
+            using (WebResponse webResponse = await request.GetResponseAsync())
+            using (Stream dataStream = webResponse.GetResponseStream())
+            using (StreamReader reader = new StreamReader(dataStream))
+            {
+                rawResponse = reader.ReadToEnd();
+            }
+
+            var response = JsonConvert.DeserializeObject<LegacyEventbriteAttendeesResponse>(rawResponse);
+            return response;
         }
 
         private bool IsValidRequest(LegacyRequestBody body)
@@ -134,27 +147,48 @@ namespace vopen_api.Controllers
         public string Email { get; set; }
     }
 
+    public class LegacyIsValidAttendeeResponseBody
+    {
+        public string Email { get; set; }
+        public bool IsValid { get; set; }
+    }
+
     public class LegacyEventbriteAttendeesResponse
     {
-        public Pagination pagination { get; set; }
-        public List<Attendee> attendees { get; set; }
+        [JsonProperty("pagination")]
+        public Pagination Pagination { get; set; }
 
-        public class Attendee
-        {
-            public string ticket_class_name { get; set; }
-            public Profile profile { get; set; }
-            public class Profile
-            {
-                public string first_name { get; set; }
-                public string last_name { get; set; }
-                public string email { get; set; }
-            }
-        }
+        [JsonProperty("attendees")]
+        public IEnumerable<Attendee> attendees { get; set; }
 
-        public class Pagination
-        {
-            public string continuation { get; set; }
-            public bool has_more_items { get; set; }
-        }
+    }
+    public class Attendee
+    {
+        [JsonProperty("ticket_class_name")]
+        public string TicketClassName { get; set; }
+
+        [JsonProperty("profile")]
+        public Profile Profile { get; set; }
+    }
+
+    public class Pagination
+    {
+        [JsonProperty("continuation")]
+        public string Continuation { get; set; }
+
+        [JsonProperty("has_more_items")]
+        public bool HasMoreItems { get; set; }
+    }
+
+    public class Profile
+    {
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
     }
 }
