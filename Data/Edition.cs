@@ -199,6 +199,9 @@ namespace vopen_api.Data
         public EditionActivity EditionActivity { get; set; }
 
         [Required]
+        public string UserEmail { get; set; }
+
+        [Required]
         public int Score { get; set; }
 
         public string Comments { get; set; }
