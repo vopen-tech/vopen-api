@@ -66,7 +66,7 @@ namespace vopen_api.Controllers
 
                 while(!attendeeFound && hasMorePages)
                 {
-                    var response = await this.GetAttendeesInEvent(page);
+                    var response = await this.GetAttendeesInEvent(attendeeBody.EventId, page);
                     var attendee = response.attendees
                         .FirstOrDefault(item =>
                           item.Profile.Email.ToLowerInvariant() == attendeeBody.Email.ToLowerInvariant()
@@ -87,15 +87,15 @@ namespace vopen_api.Controllers
             }
         }
 
-        private async Task<LegacyEventbriteAttendeesResponse> GetAttendeesInEvent(int page = 1)
+        private async Task<LegacyEventbriteAttendeesResponse> GetAttendeesInEvent(string eventId, int page = 1)
         {
 
             var configurationEventbrite = configuration.GetSection("Eventbrite");
-            var eventId = configurationEventbrite.GetSection("EventId").Value;
+            var eventbriteEventId = configurationEventbrite.GetSection(eventId).Value;
             var token = configurationEventbrite.GetSection("Token").Value;
             var eventsBasePath = configurationEventbrite.GetSection("EventsBasePath").Value;
 
-            var attendeesUrl = eventsBasePath + eventId + "/attendees/?token=" + token + "&page=" + page;
+            var attendeesUrl = eventsBasePath + eventbriteEventId + "/attendees/?token=" + token + "&page=" + page;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(attendeesUrl);
@@ -144,6 +144,7 @@ namespace vopen_api.Controllers
 
     public class LegacyIsValidAttendeeRequestBody : LegacyRequestBody
     {
+        public string EventId { get; set; }
         public string Email { get; set; }
     }
 
