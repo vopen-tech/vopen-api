@@ -59,27 +59,10 @@ namespace vopen_api.Models
                 return editionActivitiesDTO;
             }
 
-            var activities = editionActivies.Select(editionActivity =>
-            {
-                var details = editionActivity.Details.FirstOrDefault(item => item.Language == language) ?? editionActivity.Details.First();
-                return new EditionActivityDTO
-                {
-                    Id = editionActivity.Id,
-                    Date = editionActivity.Date,
-                    Day = editionActivity.Day,
-                    Track = editionActivity.Track,
-                    Type = editionActivity.Type,
-                    Tags = editionActivity.Tags,
-                    Duration = editionActivity.Duration,
-                    Title = details.Title,
-                    Description = details.Description,
-                    Presenters = UserUtils.ToUsersDTO(editionActivity.Presenters, language),
+            var activities = editionActivies.Select(editionActivity => EditionActivityUtils.ToEditionActivityDTO(editionActivity, language));
 
-                };
-
-            });
-
-            editionActivitiesDTO.Days = activities.GroupBy(c => c.Day).OrderBy(c => c.Key)
+            editionActivitiesDTO.Days = activities
+                .GroupBy(c => c.Day).OrderBy(c => c.Key)
                 .Select(c => new EditionActivityDayDTO()
                 {
                     Name = c.Key,
@@ -92,6 +75,24 @@ namespace vopen_api.Models
                 });
 
             return editionActivitiesDTO;
+        }
+
+        public static EditionActivityDTO ToEditionActivityDTO(EditionActivity editionActivity, string language)
+        {
+            var details = editionActivity.Details.FirstOrDefault(item => item.Language == language) ?? editionActivity.Details.First();
+            return new EditionActivityDTO
+            {
+                Id = editionActivity.Id,
+                Date = editionActivity.Date,
+                Day = editionActivity.Day,
+                Track = editionActivity.Track,
+                Type = editionActivity.Type,
+                Tags = editionActivity.Tags,
+                Duration = editionActivity.Duration,
+                Title = details.Title,
+                Description = details.Description,
+                Presenters = UserUtils.ToUsersDTO(editionActivity.Presenters, language),
+            };
         }
     }
 }

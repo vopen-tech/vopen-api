@@ -57,6 +57,8 @@ namespace vopen_api
             services.AddDbContext<VOpenDbContext>(builder => builder.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<EventsRepository, EventsRepository>();
             services.AddScoped<EditionsRepository, EditionsRepository>();
+            services.AddScoped<EditionsActivitiesRepository, EditionsActivitiesRepository>();
+            services.AddScoped<EditionsActivitiesScoresRepository, EditionsActivitiesScoresRepository>();
 
             // TODO: remove
             // var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();

@@ -196,13 +196,14 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
+        [ForeignKey("EditionActivityId")]
         public EditionActivity EditionActivity { get; set; }
 
         [Required]
         public string UserEmail { get; set; }
 
         [Required]
-        public int Score { get; set; }
+        public double Score { get; set; }
 
         public string Comments { get; set; }
     }
