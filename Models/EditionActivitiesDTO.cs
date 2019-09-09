@@ -43,6 +43,8 @@ namespace vopen_api.Models
         public string Duration { get; set; }
 
         public string Tags { get; set; }
+
+        public string Level { get; set; }
     }
 
     public static class EditionActivityUtils
@@ -88,6 +90,7 @@ namespace vopen_api.Models
                 Track = editionActivity.Track,
                 Type = editionActivity.Type,
                 Tags = editionActivity.Tags,
+                Level = editionActivity.Level,
                 Duration = editionActivity.Duration,
                 Title = details.Title,
                 Description = details.Description,

@@ -149,6 +149,9 @@ namespace vopen_api.Data
 
         [Required]
         public string Tags { get; set; }
+
+        [Required]
+        public string Level { get; set; }
     }
 
     [Table("EditionsActivitiesDetails")]

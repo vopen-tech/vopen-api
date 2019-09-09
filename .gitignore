@@ -40,5 +40,4 @@ msbuild.wrn
 .vs/
 .vs
 Properties/PublishProfiles/**
-appsettings.json
 appsettings.Development.json
