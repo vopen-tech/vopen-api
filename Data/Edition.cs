@@ -32,6 +32,15 @@ namespace vopen_api.Data
 
         [Required]
         public ICollection<EditionActivity> Activities { get; set; }
+
+        public Edition()
+        {
+            this.Details = new List<EditionDetail>();
+            this.EditionTickets = new List<EditionTicket>();
+            this.Organizers = new List<EditionOrganizer>();
+            this.Sponsors = new List<EditionSponsor>();
+            this.Activities = new List<EditionActivity>();
+        }
     }
 
     [Table("EditionsDetails")]
@@ -124,13 +133,13 @@ namespace vopen_api.Data
         public Edition Edition { get; set; }
 
         [Required]
-        public ICollection<EditionActivityScore> Scores { get; set; }
-
+        public ICollection<EditionActivityDetail> Details { get; set; }
+        
         [Required]
         public ICollection<User> Presenters { get; set; }
 
         [Required]
-        public ICollection<EditionActivityDetail> Details { get; set; }
+        public ICollection<EditionActivityScore> Scores { get; set; }
 
         [Required]
         public string Type { get; set; }
@@ -152,6 +161,13 @@ namespace vopen_api.Data
 
         [Required]
         public string Level { get; set; }
+
+        public EditionActivity()
+        {
+            this.Details = new List<EditionActivityDetail>();
+            this.Presenters = new List<User>();
+            this.Scores = new List<EditionActivityScore>();
+        }
     }
 
     [Table("EditionsActivitiesDetails")]
