@@ -1,0 +1,1115 @@
+﻿[
+  {
+    "sponsorId": 1,
+    "globalRanking": 1,
+    "name": "Microsoft",
+    "logoFileName": "microsoft",
+    "webSite": "http://microsoft.com",
+    "twitter": "Microsoft"
+  },
+  {
+    "sponsorId": 2,
+    "globalRanking": 4,
+    "name": "Infocorp",
+    "logoFileName": "infocorp",
+    "webSite": "http://www.infocorp.com.uy"
+  },
+  {
+    "sponsorId": 3,
+    "globalRanking": 3,
+    "name": "Uruguay XXI",
+    "logoFileName": "uruguayxxi",
+    "webSite": "http://www.uruguayxxi.gub.uy"
+  },
+  {
+    "sponsorId": 4,
+    "globalRanking": 2,
+    "name": "Paypal",
+    "logoFileName": "paypal",
+    "webSite": "https://developer.paypal.com"
+  },
+  {
+    "sponsorId": 5,
+    "globalRanking": 3,
+    "name": "Uruguay Smart Services",
+    "logoFileName": "uruguaysmartservices",
+    "webSite": "http://www.smartservices.uy"
+  },
+  {
+    "sponsorId": 6,
+    "globalRanking": 4,
+    "name": "Onetree",
+    "logoFileName": "onetree",
+    "webSite": "http://www.onetree.com"
+  },
+  {
+    "sponsorId": 7,
+    "globalRanking": 4,
+    "name": "Ingenious Softworks",
+    "logoFileName": "ingsw",
+    "webSite": "http://www.ingsw.com"
+  },
+  {
+    "sponsorId": 8,
+    "globalRanking": 2,
+    "name": "Postsharp",
+    "logoFileName": "postsharp",
+    "webSite": "http://www.postsharp.net"
+  },
+  {
+    "sponsorId": 9,
+    "globalRanking": 4,
+    "name": "Arkano",
+    "logoFileName": "arkano",
+    "webSite": "http://arkanosoft.com",
+    "twitter": "arkanosoftware"
+  },
+  {
+    "sponsorId": 10,
+    "globalRanking": 2,
+    "name": "JetBrains",
+    "logoFileName": "jetbrains",
+    "webSite": "http://www.jetbrains.com"
+  },
+  {
+    "sponsorId": 11,
+    "globalRanking": 2,
+    "name": "Infragistics",
+    "logoFileName": "infragistics",
+    "webSite": "http://www.infragistics.com"
+  },
+  {
+    "sponsorId": 12,
+    "globalRanking": 4,
+    "name": "Wyeworks",
+    "logoFileName": "wyeworks",
+    "webSite": "http://www.wyeworks.com"
+  },
+  {
+    "sponsorId": 13,
+    "globalRanking": 4,
+    "name": "Lagash",
+    "logoFileName": "lagash",
+    "webSite": "http://lagash.com",
+    "twitter": "Lagash_"
+  },
+  {
+    "sponsorId": 14,
+    "globalRanking": 2,
+    "name": "GitHub",
+    "logoFileName": "github",
+    "webSite": "https://github.com"
+  },
+  {
+    "sponsorId": 15,
+    "globalRanking": 4,
+    "name": "BIOS",
+    "logoFileName": "bios",
+    "webSite": "http://www.biosportal.com",
+    "twitter": "Institutobiosuy"
+  },
+  {
+    "sponsorId": 16,
+    "globalRanking": 4,
+    "name": "Empower U",
+    "logoFileName": "empower",
+    "webSite": "http://www.empower.edu.uy"
+  },
+  {
+    "sponsorId": 17,
+    "globalRanking": 2,
+    "name": "Aspose",
+    "logoFileName": "aspose",
+    "webSite": "http://www.aspose.com"
+  },
+  {
+    "sponsorId": 18,
+    "globalRanking": 4,
+    "name": "ANII",
+    "logoFileName": "anii",
+    "webSite": "http://www.anii.org.uy"
+  },
+  {
+    "sponsorId": 19,
+    "globalRanking": 4,
+    "name": "Pseudo Producciones",
+    "logoFileName": "pseudo",
+    "webSite": "http://www.pseudo.com.uy"
+  },
+  {
+    "sponsorId": 20,
+    "globalRanking": 4,
+    "name": "PagosWeb",
+    "logoFileName": "pagosweb",
+    "webSite": "http://www.pagosweb.com.uy"
+  },
+  {
+    "sponsorId": 21,
+    "globalRanking": 2,
+    "name": "Sabre",
+    "logoFileName": "sabre",
+    "webSite": "http://www.sabre.com",
+    "twitter": "sabre_corp"
+  },
+  {
+    "sponsorId": 22,
+    "globalRanking": 4,
+    "name": "TechMeetup",
+    "logoFileName": "techmeetupuy",
+    "webSite": "http://tech.meetup.uy"
+  },
+  {
+    "sponsorId": 23,
+    "globalRanking": 4,
+    "name": "CobrosYA",
+    "logoFileName": "cobrosya",
+    "webSite": "http://cobrosya.com"
+  },
+  {
+    "sponsorId": 24,
+    "globalRanking": 4,
+    "name": "Fundacion daVinci",
+    "logoFileName": "davinci",
+    "webSite": "http://daVinci.uy"
+  },
+  {
+    "sponsorId": 25,
+    "globalRanking": 4,
+    "name": "Nublit",
+    "logoFileName": "nublit",
+    "webSite": "http://www.nublit.com"
+  },
+  {
+    "sponsorId": 26,
+    "globalRanking": 4,
+    "name": "CanalUY",
+    "logoFileName": "canaluy",
+    "webSite": "http://www.canal-uy.com"
+  },
+  {
+    "sponsorId": 27,
+    "globalRanking": 4,
+    "name": "CUTI",
+    "logoFileName": "cuti",
+    "webSite": "http://www.cuti.org.uy"
+  },
+  {
+    "sponsorId": 28,
+    "globalRanking": 4,
+    "name": "Universidad ORT",
+    "logoFileName": "ort",
+    "webSite": "http://www.ort.edu.uy"
+  },
+  {
+    "sponsorId": 29,
+    "globalRanking": 4,
+    "name": "ANTEL",
+    "logoFileName": "antel",
+    "webSite": "http://www.antel.com.uy"
+  },
+  {
+    "sponsorId": 30,
+    "globalRanking": 4,
+    "name": "TUY",
+    "logoFileName": "tuy",
+    "webSite": "https://www.facebook.com/tuyuruguay"
+  },
+  {
+    "sponsorId": 31,
+    "globalRanking": 2,
+    "name": "Pluralsight",
+    "logoFileName": "pluralsight",
+    "webSite": "http://www.pluralsight.com"
+  },
+  {
+    "sponsorId": 32,
+    "globalRanking": 4,
+    "name": "Nevron",
+    "logoFileName": "nevron",
+    "webSite": "https://www.nevron.com"
+  },
+  {
+    "sponsorId": 33,
+    "globalRanking": 4,
+    "name": "OWASP",
+    "logoFileName": "owasp",
+    "webSite": "https://www.owasp.org"
+  },
+  {
+    "sponsorId": 34,
+    "globalRanking": 4,
+    "name": "MUG Asociación Civil",
+    "logoFileName": "mug",
+    "webSite": "http://www.mug-it.org.ar/"
+  },
+  {
+    "sponsorId": 35,
+    "globalRanking": 4,
+    "name": "AgileUY",
+    "logoFileName": "agileuy",
+    "webSite": "http://meetup.com/AgileUY"
+  },
+  {
+    "sponsorId": 36,
+    "globalRanking": 4,
+    "name": "Evolucion Agil",
+    "logoFileName": "evolucionagil",
+    "webSite": "http://evolucionagil.com"
+  },
+  {
+    "sponsorId": 37,
+    "globalRanking": 4,
+    "name": "VisualSVN",
+    "logoFileName": "visualsvn",
+    "webSite": "http://www.visualsvn.com"
+  },
+  {
+    "sponsorId": 38,
+    "globalRanking": 2,
+    "name": "Wrox",
+    "logoFileName": "wrox",
+    "webSite": "http://www.wrox.com/WileyCDA/"
+  },
+  {
+    "sponsorId": 39,
+    "globalRanking": 4,
+    "name": "Grolsch",
+    "logoFileName": "grolsch",
+    "webSite": "http://www.grolsch.co.uk"
+  },
+  {
+    "sponsorId": 40,
+    "globalRanking": 3,
+    "name": "Kaizen Softworks",
+    "logoFileName": "kaizen",
+    "webSite": "http://kzsoftworks.com",
+    "twitter": "kzsoftworks"
+  },
+  {
+    "sponsorId": 41,
+    "globalRanking": 4,
+    "name": "UruIT",
+    "logoFileName": "uruit",
+    "webSite": "http://uruit.com.uy",
+    "twitter": "uruit"
+  },
+  {
+    "sponsorId": 42,
+    "globalRanking": 4,
+    "name": "Sinergia",
+    "logoFileName": "sinergia",
+    "webSite": "http://sinergiacowork.com"
+  },
+  {
+    "sponsorId": 43,
+    "globalRanking": 4,
+    "name": "UCUDAL",
+    "logoFileName": "ucudal",
+    "webSite": "http://www.ucu.edu.uy"
+  },
+  {
+    "sponsorId": 44,
+    "globalRanking": 4,
+    "name": "Kronos",
+    "logoFileName": "kronos",
+    "webSite": "http://appkronos.com"
+  },
+  {
+    "sponsorId": 45,
+    "globalRanking": 4,
+    "name": "Anima",
+    "logoFileName": "anima",
+    "webSite": "http://www.anima.edu.uy"
+  },
+  {
+    "sponsorId": 46,
+    "globalRanking": 4,
+    "name": "UruguayIT",
+    "logoFileName": "uruguayit",
+    "webSite": "https://www.linkedin.com/groups/149746"
+  },
+  {
+    "sponsorId": 47,
+    "globalRanking": 4,
+    "name": "El Observador",
+    "logoFileName": "elobservador",
+    "webSite": "http://www.elobservador.com.uy"
+  },
+  {
+    "sponsorId": 48,
+    "globalRanking": 4,
+    "name": "DeoLabs",
+    "logoFileName": "deolabs",
+    "webSite": "http://www.deo-labs.com"
+  },
+  {
+    "sponsorId": 49,
+    "globalRanking": 4,
+    "name": "El Pais",
+    "logoFileName": "elpais",
+    "webSite": "http://www.elpais.com.uy"
+  },
+  {
+    "sponsorId": 50,
+    "globalRanking": 4,
+    "name": "Gallito",
+    "logoFileName": "gallito",
+    "webSite": "http://www.gallito.com.uy"
+  },
+  {
+    "sponsorId": 51,
+    "globalRanking": 2,
+    "name": "TCS",
+    "logoFileName": "tcs",
+    "webSite": "http://www.tcs.com",
+    "twitter": "tcs"
+  },
+  {
+    "sponsorId": 52,
+    "globalRanking": 4,
+    "name": "Espacio Serratosa",
+    "logoFileName": "espacioserratosa",
+    "webSite": "http://www.espacioserratosa.com.uy"
+  },
+  {
+    "sponsorId": 53,
+    "globalRanking": 4,
+    "name": "Geci",
+    "logoFileName": "gecigroup",
+    "webSite": "http://www.geciweb.com"
+  },
+  {
+    "sponsorId": 54,
+    "globalRanking": 2,
+    "name": "Octopus Deploy",
+    "logoFileName": "octopus",
+    "webSite": "http://octopus.com"
+  },
+  {
+    "sponsorId": 55,
+    "globalRanking": 4,
+    "name": "Robotec",
+    "logoFileName": "robotec",
+    "webSite": "http://www.robotec.com.uy"
+  },
+  {
+    "sponsorId": 56,
+    "globalRanking": 4,
+    "name": "EducacionIT",
+    "logoFileName": "educacionit",
+    "webSite": "http://www.educacionit.com"
+  },
+  {
+    "sponsorId": 57,
+    "globalRanking": 4,
+    "name": "TestingUY",
+    "logoFileName": "testinguy",
+    "webSite": "http://www.testing.uy"
+  },
+  {
+    "sponsorId": 58,
+    "globalRanking": 4,
+    "name": "Discount ASP.NET",
+    "logoFileName": "discountaspnet",
+    "webSite": "http://www.discountasp.net"
+  },
+  {
+    "sponsorId": 59,
+    "globalRanking": 4,
+    "name": "Globant",
+    "logoFileName": "globant",
+    "webSite": "https://www.globant.com"
+  },
+  {
+    "sponsorId": 60,
+    "globalRanking": 4,
+    "name": "Practia",
+    "logoFileName": "practia",
+    "webSite": "http://www.pragmaconsultores.com",
+    "twitter": "practiauy"
+  },
+  {
+    "sponsorId": 61,
+    "globalRanking": 4,
+    "name": "Forge",
+    "logoFileName": "forge",
+    "webSite": "http://fondationforge.org"
+  },
+  {
+    "sponsorId": 62,
+    "globalRanking": 4,
+    "name": "Everleap",
+    "logoFileName": "everleap",
+    "webSite": "http://www.everleap.com"
+  },
+  {
+    "sponsorId": 63,
+    "globalRanking": 4,
+    "name": "Kemp",
+    "logoFileName": "kemp",
+    "webSite": "http://www.kemptechnologies.com",
+    "twitter": "Kemp_LATAM"
+  },
+  {
+    "sponsorId": 64,
+    "globalRanking": 2,
+    "name": "Telerik by Progress",
+    "logoFileName": "telerik",
+    "webSite": "http://www.telerik.com",
+    "twitter": "telerik"
+  },
+  {
+    "sponsorId": 65,
+    "globalRanking": 4,
+    "name": "UYCG",
+    "logoFileName": "uycg",
+    "webSite": "http://uycg.com.uy",
+    "twitter": "uycg"
+  },
+  {
+    "sponsorId": 66,
+    "globalRanking": 4,
+    "name": "Algeiba",
+    "logoFileName": "algeiba",
+    "webSite": "http://www.es.algeiba.com",
+    "twitter": "algeibaIT"
+  },
+
+  {
+    "sponsorId": 67,
+    "globalRanking": 4,
+    "name": "Belatrix",
+    "logoFileName": "belatrix",
+    "webSite": "http://www.belatrixsf.com",
+    "twitter": "belatrixsf"
+  },
+
+  {
+    "sponsorId": 68,
+    "globalRanking": 2,
+    "name": "Stickermule",
+    "logoFileName": "stickermule",
+    "webSite": "https://www.stickermule.com/uses/laptop-stickers",
+    "twitter": "stickermule"
+  },
+
+  {
+    "sponsorId": 69,
+    "globalRanking": 2,
+    "name": "Mulesoft",
+    "logoFileName": "mulesoft",
+    "webSite": "https://www.mulesoft.com/careers/job-search/buenos-aires",
+    "twitter": "MuleSoft"
+  },
+  {
+    "sponsorId": 70,
+    "globalRanking": 2,
+    "name": "RedHat",
+    "logoFileName": "redhat",
+    "webSite": "https://www.redhat.com/es/global/argentina",
+    "twitter": "RedHatNews"
+  },
+  {
+    "sponsorId": 71,
+    "globalRanking": 4,
+    "name": "Nubimetrics",
+    "logoFileName": "nubimetrics",
+    "webSite": "http://www.nubimetrics.com/",
+    "twitter": "nubimetrics"
+  },
+  {
+    "sponsorId": 72,
+    "globalRanking": 4,
+    "name": "Truelogic Software",
+    "logoFileName": "truelogic",
+    "webSite": "http://www.truelogicsoftware.com",
+    "twitter": ""
+  },
+  {
+    "sponsorId": 73,
+    "globalRanking": 4,
+    "name": "IT College",
+    "logoFileName": "itcollege",
+    "webSite": "http://www.itcollege.com.ar",
+    "twitter": "INFOITCOLLEGE"
+  },
+  {
+    "sponsorId": 74,
+    "globalRanking": 4,
+    "name": "GlobalLogic",
+    "logoFileName": "globallogic",
+    "webSite": "https://www.globallogic.com/latam",
+    "twitter": "Globallogic_LA"
+  },
+  {
+    "sponsorId": 75,
+    "globalRanking": 4,
+    "name": "Truelogic Software",
+    "logoFileName": "truelogic",
+    "webSite": "http://www.truelogicsoftware.com"
+  },
+  {
+    "sponsorId": 76,
+    "globalRanking": 4,
+    "name": "IT College",
+    "logoFileName": "itcollege",
+    "webSite": "http://www.itcollege.com.ar"
+  },
+  {
+    "sponsorId": 77,
+    "globalRanking": 4,
+    "name": "Kinetica",
+    "logoFileName": "kinetica",
+    "webSite": "http://www.kinetica-solutions.com"
+  },
+  {
+    "sponsorId": 78,
+    "globalRanking": 4,
+    "name": "BairesWeb",
+    "logoFileName": "bairesweb",
+    "webSite": "https://www.meetup.com/bairesweb/",
+    "twitter": "bairesweb"
+  },
+  {
+    "sponsorId": 79,
+    "globalRanking": 4,
+    "name": "ng-baires",
+    "logoFileName": "ngbaires",
+    "webSite": "https://www.meetup.com/ng-baires/",
+    "twitter": "ngbaires"
+  },
+  {
+    "sponsorId": 80,
+    "globalRanking": 4,
+    "name": "Infra-Baires",
+    "logoFileName": "infrabaires",
+    "webSite": "https://www.meetup.com/itinfra-baires/"
+  },
+  {
+    "sponsorId": 81,
+    "globalRanking": 4,
+    "name": "Cloud Computing Meetup",
+    "logoFileName": "cloudcomputing",
+    "webSite": "https://www.meetup.com/Buenos-Aires-Cloud-Computing/"
+  },
+  {
+    "sponsorId": 82,
+    "globalRanking": 4,
+    "name": "Net-Baires",
+    "logoFileName": "netbaires",
+    "webSite": "https://www.meetup.com/Net-Baires/"
+  },
+  {
+    "sponsorId": 83,
+    "globalRanking": 4,
+    "name": "React JS Meetup Bs As",
+    "logoFileName": "react",
+    "webSite": "https://www.meetup.com/React-js-en-Buenos-Aires/"
+  },
+  {
+    "sponsorId": 84,
+    "globalRanking": 4,
+    "name": "Microsoft MVP Program",
+    "logoFileName": "mvpprogram",
+    "webSite": "https://mvp.microsoft.com/"
+  },
+  {
+    "sponsorId": 85,
+    "globalRanking": 4,
+    "name": "Acamica",
+    "logoFileName": "acamica",
+    "webSite": "https://www.acamica.com/"
+  },
+  {
+    "sponsorId": 86,
+    "globalRanking": 4,
+    "name": "Argentesting",
+    "logoFileName": "argentesting",
+    "webSite": "http://www.argentesting.com/"
+  },
+  {
+    "sponsorId": 87,
+    "globalRanking": 2,
+    "name": "Cognizant",
+    "logoFileName": "cognizant",
+    "webSite": "https://www.cognizant.com/"
+  },
+  {
+    "sponsorId": 88,
+    "globalRanking": 4,
+    "name": "Nareia",
+    "logoFileName": "nareia",
+    "webSite": "http://nareia.com.uy/"
+  },
+  {
+    "sponsorId": 89,
+    "globalRanking": 4,
+    "name": "Kezmo",
+    "logoFileName": "kezmo",
+    "webSite": "http://kezmo.com/"
+  },
+  {
+    "sponsorId": 90,
+    "globalRanking": 4,
+    "name": "TriggerDB",
+    "logoFileName": "triggerdb",
+    "webSite": "http://www.triggerdb.com/"
+  },
+  {
+    "sponsorId": 91,
+    "globalRanking": 4,
+    "name": "Nexmo",
+    "logoFileName": "nexmo",
+    "webSite": "https://www.nexmo.com/"
+  },
+  {
+    "sponsorId": 92,
+    "globalRanking": 4,
+    "name": "Avanet",
+    "logoFileName": "avanet",
+    "webSite": "http://avanet.org/"
+  },
+  {
+    "sponsorId": 93,
+    "globalRanking": 4,
+    "name": "RutaN",
+    "logoFileName": "rutan",
+    "webSite": "http://www.rutanmedellin.org/"
+  },
+  {
+    "sponsorId": 94,
+    "globalRanking": 4,
+    "name": "Ceiba",
+    "logoFileName": "ceiba",
+    "webSite": "https://www.ceiba.com.co/",
+    "twitter": "ceibasoftware"
+  },
+  {
+    "sponsorId": 95,
+    "globalRanking": 4,
+    "name": "Compartimoss",
+    "logoFileName": "compartimoss",
+    "webSite": "http://www.compartimoss.com/"
+  },
+  {
+    "sponsorId": 96,
+    "globalRanking": 4,
+    "name": "Intergrupo",
+    "logoFileName": "intergrupo",
+    "webSite": "http://www.intergrupo.com/"
+  },
+  {
+    "sponsorId": 97,
+    "globalRanking": 4,
+    "name": "Growth Acceleration Partners",
+    "logoFileName": "GrowthAccelerationPartners",
+    "webSite": "https://www.growthaccelerationpartners.com/careers/"
+  },
+  {
+    "sponsorId": 98,
+    "globalRanking": 4,
+    "name": "Team International",
+    "logoFileName": "TeamInternational",
+    "webSite": "http://www.teaminternational.com/"
+  },
+  {
+    "sponsorId": 99,
+    "globalRanking": 4,
+    "name": "MAS Global",
+    "logoFileName": "MASGlobal",
+    "webSite": "http://www.masglobalconsulting.com/"
+  },
+  {
+    "sponsorId": 100,
+    "globalRanking": 4,
+    "name": "Areamovil",
+    "logoFileName": "areamovil",
+    "webSite": "http://areamovil.com.co/"
+  },
+  {
+    "sponsorId": 101,
+    "globalRanking": 4,
+    "name": "Satrack",
+    "logoFileName": "satrack",
+    "webSite": "http://www.satrack.com/"
+  },
+  {
+    "sponsorId": 102,
+    "globalRanking": 2,
+    "name": "Docker",
+    "logoFileName": "docker",
+    "webSite": "https://www.docker.com/"
+  },
+  {
+    "sponsorId": 103,
+    "globalRanking": 4,
+    "name": "MDE-NET",
+    "logoFileName": "mdenet",
+    "webSite": "https://www.meetup.com/MDE-NET/",
+    "twitter": "mdedotnet"
+  },
+  {
+    "sponsorId": 104,
+    "globalRanking": 4,
+    "name": "Yuxi",
+    "logoFileName": "yuxi",
+    "webSite": "http://yuxiglobal.com/"
+  },
+  {
+    "sponsorId": 105,
+    "globalRanking": 4,
+    "name": "C-Sharp Community Colombia",
+    "logoFileName": "csharpcommunitycolombia",
+    "webSite": "http://csharpcommunity.org/"
+  },
+  {
+    "sponsorId": 106,
+    "globalRanking": 4,
+    "name": "PSL",
+    "logoFileName": "pslcolombia",
+    "webSite": "http://www.psl.com.co/"
+  },
+  {
+    "sponsorId": 107,
+    "globalRanking": 4,
+    "name": "Axede",
+    "logoFileName": "axede",
+    "webSite": "https://www.axede.com.co/"
+  },
+  {
+    "sponsorId": 108,
+    "globalRanking": 4,
+    "name": "Universidad Pascual Bravo",
+    "logoFileName": "pascualbravo",
+    "webSite": "http://pascualbravo.edu.co/"
+  },
+  {
+    "sponsorId": 109,
+    "globalRanking": 4,
+    "name": "toctoc viajes",
+    "logoFileName": "toctocviajes",
+    "webSite": "https://www.toctocviajes.com/"
+  },
+  {
+    "sponsorId": 110,
+    "globalRanking": 4,
+    "name": "Alianza Uruguay - Estados Unidos",
+    "logoFileName": "alianzauruguayeeuu",
+    "webSite": "http://www.alianza.edu.uy/"
+  },
+  {
+    "sponsorId": 111,
+    "globalRanking": 4,
+    "name": "Fx2",
+    "logoFileName": "fx2",
+    "webSite": "http://fx2.com.uy/"
+  },
+  {
+    "sponsorId": 112,
+    "globalRanking": 2,
+    "name": "Pepsi",
+    "logoFileName": "pepsi",
+    "webSite": "http://www.pepsico.com.uy"
+  },
+  {
+    "sponsorId": 113,
+    "globalRanking": 4,
+    "name": "Zillertal",
+    "logoFileName": "zillertal",
+    "webSite": "http://www.fnc.com.uy/bebida/zilertal/"
+  },
+  {
+    "sponsorId": 114,
+    "globalRanking": 4,
+    "name": "Da7os",
+    "logoFileName": "da7os",
+    "webSite": "http://www.da7os.com/"
+  },
+  {
+    "sponsorId": 115,
+    "globalRanking": 4,
+    "name": "Cámara Uruguaya de Desarrolladores de Videojuegos del Uruguay",
+    "logoFileName": "cavi",
+    "webSite": "http://cavi.uy/"
+  },
+  {
+    "sponsorId": 116,
+    "globalRanking": 4,
+    "name": "De interés ANII",
+    "logoFileName": "anii-interes",
+    "webSite": "http://www.anii.org.uy/"
+  },
+  {
+    "sponsorId": 117,
+    "globalRanking": 4,
+    "name": "BogoDev",
+    "logoFileName": "bogodev",
+    "webSite": "http://bogodev.org/"
+  },
+  {
+    "sponsorId": 118,
+    "globalRanking": 4,
+    "name": "Comunidad 365",
+    "logoFileName": "comunidad365",
+    "webSite": "https://www.comunidad365.com/"
+  },
+  {
+    "sponsorId": 119,
+    "globalRanking": 4,
+    "name": "TSI",
+    "logoFileName": "tsi",
+    "webSite": "http://tsi.com.co/"
+  },
+
+  {
+    "sponsorId": 120,
+    "globalRanking": 4,
+    "name": "Synergy TPC",
+    "logoFileName": "synergytpc",
+    "webSite": "http://synergytpc.com/"
+  },
+
+  {
+    "sponsorId": 121,
+    "globalRanking": 4,
+    "name": "Neurons LATAM",
+    "logoFileName": "Neurons",
+    "webSite": "https://www.meetup.com/es-ES/Neurons-Latam/"
+  },
+
+  {
+    "sponsorId": 122,
+    "globalRanking": 4,
+    "name": "Codies",
+    "logoFileName": "Codies",
+    "webSite": "http://codies.org/"
+  },
+
+  {
+    "sponsorId": 123,
+    "globalRanking": 4,
+    "name": "Universidad de Montevideo",
+    "logoFileName": "UniversidadDeMontevideo",
+    "webSite": "http://www.um.edu.uy/"
+  },
+
+  {
+    "sponsorId": 124,
+    "globalRanking": 3,
+    "name": "Endava",
+    "logoFileName": "Endava",
+    "webSite": "https://www.endava.com/"
+  },
+
+  {
+    "sponsorId": 125,
+    "globalRanking": 3,
+    "name": "NDepend",
+    "logoFileName": "NDepend",
+    "webSite": "https://www.ndepend.com/"
+  },
+
+  {
+    "sponsorId": 126,
+    "globalRanking": 2,
+    "name": "Stickermule Uruguay",
+    "logoFileName": "stickermule",
+    "webSite": "https://www.stickermule.com/supports/NETConfUY",
+    "twitter": "stickermule"
+  },
+
+  {
+    "sponsorId": 127,
+    "globalRanking": 4,
+    "name": "Baufest",
+    "logoFileName": "baufest",
+    "webSite": "http://www.baufest.com/",
+    "twitter": "Baufest_AR"
+  },
+
+  {
+    "sponsorId": 128,
+    "globalRanking": 4,
+    "name": "DataArt",
+    "logoFileName": "dataart",
+    "webSite": "https://www.dataart.com.ar/",
+    "twitter": "DataArt_BA"
+  },
+
+  {
+    "sponsorId": 129,
+    "globalRanking": 4,
+    "name": "VirtualMind",
+    "logoFileName": "virtualmind",
+    "webSite": "https://www.virtualmind.io/",
+    "twitter": "VirtualmindArg"
+  },
+
+  {
+    "sponsorId": 130,
+    "globalRanking": 4,
+    "name": "Wolox",
+    "logoFileName": "wolox",
+    "webSite": "https://www.wolox.com.ar/",
+    "twitter": "wolox"
+  },
+
+  {
+    "sponsorId": 131,
+    "globalRanking": 4,
+    "name": "Hexacta",
+    "logoFileName": "hexacta",
+    "webSite": "https://www.hexacta.com/",
+    "twitter": "hexacta"
+  },
+
+  {
+    "sponsorId": 132,
+    "globalRanking": 4,
+    "name": "FishAngler",
+    "logoFileName": "fishangler",
+    "webSite": "https://www.fishangler.com/",
+    "twitter": "FishAnglerApp"
+  },
+
+  {
+    "sponsorId": 133,
+    "globalRanking": 4,
+    "name": "GCBA",
+    "logoFileName": "gcba",
+    "webSite": "http://www.buenosaires.gob.ar/",
+    "twitter": "gcba"
+  },
+
+  {
+    "sponsorId": 134,
+    "globalRanking": 4,
+    "name": "RSK",
+    "logoFileName": "rsk",
+    "webSite": "https://www.rsk.co/",
+    "twitter": "RSKsmart"
+  },
+
+  {
+    "sponsorId": 135,
+    "globalRanking": 4,
+    "name": "Telefonica",
+    "logoFileName": "telefonica",
+    "webSite": "http://www.telefonica.co/"
+  },
+
+  {
+    "sponsorId": 136,
+    "name": "Southworks",
+    "logoFileName": "southworks",
+    "webSite": "http://www.southworks.com/"
+  },
+
+  {
+    "sponsorId": 137,
+    "globalRanking": 4,
+    "name": "Metric Arts",
+    "logoFileName": "metricarts",
+    "webSite": "https://metricarts.com/",
+    "twitter": "metricarts"
+  },
+
+  {
+    "sponsorId": 138,
+    "globalRanking": 4,
+    "name": "LatinShare",
+    "logoFileName": "latinshare",
+    "webSite": "http://latinshare.com/",
+    "twitter": "Latinshare"
+  },
+
+  {
+    "sponsorId": 139,
+    "globalRanking": 4,
+    "name": "SoftwareONE",
+    "logoFileName": "softwareone",
+    "webSite": "https://www.softwareone.com",
+    "twitter": "SoftwareONE"
+  },
+
+  {
+    "sponsorId": 140,
+    "globalRanking": 4,
+    "name": "Punto Ticket",
+    "logoFileName": "puntoticket",
+    "webSite": "https://www.puntoticket.com/",
+    "twitter": "puntoticket"
+  },
+
+  {
+    "sponsorId": 141,
+    "globalRanking": 4,
+    "name": "Duoc UC",
+    "logoFileName": "duoc",
+    "webSite": "http://www.duoc.cl/",
+    "twitter": "DuocUC"
+  },
+
+  {
+    "sponsorId": 142,
+    "globalRanking": 4,
+    "name": "Interfaz Podcast",
+    "logoFileName": "interfazpodcast",
+    "webSite": "http://rdiazconcha.com/interfaz-podcast/",
+    "twitter": "InterfazPodcast"
+  },
+
+  {
+    "sponsorId": 143,
+    "globalRanking": 4,
+    "name": "Switch Software Solutions",
+    "logoFileName": "switch",
+    "webSite": "https://switchsoftware.us/",
+    "twitter": "switchsoftware"
+  },
+
+  {
+    "sponsorId": 144,
+    "globalRanking": 4,
+    "name": "Intelligent Training",
+    "logoFileName": "intelligenttraining",
+    "webSite": "https://www.itcolombia.com/",
+    "twitter": "ITCoficial"
+  },
+
+  {
+    "sponsorId": 145,
+    "globalRanking": 4,
+    "name": "iT Synergy",
+    "logoFileName": "itsynergy",
+    "webSite": "http://www.itsynergy.co/",
+    "twitter": "itsynergy"
+  },
+
+  {
+    "sponsorId": 146,
+    "globalRanking": 4,
+    "name": "Stickermule Chile",
+    "logoFileName": "stickermule",
+    "webSite": "https://mule.to/NETConfCL",
+    "twitter": "stickermule"
+  },
+
+  {
+    "sponsorId": 147,
+    "globalRanking": 4,
+    "name": "Digix",
+    "logoFileName": "digix",
+    "webSite": "https://web.digix.co",
+    "twitter": "digixco"
+  },
+
+  {
+    "sponsorId": 148,
+    "globalRanking": 4,
+    "name": "DGENIX",
+    "logoFileName": "dgenix",
+    "webSite": "http://d-genix.com",
+    "twitter": "DGenix"
+  }
+]

@@ -12,10 +12,12 @@ namespace vopen_api.Controllers
     public class EditionsController : ControllerBase
     {
         private readonly EditionsRepository editionsRepository;
+        private readonly LegacyGlobalRepository legacyGlobalRepository;
 
-        public EditionsController(EditionsRepository editionsRepository)
+        public EditionsController(EditionsRepository editionsRepository, LegacyGlobalRepository legacyGlobalRepository)
         {
             this.editionsRepository = editionsRepository;
+            this.legacyGlobalRepository = legacyGlobalRepository;
         }
 
         // GET api/v1/editions
@@ -30,6 +32,11 @@ namespace vopen_api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(string id)
         {
+            if (id == "vopen-global-legacy")
+            {
+                return Ok(this.legacyGlobalRepository.GetEdition(id));
+            }
+
             var language = this.GetLanguage();
             var result = await this.editionsRepository.GetByLanguageAndId(language, id);
 

@@ -59,6 +59,7 @@ namespace vopen_api
             services.AddScoped<EditionsRepository, EditionsRepository>();
             services.AddScoped<EditionsActivitiesRepository, EditionsActivitiesRepository>();
             services.AddScoped<EditionsActivitiesScoresRepository, EditionsActivitiesScoresRepository>();
+            services.AddScoped<LegacyGlobalRepository, LegacyGlobalRepository>();
 
             // TODO: remove
             // var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
