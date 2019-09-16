@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +19,7 @@ namespace vopen_api.Repositories
 
         public async Task<EditionActivityScore> Vote(string editionActivityId, string userEmail, double score, string comments)
         {
-            var editionActivity = this.dbContext.Set<EditionActivity>().Where(c => c.Id == editionActivityId).FirstOrDefault();
+            var editionActivity = await this.dbContext.Set<EditionActivity>().Where(c => c.Id == editionActivityId).FirstOrDefaultAsync();
 
             if (editionActivity == null)
             {
@@ -37,7 +35,8 @@ namespace vopen_api.Repositories
             };
 
             this.dbContext.EditionsActivitiesScores.Add(editionActivityScore);
-            this.dbContext.SaveChanges();
+            await this.dbContext.SaveChangesAsync();
+
             return editionActivityScore;
         }
 
