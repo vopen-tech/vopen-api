@@ -120,8 +120,8 @@ namespace vopen_api.Controllers
                 return false;
             }
 
-            var isValidUser = body.User != null && body.User.ToLower() == this.mobileAppUser;
-            var isValidToken = body.Token != null && body.Token.ToUpper() == this.mobileAppToken;
+            var isValidUser = body.User != null && body.User.ToLower() == this.mobileAppUser.ToLower();
+            var isValidToken = body.Token != null && body.Token.ToLower() == this.mobileAppToken.ToLower();
             return isValidUser && isValidToken;
         }
 
