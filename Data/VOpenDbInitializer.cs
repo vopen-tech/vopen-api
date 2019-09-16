@@ -483,7 +483,7 @@ namespace vopen_api.Data
                 var uySpeaker5 = new User
                 {
                     Country = Constants.COUNTRIES_URUGUAY,
-                    ImageUrl = "https://media.licdn.com/dms/image/C4E03AQFJvFLBLepc3Q/profile-displayphoto-shrink_200_200/0?e=1568246400&v=beta&t=J6t8oMnhBBRWv1I_uQxbj9O9LJESOIjWCOOxkJ5no-c",
+                    ImageUrl = "https://i.imgur.com/EThBZCw.jpg",
                     Details = new UserDetail[]
                     {
                         new UserDetail { Name = "Felipe Schneider", Description = "", JobTitle = "DBA Admin", Company = "Pyxis", Language = Constants.LANGUAGES_SPANISH }
@@ -755,7 +755,7 @@ namespace vopen_api.Data
                     },
                     EditionTickets = new List<EditionTicket>()
                     {
-                        new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2019-08-27T00:00:00.000Z", EndDate = "2019-10-04T00:00:00.000Z", BuyLinks = arBuyLinksJson },
+                        new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2019-10-03T00:00:00.000Z", EndDate = "2019-10-03T00:00:00.000Z", BuyLinks = arBuyLinksJson },
                     },
                     Sponsors = new List<EditionSponsor>()
                     {
