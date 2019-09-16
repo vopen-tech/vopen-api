@@ -36,7 +36,7 @@ namespace vopen_api.Controllers
         {
             if (!this.IsValidRequest(body))
             {
-                return Unauthorized();
+                return Unauthorized("Invalid client");
             }
 
             var language = this.GetLanguage();
@@ -51,7 +51,7 @@ namespace vopen_api.Controllers
         {
             if (!this.IsValidRequest(attendeeBody))
             {
-                return Unauthorized();
+                return Unauthorized("Invalid client");
             }
 
             try
