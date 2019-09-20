@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using vopen_api.Data;
 using vopen_api.Repositories;
@@ -52,6 +53,8 @@ namespace vopen_api
                 });
             });
 
+            services.AddMemoryCache();
+            services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<VOpenDbContext>(builder => builder.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
