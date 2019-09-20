@@ -394,12 +394,35 @@ namespace vopen_api.Data
                 context.Users.Add(user25);
 
                 // Create sponsors
-                var mulesoft = new Sponsor
+                var kaizen = new Sponsor
                 {
-                    Name = "MuleSoft",
-                    ImageUrl = "https://i.imgur.com/5Frs26a.png",
-                    Url = "https://www.mulesoft.com"
+                    Name = "Kaizen Softworks",
+                    ImageUrl = "https://i.imgur.com/njfCNqo.png",
+                    Url = "http://kzsoftworks.com"
                 };
+                var endava = new Sponsor
+                {
+                    Name = "Endava",
+                    ImageUrl = "https://i.imgur.com/U7PZHiu.png",
+                    Url = "https://www.endava.com/"
+                };
+                var wyeworks = new Sponsor
+                {
+                    Name = "WyeWorks",
+                    ImageUrl = "https://i.imgur.com/x598b6C.png",
+                    Url = "https://www.wyeworks.com"
+                };
+                var elObservador = new Sponsor
+                {
+                    Name = "El Observador",
+                    ImageUrl = "https://i.imgur.com/R48lvSw.png",
+                    Url = "https://elobservador.com.uy"
+                };
+
+                context.Sponsors.Add(kaizen);
+                context.Sponsors.Add(endava);
+                context.Sponsors.Add(wyeworks);
+                context.Sponsors.Add(elObservador);
 
                 // Create global edition
                 var globalEdition = new Edition
@@ -645,6 +668,14 @@ namespace vopen_api.Data
                         new EditionOrganizer { User = user24 },
                         new EditionOrganizer { User = user25 },
                     },
+                    Sponsors = new List<EditionSponsor>()
+                    {
+                        // use a number for the ID because it is needed for the app mobile (will be removed later on)
+                        new EditionSponsor { Id = "1", Sponsor = kaizen, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "2", Sponsor = endava, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "3", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "4", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
+                    },
                     Activities = new List<EditionActivity>
                     {
                         new EditionActivity {
@@ -756,11 +787,6 @@ namespace vopen_api.Data
                     EditionTickets = new List<EditionTicket>()
                     {
                         new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2019-10-03T00:00:00.000Z", EndDate = "2019-10-03T00:00:00.000Z", BuyLinks = arBuyLinksJson },
-                    },
-                    Sponsors = new List<EditionSponsor>()
-                    {
-                        // use a number for the ID because it is needed for the app mobile (will be removed later on)
-                        new EditionSponsor { Id = "1", Sponsor = mulesoft, Type = Constants.SPONSOR_SILVER }
                     }
                 };
 
