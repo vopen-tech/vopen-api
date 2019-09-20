@@ -57,8 +57,7 @@ namespace vopen_api.Controllers
                 return Ok(cacheResult);
             }
 
-            this.logger.LogInformation($"Not found in cache.");
-
+            this.logger.LogInformation($"Not found in cache");
             
             var edition = await this.editionsRepository.GetByLanguageAndId(language, editionId);
             var legacyConfSponsors = LegacyConfSponsorsUtils.ToLegacyConfSponsorsDTO(edition.Sponsors);
@@ -85,7 +84,7 @@ namespace vopen_api.Controllers
                 return Ok(cacheResult);
             }
 
-            this.logger.LogInformation($"Not found in cache.");
+            this.logger.LogInformation($"Not found in cache");
 
             try
             {
