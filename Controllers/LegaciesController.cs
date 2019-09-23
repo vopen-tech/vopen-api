@@ -5,7 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using vopen_api.Models.legacy;
 using vopen_api.Repositories;
@@ -18,13 +20,18 @@ namespace vopen_api.Controllers
     {
         private readonly EditionsRepository editionsRepository;
         private readonly IConfiguration configuration;
-        private readonly string mobileAppUser = "app";
-        private readonly string mobileAppToken = "66197FD1-6C77-4D20-A10D-D27BF2B7D053";
+        private readonly string mobileAppUser;
+        private readonly string mobileAppToken;
 
-        public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration)
+        private readonly ILogger logger;
+        private readonly CacheService cacheService;
+
+        public LegaciesController(EditionsRepository editionsRepository, IConfiguration configuration, ILogger<LegaciesController> logger, IMemoryCache memoryCache)
         {
             this.editionsRepository = editionsRepository;
             this.configuration = configuration;
+            this.logger = logger;
+            this.cacheService = new CacheService(memoryCache);
 
             var configurationMobileApp = configuration.GetSection("MobileApp");
             this.mobileAppUser = configurationMobileApp.GetSection("User").Value;
@@ -40,19 +47,44 @@ namespace vopen_api.Controllers
             }
 
             var language = this.GetLanguage();
+            string cacheKey = $"ConfSponsors-{editionId}-{language}";
+            this.logger.LogInformation($"Retrieving data with key '{cacheKey}' from cache");
+            var cacheResult = this.cacheService.GetValue<LegacyConfSponsorsDTO>(cacheKey);
+
+            if (cacheResult != null)
+            {
+                this.logger.LogInformation($"Retrieved from cache");
+                return Ok(cacheResult);
+            }
+
+            this.logger.LogInformation($"Not found in cache");
+            
             var edition = await this.editionsRepository.GetByLanguageAndId(language, editionId);
             var legacyConfSponsors = LegacyConfSponsorsUtils.ToLegacyConfSponsorsDTO(edition.Sponsors);
+            this.cacheService.SetValue(cacheKey, legacyConfSponsors);
 
             return Ok(legacyConfSponsors);
         }
 
-        [HttpPost("IsValidAttendee")]
-        public async Task<IActionResult> IsValidAttendee(LegacyIsValidAttendeeRequestBody attendeeBody)
+        [HttpPost("{editionId}/IsValidAttendee")]
+        public async Task<IActionResult> IsValidAttendee(string editionId, LegacyIsValidAttendeeRequestBody attendeeBody)
         {
             if (!this.IsValidRequest(attendeeBody))
             {
                 return Unauthorized("Invalid client");
             }
+
+            string cacheKey = $"IsValidAttendee-{editionId}-{attendeeBody.Email}";
+            this.logger.LogInformation($"Retrieving data with key '{cacheKey}' from cache");
+            var cacheResult = this.cacheService.GetValue<LegacyIsValidAttendeeResponseBody>(cacheKey);
+
+            if (cacheResult != null)
+            {
+                this.logger.LogInformation($"Retrieved from cache");
+                return Ok(cacheResult);
+            }
+
+            this.logger.LogInformation($"Not found in cache");
 
             try
             {
@@ -66,7 +98,7 @@ namespace vopen_api.Controllers
 
                 while(!attendeeFound && hasMorePages)
                 {
-                    var response = await this.GetAttendeesInEvent(attendeeBody.EventId, page);
+                    var response = await this.GetAttendeesInEdition(editionId, page);
                     var attendee = response.attendees
                         .FirstOrDefault(item =>
                           item.Profile.Email.ToLowerInvariant() == attendeeBody.Email.ToLowerInvariant()
@@ -79,6 +111,12 @@ namespace vopen_api.Controllers
                 }
                
                 result.IsValid = attendeeFound;
+
+                if (result.IsValid)
+                {
+                    this.cacheService.SetValue(cacheKey, result);
+                }
+
                 return Ok(result);
             }
             catch (Exception e)
@@ -87,7 +125,7 @@ namespace vopen_api.Controllers
             }
         }
 
-        private async Task<LegacyEventbriteAttendeesResponse> GetAttendeesInEvent(string eventId, int page = 1)
+        private async Task<LegacyEventbriteAttendeesResponse> GetAttendeesInEdition(string eventId, int page = 1)
         {
 
             var configurationEventbrite = configuration.GetSection("Eventbrite");
@@ -144,7 +182,6 @@ namespace vopen_api.Controllers
 
     public class LegacyIsValidAttendeeRequestBody : LegacyRequestBody
     {
-        public string EventId { get; set; }
         public string Email { get; set; }
     }
 
