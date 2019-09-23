@@ -418,6 +418,18 @@ namespace vopen_api.Data
                     ImageUrl = "https://i.imgur.com/R48lvSw.png",
                     Url = "https://elobservador.com.uy"
                 };
+                var antel = new Sponsor
+                {
+                    Name = "Antel",
+                    ImageUrl = "https://i.imgur.com/T6vHq3x.png",
+                    Url = "https://www.antel.com.uy/"
+                };
+                var nareia = new Sponsor
+                {
+                    Name = "Nareia",
+                    ImageUrl = "https://i.imgur.com/qwHigPt.png",
+                    Url = "https://nareia.com.uy/"
+                };
 
                 context.Sponsors.Add(kaizen);
                 context.Sponsors.Add(endava);
@@ -646,8 +658,8 @@ namespace vopen_api.Data
                     Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019", Date = "21, 22 y 23 de Octubre" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019", Date = "October 21st, 22nd and 23rd" }
+                        new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019", Date = "21, 22 y 23 de Octubre" },
+                        new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019", Date = "October 21st, 22nd and 23rd" }
                     },
                     LocationName = "Torre de las Telecomunicaciones, Antel",
                     LocationFullAddress = "Telecommunications Tower, 11800 Montevideo, Departamento de Montevideo, Uruguay",
@@ -673,8 +685,10 @@ namespace vopen_api.Data
                         // use a number for the ID because it is needed for the app mobile (will be removed later on)
                         new EditionSponsor { Id = "1", Sponsor = kaizen, Type = Constants.SPONSOR_GOLD },
                         new EditionSponsor { Id = "2", Sponsor = endava, Type = Constants.SPONSOR_GOLD },
-                        new EditionSponsor { Id = "3", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
-                        new EditionSponsor { Id = "4", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "3", Sponsor = antel, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "4", Sponsor = nareia, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "5", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "6", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
                     },
                     Activities = new List<EditionActivity>
                     {
