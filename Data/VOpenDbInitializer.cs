@@ -776,7 +776,7 @@ namespace vopen_api.Data
                 // Create AR Edition
                 var aryBuyLinks = new List<TicketLink>()
                 {
-                    new TicketLink { Label = "Inscribite", Url = "https://www.eventbrite.com/e/vopen-ar-2019-registration-69811418833" },
+                    new TicketLink { Label = "Inscribite", Url = "https://vopen-ar-2019.eventbrite.com" },
                 };
                 var arBuyLinksJson = JsonConvert.SerializeObject(aryBuyLinks);
 
@@ -786,11 +786,11 @@ namespace vopen_api.Data
                     Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen AR 2019", Date = "3, 4 y 5 de Octubre" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen AR 2019", Date = "October 3rd, 4th and 5th" }
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen AR 2019", Date = "5 de Octubre" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen AR 2019", Date = "October 5th" }
                     },
-                    LocationName = "Auditorio de la Casa del GCBA",
-                    LocationFullAddress = "Uspallata 3160, Ciudad Autónoma de Buenos Aires, Argentina",
+                    LocationName = "Microsoft Argentina",
+                    LocationFullAddress = "Bouchard 710, Ciudad Autónoma de Buenos Aires, Argentina",
                     Organizers = new List<EditionOrganizer>
                     {
                         new EditionOrganizer { User = user12 },
@@ -800,7 +800,7 @@ namespace vopen_api.Data
                     },
                     EditionTickets = new List<EditionTicket>()
                     {
-                        new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2019-10-03T00:00:00.000Z", EndDate = "2019-10-03T00:00:00.000Z", BuyLinks = arBuyLinksJson },
+                        new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2019-09-01T00:00:00.000Z", EndDate = "2019-10-07T00:00:00.000Z", BuyLinks = arBuyLinksJson },
                     }
                 };
 
