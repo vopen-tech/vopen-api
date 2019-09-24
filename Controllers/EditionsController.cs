@@ -47,7 +47,7 @@ namespace vopen_api.Controllers
             }
 
             var language = this.GetLanguage();            
-            string cacheKey = $"Editions-GetByIdAsync-{id}-{language}";
+            var cacheKey = $"Editions-GetByIdAsync-{id}-{language}";
             var cacheResult = this.cacheService.GetValue<EditionDTO>(cacheKey);
 
             if (cacheResult != null) {
@@ -62,25 +62,23 @@ namespace vopen_api.Controllers
                 return NotFound();
             }
 
-            this.cacheService.SetValue(cacheKey, cacheResult);
+            this.cacheService.SetValue(cacheKey, result);
             return Ok(result);
         }
 
         private EditionDTO  GetEditionFromLegacy(string id) {
 
-            string cacheKey = $"Editions-GetByIdAsync-legacy-{id}";
+            var cacheKey = $"Editions-GetByIdAsync-legacy-{id}";
             var cacheResult = this.cacheService.GetValue<EditionDTO>(cacheKey);
 
             if (cacheResult != null)
             {
                 this.logger.LogInformation($"Retrieving data with key '{cacheKey}' from cache");
+                return cacheResult;
             }
-            else
-            {
-                cacheResult = this.legacyGlobalRepository.GetEdition(id);
-                this.cacheService.SetValue(cacheKey, cacheResult);
-            }
-
+            
+            cacheResult = this.legacyGlobalRepository.GetEdition(id);
+            this.cacheService.SetValue(cacheKey, cacheResult);            
             return cacheResult;
         }
 
