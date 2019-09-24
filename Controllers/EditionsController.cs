@@ -33,7 +33,19 @@ namespace vopen_api.Controllers
         public async Task<IEnumerable<EditionDTO>> GetAllAsync()
         {
             var language = this.GetLanguage();
-            return await this.editionsRepository.GetAllByLanguage(language);
+            var cacheKey = $"Editions-GetByIdAsync";
+            var cacheResult = this.cacheService.GetValue<IEnumerable<EditionDTO>>(cacheKey);
+
+            if (cacheResult != null)
+            {
+                this.logger.LogInformation($"Retrieving data with key '{cacheKey}' from cache");
+                return cacheResult;
+            }
+
+            cacheResult = await this.editionsRepository.GetAllByLanguage(language);
+            this.cacheService.SetValue(cacheKey, cacheResult);
+
+            return cacheResult;
         }
 
         // GET api/v1/editions/5
