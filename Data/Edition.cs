@@ -136,7 +136,7 @@ namespace vopen_api.Data
         public ICollection<EditionActivityDetail> Details { get; set; }
         
         [Required]
-        public ICollection<User> Presenters { get; set; }
+        public ICollection<EditionActivityUser> Users { get; set; }
 
         [Required]
         public ICollection<EditionActivityScore> Scores { get; set; }
@@ -165,7 +165,7 @@ namespace vopen_api.Data
         public EditionActivity()
         {
             this.Details = new List<EditionActivityDetail>();
-            this.Presenters = new List<User>();
+            this.Users = new List<EditionActivityUser>();
             this.Scores = new List<EditionActivityScore>();
         }
     }
@@ -190,16 +190,15 @@ namespace vopen_api.Data
         public string Description { get; set; }
     }
 
-    [Table("EditionsActivitiesPresenters")]
-
-    public class EditionActivityPresenter
+    [Table("EditionsActivitiesUsers")]
+    public class EditionActivityUser
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
         [Required]
-        [ForeignKey("EditionsActivityId")]
+        [ForeignKey("EditionActivityId")]
         public EditionActivity EditionActivity { get; set; }
 
         [Required]

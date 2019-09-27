@@ -2,7 +2,7 @@
 
 namespace vopen_api.Migrations
 {
-    public partial class InitialSetup : Migration
+    public partial class Initial_Setup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,6 +24,7 @@ namespace vopen_api.Migrations
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -38,11 +39,7 @@ namespace vopen_api.Migrations
                     Id = table.Column<string>(nullable: false),
                     EventId = table.Column<string>(nullable: false),
                     LocationName = table.Column<string>(nullable: true),
-                    LocationFullAddress = table.Column<string>(nullable: true),
-                    TicketType = table.Column<string>(nullable: true),
-                    TicketPrice = table.Column<string>(nullable: true),
-                    TicketSaleStartDate = table.Column<string>(nullable: true),
-                    TicketSaleEndDate = table.Column<string>(nullable: true)
+                    LocationFullAddress = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,8 +80,12 @@ namespace vopen_api.Migrations
                     Id = table.Column<string>(nullable: false),
                     EditionId = table.Column<string>(nullable: false),
                     Type = table.Column<string>(nullable: false),
+                    Day = table.Column<string>(nullable: false),
+                    Track = table.Column<string>(nullable: false),
                     Date = table.Column<string>(nullable: false),
-                    Duration = table.Column<string>(nullable: false)
+                    Duration = table.Column<string>(nullable: false),
+                    Tags = table.Column<string>(nullable: false),
+                    Level = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -146,6 +147,29 @@ namespace vopen_api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EditionsTickets",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionId = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Price = table.Column<string>(nullable: true),
+                    StartDate = table.Column<string>(nullable: true),
+                    EndDate = table.Column<string>(nullable: true),
+                    BuyLinks = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsTickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsTickets_Editions_EditionId",
+                        column: x => x.EditionId,
+                        principalTable: "Editions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EditionsActivitiesDetails",
                 columns: table => new
                 {
@@ -172,7 +196,8 @@ namespace vopen_api.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     EditionActivityId = table.Column<string>(nullable: false),
-                    Score = table.Column<int>(nullable: false),
+                    UserEmail = table.Column<string>(nullable: false),
+                    Score = table.Column<double>(nullable: false),
                     Comments = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -207,24 +232,24 @@ namespace vopen_api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EditionsActivitiesPresenters",
+                name: "EditionsActivitiesUsers",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    EditionsActivityId = table.Column<string>(nullable: false),
+                    EditionActivityId = table.Column<string>(nullable: false),
                     UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EditionsActivitiesPresenters", x => x.Id);
+                    table.PrimaryKey("PK_EditionsActivitiesUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EditionsActivitiesPresenters_EditionsActivities_EditionsActivityId",
-                        column: x => x.EditionsActivityId,
+                        name: "FK_EditionsActivitiesUsers_EditionsActivities_EditionActivityId",
+                        column: x => x.EditionActivityId,
                         principalTable: "EditionsActivities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EditionsActivitiesPresenters_Users_UserId",
+                        name: "FK_EditionsActivitiesUsers_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -264,7 +289,9 @@ namespace vopen_api.Migrations
                     UserId = table.Column<string>(nullable: false),
                     Language = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    JobTitle = table.Column<string>(nullable: true),
+                    Company = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -353,19 +380,19 @@ namespace vopen_api.Migrations
                 column: "EditionActivityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EditionsActivitiesPresenters_EditionsActivityId",
-                table: "EditionsActivitiesPresenters",
-                column: "EditionsActivityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EditionsActivitiesPresenters_UserId",
-                table: "EditionsActivitiesPresenters",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_EditionsActivitiesScores_EditionActivityId",
                 table: "EditionsActivitiesScores",
                 column: "EditionActivityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EditionsActivitiesUsers_EditionActivityId",
+                table: "EditionsActivitiesUsers",
+                column: "EditionActivityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EditionsActivitiesUsers_UserId",
+                table: "EditionsActivitiesUsers",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EditionsDetails_EditionId",
@@ -391,6 +418,11 @@ namespace vopen_api.Migrations
                 name: "IX_EditionsSponsors_SponsorId",
                 table: "EditionsSponsors",
                 column: "SponsorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EditionsTickets_EditionId",
+                table: "EditionsTickets",
+                column: "EditionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventsDetails_EventId",
@@ -429,10 +461,10 @@ namespace vopen_api.Migrations
                 name: "EditionsActivitiesDetails");
 
             migrationBuilder.DropTable(
-                name: "EditionsActivitiesPresenters");
+                name: "EditionsActivitiesScores");
 
             migrationBuilder.DropTable(
-                name: "EditionsActivitiesScores");
+                name: "EditionsActivitiesUsers");
 
             migrationBuilder.DropTable(
                 name: "EditionsDetails");
@@ -442,6 +474,9 @@ namespace vopen_api.Migrations
 
             migrationBuilder.DropTable(
                 name: "EditionsSponsors");
+
+            migrationBuilder.DropTable(
+                name: "EditionsTickets");
 
             migrationBuilder.DropTable(
                 name: "EventsDetails");

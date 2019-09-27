@@ -43,6 +43,16 @@ namespace vopen_api.Models
             };
         }
 
+        public static ICollection<UserDTO> ToUsersDTO(ICollection<EditionActivityUser> editionActivityUsers, string language)
+        {
+            if (editionActivityUsers == null)
+            {
+                return new List<UserDTO>();
+            }
+
+            return editionActivityUsers.Select(editionActivityUser => UserUtils.ToUserDTO(editionActivityUser.User, language)).ToList();
+        }
+
         public static ICollection<UserDTO> ToUsersDTO(ICollection<User> users, string language)
         {
             if (users == null)

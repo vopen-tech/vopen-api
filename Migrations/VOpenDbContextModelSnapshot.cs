@@ -96,26 +96,6 @@ namespace vopen_api.Migrations
                     b.ToTable("EditionsActivitiesDetails");
                 });
 
-            modelBuilder.Entity("vopen_api.Data.EditionActivityPresenter", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("EditionsActivityId")
-                        .IsRequired();
-
-                    b.Property<string>("UserId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EditionsActivityId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("EditionsActivitiesPresenters");
-                });
-
             modelBuilder.Entity("vopen_api.Data.EditionActivityScore", b =>
                 {
                     b.Property<string>("Id")
@@ -136,6 +116,26 @@ namespace vopen_api.Migrations
                     b.HasIndex("EditionActivityId");
 
                     b.ToTable("EditionsActivitiesScores");
+                });
+
+            modelBuilder.Entity("vopen_api.Data.EditionActivityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("EditionActivityId")
+                        .IsRequired();
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EditionActivityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EditionsActivitiesUsers");
                 });
 
             modelBuilder.Entity("vopen_api.Data.EditionDetail", b =>
@@ -413,24 +413,24 @@ namespace vopen_api.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("vopen_api.Data.EditionActivityPresenter", b =>
-                {
-                    b.HasOne("vopen_api.Data.EditionActivity", "EditionActivity")
-                        .WithMany()
-                        .HasForeignKey("EditionsActivityId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("vopen_api.Data.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("vopen_api.Data.EditionActivityScore", b =>
                 {
                     b.HasOne("vopen_api.Data.EditionActivity", "EditionActivity")
                         .WithMany("Scores")
                         .HasForeignKey("EditionActivityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("vopen_api.Data.EditionActivityUser", b =>
+                {
+                    b.HasOne("vopen_api.Data.EditionActivity", "EditionActivity")
+                        .WithMany()
+                        .HasForeignKey("EditionActivityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("vopen_api.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -487,7 +487,7 @@ namespace vopen_api.Migrations
             modelBuilder.Entity("vopen_api.Data.User", b =>
                 {
                     b.HasOne("vopen_api.Data.EditionActivity")
-                        .WithMany("Presenters")
+                        .WithMany("Users")
                         .HasForeignKey("EditionActivityId");
                 });
 

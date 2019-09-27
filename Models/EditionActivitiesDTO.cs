@@ -94,7 +94,7 @@ namespace vopen_api.Models
                 Duration = editionActivity.Duration,
                 Title = details.Title,
                 Description = details.Description,
-                Presenters = UserUtils.ToUsersDTO(editionActivity.Presenters, language),
+                Presenters = UserUtils.ToUsersDTO(editionActivity.Users, language),
             };
         }
     }

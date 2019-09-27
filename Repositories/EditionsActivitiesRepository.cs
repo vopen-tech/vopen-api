@@ -23,10 +23,12 @@ namespace vopen_api.Repositories
                 .Set<EditionActivity>()
                 .Where(c => c.Edition.Id == editionId)
                 .Include(c => c.Details)
-                .Include(c => c.Presenters)
+                .Include(c => c.Users)
+                    .ThenInclude(presenter => presenter.User)
                     .ThenInclude(presenter => presenter.Details)
-                .Include(c => c.Presenters)
-                    .ThenInclude(presenter => presenter.SocialLinks)
+                .Include(c => c.Users)
+                    .ThenInclude(presenter => presenter.User)
+                    .ThenInclude(user => user.SocialLinks)
                 .Select(item => EditionActivityUtils.ToEditionActivityDTO(item, language))
                 .ToListAsync();
 
@@ -39,10 +41,12 @@ namespace vopen_api.Repositories
                 .Set<EditionActivity>()
                 .Where(c => c.Id == id)
                 .Include(c => c.Details)
-                .Include(c => c.Presenters)
+                .Include(c => c.Users)
+                    .ThenInclude(presenter => presenter.User)
                     .ThenInclude(presenter => presenter.Details)
-                .Include(c => c.Presenters)
-                    .ThenInclude(presenter => presenter.SocialLinks)
+                .Include(c => c.Users)
+                    .ThenInclude(presenter => presenter.User)
+                    .ThenInclude(user => user.SocialLinks)
                 .Select(item => EditionActivityUtils.ToEditionActivityDTO(item, language))
                 .FirstOrDefaultAsync();
 

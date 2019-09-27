@@ -21,7 +21,7 @@ namespace vopen_api.Data
 
         public DbSet<EditionActivity> EditionsActivities { get; set; }
 
-        public DbSet<EditionActivityPresenter> EditionsActivitiesPresenters { get; set; }
+        public DbSet<EditionActivityUser> EditionsActivitiesUsers { get; set; }
 
         public DbSet<EditionActivityScore> EditionsActivitiesScores { get; set; }
 

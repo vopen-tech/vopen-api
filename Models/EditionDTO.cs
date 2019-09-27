@@ -69,7 +69,7 @@ namespace vopen_api.Models
         {
             var details = edition.Details.FirstOrDefault(item => item.Language == language) ?? edition.Details.First();
             var activities = EditionActivityUtils.ToEditionActivitiesDTO(edition.Activities, language);
-            var speakers = UserUtils.ToUsersDTO(edition.Activities.SelectMany(c => c.Presenters).Distinct().ToList(), language);
+            var speakers = UserUtils.ToUsersDTO(edition.Activities.SelectMany(c => c.Users).Distinct().ToList(), language);
 
             return new EditionDTO
             {

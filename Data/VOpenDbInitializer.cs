@@ -409,7 +409,7 @@ namespace vopen_api.Data
                 var wyeworks = new Sponsor
                 {
                     Name = "WyeWorks",
-                    ImageUrl = "https://i.imgur.com/x598b6C.png",
+                    ImageUrl = "https://i.imgur.com/iGiYWG9.png",
                     Url = "https://www.wyeworks.com"
                 };
                 var elObservador = new Sponsor
@@ -693,77 +693,97 @@ namespace vopen_api.Data
                     Activities = new List<EditionActivity>
                     {
                         new EditionActivity {
-                            Presenters = new List<User> { uySpeaker1 },
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker1 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "tag1, tag2, tag3", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 1" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker2 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker2} },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:30:00.000Z", Tags = "tag1, tag2", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 2" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker3 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker3 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T10:00:00.000Z", Tags = "tag1, tag2, tag3, tag4, tag5", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 3" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker4 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker4 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "tag1, tag2", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 2 - Talk 1" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker5 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker5 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T09:30:00.000Z", Tags = "tag1", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 2 - Talk 2" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker6 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker6 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-19T10:00:00.000Z", Tags = "tag1, tag2, tag3", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 2 - Talk 3" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker7 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker7 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T09:00:00.000Z", Tags = "tag1, tag2", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 1 - Talk 1" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker8 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker8 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T09:30:00.000Z", Tags = "tag1", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 1 - Talk 2" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker9 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker9 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T10:00:00.000Z", Tags = "tag1, tag2", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 1 - Talk 3" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker10 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker10 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-20T09:00:00.000Z", Tags = "tag1, tag2, tag3", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 2 - Track 2 - Talk 1" }
                             }
                         },
-                        new EditionActivity { Presenters = new List<User> { uySpeaker11, uySpeaker12 },
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker11 }, new EditionActivityUser { User = uySpeaker12 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 2", Duration = "00:30:00", Date = "2019-08-20T09:30:00.000Z", Tags = "tag1, tag2, tag3, tag4, tag5", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
@@ -774,6 +794,127 @@ namespace vopen_api.Data
                 };
 
                 // Create AR Edition
+
+                // Speakers
+                var arSpeaker1 = new User
+                {
+                    Country = Constants.COUNTRIES_ARGENTINA,
+                    ImageUrl = "https://i.imgur.com/cD0SXUl.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "María Alejandra Mazzini", Description = "", JobTitle = "Co-Fundadora", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/malejandramazzini/" },
+                    }
+                };
+                var arSpeaker2 = new User
+                {
+                    Country = Constants.COUNTRIES_ARGENTINA,
+                    ImageUrl = "https://i.imgur.com/m5W4jCV.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Juan Francisco Escudero", Description = "", JobTitle = "Eng. Manager", Company = "Medallia", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/juan-francisco-escudero" },
+                    }
+                };
+                var arSpeaker3 = new User
+                {
+                    Country = Constants.COUNTRIES_ARGENTINA,
+                    ImageUrl = "https://i.imgur.com/XQD0EcR.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Jonathan Erlich", Description = "", JobTitle = "Senior Engineer", Company = "Medallia", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jonathan-erlich-4948ba7/" },
+                    }
+                };
+                var arSpeaker4 = new User
+                {
+                    Country = Constants.COUNTRIES_UNITED_STATES,
+                    ImageUrl = "https://i.imgur.com/URg9dmD.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Jonas Stawski", Description = "", JobTitle = "CTO", Company = "FishAngler", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jonasstawski/" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jstawski" },
+                    }
+                };
+                var arSpeaker5 = new User
+                {
+                    Country = Constants.COUNTRIES_ARGENTINA,
+                    ImageUrl = "https://i.imgur.com/wcYR2J5.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Fernando Sonego", Description = "", JobTitle = "Arquitecto de Soluciones", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fernando-sonego-a7378231/" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/FernandoSonego" },
+                    }
+                };
+                var arSpeaker6 = new User
+                {
+                    Country = Constants.COUNTRIES_ARGENTINA,
+                    ImageUrl = "https://i.imgur.com/yGLqySK.png",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Ivana Tilca", Description = "", JobTitle = "Quality Manager", Company = "3XM Group", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/ivanatilca/" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ivanatilca" },
+                    }
+                };
+                var arSpeaker7 = new User
+                {
+                    Country = Constants.COUNTRIES_ARGENTINA,
+                    ImageUrl = "https://i.imgur.com/oAOvSFW.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Angel J Lopez", Description = "", JobTitle = "Software Developer", Company = "IOVLabs", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/ajlopez/" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ajlopez" },
+                    }
+                };
+                var arSpeaker8 = new User
+                {
+                    Country = Constants.COUNTRIES_ARGENTINA,
+                    ImageUrl = "https://i.imgur.com/TwCIpww.jpg",
+                    Details = new UserDetail[]
+                    {
+                        new UserDetail { Name = "Enzo Cano", Description = "", JobTitle = "Lead Software Engineer", Company = "Southworks", Language = Constants.LANGUAGES_SPANISH }
+                    },
+                    SocialLinks = new UserSocialLink[]
+                    {
+                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/enzojfcano" },
+                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/enz_cano" },
+                    }
+                };
+
+                context.Users.Add(arSpeaker1);
+                context.Users.Add(arSpeaker2);
+                context.Users.Add(arSpeaker3);
+                context.Users.Add(arSpeaker4);
+                context.Users.Add(arSpeaker5);
+                context.Users.Add(arSpeaker6);
+                context.Users.Add(arSpeaker7);
+                context.Users.Add(arSpeaker8);
+
                 var aryBuyLinks = new List<TicketLink>()
                 {
                     new TicketLink { Label = "Inscribite", Url = "https://vopen-ar-2019.eventbrite.com" },
@@ -801,6 +942,23 @@ namespace vopen_api.Data
                     EditionTickets = new List<EditionTicket>()
                     {
                         new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2019-09-01T00:00:00.000Z", EndDate = "2019-10-07T00:00:00.000Z", BuyLinks = arBuyLinksJson },
+                    },
+                    Activities = new List<EditionActivity>
+                    {
+                        new EditionActivity
+                        {
+                            Users = new List<EditionActivityUser>
+                            {
+                                new EditionActivityUser { User = arSpeaker1 }, new EditionActivityUser { User = arSpeaker2 }, new EditionActivityUser { User = arSpeaker3 },
+                                new EditionActivityUser { User = arSpeaker4 }, new EditionActivityUser { User = arSpeaker5 }, new EditionActivityUser { User = arSpeaker6 },
+                                new EditionActivityUser { User = arSpeaker7 }, new EditionActivityUser { User = arSpeaker8 }, new EditionActivityUser { User = uySpeaker4 }
+                            },
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "tag1, tag2, tag3", Level = "100", Scores = new List<EditionActivityScore>(),
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 1" }
+                            }
+                        }
                     }
                 };
 
@@ -880,7 +1038,7 @@ namespace vopen_api.Data
                 context.Database.EnsureCreated();
 
                 context.EditionsActivitiesScores.RemoveRange(context.EditionsActivitiesScores);
-                context.EditionsActivitiesPresenters.RemoveRange(context.EditionsActivitiesPresenters);
+                context.EditionsActivitiesUsers.RemoveRange(context.EditionsActivitiesUsers);
                 context.EditionsActivities.RemoveRange(context.EditionsActivities);
                 context.EditionsOrganizers.RemoveRange(context.EditionsOrganizers);
                 context.EditionsDetails.RemoveRange(context.EditionsDetails);
