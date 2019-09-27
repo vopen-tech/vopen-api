@@ -69,7 +69,9 @@ namespace vopen_api.Models
         {
             var details = edition.Details.FirstOrDefault(item => item.Language == language) ?? edition.Details.First();
             var activities = EditionActivityUtils.ToEditionActivitiesDTO(edition.Activities, language);
-            var speakers = UserUtils.ToUsersDTO(edition.Activities.SelectMany(c => c.Users).Distinct().ToList(), language);
+
+            var users = edition.Activities.SelectMany(c => c.Users).GroupBy(c => c.User.Id).Select(c => c.First());
+            var speakers = UserUtils.ToUsersDTO(users, language);
 
             return new EditionDTO
             {
@@ -89,7 +91,7 @@ namespace vopen_api.Models
             };
         }
 
-        public static ICollection<EditionTicketDTO> ToEditionTicketsDTO(ICollection<EditionTicket> editionTickets)
+        public static ICollection<EditionTicketDTO> ToEditionTicketsDTO(IEnumerable<EditionTicket> editionTickets)
         {
             if (editionTickets == null)
             {
@@ -108,7 +110,7 @@ namespace vopen_api.Models
                 ).ToList();
         }
 
-        public static ICollection<EditionSponsorDTO> ToEditionSponsorsDTO(ICollection<EditionSponsor> editionSponsors)
+        public static ICollection<EditionSponsorDTO> ToEditionSponsorsDTO(IEnumerable<EditionSponsor> editionSponsors)
         {
             if (editionSponsors == null)
             {

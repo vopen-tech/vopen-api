@@ -49,7 +49,7 @@ namespace vopen_api.Models
 
     public static class EditionActivityUtils
     {
-        public static EditionActivitiesDTO ToEditionActivitiesDTO(ICollection<EditionActivity> editionActivies, string language)
+        public static EditionActivitiesDTO ToEditionActivitiesDTO(IEnumerable<EditionActivity> editionActivies, string language)
         {
             var editionActivitiesDTO = new EditionActivitiesDTO
             {

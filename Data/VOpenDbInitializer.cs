@@ -693,7 +693,7 @@ namespace vopen_api.Data
                     Activities = new List<EditionActivity>
                     {
                         new EditionActivity {
-                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker1 } },
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker2 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "tag1, tag2, tag3", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
@@ -702,7 +702,7 @@ namespace vopen_api.Data
                         },
                         new EditionActivity
                         {
-                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker2} },
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker2 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:30:00.000Z", Tags = "tag1, tag2", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
@@ -945,8 +945,8 @@ namespace vopen_api.Data
                     },
                     Activities = new List<EditionActivity>
                     {
-                        new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T08:30:00.000-0300" },
-                        new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T09:00:00.000-0300" },
+                        new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T08:30:00.000-0300", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
+                        new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T09:00:00.000-0300", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
                         new EditionActivity
                         {
                             Type = Constants.ACTIVITY_KEYNOTE, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T09:30:00.000-0300", Level = "100", Tags = "startups, knowledge",
@@ -965,7 +965,7 @@ namespace vopen_api.Data
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Un camino pragmatico a la simplificacion de infraestructura de APIs", Description = "Kong, nginx, WSO2, AWS API Manager, todo muy lindo, es fácil poner un API GW. Queremos mostrar cómo hacemos en Medallia para brindar soporte para APIs muy heterogéneas que tienen desde 3 requests por día, hasta high-performance APIs de millones de requests por minuto." }
                             }
                         },
-                        new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T11:00:00.000-0300" },
+                        new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T11:00:00.000-0300", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
                         new EditionActivity
                         {
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T11:30:00.000-0300", Level = "100", Tags = "storage, Azure, cloud",
@@ -984,7 +984,7 @@ namespace vopen_api.Data
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Azure vs AWS: Guía de Servicios en la Nube", Description = "La elección de un proveedor de servicios en la nube es una gran decisión. Entender cuales se adaptan mejor a tus requerimientos te permitirán ahorrar costos significativos. En esta charla vas a conocer y entender varios de los servicios que ofrecen Microsoft y Amazon, sus similitudes y diferencias." }
                             }
                         },
-                        new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-05T13:00:00.000-0300" },
+                        new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-05T13:00:00.000-0300", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
                         new EditionActivity
                         {
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T14:00:00.000-0300", Level = "200", Tags = "AI, Azure, Kinect",
@@ -1003,8 +1003,8 @@ namespace vopen_api.Data
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_ENGLISH, Title = "Deep Learning y el Juego del Go", Description = "Descripción del juego del Go y cómo una implementación de Deep Learning con Reinforcement Learning llegó a derrotar al mejor jugador humano." }
                             }
                         },
-                        new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T15:30:00.000-0300" },
-                        new EditionActivity
+                        new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T15:30:00.000-0300", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
+                         new EditionActivity
                         {
                             Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T16:00:00.000-0300", Level = "200", Tags = "Serverless, Azure, Bots",
                             Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker8 } },
@@ -1022,8 +1022,8 @@ namespace vopen_api.Data
                                 new EditionActivityDetail() { Language = Constants.LANGUAGES_ENGLISH, Title = "Corriendo Bases de Datos relacionales en Containers", Description = "Veremos como corres diferentes tipos de motores de base de datos en Docker y Kubernetes." }
                             }
                         },
-                        new EditionActivity { Type = Constants.ACTIVITY_CLOSURE, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T17:30:00.000-0300" },
-                    }
+                        new EditionActivity { Type = Constants.ACTIVITY_CLOSURE, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T17:30:00.000-0300", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Cierre" } } },
+                }
                 };
 
                 // Create CL Edition
