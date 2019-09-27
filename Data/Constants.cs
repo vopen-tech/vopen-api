@@ -40,6 +40,8 @@ namespace vopen_api.Data
         public static string ACTIVITY_HACKATON = "Hackaton";
         public static string ACTIVITY_LIGHTNING_TALK = "Lightning talk";
 
+        public static string ACTIVITY_ACCREDITATION_BREAKFAST = "Accreditation and breakfast";
+        public static string ACTIVITY_OPENING = "Opening";
         public static string ACTIVITY_BREAKFAST = "Breakfast";
         public static string ACTIVITY_LUNCH = "Lunch";
         public static string ACTIVITY_COFFEE_BREAK = "Coffee break";

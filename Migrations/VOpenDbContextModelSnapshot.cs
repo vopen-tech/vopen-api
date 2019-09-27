@@ -54,11 +54,9 @@ namespace vopen_api.Migrations
                     b.Property<string>("EditionId")
                         .IsRequired();
 
-                    b.Property<string>("Level")
-                        .IsRequired();
+                    b.Property<string>("Level");
 
-                    b.Property<string>("Tags")
-                        .IsRequired();
+                    b.Property<string>("Tags");
 
                     b.Property<string>("Track")
                         .IsRequired();
@@ -289,13 +287,9 @@ namespace vopen_api.Migrations
 
                     b.Property<string>("Country");
 
-                    b.Property<string>("EditionActivityId");
-
                     b.Property<string>("ImageUrl");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EditionActivityId");
 
                     b.ToTable("Users");
                 });
@@ -424,7 +418,7 @@ namespace vopen_api.Migrations
             modelBuilder.Entity("vopen_api.Data.EditionActivityUser", b =>
                 {
                     b.HasOne("vopen_api.Data.EditionActivity", "EditionActivity")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("EditionActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -482,13 +476,6 @@ namespace vopen_api.Migrations
                         .WithMany("Details")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("vopen_api.Data.User", b =>
-                {
-                    b.HasOne("vopen_api.Data.EditionActivity")
-                        .WithMany("Users")
-                        .HasForeignKey("EditionActivityId");
                 });
 
             modelBuilder.Entity("vopen_api.Data.UserDetail", b =>

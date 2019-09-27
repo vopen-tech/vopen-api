@@ -2,7 +2,7 @@
 
 namespace vopen_api.Migrations
 {
-    public partial class Initial_Setup : Migration
+    public partial class InitialSetup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,19 @@ namespace vopen_api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sponsors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,214 +82,6 @@ namespace vopen_api.Migrations
                         name: "FK_EventsDetails_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsActivities",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionId = table.Column<string>(nullable: false),
-                    Type = table.Column<string>(nullable: false),
-                    Day = table.Column<string>(nullable: false),
-                    Track = table.Column<string>(nullable: false),
-                    Date = table.Column<string>(nullable: false),
-                    Duration = table.Column<string>(nullable: false),
-                    Tags = table.Column<string>(nullable: false),
-                    Level = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsActivities", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsActivities_Editions_EditionId",
-                        column: x => x.EditionId,
-                        principalTable: "Editions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsDetails",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionId = table.Column<string>(nullable: false),
-                    Language = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Date = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsDetails_Editions_EditionId",
-                        column: x => x.EditionId,
-                        principalTable: "Editions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsSponsors",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionId = table.Column<string>(nullable: false),
-                    SponsorId = table.Column<string>(nullable: false),
-                    Type = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsSponsors", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsSponsors_Editions_EditionId",
-                        column: x => x.EditionId,
-                        principalTable: "Editions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EditionsSponsors_Sponsors_SponsorId",
-                        column: x => x.SponsorId,
-                        principalTable: "Sponsors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsTickets",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionId = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    Price = table.Column<string>(nullable: true),
-                    StartDate = table.Column<string>(nullable: true),
-                    EndDate = table.Column<string>(nullable: true),
-                    BuyLinks = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsTickets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsTickets_Editions_EditionId",
-                        column: x => x.EditionId,
-                        principalTable: "Editions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsActivitiesDetails",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionActivityId = table.Column<string>(nullable: false),
-                    Language = table.Column<string>(nullable: false),
-                    Title = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsActivitiesDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsActivitiesDetails_EditionsActivities_EditionActivityId",
-                        column: x => x.EditionActivityId,
-                        principalTable: "EditionsActivities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsActivitiesScores",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionActivityId = table.Column<string>(nullable: false),
-                    UserEmail = table.Column<string>(nullable: false),
-                    Score = table.Column<double>(nullable: false),
-                    Comments = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsActivitiesScores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsActivitiesScores_EditionsActivities_EditionActivityId",
-                        column: x => x.EditionActivityId,
-                        principalTable: "EditionsActivities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true),
-                    EditionActivityId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_EditionsActivities_EditionActivityId",
-                        column: x => x.EditionActivityId,
-                        principalTable: "EditionsActivities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsActivitiesUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionActivityId = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsActivitiesUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsActivitiesUsers_EditionsActivities_EditionActivityId",
-                        column: x => x.EditionActivityId,
-                        principalTable: "EditionsActivities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EditionsActivitiesUsers_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EditionsOrganizers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    EditionId = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EditionsOrganizers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EditionsOrganizers_Editions_EditionId",
-                        column: x => x.EditionId,
-                        principalTable: "Editions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EditionsOrganizers_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -344,6 +149,127 @@ namespace vopen_api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EditionsActivities",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionId = table.Column<string>(nullable: false),
+                    Type = table.Column<string>(nullable: false),
+                    Day = table.Column<string>(nullable: false),
+                    Track = table.Column<string>(nullable: false),
+                    Date = table.Column<string>(nullable: false),
+                    Duration = table.Column<string>(nullable: false),
+                    Tags = table.Column<string>(nullable: true),
+                    Level = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsActivities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsActivities_Editions_EditionId",
+                        column: x => x.EditionId,
+                        principalTable: "Editions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EditionsDetails",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionId = table.Column<string>(nullable: false),
+                    Language = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsDetails_Editions_EditionId",
+                        column: x => x.EditionId,
+                        principalTable: "Editions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EditionsOrganizers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionId = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsOrganizers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsOrganizers_Editions_EditionId",
+                        column: x => x.EditionId,
+                        principalTable: "Editions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EditionsOrganizers_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EditionsSponsors",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionId = table.Column<string>(nullable: false),
+                    SponsorId = table.Column<string>(nullable: false),
+                    Type = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsSponsors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsSponsors_Editions_EditionId",
+                        column: x => x.EditionId,
+                        principalTable: "Editions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EditionsSponsors_Sponsors_SponsorId",
+                        column: x => x.SponsorId,
+                        principalTable: "Sponsors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EditionsTickets",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionId = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Price = table.Column<string>(nullable: true),
+                    StartDate = table.Column<string>(nullable: true),
+                    EndDate = table.Column<string>(nullable: true),
+                    BuyLinks = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsTickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsTickets_Editions_EditionId",
+                        column: x => x.EditionId,
+                        principalTable: "Editions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UsersProposalsDetails",
                 columns: table => new
                 {
@@ -360,6 +286,73 @@ namespace vopen_api.Migrations
                         name: "FK_UsersProposalsDetails_UsersProposals_UserProposalId",
                         column: x => x.UserProposalId,
                         principalTable: "UsersProposals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EditionsActivitiesDetails",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionActivityId = table.Column<string>(nullable: false),
+                    Language = table.Column<string>(nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsActivitiesDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsActivitiesDetails_EditionsActivities_EditionActivityId",
+                        column: x => x.EditionActivityId,
+                        principalTable: "EditionsActivities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EditionsActivitiesScores",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionActivityId = table.Column<string>(nullable: false),
+                    UserEmail = table.Column<string>(nullable: false),
+                    Score = table.Column<double>(nullable: false),
+                    Comments = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsActivitiesScores", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsActivitiesScores_EditionsActivities_EditionActivityId",
+                        column: x => x.EditionActivityId,
+                        principalTable: "EditionsActivities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EditionsActivitiesUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    EditionActivityId = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EditionsActivitiesUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EditionsActivitiesUsers_EditionsActivities_EditionActivityId",
+                        column: x => x.EditionActivityId,
+                        principalTable: "EditionsActivities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EditionsActivitiesUsers_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -430,11 +423,6 @@ namespace vopen_api.Migrations
                 column: "EventId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_EditionActivityId",
-                table: "Users",
-                column: "EditionActivityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UsersDetails_UserId",
                 table: "UsersDetails",
                 column: "UserId");
@@ -491,19 +479,19 @@ namespace vopen_api.Migrations
                 name: "UsersSocialLinks");
 
             migrationBuilder.DropTable(
+                name: "EditionsActivities");
+
+            migrationBuilder.DropTable(
                 name: "Sponsors");
 
             migrationBuilder.DropTable(
                 name: "UsersProposals");
 
             migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "EditionsActivities");
-
-            migrationBuilder.DropTable(
                 name: "Editions");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Events");

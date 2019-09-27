@@ -945,20 +945,84 @@ namespace vopen_api.Data
                     },
                     Activities = new List<EditionActivity>
                     {
+                        new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T08:30:00.000-0300" },
+                        new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T09:00:00.000-0300" },
                         new EditionActivity
                         {
-                            Users = new List<EditionActivityUser>
-                            {
-                                new EditionActivityUser { User = arSpeaker1 }, new EditionActivityUser { User = arSpeaker2 }, new EditionActivityUser { User = arSpeaker3 },
-                                new EditionActivityUser { User = arSpeaker4 }, new EditionActivityUser { User = arSpeaker5 }, new EditionActivityUser { User = arSpeaker6 },
-                                new EditionActivityUser { User = arSpeaker7 }, new EditionActivityUser { User = arSpeaker8 }, new EditionActivityUser { User = uySpeaker4 }
-                            },
-                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-19T09:00:00.000Z", Tags = "tag1, tag2, tag3", Level = "100", Scores = new List<EditionActivityScore>(),
+                            Type = Constants.ACTIVITY_KEYNOTE, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T09:30:00.000-0300", Level = "100", Tags = "startups, knowledge",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker1 } },
                             Details = new List<EditionActivityDetail>()
                             {
-                                new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Day 1 - Track 1 - Talk 1" }
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "El gap entre tecnología, adopción y talento en las organizaciones: ¿estás preparado para diferenciarte?", Description = "La velocidad de cambio de la tecnología es mucho mayor a la velocidad de adopción que tienen las empresas. Y aquellas empresas que inician una transformación tecnológica se enfrentan con el desafío de contar con los colaboradores que sepan cómo abordarla. Existe un GAP entre tecnología disponible, tecnología adoptada y talento. La escasez de talento analítico y de habilidades de desaprendizaje y aprendizaje continuo representan un gran desafío y una buena oportunidad para diferenciarte del resto. Hoy el saber importa y vale, pero la capacidad de repensarse a uno mismo y la disposición para aprender sobre nuevos temas, son las competencias estratégicas esenciales para el presente y futuro próximo. En esta charla repasaremos algunos conceptos clave y consejos que te ayudarán a liberar todo tu potencial. ¿Estás preparado?" }
                             }
-                        }
+                        },
+                        new EditionActivity
+                        {
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T10:15:00.000-0300", Level = "300", Tags = "APIs, cloud, backend",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker2 }, new EditionActivityUser { User = arSpeaker3 } },
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Un camino pragmatico a la simplificacion de infraestructura de APIs", Description = "Kong, nginx, WSO2, AWS API Manager, todo muy lindo, es fácil poner un API GW. Queremos mostrar cómo hacemos en Medallia para brindar soporte para APIs muy heterogéneas que tienen desde 3 requests por día, hasta high-performance APIs de millones de requests por minuto." }
+                            }
+                        },
+                        new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T11:00:00.000-0300" },
+                        new EditionActivity
+                        {
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T11:30:00.000-0300", Level = "100", Tags = "storage, Azure, cloud",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker4 } },
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Eligiendo el servicio correcto de data storage en Azure", Description = "Azure, la nube de Microsoft, esta compuesta de cientos de servicios y productos de los cuales 19 están relacionados al almacenamiento de datos. En esta charla hablaremos de estos servicios, sus pros y cons, como elegir uno adecuado para cada problema y cómo son usados en FishAngler.com." }
+                            }
+                        },
+                        new EditionActivity
+                        {
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T12:15:00.000-0300", Level = "100", Tags = "cloud, Azure, AWS",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker5 } },
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Azure vs AWS: Guía de Servicios en la Nube", Description = "La elección de un proveedor de servicios en la nube es una gran decisión. Entender cuales se adaptan mejor a tus requerimientos te permitirán ahorrar costos significativos. En esta charla vas a conocer y entender varios de los servicios que ofrecen Microsoft y Amazon, sus similitudes y diferencias." }
+                            }
+                        },
+                        new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-05T13:00:00.000-0300" },
+                        new EditionActivity
+                        {
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T14:00:00.000-0300", Level = "200", Tags = "AI, Azure, Kinect",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker6 } },
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_ENGLISH, Title = "Azure Kinect + AI development “Third era of computing”", Description = "AI is predicted to be the third era of computing. Now it´s also becoming cloud-based which means that even the most sophisticated techniques become available to everybody. The key is, using the Azure Kinect to provide data, then use it to train machine-learning systems, feed image- and text-recognition services, perform speech recognition, and so on. Let me show you how this can be accomplished." }
+                            }
+                        },
+                        new EditionActivity
+                        {
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T14:45:00.000-0300", Level = "200", Tags = "AI, Deep Learning, Go",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker7 } },
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_ENGLISH, Title = "Deep Learning y el Juego del Go", Description = "Descripción del juego del Go y cómo una implementación de Deep Learning con Reinforcement Learning llegó a derrotar al mejor jugador humano." }
+                            }
+                        },
+                        new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T15:30:00.000-0300" },
+                        new EditionActivity
+                        {
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T16:00:00.000-0300", Level = "200", Tags = "Serverless, Azure, Bots",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = arSpeaker8 } },
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_ENGLISH, Title = "Bots + Azure Functions", Description = "Como conectar BotFramework v4 con Azure Functions y crear bots serverless." }
+                            }
+                        },
+                        new EditionActivity
+                        {
+                            Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T16:45:00.000-0300", Level = "200", Tags = "DB, COntainers, Docker, Kubernetes",
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker4 } },
+                            Details = new List<EditionActivityDetail>()
+                            {
+                                new EditionActivityDetail() { Language = Constants.LANGUAGES_ENGLISH, Title = "Corriendo Bases de Datos relacionales en Containers", Description = "Veremos como corres diferentes tipos de motores de base de datos en Docker y Kubernetes." }
+                            }
+                        },
+                        new EditionActivity { Type = Constants.ACTIVITY_CLOSURE, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T17:30:00.000-0300" },
                     }
                 };
 
