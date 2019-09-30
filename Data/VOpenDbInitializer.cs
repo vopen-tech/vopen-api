@@ -557,20 +557,6 @@ namespace vopen_api.Data
                         new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/abrandaolustosa" },
                     }
                 };
-                var uySpeaker8 = new User
-                {
-                    Country = Constants.COUNTRIES_ARGENTINA,
-                    ImageUrl = "https://media.licdn.com/dms/image/C5603AQHKK-ufaNYqrA/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=xT6qJNy6yvW6fxTun0IWoQwafEpspxSPr3s9GYuZlrQ",
-                    Details = new UserDetail[]
-                    {
-                        new UserDetail { Name = "David Revoledo", Description = "", JobTitle = ".NET Azure Consultant", Company = "", Language = Constants.LANGUAGES_SPANISH }
-                    },
-                    SocialLinks = new UserSocialLink[]
-                    {
-                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/david-revoledo/" },
-                        new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/deirevoledo" },
-                    }
-                };
                 var uySpeaker9 = new User
                 {
                     Country = Constants.COUNTRIES_BRAZIL,
@@ -635,7 +621,6 @@ namespace vopen_api.Data
                 context.Users.Add(uySpeaker5);
                 context.Users.Add(uySpeaker6);
                 context.Users.Add(uySpeaker7);
-                context.Users.Add(uySpeaker8);
                 context.Users.Add(uySpeaker9);
                 context.Users.Add(uySpeaker10);
                 context.Users.Add(uySpeaker11);
@@ -756,7 +741,7 @@ namespace vopen_api.Data
                         },
                         new EditionActivity
                         {
-                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker8 } },
+                            Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker7 } },
                             Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track ="Track 1", Duration = "00:30:00", Date = "2019-08-20T09:30:00.000Z", Tags = "tag1", Level = "100", Scores = new List<EditionActivityScore>(),
                             Details = new List<EditionActivityDetail>()
                             {
