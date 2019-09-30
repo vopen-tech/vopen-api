@@ -1065,9 +1065,9 @@ namespace vopen_api.Data
                     LocationFullAddress = "Bogotá, Colombia",
                     EditionTickets =
                     {
-                        new EditionTicket { Name = "Early birds", Price = "35USD", StartDate = "2019-10-01T00:00:00.000-0500", EndDate = "2019-12-14T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
-                        new EditionTicket { Name = "Night owl", Price = "60USD", StartDate = "2019-12-14T00:00:00.000-0500", EndDate = "2020-02-09T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
-                        new EditionTicket { Name = "General ticket", Price = "85USD", StartDate = "2020-02-09T00:00:00.000-0500", EndDate = "2020-03-29T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
+                        new EditionTicket { Name = "Early birds", Price = "$120.000", StartDate = "2019-10-01T00:00:00.000-0500", EndDate = "2019-12-14T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
+                        new EditionTicket { Name = "Night owl", Price = "$210.000", StartDate = "2019-12-14T00:00:00.000-0500", EndDate = "2020-02-09T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
+                        new EditionTicket { Name = "General ticket", Price = "$297.900", StartDate = "2020-02-09T00:00:00.000-0500", EndDate = "2020-03-29T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
                     },
                     Organizers = new List<EditionOrganizer>
                     {
