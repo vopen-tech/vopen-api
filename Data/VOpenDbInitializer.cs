@@ -1043,8 +1043,8 @@ namespace vopen_api.Data
                     Event = vopenEvent,
                     Details = new EditionDetail[]
                     {
-                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CO 2020", Date = "26 27 y 28 de Marzo" },
-                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CO 2020", Date = "March 26th, 27th and 28th" }
+                       new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CO 2020", Date = "26 27 y 28 de Marzo de 2020" },
+                       new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CO 2020", Date = "March 26th, 27th and 28th, 2020" }
                     },
                     LocationName = "Bogotá, Colombia",
                     LocationFullAddress = "Bogotá, Colombia",
