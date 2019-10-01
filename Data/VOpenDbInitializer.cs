@@ -650,9 +650,9 @@ namespace vopen_api.Data
                     LocationFullAddress = "Telecommunications Tower, 11800 Montevideo, Departamento de Montevideo, Uruguay",
                     EditionTickets = new List<EditionTicket>()
                     {
-                        new EditionTicket { Name = "Early birds", Price = "20USD", StartDate = "2019-08-19T16:00:00.000Z", EndDate = "2019-09-19T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
-                        new EditionTicket { Name = "Night owl", Price = "40USD", StartDate = "2019-09-19T00:00:00.000Z", EndDate = "2019-10-01T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
-                        new EditionTicket { Name = "General ticket", Price = "60USD", StartDate = "2019-10-01T00:00:00.000Z", EndDate = "2019-10-24T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
+                        new EditionTicket { Name = "Early birds", Price = "20USD", StartDate = "2019-08-19T16:00:00.000-0300", EndDate = "2019-09-19T00:00:00.000-0300", BuyLinks = uyBuyLinksJson },
+                        new EditionTicket { Name = "Night owl", Price = "40USD", StartDate = "2019-09-19T00:00:00.000-0300", EndDate = "2019-10-24T00:00:00.000-0300", BuyLinks = uyBuyLinksJson },
+                        // new EditionTicket { Name = "General ticket", Price = "60USD", StartDate = "2019-10-01T00:00:00.000Z", EndDate = "2019-10-24T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
                     },
                     Organizers = new List<EditionOrganizer>
                     {
