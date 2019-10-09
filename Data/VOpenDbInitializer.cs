@@ -37,6 +37,12 @@ namespace vopen_api.Data
                 var organizers = VOpenDbInitializer.CreateGlobalOrganizers(context);
 
                 // Create sponsors
+                var microsoft = new Sponsor
+                {
+                    Name = "Microsoft",
+                    ImageUrl = "https://i.imgur.com/FWdDaGr.png",
+                    Url = "https://www.microsoft.com"
+                };
                 var kaizen = new Sponsor
                 {
                     Name = "Kaizen Softworks",
@@ -73,11 +79,46 @@ namespace vopen_api.Data
                     ImageUrl = "https://i.imgur.com/qwHigPt.png",
                     Url = "https://nareia.com.uy/"
                 };
+                var cobrosYa = new Sponsor
+                {
+                    Name = "CobrosYA",
+                    ImageUrl = "https://i.imgur.com/M2mChJ5.png",
+                    Url = "https://www.cobrosya.com/"
+                };
+                var uruIt = new Sponsor
+                {
+                    Name = "UruIT",
+                    ImageUrl = "https://i.imgur.com/PNKsimP.png",
+                    Url = "https://uruit.com/"
+                };
+                var uruguayXXI = new Sponsor
+                {
+                    Name = "UruguayXXI",
+                    ImageUrl = "https://i.imgur.com/L4dAZKO.png",
+                    Url = "https://www.uruguayxxi.gub.uy/"
+                };
+                var tcs = new Sponsor
+                {
+                    Name = "TCS",
+                    ImageUrl = "https://i.imgur.com/rzNrslT.png",
+                    Url = "https://www.tcs.com"
+                };
+                var smartTalent = new Sponsor
+                {
+                    Name = "SmartTalent",
+                    ImageUrl = "https://i.imgur.com/TfIRhTX.png",
+                    Url = "https://www.smarttalent.uy/"
+                };
 
+                context.Sponsors.Add(microsoft);
                 context.Sponsors.Add(kaizen);
                 context.Sponsors.Add(endava);
                 context.Sponsors.Add(wyeworks);
                 context.Sponsors.Add(elObservador);
+                context.Sponsors.Add(antel);
+                context.Sponsors.Add(nareia);
+                context.Sponsors.Add(uruIt);
+                context.Sponsors.Add(cobrosYa);
 
                 // Create global edition
                 var globalEdition = new Edition
@@ -95,10 +136,10 @@ namespace vopen_api.Data
                 // Create UY Edition
 
                 var uyBuyLinks = new List<TicketLink>()
-            {
-                new TicketLink { Label = "PayPal", Url = "https://www.eventbrite.com/e/vopen-19-uruguay-tickets-64989745077" },
-                new TicketLink { Label = "CobrosYa", Url = "https://ks.uy/5c7FTJ2vnVytBeTm7" }
-            };
+                {
+                    new TicketLink { Label = "PayPal", Url = "https://www.eventbrite.com/e/vopen-19-uruguay-tickets-64989745077" },
+                    new TicketLink { Label = "CobrosYa", Url = "https://ks.uy/5c7FTJ2vnVytBeTm7" }
+                };
                 var camelCaseFormatter = new JsonSerializerSettings();
                 camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 var uyBuyLinksJson = JsonConvert.SerializeObject(uyBuyLinks);
@@ -124,12 +165,18 @@ namespace vopen_api.Data
                     Sponsors = new List<EditionSponsor>()
                     {
                         // use a number for the ID because it is needed for the app mobile (will be removed later on)
-                        new EditionSponsor { Id = "1", Sponsor = kaizen, Type = Constants.SPONSOR_GOLD },
-                        new EditionSponsor { Id = "2", Sponsor = endava, Type = Constants.SPONSOR_GOLD },
-                        new EditionSponsor { Id = "3", Sponsor = antel, Type = Constants.SPONSOR_GOLD },
-                        new EditionSponsor { Id = "4", Sponsor = nareia, Type = Constants.SPONSOR_GOLD },
-                        new EditionSponsor { Id = "5", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
-                        new EditionSponsor { Id = "6", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "1", Sponsor = microsoft, Type = Constants.SPONSOR_DIAMOND },
+                        new EditionSponsor { Id = "2", Sponsor = kaizen, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "3", Sponsor = endava, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "4", Sponsor = smartTalent, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "5", Sponsor = uruIt, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "6", Sponsor = antel, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "7", Sponsor = uruguayXXI, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "8", Sponsor = nareia, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "9", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "10", Sponsor = tcs, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "11", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "12", Sponsor = cobrosYa, Type = Constants.SPONSOR_SILVER },
                     },
                     Activities = VOpenDbInitializer.GetUyEditionActivities(context),
                 };
@@ -390,19 +437,6 @@ namespace vopen_api.Data
                         new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/vmsilvamolina/" },
                 }
             };
-            var user10 = new User
-            {
-                Country = Constants.COUNTRIES_URUGUAY,
-                ImageUrl = "https://i.imgur.com/9jleLkK.jpg",
-                Details = new UserDetail[]
-                {
-                        new UserDetail { Name = "Diego Bellora",  Description = "", Language = Constants.LANGUAGES_SPANISH }
-                },
-                SocialLinks = new UserSocialLink[]
-                {
-                        new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/diego-bellora-21175882/"}
-                }
-            };
             var user23 = new User
             {
                 Country = Constants.COUNTRIES_URUGUAY,
@@ -419,7 +453,7 @@ namespace vopen_api.Data
             var user24 = new User
             {
                 Country = Constants.COUNTRIES_URUGUAY,
-                ImageUrl = "https://i.imgur.com/SO2Vnqj.jpg",
+                ImageUrl = "https://i.imgur.com/JtRrcur.jpg",
                 Details = new UserDetail[]
                 {
                         new UserDetail { Name = "Victoria Mato",  Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -607,7 +641,6 @@ namespace vopen_api.Data
             context.Users.Add(user7);
             context.Users.Add(user8);
             context.Users.Add(user9);
-            context.Users.Add(user10);
             context.Users.Add(user12);
             context.Users.Add(user13);
             context.Users.Add(user14);
@@ -625,9 +658,9 @@ namespace vopen_api.Data
 
             return new List<User>
             {
-                user1, user2, user3, user4, user5, user6, user7, user8, user9, user10,
-                user12, user13, user14, user15, user16, user17, user18, user19, user20,
-                user21, user22, user23, user24, user25
+                user1, user2, user3, user4, user5, user6, user7, user8, user9, user12,
+                user13, user14, user15, user16, user17, user18, user19, user20, user21,
+                user22, user23, user24, user25
             };
         }
 
