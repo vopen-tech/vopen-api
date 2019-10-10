@@ -109,6 +109,12 @@ namespace vopen_api.Data
                     ImageUrl = "https://i.imgur.com/TfIRhTX.png",
                     Url = "https://www.smarttalent.uy/"
                 };
+                var alianza = new Sponsor
+                {
+                    Name = "Alianza",
+                    ImageUrl = "https://i.imgur.com/8bT4Zrt.png",
+                    Url = "http://www.alianza.edu.uy/"
+                };
 
                 context.Sponsors.Add(microsoft);
                 context.Sponsors.Add(kaizen);
@@ -117,8 +123,12 @@ namespace vopen_api.Data
                 context.Sponsors.Add(elObservador);
                 context.Sponsors.Add(antel);
                 context.Sponsors.Add(nareia);
-                context.Sponsors.Add(uruIt);
                 context.Sponsors.Add(cobrosYa);
+                context.Sponsors.Add(uruIt);
+                context.Sponsors.Add(uruguayXXI);
+                context.Sponsors.Add(tcs);
+                context.Sponsors.Add(smartTalent);
+                context.Sponsors.Add(alianza);
 
                 // Create global edition
                 var globalEdition = new Edition
@@ -173,10 +183,11 @@ namespace vopen_api.Data
                         new EditionSponsor { Id = "6", Sponsor = antel, Type = Constants.SPONSOR_GOLD },
                         new EditionSponsor { Id = "7", Sponsor = uruguayXXI, Type = Constants.SPONSOR_GOLD },
                         new EditionSponsor { Id = "8", Sponsor = nareia, Type = Constants.SPONSOR_GOLD },
-                        new EditionSponsor { Id = "9", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
-                        new EditionSponsor { Id = "10", Sponsor = tcs, Type = Constants.SPONSOR_SILVER },
-                        new EditionSponsor { Id = "11", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
-                        new EditionSponsor { Id = "12", Sponsor = cobrosYa, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "9", Sponsor = alianza, Type = Constants.SPONSOR_GOLD },
+                        new EditionSponsor { Id = "10", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "11", Sponsor = tcs, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "12", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
+                        new EditionSponsor { Id = "13", Sponsor = cobrosYa, Type = Constants.SPONSOR_SILVER },
                     },
                     Activities = VOpenDbInitializer.GetUyEditionActivities(context),
                 };
