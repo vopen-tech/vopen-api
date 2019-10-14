@@ -322,7 +322,7 @@ namespace vopen_api.Data
         ImageUrl = "https://i.imgur.com/14aAfJW.jpg",
         Details = new UserDetail[]
          {
-            new UserDetail { Name = "Mariano Vazquez", Description = "", Language = Constants.LANGUAGES_SPANISH }
+            new UserDetail { Name = "Mariano Vazquez", Description = "", JobTitle = "Tech Lead", Company = "MuleSoft", Language = Constants.LANGUAGES_SPANISH }
          },
         SocialLinks = new UserSocialLink[]
          {
@@ -443,7 +443,7 @@ namespace vopen_api.Data
         ImageUrl = "https://imgur.com/TpW7cPF.jpg",
         Details = new UserDetail[]
           {
-              new UserDetail { Name = "Victor Silva", Description = "", Language = Constants.LANGUAGES_SPANISH }
+              new UserDetail { Name = "Victor Silva", Description = "", JobTitle = "DevOps and Cloud Architect", Company = "Pyxis", Language = Constants.LANGUAGES_SPANISH }
           },
         SocialLinks = new UserSocialLink[]
           {
@@ -1076,7 +1076,7 @@ namespace vopen_api.Data
         ImageUrl = "https://media.licdn.com/dms/image/C4E03AQHQTmJRVUp8CA/profile-displayphoto-shrink_800_800/0?e=1574899200&v=beta&t=9DULpuODChZJqDcLLlz9cJwmKD81Lc9a8izWvJmsmeQ",
         Details = new UserDetail[]
           {
-              new UserDetail { Name = "Sebastián Gómez", Description = "", JobTitle = "GeneXus", Company = "Sr. Software Engineer", Language = Constants.LANGUAGES_SPANISH }
+              new UserDetail { Name = "Sebastián Gómez", Description = "", JobTitle = "Sr. Software Engineer", Company = "GeneXus", Language = Constants.LANGUAGES_SPANISH }
           },
         SocialLinks = new UserSocialLink[]
           {
@@ -1380,7 +1380,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "100", Tags = "Data processing",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker1 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1390,7 +1390,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:20:00", Date = "2019-10-21T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T11:25:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T11:25:00.000-03:00", Level = "300", Tags = ".NET Core, Akka.Net",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker7 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1399,7 +1399,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T12:15:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T12:15:00.000-03:00", Level = "100", Tags = "UX, mobile",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker8 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1409,7 +1409,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-21T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "200", Tags = "API, backend, OpenAPI",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = context.Users.Find(MARIANO_VAZQUEZ_ID) } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1418,7 +1418,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "200", Tags = "Azure",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker13 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1428,7 +1428,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:20:00", Date = "2019-10-21T15:35:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T15:55:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T15:55:00.000-03:00", Level = "100", Tags = "Seguridad, UX",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker11 }, new EditionActivityUser { User = uySpeaker12 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1437,7 +1437,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T16:45:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T16:45:00.000-03:00", Level = "100", Tags = "AI, AR",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker14 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1446,7 +1446,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T17:35:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T17:35:00.000-03:00", Level = "200", Tags = "API, backend, MicroServices",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker15 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1461,7 +1461,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 2", Duration = "00:15:00", Date = "2019-10-21T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "200", Tags = "Elixir, Phoenix",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker16 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1471,16 +1471,16 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-21T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T11:25:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T11:25:00.000-03:00", Level = "200", Tags = "SQL, Async",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker5 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Como construir una aplicación ASYNC con SQL Server", Description = "La idea es repasar un poco la caracteristica de message broker que viene con SQL Server. La idea es crear una pequeña aplicación que funcione de forma ASYNC para mostrar las principales caracteristicas del servicio y como podemos empezar a usarlo sistema de mensajeria de nuestra aplicación." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Cómo construir una aplicación ASYNC con SQL Server", Description = "La idea es repasar un poco la caracteristica de message broker que viene con SQL Server. La idea es crear una pequeña aplicación que funcione de forma ASYNC para mostrar las principales caracteristicas del servicio y como podemos empezar a usarlo sistema de mensajeria de nuestra aplicación." }
                 }
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T12:15:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T12:15:00.000-03:00", Level = "200", Tags = "DB, Containers",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker4 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1490,7 +1490,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-21T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "200", Tags = "AR, Azure",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker17 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1499,7 +1499,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "200", Tags = "Data Science",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker10 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1509,7 +1509,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-21T15:35:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T15:55:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T15:55:00.000-03:00", Level = "200", Tags = "web apps, arquitectura",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker26 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1523,7 +1523,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 2", Track = "Track 1", Duration = "00:15:00", Date = "2019-10-22T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_KEYNOTE, Day = "Day 2", Track = "Track 1", Duration = "00:35:00", Date = "2019-10-22T09:45:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_KEYNOTE, Day = "Day 2", Track = "Track 1", Duration = "00:35:00", Date = "2019-10-22T09:45:00.000-03:00", Level = "100", Tags = "keynote",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker31 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1532,7 +1532,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T10:20:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T10:20:00.000-03:00", Level = "200", Tags = "Serverless, Knative, Cloud Run",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker3 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1542,7 +1542,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 2", Track = "Track 1", Duration = "00:20:00", Date = "2019-10-22T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T11:25:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T11:25:00.000-03:00", Level = "200", Tags = "IoT, Hacking",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker2 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1551,7 +1551,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "100", Tags = "Security, Privacy",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker18 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1561,7 +1561,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 2", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-22T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T14:00:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T14:00:00.000-03:00", Level = "100", Tags = "Rust",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker6 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1570,7 +1570,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T14:50:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T14:50:00.000-03:00", Level = "200", Tags = "SQL",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker9 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1580,7 +1580,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 2", Track = "Track 1", Duration = "00:20:00", Date = "2019-10-22T15:35:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T15:55:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T15:55:00.000-03:00", Level = "100", Tags = "Javascript, Azure, IoT",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker19 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1589,7 +1589,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T16:45:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T16:45:00.000-03:00", Level = "100", Tags = "PowerBI",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker20 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1598,7 +1598,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T17:35:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T17:35:00.000-03:00", Level = "100", Tags = "Azure, AWS, cloud computing",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker21 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1613,7 +1613,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 2", Track = "Track 2", Duration = "00:15:00", Date = "2019-10-22T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T10:20:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T10:20:00.000-03:00", Level = "100", Tags = "Comunidad, responsabilidad social",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker22 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1623,7 +1623,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 2", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-22T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "100", Tags = "AI, Machine learning",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker23 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1632,7 +1632,7 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T11:25:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T11:25:00.000-03:00", Level = "100", Tags = "AI, testing",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker24 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1642,7 +1642,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 2", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-22T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T14:00:00.000-03:00", Level = "", Tags = "",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T14:00:00.000-03:00", Level = "100", Tags = "Bots, AI, Azure",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker25 } },
                 Details = new List<EditionActivityDetail>()
                 {
