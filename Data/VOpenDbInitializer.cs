@@ -116,6 +116,12 @@ namespace vopen_api.Data
           ImageUrl = "https://i.imgur.com/8bT4Zrt.png",
           Url = "http://www.alianza.edu.uy/"
         };
+        var practiaGlobal = new Sponsor
+        {
+            Name = "Practia Global",
+            ImageUrl = "https://i.imgur.com/RMiN1j8.png",
+            Url = "http://www.practia.global"
+        };
 
         context.Sponsors.Add(microsoft);
         context.Sponsors.Add(kaizen);
@@ -130,6 +136,7 @@ namespace vopen_api.Data
         context.Sponsors.Add(tcs);
         context.Sponsors.Add(smartTalent);
         context.Sponsors.Add(alianza);
+        context.Sponsors.Add(practiaGlobal);
 
         // Create global edition
         var globalEdition = new Edition
@@ -187,8 +194,9 @@ namespace vopen_api.Data
                 new EditionSponsor { Id = "9", Sponsor = alianza, Type = Constants.SPONSOR_GOLD },
                 new EditionSponsor { Id = "10", Sponsor = wyeworks, Type = Constants.SPONSOR_SILVER },
                 new EditionSponsor { Id = "11", Sponsor = tcs, Type = Constants.SPONSOR_SILVER },
-                new EditionSponsor { Id = "12", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
-                new EditionSponsor { Id = "13", Sponsor = cobrosYa, Type = Constants.SPONSOR_SILVER },
+                new EditionSponsor { Id = "12", Sponsor = practiaGlobal, Type = Constants.SPONSOR_SILVER },
+                new EditionSponsor { Id = "13", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
+                new EditionSponsor { Id = "14", Sponsor = cobrosYa, Type = Constants.SPONSOR_SILVER },
             },
           Activities = VOpenDbInitializer.GetUyEditionActivities(context),
         };
