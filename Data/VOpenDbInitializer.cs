@@ -118,9 +118,9 @@ namespace vopen_api.Data
         };
         var practiaGlobal = new Sponsor
         {
-            Name = "Practia Global",
-            ImageUrl = "https://i.imgur.com/RMiN1j8.png",
-            Url = "http://www.practia.global"
+          Name = "Practia Global",
+          ImageUrl = "https://i.imgur.com/RMiN1j8.png",
+          Url = "http://www.practia.global"
         };
 
         context.Sponsors.Add(microsoft);
@@ -836,7 +836,7 @@ namespace vopen_api.Data
                         new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Azure vs AWS: Guía de Servicios en la Nube", Description = "La elección de un proveedor de servicios en la nube es una gran decisión. Entender cuales se adaptan mejor a tus requerimientos te permitirán ahorrar costos significativos. En esta charla vas a conocer y entender varios de los servicios que ofrecen Microsoft y Amazon, sus similitudes y diferencias." }
                     }
                 },
-                new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-05T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
+                new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "01:00:00", Date = "2019-10-05T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
                 new EditionActivity
                 {
                     Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T14:00:00.000-03:00", Level = "200", Tags = "AI, Azure, Kinect",
@@ -1284,13 +1284,13 @@ namespace vopen_api.Data
       };
       var uySpeaker30 = new User
       {
-          Country = Constants.COUNTRIES_URUGUAY,
-          ImageUrl = "https://i.imgur.com/TFhYd9Y.jpg",
-          Details = new UserDetail[]
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/TFhYd9Y.jpg",
+        Details = new UserDetail[]
           {
               new UserDetail { Name = "Jonathan Smirnoff", Description = "", JobTitle = "Blockchain Developer", Company = "IOV Labs", Language = Constants.LANGUAGES_SPANISH }
           },
-          SocialLinks = new UserSocialLink[]
+        SocialLinks = new UserSocialLink[]
           {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jonathan-smirnoff-85272210" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jonysmirnoff" }
@@ -1298,42 +1298,56 @@ namespace vopen_api.Data
       };
       var uySpeaker31 = new User
       {
-          Country = Constants.COUNTRIES_URUGUAY,
-          ImageUrl = "https://i.imgur.com/tGNdqfg.jpg",
-          Details = new UserDetail[]
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/tGNdqfg.jpg",
+        Details = new UserDetail[]
           {
               new UserDetail { Name = "Sebastián Vergara", Description = "", JobTitle = "CTO at IBM Uruguay/Paraguay", Company = "IBM", Language = Constants.LANGUAGES_SPANISH }
           },
-          SocialLinks = new UserSocialLink[]
+        SocialLinks = new UserSocialLink[]
           {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebastian-vergara/" }
           }
-      }; 
+      };
       var uySpeaker32 = new User
       {
-          Country = Constants.COUNTRIES_URUGUAY,
-          ImageUrl = "https://i.imgur.com/fcfOzjA.jpg",
-          Details = new UserDetail[]
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/fcfOzjA.jpg",
+        Details = new UserDetail[]
           {
               new UserDetail { Name = "Jose Panizza", Description = "", JobTitle = "Full Stack Developer", Company = "IBM", Language = Constants.LANGUAGES_SPANISH }
           },
-          SocialLinks = new UserSocialLink[]
+        SocialLinks = new UserSocialLink[]
           {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jose-ignacio-panizza/" }
           }
-      };   
+      };
       var uySpeaker33 = new User
       {
-          Country = Constants.COUNTRIES_URUGUAY,
-          ImageUrl = "https://i.imgur.com/S747dlQ.jpg",
-          Details = new UserDetail[]
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/S747dlQ.jpg",
+        Details = new UserDetail[]
           {
               new UserDetail { Name = "Yoelvis Mulen", Description = "", JobTitle = "Senior Full Stack Engineer", Company = "Modus Create, Inc", Language = Constants.LANGUAGES_SPANISH }
           },
-          SocialLinks = new UserSocialLink[]
+        SocialLinks = new UserSocialLink[]
           {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/yoelvismulen/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ymulenll" }
+          }
+      };
+      var uySpeaker34 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/OIvEWKx.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Abel Quintana", Description = "", JobTitle = "Software Developer Engineer in Test", Company = "TravelGenio", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/abel-quintana-lopez-371a31b9/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/beloquintana" }
           }
       };
 
@@ -1370,12 +1384,13 @@ namespace vopen_api.Data
       context.Users.Add(uySpeaker31);
       context.Users.Add(uySpeaker32);
       context.Users.Add(uySpeaker33);
+      context.Users.Add(uySpeaker34);
 
       return new List<EditionActivity>
         {
             // Dia 1, track 1
 
-            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-21T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 1", Duration = "01:00:00", Date = "2019-10-21T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 1", Duration = "00:15:00", Date = "2019-10-21T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
@@ -1388,11 +1403,11 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "100", Tags = "Data processing",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker1 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "100", Tags = "AI, Machine learning",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker23 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Stream Processing", Description = "Los datos cada vez más se convierten en el petróleo de este siglo. Los mecanismos tradicionales de captura de datos y su procesamiento ya no alcanzan. Que soluciones y que problemas nuevos traen los motores y frameworks de procesamiento de Streams." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Cómo crear aplicaciones inteligentes con ML.NET", Description = "ML.NET es el framework open source de Microsoft, construido para desarrolladores, que permite crear o expandir soluciones que incluyan una componente de machine learning, disponible para Windows, Linux y macOS. Se verán conceptos básicos de machine learning para luego poder adentrarse en lo que es posible construir utilizando la API de ML.NET." }
                 }
             },
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:20:00", Date = "2019-10-21T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
@@ -1414,7 +1429,7 @@ namespace vopen_api.Data
                     new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Make Your App Friendly to 1 Billion More Users", Description = "Today, mobile devices serve are an extension of the human body, giving us more computing power in the palm of our hands or our back pockets than the computer had that landed NASA astronauts on the moon! As a society, we are growing reliant on this technology that is already an integral part of our lives. Currently, there are more than 1.2 billion websites on the internet, Google Play has over 3.8 million mobile applications and the App Store has over 2 million applications, but how many apps and sites are accessible to people with disabilities? When a company launches an application on the market, it should consider accessibility as an important factor because there are more than one billion people living worldwide with some form of disability, who should be considered when making design decisions. It is essential that, from our role as developers, we not only take into consideration the functionality, performance, security, etc. but that we are advocates for designing and developing accessible applications, using the proper tools to evaluate the accessibility of a product. I invite you to this talk where we will be examining how we can quickly detect accessibility problems from the design and development stage, comparing examples of good and bad practices that will allow us to easily distinguish accessibility errors. With these tips and tools, we can ensure that our applications are accessible and achieve a barrier-free technological landscape." }
                 }
             },
-            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-21T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 1", Duration = "01:00:00", Date = "2019-10-21T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
                 Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "200", Tags = "API, backend, OpenAPI",
@@ -1426,11 +1441,11 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "200", Tags = "Azure",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker13 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "200", Tags = "AR, Azure",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker17 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coding to Azure: How the sausage is made", Description = "A talk describing how Azure works under the covers. Using this knowledge will explore how to architect solutions that work with Azure advantages and limitations." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Creando experiencias de realidad aumentada persistentes y multiusuario", Description = "Las experiencias de realidad aumentada ya no tienen por qué limitarse a un único usuario en su dispositivo. La tecnología actual nos permite hoy crear nuevas experiencias que son persistentes y multiusuario, donde no es necesario seleccionar y posicionar objetos constantemente, basta con enfocar un área determinada con un dispositivo móvil. Veamos los conceptos básicos de AR, como podemos utilizar los servicios de Azure, los SDK de cada plataforma ArCore (Android) y ArKit (iOS) y crear este tipo de experiencias para dispositivos móviles. Augmented reality experiences no longer must be limited to a single user in his/her device. Current technology allows us today to create new persistent and multiuser experiences where there’s no need to select and place objects constantly, it's enough to focus a certain area with a mobile device. Let’s see basic AR concept, how to use Azure services, each platform SDK, ArCore (Android) and ArKit (iOS) and create this type of experiences for mobile devices." }
                 }
             },
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:20:00", Date = "2019-10-21T15:35:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
@@ -1465,7 +1480,7 @@ namespace vopen_api.Data
 
             // Dia 1, track 2
 
-            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-21T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 2", Duration = "01:00:00", Date = "2019-10-21T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 2", Duration = "00:15:00", Date = "2019-10-21T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
@@ -1495,14 +1510,14 @@ namespace vopen_api.Data
                     new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Corriendo Bases de Datos relacionales en Containers", Description = "Veremos como corres diferentes tipos de motores de base de datos en Docker y Kubernetes." }
                 }
             },
-            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-21T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 1", Track = "Track 2", Duration = "01:00:00", Date = "2019-10-21T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "200", Tags = "AR, Azure",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker17 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "200", Tags = "QA, automation",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker34 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Creando experiencias de realidad aumentada persistentes y multiusuario", Description = "Las experiencias de realidad aumentada ya no tienen por qué limitarse a un único usuario en su dispositivo. La tecnología actual nos permite hoy crear nuevas experiencias que son persistentes y multiusuario, donde no es necesario seleccionar y posicionar objetos constantemente, basta con enfocar un área determinada con un dispositivo móvil. Veamos los conceptos básicos de AR, como podemos utilizar los servicios de Azure, los SDK de cada plataforma ArCore (Android) y ArKit (iOS) y crear este tipo de experiencias para dispositivos móviles. Augmented reality experiences no longer must be limited to a single user in his/her device. Current technology allows us today to create new persistent and multiuser experiences where there’s no need to select and place objects constantly, it's enough to focus a certain area with a mobile device. Let’s see basic AR concept, how to use Azure services, each platform SDK, ArCore (Android) and ArKit (iOS) and create this type of experiences for mobile devices." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Automatizar sin morir en el intento", Description = "Cuando desarrollamos software en ambientes ágiles, la automatización de pruebas es un pilar fundamental para lograr releases más rápidos y confiables. Pero, ¿quien se encarga de automatizar las pruebas en un equipo de desarrollo de software?, ¿los testers?, ¿stakeholders?, ¿desarrolladores?, ¿analistas?. En realidad la automatización de pruebas es una actividad de todo el equipo, donde la colaboración es imprescindible. Sin embargo, ¿cómo podemos colaborar diferentes roles con diferentes skills en una actividad técnica como es automatizar pruebas? En esta charla veremos como con el uso de algunas herramientas de automatización para .Net podemos hacer que los scripts automatizados sean comprensible tanto por roles técnicos y no técnicos. Donde clientes, testers y desarrolladores puedan crear, editar y ejecutar con facilidad los tests automatizados y de esta manera fomentar una cultura más colaborativa en nuestros equipos." }
                 }
             },
             new EditionActivity
@@ -1517,17 +1532,17 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-21T15:35:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T15:55:00.000-03:00", Level = "200", Tags = "web apps, arquitectura",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker26 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T15:55:00.000-03:00", Level = "200", Tags = "API, backend, GraphQL, REST",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker33 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Construye tu aplicación Multi-Tenant", Description = "¿Que es un software multitenant? Es un principio de arquitectura de software donde sola instancia de la aplicación puede alojar múltiples clientes u organizaciones . Este es un ambiente muy común en aplicaciones de tipo SaaS (Software as a Services) en la nube. En esta charla veremos diferentes estrategias de cómo diseñar y construir una aplicación multitenant, como particionar datos, configuraciones y requerimientos para clientes. Si tiene un producto el cual quieras convertir a SaaS y cobrar por una suscripción, esta es tu charla." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Conoce GraphQL, es hora de jubilar las API REST", Description = "En los últimos años GraphQL está ganando una gran popularidad y grandes empresas han migrado sus APIs a esa tecnología, durante esta charla veremos el porqué de esa popularidad, las ventajas y características que nos ofrece GraphQL así como los problemas que viene a resolver. Todo mediante ejemplos." }
                 }
             },
 
             // Dia 2, track 1
 
-            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 2", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-22T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 2", Track = "Track 1", Duration = "01:00:00", Date = "2019-10-22T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 2", Track = "Track 1", Duration = "00:15:00", Date = "2019-10-22T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
@@ -1559,14 +1574,14 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "100", Tags = "Security, Privacy",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker18 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "100", Tags = "Data processing",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker1 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Are you really protected?", Description = "Talk about privacy and our social behavior." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Stream Processing", Description = "Los datos cada vez más se convierten en el petróleo de este siglo. Los mecanismos tradicionales de captura de datos y su procesamiento ya no alcanzan. Que soluciones y que problemas nuevos traen los motores y frameworks de procesamiento de Streams." }
                 }
             },
-            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 2", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-22T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 2", Track = "Track 1", Duration = "01:00:00", Date = "2019-10-22T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
                 Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-22T14:00:00.000-03:00", Level = "100", Tags = "Rust",
@@ -1617,7 +1632,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_AFTER_PARTY, Day = "Day 2", Track = "Track 1", Duration = "02:00:00", Date = "2019-10-22T18:50:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "After party" } } },
 
             // Dia 2 - Track 2
-            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 2", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-22T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 2", Track = "Track 2", Duration = "01:00:00", Date = "2019-10-22T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 2", Track = "Track 2", Duration = "00:15:00", Date = "2019-10-22T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
@@ -1631,23 +1646,23 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 2", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-22T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "100", Tags = "AI, Machine learning",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker23 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T11:25:00.000-03:00", Level = "100", Tags = "Security, Privacy",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker18 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Cómo crear aplicaciones inteligentes con ML.NET", Description = "ML.NET es el framework open source de Microsoft, construido para desarrolladores, que permite crear o expandir soluciones que incluyan una componente de machine learning, disponible para Windows, Linux y macOS. Se verán conceptos básicos de machine learning para luego poder adentrarse en lo que es posible construir utilizando la API de ML.NET." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Are you really protected?", Description = "Talk about privacy and our social behavior." }
                 }
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T11:25:00.000-03:00", Level = "100", Tags = "AI, testing",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T12:15:00.000-03:00", Level = "100", Tags = "AI, testing",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker24 } },
                 Details = new List<EditionActivityDetail>()
                 {
                     new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Impacto de la Inteligencia Artificial en el Testing", Description = "La inteligencia artificial ha impactado en la manera que construimos software. En esta ocasión compartiremos como lo está haciendo en el testing de software. El avance de la tecnología ha cambiado la forma en que se prueban las aplicaciones que utilizan inteligencia artificial. Incluso, la inteligencia artificial está siendo adoptada hoy en día para probar aplicaciones." }
                 }
             },
-            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 2", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-22T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
+            new EditionActivity { Type = Constants.ACTIVITY_LUNCH, Day = "Day 2", Track = "Track 2", Duration = "01:00:00", Date = "2019-10-22T13:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Almuerzo" } } },
             new EditionActivity
             {
                 Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-22T14:00:00.000-03:00", Level = "100", Tags = "Bots, AI, Azure",
@@ -1669,11 +1684,20 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 2", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-23T15:35:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-23T15:55:00.000-03:00", Level = "200", Tags = "API, backend, GraphQL, REST",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker33 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-23T15:55:00.000-03:00", Level = "200", Tags = "web apps, arquitectura",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker26 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Conoce GraphQL, es hora de jubilar las API REST", Description = "En los últimos años GraphQL está ganando una gran popularidad y grandes empresas han migrado sus APIs a esa tecnología, durante esta charla veremos el porqué de esa popularidad, las ventajas y características que nos ofrece GraphQL así como los problemas que viene a resolver. Todo mediante ejemplos." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Construye tu aplicación Multi-Tenant", Description = "¿Que es un software multitenant? Es un principio de arquitectura de software donde sola instancia de la aplicación puede alojar múltiples clientes u organizaciones . Este es un ambiente muy común en aplicaciones de tipo SaaS (Software as a Services) en la nube. En esta charla veremos diferentes estrategias de cómo diseñar y construir una aplicación multitenant, como particionar datos, configuraciones y requerimientos para clientes. Si tiene un producto el cual quieras convertir a SaaS y cobrar por una suscripción, esta es tu charla." }
+                }
+            },
+            new EditionActivity
+            {
+                Type = Constants.ACTIVITY_TALK, Day = "Day 2", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-23T16:45:00.000-03:00", Level = "200", Tags = "Security, OWASP",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker2 } },
+                Details = new List<EditionActivityDetail>()
+                {
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Secure design of applications for mobile devices", Description = "Train developers how to develop mobile applications, enable them to evaluate their own applications using Open-source tools and using OWASP methodology." }
                 }
             },
 
@@ -1681,17 +1705,17 @@ namespace vopen_api.Data
 
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-23T17:00:00.000-03:00", Level = "", Tags = "",
-                Users = new List<EditionActivityUser> { },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 1", Duration = "01:00:00", Date = "2019-10-23T17:00:00.000-03:00", Level = "100", Tags = "CQRS, C#",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker26 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "TBC", Description = "TBC" }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "El misterioso CQRS", Description = "El patron CQRS siempre ha sido rodeado de una gran cantidad de misterios, confusiones y errores conceptuales. En este workshop tocaremos varias inquietudes y preguntas sobre la implementación de este patrón. Veremos, qué es exactamente CQRS, qué principios lo fundamentan, que beneficios brinda en nuestros proyectos. Por último, veremos una implementación detallada, paso a paso, de es patrón en un proyecto muy cercano al mundo real. El objetivo final es la comprensión fundamental del patrón CQRS y cómo llevarlo adelante en nuestros proyecto de software. Lo veremos en práctica de la mano de C#." }
                 }
             },
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 3", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-23T19:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 1", Duration = "00:60:00", Date = "2019-10-23T19:30:00.000-03:00", Level = "100", Tags = "IBM, IBM Watson",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 1", Duration = "01:00:00", Date = "2019-10-23T19:30:00.000-03:00", Level = "100", Tags = "IBM, IBM Watson",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker29 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1703,7 +1727,7 @@ namespace vopen_api.Data
 
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-23T17:00:00.000-03:00", Level = "100", Tags = "Bitcoin, Smart Contracts",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 2", Duration = "01:00:00", Date = "2019-10-23T17:00:00.000-03:00", Level = "100", Tags = "Bitcoin, Smart Contracts",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker30 } },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1713,7 +1737,7 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 3", Track = "Track 2", Duration = "00:30:00", Date = "2019-10-23T19:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 2", Duration = "00:60:00", Date = "2019-10-23T19:30:00.000-03:00", Level = "200", Tags = "Elixir, Phoenix",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 2", Duration = "01:00:00", Date = "2019-10-23T19:30:00.000-03:00", Level = "200", Tags = "Elixir, Phoenix",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker16 }, new EditionActivityUser { User = uySpeaker27 }, new EditionActivityUser { User = uySpeaker28 }  },
                 Details = new List<EditionActivityDetail>()
                 {
@@ -1725,17 +1749,17 @@ namespace vopen_api.Data
 
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 3", Duration = "00:60:00", Date = "2019-10-23T17:00:00.000-03:00", Level = "100", Tags = "CQRS, C#",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker26 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 3", Duration = "01:00:00", Date = "2019-10-23T17:00:00.000-03:00", Level = "", Tags = "",
+                Users = new List<EditionActivityUser> {  },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "El misterioso CQRS", Description = "El patron CQRS siempre ha sido rodeado de una gran cantidad de misterios, confusiones y errores conceptuales. En este workshop tocaremos varias inquietudes y preguntas sobre la implementación de este patrón. Veremos, qué es exactamente CQRS, qué principios lo fundamentan, que beneficios brinda en nuestros proyectos. Por último, veremos una implementación detallada, paso a paso, de es patrón en un proyecto muy cercano al mundo real. El objetivo final es la comprensión fundamental del patrón CQRS y cómo llevarlo adelante en nuestros proyecto de software. Lo veremos en práctica de la mano de C#." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "TBC", Description = "" }
                 }
             },
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 3", Track = "Track 3", Duration = "00:30:00", Date = "2019-10-23T19:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 3", Duration = "00:60:00", Date = "2019-10-23T19:30:00.000-03:00", Level = "100", Tags = "Azure, Kubernetes, Azure CLI",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 3", Track = "Track 3", Duration = "01:00:00", Date = "2019-10-23T19:30:00.000-03:00", Level = "100", Tags = "Azure, Kubernetes, Azure CLI",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = context.Users.Find(VICTOR_SILVA_ID) } },
                 Details = new List<EditionActivityDetail>()
                 {
