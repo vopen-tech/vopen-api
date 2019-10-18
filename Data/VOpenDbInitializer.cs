@@ -1011,16 +1011,16 @@ namespace vopen_api.Data
       };
       var uySpeaker10 = new User
       {
-        Country = Constants.COUNTRIES_PERU,
-        ImageUrl = "https://secure.meetupstatic.com/photos/member/7/1/0/c/highres_266188940.jpeg",
+        Country = Constants.COUNTRIES_ARGENTINA,
+        ImageUrl = "https://i.imgur.com/sQNWlwN.jpg",
         Details = new UserDetail[]
           {
-              new UserDetail { Name = "Nicolas Nakasone", Description = "", JobTitle = "Technical Leader", Company = "Arkanosoft", Language = Constants.LANGUAGES_SPANISH }
+              new UserDetail { Name = "Sebastián Perez", Description = "", JobTitle = "Ethereum Instructor", Company = "Blockchain Academy Chile", Language = Constants.LANGUAGES_SPANISH }
           },
         SocialLinks = new UserSocialLink[]
           {
-              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/nicolas-nakasone/" },
-              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/nicolasnakasone" },
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebaleoperez/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/sebaleoperez" },
           }
       };
       var uySpeaker11 = new User
@@ -1137,7 +1137,8 @@ namespace vopen_api.Data
       var uySpeaker19 = new User
       {
         Country = Constants.COUNTRIES_BRAZIL,
-        ImageUrl = "https://i.imgur.com/vu2PtZl.png",
+       // ImageUrl = "https://i.imgur.com/vu2PtZl.png",
+       ImageUrl = "https://i.imgur.com/SHyfZmK.png",
         Details = new UserDetail[]
           {
               new UserDetail { Name = "Erick Wendel", Description = "", JobTitle = "Lead Software Architect", Company = "Beetech Global", Language = Constants.LANGUAGES_SPANISH }
@@ -1349,6 +1350,20 @@ namespace vopen_api.Data
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/abel-quintana-lopez-371a31b9/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/beloquintana" }
           }
+      };    
+      var uySpeaker35 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/trm2Av1.png",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Alfredo Quintana Lopez", Description = "", JobTitle = "Tech Lead", Company = "TravelGenio", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/alfredo-quintana-l%C3%B3pez-b46a3095/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/alfreql" }
+          }
       };
 
       context.Users.Add(uySpeaker1);
@@ -1385,6 +1400,7 @@ namespace vopen_api.Data
       context.Users.Add(uySpeaker32);
       context.Users.Add(uySpeaker33);
       context.Users.Add(uySpeaker34);
+      context.Users.Add(uySpeaker35);
 
       return new List<EditionActivity>
         {
@@ -1514,7 +1530,7 @@ namespace vopen_api.Data
             new EditionActivity
             {
                 Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:00:00.000-03:00", Level = "200", Tags = "QA, automation",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker34 } },
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker34 }, new EditionActivityUser { User = uySpeaker35 } },
                 Details = new List<EditionActivityDetail>()
                 {
                     new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Automatizar sin morir en el intento", Description = "Cuando desarrollamos software en ambientes ágiles, la automatización de pruebas es un pilar fundamental para lograr releases más rápidos y confiables. Pero, ¿quien se encarga de automatizar las pruebas en un equipo de desarrollo de software?, ¿los testers?, ¿stakeholders?, ¿desarrolladores?, ¿analistas?. En realidad la automatización de pruebas es una actividad de todo el equipo, donde la colaboración es imprescindible. Sin embargo, ¿cómo podemos colaborar diferentes roles con diferentes skills en una actividad técnica como es automatizar pruebas? En esta charla veremos como con el uso de algunas herramientas de automatización para .Net podemos hacer que los scripts automatizados sean comprensible tanto por roles técnicos y no técnicos. Donde clientes, testers y desarrolladores puedan crear, editar y ejecutar con facilidad los tests automatizados y de esta manera fomentar una cultura más colaborativa en nuestros equipos." }
@@ -1522,11 +1538,11 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "200", Tags = "Data Science",
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T14:50:00.000-03:00", Level = "100", Tags = "Smart Contracts, blockchain",
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker10 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Arquitecturas Disruptivas en Ciencias de Datos", Description = "La Ciencia de Datos necesita romper con las arquitecturas tradicionales, on-premise, monoliticas, para pasar a usar arquitecturas disruptivas acordes con las nuevas tendencias tecnológicas: agilidad, cloud, resilencia, intelligence edge, data centric, data driven, son algunas de las piezas de esta nueva arquitectura." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Smart Coding with Smart Contracts", Description = "Sintaxis, arquitectura, buenas prácticas y todo lo que hay que tener en cuenta para crear tu aplicación descentralizada utilizando contratos inteligentes escritos en Solidity." }
                 }
             },
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-21T15:35:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
