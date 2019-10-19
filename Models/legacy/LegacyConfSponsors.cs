@@ -96,8 +96,14 @@ namespace vopen_api.Models.legacy
 
       var hasBooth = (
           sponsor.Type != Constants.SPONSOR_DIGITAL
-          && sponsor.Name.ToLowerInvariant() != "nareia"
+          && sponsor.Name.ToLowerInvariant() != "cobrosya"
+          && sponsor.Name.ToLowerInvariant() != "smarttalent"
+          && sponsor.Name.ToLowerInvariant() != "alianza"
+          && sponsor.Name.ToLowerInvariant() != "uruguayxxi"
+          && sponsor.Name.ToLowerInvariant() != "antel"
+          && sponsor.Name.ToLowerInvariant() != "microsoft"
           && sponsor.Name.ToLowerInvariant() != "el observador"
+          && sponsor.Name.ToLowerInvariant() != "nareia"
       );
 
       return new SponsorCategory
