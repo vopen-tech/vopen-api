@@ -982,7 +982,7 @@ namespace vopen_api.Data
 
       var uySpeaker8 = new User
       {
-        Country = Constants.COUNTRIES_URUGUAY,
+        Country = Constants.COUNTRIES_CUBA,
         ImageUrl = "https://media.licdn.com/dms/image/C4E03AQHfoMQZOieQNQ/profile-displayphoto-shrink_800_800/0?e=1575504000&v=beta&t=bCcx9zY3xXZFKcVYVnrYTW8guvU3l71pWkymykhuw0c",
         Details = new UserDetail[]
           {
@@ -1285,7 +1285,7 @@ namespace vopen_api.Data
       };
       var uySpeaker30 = new User
       {
-        Country = Constants.COUNTRIES_URUGUAY,
+        Country = Constants.COUNTRIES_ARGENTINA,
         ImageUrl = "https://i.imgur.com/TFhYd9Y.jpg",
         Details = new UserDetail[]
           {
@@ -1325,7 +1325,7 @@ namespace vopen_api.Data
       };
       var uySpeaker33 = new User
       {
-        Country = Constants.COUNTRIES_URUGUAY,
+        Country = Constants.COUNTRIES_CUBA,
         ImageUrl = "https://i.imgur.com/S747dlQ.jpg",
         Details = new UserDetail[]
           {
@@ -1419,11 +1419,11 @@ namespace vopen_api.Data
             },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "100", Tags = "AI, Machine learning",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker23 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "200", Tags = "Elixir, Phoenix",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker16 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Cómo crear aplicaciones inteligentes con ML.NET", Description = "ML.NET es el framework open source de Microsoft, construido para desarrolladores, que permite crear o expandir soluciones que incluyan una componente de machine learning, disponible para Windows, Linux y macOS. Se verán conceptos básicos de machine learning para luego poder adentrarse en lo que es posible construir utilizando la API de ML.NET." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Desarrollo web funcional con Elixir y Phoenix", Description = "La idea de esta charla es contar nuestra experiencia haciendo desarrollo web con Elixir, y el framework Phoenix en particular, que viene siendo muy satisfactoria. Acostumbrados a tener muchas tecnologías que permiten hacer aplicaciones web dentro del paradigma de la orientación a objetos, nos parece interesante mostrar cómo Phoenix modela este problema pero usando un enfoque puramente funcional, explicando la arquitectura del framework, las cualidades de Elixir en las que se apoya, y mostrando código concreto que sirva de ejemplo para quienes no conozcan estas tecnologías." }
                 }
             },
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 1", Duration = "00:20:00", Date = "2019-10-21T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
@@ -1500,11 +1500,11 @@ namespace vopen_api.Data
             new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 2", Duration = "00:15:00", Date = "2019-10-21T09:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
             new EditionActivity
             {
-                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Level = "200", Tags = "Elixir, Phoenix",
-                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker16 } },
+                Type = Constants.ACTIVITY_TALK, Day = "Day 1", Track = "Track 2", Duration = "00:45:00", Date = "2019-10-21T10:20:00.000-03:00", Tags = "AI, Machine learning",
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = uySpeaker23 } },
                 Details = new List<EditionActivityDetail>()
                 {
-                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Desarrollo web funcional con Elixir y Phoenix", Description = "La idea de esta charla es contar nuestra experiencia haciendo desarrollo web con Elixir, y el framework Phoenix en particular, que viene siendo muy satisfactoria. Acostumbrados a tener muchas tecnologías que permiten hacer aplicaciones web dentro del paradigma de la orientación a objetos, nos parece interesante mostrar cómo Phoenix modela este problema pero usando un enfoque puramente funcional, explicando la arquitectura del framework, las cualidades de Elixir en las que se apoya, y mostrando código concreto que sirva de ejemplo para quienes no conozcan estas tecnologías." }
+                    new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Cómo crear aplicaciones inteligentes con ML.NET", Description = "ML.NET es el framework open source de Microsoft, construido para desarrolladores, que permite crear o expandir soluciones que incluyan una componente de machine learning, disponible para Windows, Linux y macOS. Se verán conceptos básicos de machine learning para luego poder adentrarse en lo que es posible construir utilizando la API de ML.NET." }
                 }
             },
             new EditionActivity { Type = Constants.ACTIVITY_COFFEE_BREAK, Day = "Day 1", Track = "Track 2", Duration = "00:20:00", Date = "2019-10-21T11:05:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Coffee break" } } },
