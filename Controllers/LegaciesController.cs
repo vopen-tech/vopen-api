@@ -101,7 +101,7 @@ namespace vopen_api.Controllers
                     var response = await this.GetAttendeesInEdition(editionId, page);
                     var attendee = response.attendees
                         .FirstOrDefault(item =>
-                          item.Profile.Email.ToLowerInvariant() == attendeeBody.Email.ToLowerInvariant()
+                          item.Profile.Email != null && item.Profile.Email.ToLowerInvariant() == attendeeBody.Email.ToLowerInvariant()
                           && ticketNamesAllowedInRaffle.ToLower().Contains(item.TicketClassName.ToLowerInvariant())
                         );
 
