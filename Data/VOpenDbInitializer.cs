@@ -238,7 +238,7 @@ namespace vopen_api.Data
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CL 2019" },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CL 2019" }
             },
-          LocationName = "",
+          LocationName = "Próximamente",
           LocationFullAddress = "Santiago de Chile, Chile",
           Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_CHILE).Select(c => new EditionOrganizer { User = c }).ToList(),
         };
@@ -570,8 +570,36 @@ namespace vopen_api.Data
           },
         SocialLinks = new UserSocialLink[]
           {
-              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://twitter.com/SergioBLagash" },
-              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://www.linkedin.com/in/sergioborromei" },
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sergioborromei" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/SergioBLagash" },
+          }
+      };
+      var user26 = new User
+      {
+        Country = Constants.COUNTRIES_CHILE,
+        ImageUrl = "https://i.imgur.com/RNU3DyU.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Mario Valderrama", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/mario-valderrama-silva-a8253b46/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/MarioChep" },
+          }
+      };
+      var user27 = new User
+      {
+        Country = Constants.COUNTRIES_CHILE,
+        ImageUrl = "https://i.imgur.com/zn3VgQD.png",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Christian Kus", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christiankus/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/christiankus" },
           }
       };
 
@@ -676,12 +704,14 @@ namespace vopen_api.Data
       context.Users.Add(user23);
       context.Users.Add(user24);
       context.Users.Add(user25);
+      context.Users.Add(user26);
+      context.Users.Add(user27);
 
       return new List<User>
         {
             user1, user2, user3, user4, user5, user6, user7, user8, user9, user12,
             user13, user14, user15, user16, user17, user18, user19, user20, user21,
-            user22, user23, user24, user25
+            user22, user23, user24, user25, user26, user27
         };
     }
 
