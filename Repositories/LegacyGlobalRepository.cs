@@ -37,7 +37,7 @@ namespace vopen_api.Repositories
 
         private ICollection<UserDTO> GetSpeakers()
         {
-            var baseUrl = "https://vopenprodstorage.blob.core.windows.net/publicresources/speakers/";
+            var baseUrl = "https://vopenprodstorage.blob.core.windows.net/images/speakers/";
             using (StreamReader file = File.OpenText(Path.Combine(hostingEnvironment.WebRootPath, "speakers.json")))
             {
                 string json = file.ReadToEnd();
@@ -61,7 +61,7 @@ namespace vopen_api.Repositories
 
         private ICollection<EditionSponsorDTO> GetSponsors()
         {
-            var baseUrl = "https://vopenprodstorage.blob.core.windows.net/publicresources/sponsors/";
+            var baseUrl = "https://vopenprodstorage.blob.core.windows.net/images/sponsors/";
             using (StreamReader file = File.OpenText(Path.Combine(hostingEnvironment.WebRootPath, "sponsors.json")))
             {
                 string json = file.ReadToEnd();
