@@ -228,8 +228,8 @@ namespace vopen_api.Data
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen MX 2020", Date = "26, 27 y 28 de Marzo"  },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen MX 2020", Date = "March 26th, 27th and 28th" }
             },
-            LocationName = "Próximamente",
-            LocationFullAddress = "México",
+            LocationName = "Instituto Tecnológico de Tláhuac",
+            LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
             Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIS_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
         };
 
