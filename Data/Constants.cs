@@ -12,7 +12,7 @@ namespace vopen_api.Data
         public static string COUNTRIES_CHILE = "Chile";
         public static string COUNTRIES_CUBA = "Cuba";
         public static string COUNTRIES_COLOMBIA = "Colombia";
-        public static string COUNTRIS_MEXICO = "Mexico";
+        public static string COUNTRIES_MEXICO = "Mexico";
         public static string COUNTRIES_PERU = "Perú";
         public static string COUNTRIES_URUGUAY = "Uruguay";
         public static string COUNTRIES_UNITED_STATES = "United States";

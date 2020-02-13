@@ -206,31 +206,31 @@ namespace vopen_api.Data
         // Create CL Edition
         var clEdition = new Edition
         {
-            Id = "vopen-cl-2019",
-            Event = vopenEvent,
-            Details = new EditionDetail[]
+          Id = "vopen-cl-2019",
+          Event = vopenEvent,
+          Details = new EditionDetail[]
             {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CL 2020", Date = "14, 15 y 16 de Mayo"  },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CL 2020", Date = "May 14th, 15th and 16th" }
             },
-            LocationName = "Próximamente",
-            LocationFullAddress = "Santiago de Chile, Chile",
-            Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_CHILE).Select(c => new EditionOrganizer { User = c }).ToList(),
+          LocationName = "Próximamente",
+          LocationFullAddress = "Santiago de Chile, Chile",
+          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_CHILE).Select(c => new EditionOrganizer { User = c }).ToList(),
         };
 
         // Create MX Edition
         var mxEdition = new Edition
         {
-            Id = "vopen-mx-2019",
-            Event = vopenEvent,
-            Details = new EditionDetail[]
+          Id = "vopen-mx-2019",
+          Event = vopenEvent,
+          Details = new EditionDetail[]
             {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen MX 2020", Date = "26, 27 y 28 de Marzo"  },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen MX 2020", Date = "March 26th, 27th and 28th" }
             },
-            LocationName = "Instituto Tecnológico de Tláhuac",
-            LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
-            Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIS_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
+          LocationName = "Instituto Tecnológico de Tláhuac",
+          LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
+          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
         };
 
         // Create AR Edition
@@ -563,31 +563,31 @@ namespace vopen_api.Data
 
       var user2 = new User
       {
-         Country = Constants.COUNTRIES_ARGENTINA,
-         ImageUrl = "https://i.imgur.com/4JpB16z.jpg",
-         Details = new UserDetail[] { new UserDetail { Name = "Guillermo Bellmann", Description = "", Language = Constants.LANGUAGES_SPANISH } },
-         SocialLinks = new UserSocialLink[]
+        Country = Constants.COUNTRIES_ARGENTINA,
+        ImageUrl = "https://i.imgur.com/4JpB16z.jpg",
+        Details = new UserDetail[] { new UserDetail { Name = "Guillermo Bellmann", Description = "", Language = Constants.LANGUAGES_SPANISH } },
+        SocialLinks = new UserSocialLink[]
          {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://ar.linkedin.com/in/gbellmann" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/gjbellmann" },
          }
       };
 
-            // CL
+      // CL
 
-            var user16 = new User
+      var user16 = new User
       {
         Country = Constants.COUNTRIES_CHILE,
         ImageUrl = "https://i.imgur.com/lVxUCBx.jpg",
         Details = new UserDetail[]
-          {
+    {
               new UserDetail { Name = "Sergio Borromei", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
+    },
         SocialLinks = new UserSocialLink[]
-          {
+    {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sergioborromei" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/SergioBLagash" },
-          }
+    }
       };
       var user26 = new User
       {
@@ -696,6 +696,78 @@ namespace vopen_api.Data
         SocialLinks = new UserSocialLink[] { },
       };
 
+      // MX
+      var user30 = new User
+      {
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/4OmATPO.jpg",
+        Details = new UserDetail[]
+           {
+                new UserDetail { Name = "Christian Romano", Description = "", JobTitle = "Gerente de Infraestructura y Operaciones de TI", Company = "Universidad Latinoamericana", Language = Constants.LANGUAGES_SPANISH }
+           },
+        SocialLinks = new UserSocialLink[]
+           {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christianromanomvp/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/shionfox" },
+           }
+      };
+      var user31 = new User
+      {
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/i3wzW1v.jpg?1",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Fátima Jaydith Blancas Velázquez", Description = "", JobTitle = "CEO", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fatimablancasv/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/JaydithBV" },
+          }
+      };
+      var user32 = new User
+      {
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/UY8abAH.jpg",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Roberto Correa", Description = "", JobTitle = "Gerente de Infraestructura", Company = "Comisión Nacional de Cultura Física y Deporte", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/roberto-correa-mart%C3%ADnez-450b8016/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/Roberto_Correa_" },
+          }
+      };
+      var user33 = new User
+      {
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/jnOvbjH.jpg",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Julio César Leyva", Description = "", JobTitle = "Director de Operaciones", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/julioleyva/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/kexdat" },
+          }
+      };
+      var user34 = new User
+      {
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/iEG62Yn.jpg",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Rodolfo Castro", Description = "", JobTitle = "MS UC Consultant", Company = "Poly", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/rodolfomvp/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ucblogmx" },
+          }
+      };
+
       context.Users.Add(user1);
       context.Users.Add(user2);
       context.Users.Add(user3);
@@ -721,12 +793,17 @@ namespace vopen_api.Data
       context.Users.Add(user25);
       context.Users.Add(user26);
       context.Users.Add(user27);
+      context.Users.Add(user30);
+      context.Users.Add(user31);
+      context.Users.Add(user32);
+      context.Users.Add(user33);
+      context.Users.Add(user34);
 
       return new List<User>
         {
             user1, user2, user3, user4, user5, user6, user7, user8, user9, user12,
             user13, user14, user15, user16, user17, user18, user19, user20, user21,
-            user22, user23, user24, user25, user26, user27
+            user22, user23, user24, user25, user26, user27, user30, user31, user32, user33, user34
         };
     }
 
@@ -1182,8 +1259,8 @@ namespace vopen_api.Data
       var uySpeaker19 = new User
       {
         Country = Constants.COUNTRIES_BRAZIL,
-       // ImageUrl = "https://i.imgur.com/vu2PtZl.png",
-       ImageUrl = "https://i.imgur.com/SHyfZmK.png",
+        // ImageUrl = "https://i.imgur.com/vu2PtZl.png",
+        ImageUrl = "https://i.imgur.com/SHyfZmK.png",
         Details = new UserDetail[]
           {
               new UserDetail { Name = "Erick Wendel", Description = "", JobTitle = "Lead Software Architect", Company = "Beetech Global", Language = Constants.LANGUAGES_SPANISH }
@@ -1395,7 +1472,7 @@ namespace vopen_api.Data
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/abel-quintana-lopez-371a31b9/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/beloquintana" }
           }
-      };    
+      };
       var uySpeaker35 = new User
       {
         Country = Constants.COUNTRIES_URUGUAY,
