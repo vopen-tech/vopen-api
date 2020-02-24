@@ -37,7 +37,8 @@ namespace vopen_api.Repositories
 
         private ICollection<UserDTO> GetSpeakers()
         {
-            var baseUrl = "https://vopenprodstorage.blob.core.windows.net/images/speakers/";
+            var baseUrl = "https://vopentechstorage.blob.core.windows.net/images/speakers/";
+            var sha = "sv=2018-03-28&ss=bfqt&srt=sco&sp=rl&st=2020-02-24T03%3A12%3A42Z&se=2030-02-25T03%3A12%3A00Z&sig=3OkoIhl2W3nc4bmTofW%2FqhMl7XhBXxp%2FxN7l51%2FNxM0%3D";
             using (StreamReader file = File.OpenText(Path.Combine(hostingEnvironment.WebRootPath, "speakers.json")))
             {
                 string json = file.ReadToEnd();
@@ -49,7 +50,7 @@ namespace vopen_api.Repositories
                     Name = item.fullName,
                     Company = item.company,
                     JobTitle = item.jobTitle,
-                    ImageUrl = baseUrl + item.avatarFileName + ".jpg",
+                    ImageUrl = baseUrl + item.avatarFileName + ".png?" + sha,
                     SocialLinks = new List<UserSocialLinkDTO>()
                     {
                         new UserSocialLinkDTO() { Type = Constants.SOCIAL_TWITTER, Url = item.twitter },
@@ -61,7 +62,8 @@ namespace vopen_api.Repositories
 
         private ICollection<EditionSponsorDTO> GetSponsors()
         {
-            var baseUrl = "https://vopenprodstorage.blob.core.windows.net/images/sponsors/";
+            var baseUrl = "https://vopentechstorage.blob.core.windows.net/images/sponsors/";
+            var sha = "sv=2018-03-28&ss=bfqt&srt=sco&sp=rl&st=2020-02-24T03%3A12%3A42Z&se=2030-02-25T03%3A12%3A00Z&sig=3OkoIhl2W3nc4bmTofW%2FqhMl7XhBXxp%2FxN7l51%2FNxM0%3D";
             using (StreamReader file = File.OpenText(Path.Combine(hostingEnvironment.WebRootPath, "sponsors.json")))
             {
                 string json = file.ReadToEnd();
@@ -71,7 +73,7 @@ namespace vopen_api.Repositories
                     Id = item.sponsorId,
                     Name = item.name,
                     Url = item.website,
-                    ImageUrl = baseUrl + item.logoFileName + ".png"
+                    ImageUrl = baseUrl + item.logoFileName + ".png?" + sha
                 }).ToList();
             }
         }

@@ -213,8 +213,8 @@ namespace vopen_api.Data
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CL 2020", Date = "14, 15 y 16 de Mayo"  },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CL 2020", Date = "May 14th, 15th and 16th" }
             },
-          LocationName = "Próximamente",
-          LocationFullAddress = "Santiago de Chile, Chile",
+          LocationName = "Duoc UC: Sede Alonso de Ovalle",
+          LocationFullAddress = "Duoc UC: Sede Alonso de Ovalle, Santiago de Chile, Chile",
           Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_CHILE).Select(c => new EditionOrganizer { User = c }).ToList(),
         };
 
@@ -228,7 +228,7 @@ namespace vopen_api.Data
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen MX 2020", Date = "26, 27 y 28 de Marzo"  },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen MX 2020", Date = "March 26th, 27th and 28th" }
             },
-          LocationName = "Instituto Tecnológico de Tláhuac",
+          LocationName = "Tecnológico Nacional de México Campus Tlahuac",
           LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
           Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
         };
@@ -348,7 +348,7 @@ namespace vopen_api.Data
         ImageUrl = "https://i.imgur.com/14aAfJW.jpg",
         Details = new UserDetail[]
          {
-            new UserDetail { Name = "Mariano Vazquez", Description = "", JobTitle = "Tech Lead", Company = "MuleSoft", Language = Constants.LANGUAGES_SPANISH }
+            new UserDetail { Name = "Mariano Vazquez", Description = "", JobTitle = "Principal Software Engineer", Company = "MuleSoft", Language = Constants.LANGUAGES_SPANISH }
          },
         SocialLinks = new UserSocialLink[]
          {
@@ -363,7 +363,7 @@ namespace vopen_api.Data
         ImageUrl = "https://i.imgur.com/iY5beT7.jpg",
         Details = new UserDetail[]
           {
-              new UserDetail { Name = "Pablo Di Loreto", Description = "", Language = Constants.LANGUAGES_SPANISH }
+              new UserDetail { Name = "Pablo Di Loreto", Description = "", JobTitle = "Service Manager", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
           },
         SocialLinks = new UserSocialLink[]
           {
@@ -378,7 +378,7 @@ namespace vopen_api.Data
         ImageUrl = "https://i.imgur.com/KrNBexb.jpg",
         Details = new UserDetail[]
           {
-                new UserDetail { Name = "Fabian Imaz", Description = "", Language = Constants.LANGUAGES_SPANISH }
+                new UserDetail { Name = "Fabian Imaz", Description = "", JobTitle = "CEO", Company = "Siderys", Language = Constants.LANGUAGES_SPANISH }
           },
         SocialLinks = new UserSocialLink[]
           {
@@ -393,7 +393,7 @@ namespace vopen_api.Data
         ImageUrl = "https://i.imgur.com/vXLIy95.jpg",
         Details = new UserDetail[]
           {
-                new UserDetail { Name = "Fabian Fernandez", Description = "", Language = Constants.LANGUAGES_SPANISH, }
+                new UserDetail { Name = "Fabian Fernandez", Description = "", JobTitle = "VP Global Markets", Company = "Cuti", Language = Constants.LANGUAGES_SPANISH, }
            },
         SocialLinks = new UserSocialLink[]
           {
