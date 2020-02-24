@@ -50,7 +50,7 @@ namespace vopen_api.Repositories
                     Name = item.fullName,
                     Company = item.company,
                     JobTitle = item.jobTitle,
-                    ImageUrl = baseUrl + item.avatarFileName + ".png?" + sha,
+                    ImageUrl = baseUrl + item.avatarFileName + ".jpg?" + sha,
                     SocialLinks = new List<UserSocialLinkDTO>()
                     {
                         new UserSocialLinkDTO() { Type = Constants.SOCIAL_TWITTER, Url = item.twitter },
