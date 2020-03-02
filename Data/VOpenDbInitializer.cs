@@ -233,6 +233,12 @@ namespace vopen_api.Data
         };
 
         // Create MX Edition
+        var mxBuyLinks = new List<TicketLink>()
+        {
+            new TicketLink { Url = "https://vopen-mx-2020.eventbrite.com" },
+        };
+        var mxBuyLinksJson = JsonConvert.SerializeObject(mxBuyLinks);
+
         var mxEdition = new Edition
         {
           Id = "vopen-mx-2019",
@@ -245,14 +251,18 @@ namespace vopen_api.Data
           LocationName = "Tecnológico Nacional de México Campus Tlahuac",
           LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
           Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
-            Sponsors = new List<EditionSponsor>()
+          Sponsors = new List<EditionSponsor>()
             {
                 // use a number for the ID because it is needed for the app mobile (will be removed later on)
                 new EditionSponsor { Id = "15", Sponsor = microsoft, Type = Constants.SPONSOR_DIAMOND },
                 new EditionSponsor { Id = "16", Sponsor = kaizen, Type = Constants.SPONSOR_DIGITAL },
                 new EditionSponsor { Id = "17", Sponsor = siderys, Type = Constants.SPONSOR_DIGITAL },
                 new EditionSponsor { Id = "18", Sponsor = algeiba, Type = Constants.SPONSOR_DIGITAL }
-            }
+            },
+            EditionTickets = new List<EditionTicket>()
+             {
+                new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2020-03-01T00:00:00.000Z", EndDate = "2020-03-29T00:00:00.000Z", BuyLinks = mxBuyLinksJson },
+             },
         };
 
         // Create AR Edition
