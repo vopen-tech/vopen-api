@@ -122,7 +122,21 @@ namespace vopen_api.Data
           ImageUrl = "https://i.imgur.com/RMiN1j8.png",
           Url = "http://www.practia.global"
         };
+        var siderys = new Sponsor
+        {
+            Name = "Siderys",
+            ImageUrl = "https://i.imgur.com/qL1C8lY.png",
+            Url = "https://www.siderys.com/"
+        };
+        var algeiba = new Sponsor
+        {
+            Name = "Algeiba",
+            ImageUrl = "https://i.imgur.com/CWf2Az0.png",
+            Url = "https://www.algeiba.com/"
+        };
 
+        context.Sponsors.Add(algeiba);
+        context.Sponsors.Add(siderys);
         context.Sponsors.Add(microsoft);
         context.Sponsors.Add(kaizen);
         context.Sponsors.Add(endava);
@@ -231,6 +245,14 @@ namespace vopen_api.Data
           LocationName = "Tecnológico Nacional de México Campus Tlahuac",
           LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
           Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
+            Sponsors = new List<EditionSponsor>()
+            {
+                // use a number for the ID because it is needed for the app mobile (will be removed later on)
+                new EditionSponsor { Id = "15", Sponsor = microsoft, Type = Constants.SPONSOR_DIAMOND },
+                new EditionSponsor { Id = "16", Sponsor = kaizen, Type = Constants.SPONSOR_DIGITAL },
+                new EditionSponsor { Id = "17", Sponsor = siderys, Type = Constants.SPONSOR_DIGITAL },
+                new EditionSponsor { Id = "18", Sponsor = algeiba, Type = Constants.SPONSOR_DIGITAL }
+            }
         };
 
         // Create AR Edition
