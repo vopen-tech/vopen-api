@@ -126,7 +126,7 @@ namespace vopen_api.Data
         {
             Name = "Siderys",
             ImageUrl = "https://i.imgur.com/qL1C8lY.png",
-            Url = "https://www.siderys.com/"
+            Url = "http://www.siderys.com/"
         };
         var algeiba = new Sponsor
         {
@@ -134,7 +134,14 @@ namespace vopen_api.Data
             ImageUrl = "https://i.imgur.com/CWf2Az0.png",
             Url = "https://www.algeiba.com/"
         };
+        var iTProve = new Sponsor
+        {
+            Name = "iTProve",
+            ImageUrl = "https://i.imgur.com/nE9pcCY.png",
+            Url = "http://itprove.com.mx"
+        };
 
+        context.Sponsors.Add(iTProve);
         context.Sponsors.Add(algeiba);
         context.Sponsors.Add(siderys);
         context.Sponsors.Add(microsoft);
@@ -255,6 +262,7 @@ namespace vopen_api.Data
             {
                 // use a number for the ID because it is needed for the app mobile (will be removed later on)
                 new EditionSponsor { Id = "15", Sponsor = microsoft, Type = Constants.SPONSOR_DIAMOND },
+                new EditionSponsor { Id = "19", Sponsor = iTProve, Type = Constants.SPONSOR_GOLD },
                 new EditionSponsor { Id = "16", Sponsor = kaizen, Type = Constants.SPONSOR_DIGITAL },
                 new EditionSponsor { Id = "17", Sponsor = siderys, Type = Constants.SPONSOR_DIGITAL },
                 new EditionSponsor { Id = "18", Sponsor = algeiba, Type = Constants.SPONSOR_DIGITAL }
