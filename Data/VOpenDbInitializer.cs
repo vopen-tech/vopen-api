@@ -36,6 +36,7 @@ namespace vopen_api.Data
         context.Events.Add(vopenEvent);
 
         var organizers = VOpenDbInitializer.CreateGlobalOrganizers(context);
+        var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
 
         // Create sponsors
         var microsoft = new Sponsor
@@ -124,21 +125,21 @@ namespace vopen_api.Data
         };
         var siderys = new Sponsor
         {
-            Name = "Siderys",
-            ImageUrl = "https://i.imgur.com/qL1C8lY.png",
-            Url = "http://www.siderys.com/"
+          Name = "Siderys",
+          ImageUrl = "https://i.imgur.com/qL1C8lY.png",
+          Url = "http://www.siderys.com/"
         };
         var algeiba = new Sponsor
         {
-            Name = "Algeiba",
-            ImageUrl = "https://i.imgur.com/CWf2Az0.png",
-            Url = "https://www.algeiba.com/"
+          Name = "Algeiba",
+          ImageUrl = "https://i.imgur.com/CWf2Az0.png",
+          Url = "https://www.algeiba.com/"
         };
         var iTProve = new Sponsor
         {
-            Name = "iTProve",
-            ImageUrl = "https://i.imgur.com/nE9pcCY.png",
-            Url = "http://itprove.com.mx"
+          Name = "iTProve",
+          ImageUrl = "https://i.imgur.com/nE9pcCY.png",
+          Url = "http://itprove.com.mx"
         };
 
         context.Sponsors.Add(iTProve);
@@ -159,16 +160,33 @@ namespace vopen_api.Data
         context.Sponsors.Add(alianza);
         context.Sponsors.Add(practiaGlobal);
 
+
+        // Create global edition
+        var globalEdition2020 = new Edition
+        {
+          Id = "vopen-global-2020",
+          Event = vopenEvent,
+          Details = new EditionDetail[]
+            {
+                new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2020" },
+                new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2020" }
+            },
+          Organizers = organizers2020
+            .Concat(organizers.Where(c => c.Id.Contains("global-user")))
+            .Select(c => new EditionOrganizer { User = c })
+            .ToList()
+        };
+
         // Create global edition
         var globalEdition = new Edition
         {
           Id = "vopen-global-2019",
           Event = vopenEvent,
           Details = new EditionDetail[]
-            {
+          {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2019" },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2019" }
-            },
+          },
           Organizers = organizers.Where(c => c.Id.Contains("global-user")).Select(c => new EditionOrganizer { User = c }).ToList()
         };
 
@@ -183,6 +201,7 @@ namespace vopen_api.Data
         camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
         var uyBuyLinksJson = JsonConvert.SerializeObject(uyBuyLinks);
 
+        // Create UY Edition
         var uyEdition = new Edition
         {
           Id = "vopen-uy-2019",
@@ -221,8 +240,6 @@ namespace vopen_api.Data
             },
           Activities = VOpenDbInitializer.GetUyEditionActivities(context),
         };
-
-
 
         // Create CL Edition
         var clEdition = new Edition
@@ -267,7 +284,7 @@ namespace vopen_api.Data
                 new EditionSponsor { Id = "17", Sponsor = siderys, Type = Constants.SPONSOR_DIGITAL },
                 new EditionSponsor { Id = "18", Sponsor = algeiba, Type = Constants.SPONSOR_DIGITAL }
             },
-            EditionTickets = new List<EditionTicket>()
+          EditionTickets = new List<EditionTicket>()
              {
                 new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2020-03-01T00:00:00.000Z", EndDate = "2020-03-29T00:00:00.000Z", BuyLinks = mxBuyLinksJson },
              },
@@ -341,6 +358,7 @@ namespace vopen_api.Data
           Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_PERU).Select(c => new EditionOrganizer { User = c }).ToList(),
         };
 
+        context.Editions.Add(globalEdition2020);
         context.Editions.Add(globalEdition);
 
         context.Editions.Add(clEdition);
@@ -845,6 +863,227 @@ namespace vopen_api.Data
             user13, user14, user15, user16, user17, user18, user19, user20, user21,
             user22, user23, user24, user25, user26, user27, user30, user31, user32, user33, user34
         };
+    }
+
+    public static ICollection<User> CreateGlobalOrganizers2020(VOpenDbContext context)
+    {
+      var user1 = new User
+      {
+        Id = "global-user-2020-1",
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/vSPaUor.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Federico Bernasconi", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                    new UserSocialLink
+                    {
+                        Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/federico-bernasconi-48087b56/"
+                    },
+          }
+      };
+      var user2 = new User
+      {
+        Id = "global-user-2020-2",
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/7WclQJ9.jpg",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Brian Hardy", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/brian-hardy-382a9484" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/hardyr93" },
+          }
+      };
+      var user3 = new User
+      {
+        Id = "global-user-2020-3",
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/g1l8I4s.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Pablo Terevinto",  Description = "", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/pterevinto/"}
+          }
+      };
+      var user4 = new User
+      {
+        Id = "global-user-2020-4",
+        Country = Constants.COUNTRIES_URUGUAY,
+        ImageUrl = "https://i.imgur.com/3p2UAdT.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Martin Mato",  Description = "", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/martinmato/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = " https://twitter.com/otamnitram" }
+          }
+      };
+      var user5 = new User
+      {
+        Id = "global-user-2020-5",
+        Country = Constants.COUNTRIES_ARGENTINA,
+        ImageUrl = "https://i.imgur.com/WTWvZct.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Jorge Bramajo", Description = "", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jobramajo" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jorbramajo" },
+          }
+      };
+      var user6 = new User
+      {
+        Id = "global-user-2020-6",
+        Country = Constants.COUNTRIES_ARGENTINA,
+        ImageUrl = "https://i.imgur.com/4F8teHs.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Sebastián Pérez", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebasti%C3%A1n-leonardo-p%C3%A9rez-68816599" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/garudasla" },
+          }
+      };
+      var user7 = new User
+      {
+        Id = "global-user-2020-7",
+        Country = Constants.COUNTRIES_ARGENTINA,
+        ImageUrl = "https://avatars2.githubusercontent.com/u/49730737?s=460&u=357f7b9e604eb0144002001ec24f9b25fac81d72&v=4",
+        Details = new UserDetail[]
+        {
+          new UserDetail { Name = "Facundo La Rocca", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+          new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/facundo-la-rocca/" },
+          new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/TheRockFacu" },
+        }
+      };
+      var user8 = new User
+      {
+        Id = "global-user-2020-8",
+        Country = Constants.COUNTRIES_CHILE,
+        ImageUrl = "https://i.imgur.com/RNU3DyU.jpg",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Mario Valderrama", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/mario-valderrama-silva-a8253b46/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/MarioChep" },
+          }
+      };
+      var user9 = new User
+      {
+        Id = "global-user-2020-9",
+        Country = Constants.COUNTRIES_CHILE,
+        ImageUrl = "https://i.imgur.com/zn3VgQD.png",
+        Details = new UserDetail[]
+          {
+              new UserDetail { Name = "Christian Kus", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christiankus/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/christiankus" },
+          }
+      };
+      var user10 = new User
+      {
+        Id = "global-user-2020-10",
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/4OmATPO.jpg",
+        Details = new UserDetail[]
+           {
+                new UserDetail { Name = "Christian Romano", Description = "", JobTitle = "Gerente de Infraestructura y Operaciones de TI", Company = "Universidad Latinoamericana", Language = Constants.LANGUAGES_SPANISH }
+           },
+        SocialLinks = new UserSocialLink[]
+           {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christianromanomvp/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/shionfox" },
+           }
+      };
+      var user11 = new User
+      {
+        Id = "global-user-2020-11",
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/i3wzW1v.jpg?1",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Fátima Jaydith Blancas Velázquez", Description = "", JobTitle = "CEO", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fatimablancasv/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/JaydithBV" },
+          }
+      };
+      var user12 = new User
+      {
+        Id = "global-user-2020-12",
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/jnOvbjH.jpg",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Julio César Leyva", Description = "", JobTitle = "Director de Operaciones", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/julioleyva/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/kexdat" },
+          }
+      };
+      var user13 = new User
+      {
+        Id = "global-user-2020-13",
+        Country = Constants.COUNTRIES_MEXICO,
+        ImageUrl = "https://i.imgur.com/iEG62Yn.jpg",
+        Details = new UserDetail[]
+          {
+                new UserDetail { Name = "Rodolfo Castro", Description = "", JobTitle = "MS UC Consultant", Company = "Poly", Language = Constants.LANGUAGES_SPANISH }
+          },
+        SocialLinks = new UserSocialLink[]
+          {
+                new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/rodolfomvp/" },
+                new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ucblogmx" },
+          }
+      };
+
+      context.Users.Add(user1);
+      context.Users.Add(user2);
+      context.Users.Add(user3);
+      context.Users.Add(user4);
+      context.Users.Add(user5);
+      context.Users.Add(user6);
+      context.Users.Add(user7);
+      context.Users.Add(user8);
+      context.Users.Add(user9);
+      context.Users.Add(user10);
+      context.Users.Add(user11);
+      context.Users.Add(user12);
+      context.Users.Add(user13);
+
+      return new List<User>
+      {
+        user1, user2, user3, user4, user5, user6,
+        user7, user8, user9, user10, user11, user12,
+        user13
+      };
     }
 
     public static ICollection<EditionActivity> GetArEditionActivities(VOpenDbContext context)
