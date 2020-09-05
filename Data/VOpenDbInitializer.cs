@@ -1063,6 +1063,21 @@ namespace vopen_api.Data
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ucblogmx" },
           }
       };
+      var user14 = new User
+      {
+        Id = 'global-user-2020-14',
+        Country = Constants.COUNTRIES_ARGENTINA,
+        ImageUrl = "https://i.imgur.com/wcYR2J5.jpg",
+        Details = new UserDetail[]
+         {
+              new UserDetail { Name = "Fernando Sonego", Description = "", JobTitle = "Arquitecto de Soluciones", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
+         },
+        SocialLinks = new UserSocialLink[]
+         {
+              new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fernando-sonego-a7378231/" },
+              new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/FernandoSonego" },
+         }
+      };
 
       context.Users.Add(user1);
       context.Users.Add(user2);
@@ -1077,12 +1092,13 @@ namespace vopen_api.Data
       context.Users.Add(user11);
       context.Users.Add(user12);
       context.Users.Add(user13);
+      context.Users.Add(user14);
 
       return new List<User>
       {
         user1, user2, user3, user4, user5, user6,
         user7, user8, user9, user10, user11, user12,
-        user13
+        user13, user14
       };
     }
 
