@@ -1065,7 +1065,7 @@ namespace vopen_api.Data
       };
       var user14 = new User
       {
-        Id = 'global-user-2020-14',
+        Id = "global-user-2020-14",
         Country = Constants.COUNTRIES_ARGENTINA,
         ImageUrl = "https://i.imgur.com/wcYR2J5.jpg",
         Details = new UserDetail[]
