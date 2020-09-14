@@ -36,7 +36,6 @@ namespace vopen_api.Data
         context.Events.Add(vopenEvent);
 
         var organizers = VOpenDbInitializer.CreateGlobalOrganizers(context);
-        var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
 
         // Create sponsors
         var microsoft = new Sponsor
@@ -162,20 +161,7 @@ namespace vopen_api.Data
 
 
         // Create global edition
-        var globalEdition2020 = new Edition
-        {
-          Id = "vopen-global-2020",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
-                new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2020" },
-                new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2020" }
-            },
-          Organizers = organizers2020
-            .Concat(organizers.Where(c => c.Id.Contains("global-user")))
-            .Select(c => new EditionOrganizer { User = c })
-            .ToList()
-        };
+        var globalEdition2020 = VOpenDbInitializer.CreateEdition2020(context, organizers, vopenEvent);
 
         // Create global edition
         var globalEdition = new Edition
@@ -2200,6 +2186,727 @@ namespace vopen_api.Data
                 }
             },
         };
+    }
+
+    private static Edition CreateEdition2020(VOpenDbContext context, ICollection<User> organizers, Event vopenEvent)
+    {
+      var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
+
+      // Create global edition
+      var globalEdition2020 = new Edition
+      {
+        Id = "vopen-global-2020",
+        Event = vopenEvent,
+        Details = new EditionDetail[]
+          {
+                new EditionDetail { Date = "Octubre 3", Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2020" },
+                new EditionDetail { Date = "October 3rd", Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2020" }
+          },
+        Organizers = organizers2020
+          .Concat(organizers.Where(c => c.Id.Contains("global-user")))
+          .Select(c => new EditionOrganizer { User = c })
+          .ToList()
+      };
+
+      context.Editions.Add(globalEdition2020);
+
+      var activities2020 = VOpenDbInitializer.CreateActivitiesGlobal2020(context, globalEdition2020);
+
+      globalEdition2020.Activities = activities2020;
+
+      return globalEdition2020;
+    }
+
+    private static ICollection<EditionActivity> CreateActivitiesGlobal2020(VOpenDbContext context, Edition edition)
+    {
+      var speaker1 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Mete Atamel",
+            Language = Constants.LANGUAGES_ENGLISH
+          }
+        }
+      };
+
+      var speaker2 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Matias Iacono",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker3 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Martín Loskin",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker4 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Guy Royse",
+            Language = Constants.LANGUAGES_ENGLISH
+          }
+        }
+      };
+
+      var speaker5 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Néstor Campos",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker6 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Håkan Silfvernagel",
+            Language = Constants.LANGUAGES_ENGLISH
+          }
+        }
+      };
+
+      var speaker7 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Ivonne Chaves Ríos",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker8 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Joel Alejandro Villarreal Bertoldi",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker9 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Vanesa Cillo",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker10 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Nikita Malyschkin",
+            Language = Constants.LANGUAGES_ENGLISH
+          }
+        }
+      };
+
+      var speaker11 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Yosele Angulo",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker12 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Tammy Guns",
+            Language = Constants.LANGUAGES_ENGLISH
+          }
+        }
+      };
+
+      var speaker13 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Christopher Salem",
+            Language = Constants.LANGUAGES_ENGLISH
+          }
+        }
+      };
+
+      var speaker14 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Alberto De Rossi",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker15 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Ivana Tilca",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        }
+      };
+
+      var speaker16 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Dan Seidman",
+            Language = Constants.LANGUAGES_ENGLISH
+          }
+        }
+      };
+
+      context.Users.Add(speaker1);
+      context.Users.Add(speaker2);
+      context.Users.Add(speaker3);
+      context.Users.Add(speaker4);
+      context.Users.Add(speaker5);
+      context.Users.Add(speaker6);
+      context.Users.Add(speaker7);
+      context.Users.Add(speaker8);
+      context.Users.Add(speaker9);
+      context.Users.Add(speaker10);
+      context.Users.Add(speaker11);
+      context.Users.Add(speaker12);
+      context.Users.Add(speaker13);
+      context.Users.Add(speaker14);
+      context.Users.Add(speaker15);
+      context.Users.Add(speaker16);
+
+      var aperturaTech = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T09:00:00.000-05:00",
+        Type = "Opening",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Apertura"
+          }
+        }
+      };
+
+      var talkTech1 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T10:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "An app modernization story with Cloud Run",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker1 } }
+      };
+
+      var talkTech2 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T11:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Los tests unitarios son necesarios? Y porqué TDD?",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker2 } }
+      };
+
+      var talkTech3 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T12:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Pendiente",
+          }
+        }
+      };
+
+      var talkTech4 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T13:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "¿Y el usuario? Consejos prácticos de UX",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker3 } }
+      };
+
+      var talkTech5 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T14:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Dungeons, Dragons, and Graph Databases",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker4 } }
+      };
+
+      var talkTech6 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T15:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Inteligencia artificial aplicada con Alibaba Cloud",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker5 } }
+      };
+
+      var talkTech7 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T16:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Machine learning in the browser using TensorFlow.js",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker6 } }
+      };
+
+      var talkTech8 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T17:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Servicios cognitivos aplicados en el día a día",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker7 } }
+      };
+
+      var talkTech9 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T18:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "useReact('better'): El hook de las buenas prácticas",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker8 } }
+      };
+
+      var cierreTech = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T19:00:00.000-05:00",
+        Type = "Closing",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Cierre"
+          }
+        }
+      };
+
+      var aperturaBusiness = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T09:00:00.000-05:00",
+        Type = "Opening",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Apertura"
+          }
+        }
+      };
+
+      var talkBusiness1 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T10:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Emprender e innovar en una corporación como plan de carrera",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker9 } }
+      };
+
+      var talkBusiness2 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T11:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Develop yourself, not software",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker10 } }
+      };
+
+      var talkBusiness3 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T12:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "El principio de la 'P' para administrar una empresa remota",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker11 } }
+      };
+
+      var talkBusiness4 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T13:00:00.000-05:00",
+        Type = "Business",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Is the FEAR of Change Causing Your System to Crash?",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker12 } }
+      };
+
+      var talkBusiness5 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T14:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Panel: Mujeres en Technologia",
+          }
+        }
+      };
+
+      var talkBusiness6 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T15:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Fostering Innovation in the New Workplace",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker13 } }
+      };
+
+      var talkBusiness7 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T16:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Lineaje de datos: conceptos y gestión con Power BI",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker14 } }
+      };
+
+      var talkBusiness8 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T17:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Uso de IA preconstruida para resolver desafíos empresariales",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker15 } }
+      };
+
+      var talkBusiness9 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T18:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Read (Hidden) Emotions - gain access to information you've never had - knowing what others feel",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker16 } }
+      };
+
+      var cierreBusiness = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T19:00:00.000-05:00",
+        Type = "Closing",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Cierre"
+          }
+        }
+      };
+
+      context.EditionsActivities.Add(aperturaTech);
+      context.EditionsActivities.Add(talkTech1);
+      context.EditionsActivities.Add(talkTech2);
+      context.EditionsActivities.Add(talkTech3);
+      context.EditionsActivities.Add(talkTech4);
+      context.EditionsActivities.Add(talkTech5);
+      context.EditionsActivities.Add(talkTech6);
+      context.EditionsActivities.Add(talkTech7);
+      context.EditionsActivities.Add(talkTech8);
+      context.EditionsActivities.Add(talkTech9);
+      context.EditionsActivities.Add(cierreTech);
+
+      context.EditionsActivities.Add(aperturaBusiness);
+      context.EditionsActivities.Add(talkBusiness1);
+      context.EditionsActivities.Add(talkBusiness2);
+      context.EditionsActivities.Add(talkBusiness3);
+      context.EditionsActivities.Add(talkBusiness4);
+      context.EditionsActivities.Add(talkBusiness5);
+      context.EditionsActivities.Add(talkBusiness6);
+      context.EditionsActivities.Add(talkBusiness7);
+      context.EditionsActivities.Add(talkBusiness8);
+      context.EditionsActivities.Add(talkBusiness9);
+      context.EditionsActivities.Add(cierreBusiness);
+
+      return new List<EditionActivity>
+      {
+        aperturaTech, talkTech1, talkTech2, talkTech3, talkTech4, talkTech5, talkTech6, talkTech7, talkTech8, talkTech9, cierreTech,
+        aperturaBusiness, talkBusiness1, talkBusiness2, talkBusiness3, talkBusiness4, talkBusiness5, talkBusiness6, talkBusiness7, talkBusiness8, talkBusiness9, cierreBusiness
+      };
     }
   }
 }
