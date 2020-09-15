@@ -36,7 +36,6 @@ namespace vopen_api.Data
         context.Events.Add(vopenEvent);
 
         var organizers = VOpenDbInitializer.CreateGlobalOrganizers(context);
-        var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
 
         // Create sponsors
         var microsoft = new Sponsor
@@ -162,20 +161,7 @@ namespace vopen_api.Data
 
 
         // Create global edition
-        var globalEdition2020 = new Edition
-        {
-          Id = "vopen-global-2020",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
-                new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2020" },
-                new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2020" }
-            },
-          Organizers = organizers2020
-            .Concat(organizers.Where(c => c.Id.Contains("global-user")))
-            .Select(c => new EditionOrganizer { User = c })
-            .ToList()
-        };
+        var globalEdition2020 = VOpenDbInitializer.CreateEdition2020(context, organizers, vopenEvent);
 
         // Create global edition
         var globalEdition = new Edition
@@ -2200,6 +2186,1057 @@ namespace vopen_api.Data
                 }
             },
         };
+    }
+
+    private static Edition CreateEdition2020(VOpenDbContext context, ICollection<User> organizers, Event vopenEvent)
+    {
+      var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
+
+      // Create global edition
+      var globalEdition2020 = new Edition
+      {
+        Id = "vopen-global-2020",
+        Event = vopenEvent,
+        Details = new EditionDetail[]
+          {
+                new EditionDetail { Date = "Octubre 3", Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2020" },
+                new EditionDetail { Date = "October 3rd", Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2020" }
+          },
+        Organizers = organizers2020
+          .Concat(organizers.Where(c => c.Id.Contains("global-user")))
+          .Select(c => new EditionOrganizer { User = c })
+          .ToList()
+      };
+
+      context.Editions.Add(globalEdition2020);
+
+      var activities2020 = VOpenDbInitializer.CreateActivitiesGlobal2020(context, globalEdition2020);
+
+      globalEdition2020.Activities = activities2020;
+
+      return globalEdition2020;
+    }
+
+    private static ICollection<EditionActivity> CreateActivitiesGlobal2020(VOpenDbContext context, Edition edition)
+    {
+      var speaker1 = new User
+      {
+        Country = Constants.COUNTRIES_UNITED_KINGDOM,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Mete Atamel",
+            Language = Constants.LANGUAGES_ENGLISH,
+            Company = "Google", 
+            JobTitle = "Senior Developer Advocate",
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/meteatamel" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/meteatamel" },
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1103216597232222209/YyYjS3qI_400x400.jpg"
+      };
+
+      var speaker2 = new User
+      {
+        Country = Constants.COUNTRIES_NEW_ZELAND,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Matias Iacono",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "Cucumber",
+            JobTitle = "Software Engineer"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/matiasiacono" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/matiasiacono" },
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1295527863920103425/pU5RK8xb_400x400.jpg"
+      };
+
+      var speaker3 = new User
+      {
+        Country = Constants.COUNTRIES_URUGUAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Martín Loskin",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "Jigso Labs",
+            JobTitle = "UX Expert"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/martinloskin/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/loskinoficial" },
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/936434480197328896/RHWRUO47_400x400.jpg"
+      };
+
+      var speaker4 = new User
+      {
+        Country = Constants.COUNTRIES_UNITED_STATES,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Guy Royse",
+            Language = Constants.LANGUAGES_ENGLISH,
+            Company = "Redis Labs",
+            JobTitle = "Developer Advocate"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/groyse/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/guyroyse" },
+        },
+        ImageUrl = "https://media-exp1.licdn.com/dms/image/C4E03AQEUx0DEbKQ21g/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=PxaCEeJICyuBBCPwK5_rdJ5_BzxOxk22BUm-i4BNTMo"
+      };
+
+      var speaker5 = new User
+      {
+        Country = Constants.COUNTRIES_CHILE,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Néstor Campos",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "EY",
+            JobTitle = "Senior Architect"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/nescampos/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/nes_campos" },
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1187838729274220545/ARPXYyft_400x400.jpg"
+      };
+
+      var speaker6 = new User
+      {
+        Country = Constants.COUNTRIES_NORWAY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Håkan Silfvernagel",
+            Language = Constants.LANGUAGES_ENGLISH,
+            Company = "Miles AS",
+            JobTitle = "Manager AI and Big Data"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/hakansilfvernagel" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/agrevlis" },
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1009177368320249856/c5MRhLYi_400x400.jpg"
+      };
+
+      var speaker7 = new User
+      {
+        Country = Constants.COUNTRIES_COSTA_RICA,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Ivonne Chaves Ríos",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "Microsoft",
+            JobTitle = "Cloud Solution Architect - Data & AI"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/shirivo" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/shirivo" },
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1300605958423482369/VSVF8-1O_400x400.jpg"
+      };
+
+      var speaker8 = new User
+      {
+        Country = Constants.COUNTRIES_ARGENTINA,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Joel Alejandro Villarreal Bertoldi",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "CoDeAr/Mercado Libre",
+            JobTitle = "Co-Founder/Tech Lead"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/joelvillarrealbertoldi" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/joelalejandro" },
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1274885769019228161/U538bRxk_400x400.jpg"
+      };
+
+      var speaker9 = new User
+      {
+        Country = Constants.COUNTRIES_ARGENTINA,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Vanesa Cillo",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "Mulesoft",
+            JobTitle = "Director of Engineering"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/vanesacillo/" }
+        },
+        ImageUrl = "https://media-exp1.licdn.com/dms/image/C5103AQGV3Wiv6VuuSw/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=6EaJYhsE1SQO004VcWaZ_eTBX_TtdrjkPz5Hh0T1tw0"
+      };
+
+      var speaker10 = new User
+      {
+        Country = Constants.COUNTRIES_GERMANY,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Nikita Malyschkin",
+            Language = Constants.LANGUAGES_ENGLISH,
+            Company = "INFORM GmbH",
+            JobTitle = "Software Architect"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/nikita-malyschkin-152aa9190/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/nmalyschkin" }
+        },
+        ImageUrl = "https://media-exp1.licdn.com/dms/image/C5603AQEW36Nu5IS8dA/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=rEZ2vdcGhJEetKXmJuI7bC18H5wB-QN5TX47iblVDiM"
+      };
+
+      var speaker11 = new User
+      {
+        Country = Constants.COUNTRIES_MEXICO,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Yosele Angulo",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "Distillery",
+            JobTitle = "Country Manager"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/yoseleanguloorozco-4ba96851" }
+        },
+        ImageUrl = "https://media-exp1.licdn.com/dms/image/C4E03AQE6cOQkUVfmEw/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=dpxyK7wkhWfhyqCc5F9LusazdPyQytRgKHGb3DH-DjE"
+      };
+
+      var speaker12 = new User
+      {
+        Country = Constants.COUNTRIES_UNITED_STATES,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Tammy Guns",
+            Language = Constants.LANGUAGES_ENGLISH,
+            Company = "CanCorp LLC",
+            JobTitle = "CEO"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/tammylynnguns/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/GunsTammy" }
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/638201182490521600/4nVw6f-E_400x400.jpg"
+      };
+
+      var speaker13 = new User
+      {
+        Country = Constants.COUNTRIES_UNITED_STATES,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Christopher Salem",
+            Language = Constants.LANGUAGES_ENGLISH,
+            Company = "CRS Group Holdings, LLC",
+            JobTitle = "CEO - Executive Coach"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christophersalem" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/whealthteam" }
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/891814181565079552/U5z6TK7o_400x400.jpg"
+      };
+
+      var speaker14 = new User
+      {
+        Country = Constants.COUNTRIES_PERU,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Alberto De Rossi",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "dbLearner",
+            JobTitle = "Consultor Data Platform"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/alberto-de-rossi-46814244/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/albertoderossi" }
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1260309752774569984/bvuG0Tl0_400x400.jpg"
+      };
+
+      var speaker15 = new User
+      {
+        Country = Constants.COUNTRIES_ARGENTINA,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Ivana Tilca",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "3XM Group",
+            JobTitle = "Quality Manager/Microsoft MVP AI"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/ivanatilca/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ivanatilca" }
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1296925134100533248/5-6Dj05n_400x400.jpg"
+      };
+
+      var speaker16 = new User
+      {
+        Country = Constants.COUNTRIES_UNITED_STATES,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Dan Seidman",
+            Language = Constants.LANGUAGES_ENGLISH,
+            Company = "Read Emotions",
+            JobTitle = "Managing Director"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/salesautopsy/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ReadEmotions" }
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1093164073867505664/l8hDKWor_400x400.jpg"
+      };
+
+      var vOpenUser = new User
+      {
+        Country = Constants.COUNTRIES_ARGENTINA,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "vOpen Team",
+            Language = Constants.LANGUAGES_SPANISH
+          }
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1153603294281064448/_0X-eqH1_400x400.jpg"
+      };
+
+      context.Users.Add(speaker1);
+      context.Users.Add(speaker2);
+      context.Users.Add(speaker3);
+      context.Users.Add(speaker4);
+      context.Users.Add(speaker5);
+      context.Users.Add(speaker6);
+      context.Users.Add(speaker7);
+      context.Users.Add(speaker8);
+      context.Users.Add(speaker9);
+      context.Users.Add(speaker10);
+      context.Users.Add(speaker11);
+      context.Users.Add(speaker12);
+      context.Users.Add(speaker13);
+      context.Users.Add(speaker14);
+      context.Users.Add(speaker15);
+      context.Users.Add(speaker16);
+      context.Users.Add(vOpenUser);
+
+      var aperturaTech = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:30",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T09:00:00.000-05:00",
+        Type = "Opening",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Keynote"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkTech1 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T09:30:00.000-05:00",
+        Type = "Talk",
+        Tags = "Google Cloud",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "An app modernization story with Cloud Run",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker1 } }
+      };
+
+      var talkTech2 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T10:15:00.000-05:00",
+        Type = "Talk",
+        Tags = "Testing, TDD",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Los tests unitarios son necesarios? Y porqué TDD?",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker2 } }
+      };
+
+      var lightningTalk1 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T11:00:00.000-05:00",
+        Type = "LightningTalk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Lightning Talk"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkTech3 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T11:15:00.000-05:00",
+        Type = "Talk",
+        Tags = "AWS",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Pendiente",
+          }
+        }
+      };
+
+      var talkTech4 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T12:00:00.000-05:00",
+        Type = "Talk",
+        Tags = "UX",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "¿Y el usuario? Consejos prácticos de UX",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker3 } }
+      };
+
+      var break1 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T12:45:00.000-05:00",
+        Type = "Break",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Juego"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkTech5 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T13:00:00.000-05:00",
+        Type = "Talk",
+        Tags = "Graph DB",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Dungeons, Dragons, and Graph Databases",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker4 } }
+      };
+
+      var talkTech6 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T13:45:00.000-05:00",
+        Type = "Talk",
+        Tags = "AI, Alibaba CLoud",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Inteligencia artificial aplicada con Alibaba Cloud",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker5 } }
+      };
+
+      var break2 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T14:30:00.000-05:00",
+        Type = "Break",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Juego"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkTech7 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T14:45:00.000-05:00",
+        Type = "Talk",
+        Tags = "Machine Learning, JS",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Machine learning in the browser using TensorFlow.js",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker6 } }
+      };
+
+      var talkTech8 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T15:30:00.000-05:00",
+        Type = "Talk",
+        Tags = "Azure, AI, Cognitive Services",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Servicios cognitivos aplicados en el día a día",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker7 } }
+      };
+
+      var lightningTalk2 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T16:15:00.000-05:00",
+        Type = "LightningTalk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Lightning Talk"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkTech9 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "01:00",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T16:30:00.000-05:00",
+        Type = "Talk",
+        Tags = "ReactJS, JS, FE",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "useReact('better'): El hook de las buenas prácticas",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker8 } }
+      };
+
+      var cierreTech = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:30",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T17:30:00.000-05:00",
+        Type = "Closing",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Keynote"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var aperturaBusiness = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T09:00:00.000-05:00",
+        Type = "Opening",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Keynote"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkBusiness1 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T09:30:00.000-05:00",
+        Type = "Talk",
+        Tags = "Innovation",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Emprender e innovar en una corporación como plan de carrera",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker9 } }
+      };
+
+      var talkBusiness2 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T10:15:00.000-05:00",
+        Type = "Talk",
+        Tags = "Soft Skills",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Develop yourself, not software",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker10 } }
+      };
+
+      var lightningTalk3 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T11:00:00.000-05:00",
+        Type = "LightningTalk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Lightning Talk"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkBusiness3 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T11:15:00.000-05:00",
+        Type = "Talk",
+        Tags = "Management",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "El principio de la 'P' para administrar una empresa remota",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker11 } }
+      };
+
+      var talkBusiness4 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Tech",
+        Date = "2020-10-03T12:00:00.000-05:00",
+        Type = "Business",
+        Tags = "Soft Skills",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Is the FEAR of Change Causing Your System to Crash?",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker12 } }
+      };
+
+      var break3 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T12:45:00.000-05:00",
+        Type = "Break",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Juego"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkBusiness5 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T13:00:00.000-05:00",
+        Type = "Talk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Panel: Mujeres en Technologia",
+          }
+        }
+      };
+
+      var talkBusiness6 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T13:45:00.000-05:00",
+        Type = "Talk",
+        Tags = "Innovation",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Fostering Innovation in the New Workplace",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker13 } }
+      };
+
+      var break4 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T14:30:00.000-05:00",
+        Type = "Break",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Juego"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkBusiness7 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T14:45:00.000-05:00",
+        Type = "Talk",
+        Tags = "Power BI",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Lineaje de datos: conceptos y gestión con Power BI",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker14 } }
+      };
+
+      var talkBusiness8 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:45",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T15:30:00.000-05:00",
+        Type = "Talk",
+        Tags = "AI",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Uso de IA preconstruida para resolver desafíos empresariales",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker15 } }
+      };
+
+      var lightningTalk4 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:15",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T16:15:00.000-05:00",
+        Type = "LightningTalk",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Lightning Talk"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      var talkBusiness9 = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "01:00",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T16:30:00.000-05:00",
+        Type = "Talk",
+        Tags = "Soft Skills",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "en-US",
+            Title = "Read (Hidden) Emotions - gain access to information you've never had - knowing what others feel",
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker16 } }
+      };
+
+      var cierreBusiness = new EditionActivity
+      {
+        Day = "Day 1",
+        Duration = "00:30",
+        Edition = edition,
+        Level = "100",
+        Track = "Business",
+        Date = "2020-10-03T17:30:00.000-05:00",
+        Type = "Closing",
+        Details = new List<EditionActivityDetail>
+        {
+          new EditionActivityDetail
+          {
+            Language = "es-AR",
+            Title = "Cierre"
+          }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+      };
+
+      context.EditionsActivities.Add(aperturaTech);
+      context.EditionsActivities.Add(talkTech1);
+      context.EditionsActivities.Add(talkTech2);
+      context.EditionsActivities.Add(lightningTalk1);
+      context.EditionsActivities.Add(talkTech3);
+      context.EditionsActivities.Add(talkTech4);
+      context.EditionsActivities.Add(break1);
+      context.EditionsActivities.Add(talkTech5);
+      context.EditionsActivities.Add(talkTech6);
+      context.EditionsActivities.Add(break2);
+      context.EditionsActivities.Add(talkTech7);
+      context.EditionsActivities.Add(talkTech8);
+      context.EditionsActivities.Add(lightningTalk2);
+      context.EditionsActivities.Add(talkTech9);
+      context.EditionsActivities.Add(cierreTech);
+
+      context.EditionsActivities.Add(aperturaBusiness);
+      context.EditionsActivities.Add(talkBusiness1);
+      context.EditionsActivities.Add(talkBusiness2);
+      context.EditionsActivities.Add(lightningTalk3);
+      context.EditionsActivities.Add(talkBusiness3);
+      context.EditionsActivities.Add(talkBusiness4);
+      context.EditionsActivities.Add(break3);
+      context.EditionsActivities.Add(talkBusiness5);
+      context.EditionsActivities.Add(talkBusiness6);
+      context.EditionsActivities.Add(break4);
+      context.EditionsActivities.Add(talkBusiness7);
+      context.EditionsActivities.Add(talkBusiness8);
+      context.EditionsActivities.Add(lightningTalk4);
+      context.EditionsActivities.Add(talkBusiness9);
+      context.EditionsActivities.Add(cierreBusiness);
+
+      return new List<EditionActivity>
+      {
+        aperturaTech, talkTech1, talkTech2, lightningTalk1, talkTech3, talkTech4, break1, talkTech5, talkTech6, break2, talkTech7, talkTech8, lightningTalk2, talkTech9, cierreTech,
+        aperturaBusiness, talkBusiness1, talkBusiness2, lightningTalk3, talkBusiness3, talkBusiness4, break3, talkBusiness5, talkBusiness6, break4, talkBusiness7, talkBusiness8, lightningTalk4, talkBusiness9, cierreBusiness
+      };
     }
   }
 }
