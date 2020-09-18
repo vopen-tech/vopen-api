@@ -565,7 +565,7 @@ namespace vopen_api.Data
       var user13 = new User
       {
         Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/WTWvZct.jpg",
+        ImageUrl = "https://i.imgur.com/gCXf8rh.png",
         Details = new UserDetail[]
           {
               new UserDetail { Name = "Jorge Bramajo", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -918,7 +918,7 @@ namespace vopen_api.Data
       {
         Id = "global-user-2020-5",
         Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/WTWvZct.jpg",
+        ImageUrl = "https://i.imgur.com/gCXf8rh.png",
         Details = new UserDetail[]
           {
               new UserDetail { Name = "Jorge Bramajo", Description = "", Language = Constants.LANGUAGES_SPANISH }
@@ -2591,7 +2591,7 @@ namespace vopen_api.Data
         Duration = "00:30",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T09:00:00.000-05:00",
         Type = "Opening",
         Details = new List<EditionActivityDetail>
@@ -2611,7 +2611,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T09:30:00.000-05:00",
         Type = "Talk",
         Tags = "Google Cloud",
@@ -2632,7 +2632,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T10:15:00.000-05:00",
         Type = "Talk",
         Tags = "Testing, TDD",
@@ -2653,7 +2653,7 @@ namespace vopen_api.Data
         Duration = "00:15",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T11:00:00.000-05:00",
         Type = "LightningTalk",
         Details = new List<EditionActivityDetail>
@@ -2673,7 +2673,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T11:15:00.000-05:00",
         Type = "Talk",
         Tags = "AWS",
@@ -2693,7 +2693,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T12:00:00.000-05:00",
         Type = "Talk",
         Tags = "UX",
@@ -2714,7 +2714,7 @@ namespace vopen_api.Data
         Duration = "00:15",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T12:45:00.000-05:00",
         Type = "Break",
         Details = new List<EditionActivityDetail>
@@ -2734,7 +2734,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T13:00:00.000-05:00",
         Type = "Talk",
         Tags = "Graph DB",
@@ -2755,7 +2755,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T13:45:00.000-05:00",
         Type = "Talk",
         Tags = "AI, Alibaba CLoud",
@@ -2776,7 +2776,7 @@ namespace vopen_api.Data
         Duration = "00:15",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T14:30:00.000-05:00",
         Type = "Break",
         Details = new List<EditionActivityDetail>
@@ -2796,7 +2796,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T14:45:00.000-05:00",
         Type = "Talk",
         Tags = "Machine Learning, JS",
@@ -2817,7 +2817,7 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T15:30:00.000-05:00",
         Type = "Talk",
         Tags = "Azure, AI, Cognitive Services",
@@ -2838,7 +2838,7 @@ namespace vopen_api.Data
         Duration = "00:15",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T16:15:00.000-05:00",
         Type = "LightningTalk",
         Details = new List<EditionActivityDetail>
@@ -2858,7 +2858,7 @@ namespace vopen_api.Data
         Duration = "01:00",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T16:30:00.000-05:00",
         Type = "Talk",
         Tags = "ReactJS, JS, FE",
@@ -2879,7 +2879,7 @@ namespace vopen_api.Data
         Duration = "00:30",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Techie",
         Date = "2020-10-03T17:30:00.000-05:00",
         Type = "Closing",
         Details = new List<EditionActivityDetail>
@@ -3002,9 +3002,9 @@ namespace vopen_api.Data
         Duration = "00:45",
         Edition = edition,
         Level = "100",
-        Track = "Tech",
+        Track = "Business",
         Date = "2020-10-03T12:00:00.000-05:00",
-        Type = "Business",
+        Type = "Talk",
         Tags = "Soft Skills",
         Details = new List<EditionActivityDetail>
         {
