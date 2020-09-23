@@ -2599,6 +2599,27 @@ namespace vopen_api.Data
         ImageUrl = "https://pbs.twimg.com/profile_images/1093164073867505664/l8hDKWor_400x400.jpg"
       };
 
+      var speaker17 = new User
+      {
+        Country = Constants.COUNTRIES_ARGENTINA,
+        Details = new UserDetail[]
+        {
+          new UserDetail
+          {
+            Name = "Christopher Louis Chancé",
+            Language = Constants.LANGUAGES_SPANISH,
+            Company = "DataXype",
+            JobTitle = "CEO"
+          }
+        },
+        SocialLinks = new UserSocialLink[]
+        {
+            new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/chrischance67/" },
+            new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/chrischance67" }
+        },
+        ImageUrl = "https://pbs.twimg.com/profile_images/1305056761578127360/Ec7pOCsK_400x400.jpg"
+      };
+
       var vOpenUser = new User
       {
         Country = Constants.COUNTRIES_ARGENTINA,
@@ -2629,6 +2650,7 @@ namespace vopen_api.Data
       context.Users.Add(speaker14);
       context.Users.Add(speaker15);
       context.Users.Add(speaker16);
+      context.Users.Add(speaker17);
       context.Users.Add(vOpenUser);
 
       var aperturaTech = new EditionActivity
@@ -2722,15 +2744,16 @@ namespace vopen_api.Data
         Track = "Techie",
         Date = "2020-10-03T11:15:00.000-05:00",
         Type = "Talk",
-        Tags = "AWS",
+        Tags = "General",
         Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
             Language = "es-AR",
-            Title = "Pendiente",
+            Title = "Cuídalos: de la idea hasta la salida a producción",
           }
-        }
+        },
+        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker17 } }
       };
 
       var talkTech4 = new EditionActivity
