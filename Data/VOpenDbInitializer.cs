@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -140,6 +141,31 @@ namespace vopen_api.Data
           ImageUrl = "https://i.imgur.com/nE9pcCY.png",
           Url = "http://itprove.com.mx"
         };
+        var softvision = new Sponsor
+        {
+          Name = "Softvision",
+          ImageUrl = "https://www.cognizant.com/content/dam/cognizant_foundation/Dotcomimage/logo-cog-softvision-vertical-large.svg",
+          Url = "http://cognizantsoftvision.com"
+        };
+        var conosurtech = new Sponsor
+        {
+          Name = "ConoSur Tech",
+          ImageUrl = "https://scontent.faep8-1.fna.fbcdn.net/v/t1.0-9/109716192_108806504242136_3119203203024293281_n.jpg?_nc_cat=105&_nc_sid=85a577&_nc_ohc=9Szhj4uBV80AX-AwMJy&_nc_ht=scontent.faep8-1.fna&oh=b6214e9a80c1cab755e17e76ac04f5d8&oe=5F91F4C8",
+          Url = "https://www.facebook.com/ConoSurTech/"
+        };
+
+        var compartimoss = new Sponsor
+        {
+          Name = "Compartimoss",
+          ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIv0TjkapOCGS7enFYUJn8Afa0N7K83i990w&usqp=CAU",
+          Url = "http://www.compartimoss.com/"
+        };
+        var baufest = new Sponsor
+        {
+          Name = "Baufest",
+          ImageUrl = "https://eci2014.dc.uba.ar/logo-baufest.jpg",
+          Url = "http://www.baufest.com"
+        };
 
         context.Sponsors.Add(iTProve);
         context.Sponsors.Add(algeiba);
@@ -158,10 +184,24 @@ namespace vopen_api.Data
         context.Sponsors.Add(smartTalent);
         context.Sponsors.Add(alianza);
         context.Sponsors.Add(practiaGlobal);
+        context.Sponsors.Add(softvision);
+        context.Sponsors.Add(conosurtech);
+        context.Sponsors.Add(compartimoss);
+        context.Sponsors.Add(baufest);
 
+        var globalEdition2020Sponsors = new List<(Sponsor Sponsor, string Type)> 
+        { 
+          (endava, "Gold"), 
+          (softvision, "Gold"),
+          (iTProve, "Gold"),
+          (conosurtech, "Supporter"),
+          (compartimoss, "Supporter"),
+          (nareia, "Gold"),
+          (baufest, "Gold")
+        };
 
         // Create global edition
-        var globalEdition2020 = VOpenDbInitializer.CreateEdition2020(context, organizers, vopenEvent);
+        var globalEdition2020 = VOpenDbInitializer.CreateEdition2020(context, organizers, globalEdition2020Sponsors, vopenEvent);
 
         // Create global edition
         var globalEdition = new Edition
@@ -2188,7 +2228,7 @@ namespace vopen_api.Data
         };
     }
 
-    private static Edition CreateEdition2020(VOpenDbContext context, ICollection<User> organizers, Event vopenEvent)
+    private static Edition CreateEdition2020(VOpenDbContext context, ICollection<User> organizers, ICollection<(Sponsor Sponsor, string Type)> sponsors, Event vopenEvent)
     {
       var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
 
@@ -2205,7 +2245,13 @@ namespace vopen_api.Data
         Organizers = organizers2020
           .Concat(organizers.Where(c => c.Id.Contains("global-user")))
           .Select(c => new EditionOrganizer { User = c })
-          .ToList()
+          .ToList(),
+        Sponsors = sponsors.Select(s => 
+          new EditionSponsor 
+          { 
+            Sponsor = s.Sponsor,
+            Type = s.Type
+          }).ToList()
       };
 
       context.Editions.Add(globalEdition2020);
@@ -2228,7 +2274,7 @@ namespace vopen_api.Data
           {
             Name = "Mete Atamel",
             Language = Constants.LANGUAGES_ENGLISH,
-            Company = "Google", 
+            Company = "Google",
             JobTitle = "Senior Developer Advocate",
           }
         },
