@@ -1107,9 +1107,36 @@
   {
     "sponsorId": 148,
     "globalRanking": 4,
-    "name": "DGENIX",
-    "logoFileName": "dgenix",
-    "webSite": "http://d-genix.com",
-    "twitter": "DGenix"
+    "name": "ConoSur Tech",
+    "logoFileName": "conosurtech",
+    "webSite": "https://www.facebook.com/ConoSurTech/",
+    "twitter": "conosurtech"
+  },
+
+  {
+    "sponsorId": 149,
+    "globalRanking": 4,
+    "name": "Cognizant Softvision",
+    "logoFileName": "softvisionro",
+    "webSite": "http://cognizantsoftvision.com",
+    "twitter": "softvisionro"
+  },
+
+  {
+    "sponsorId": 150,
+    "globalRanking": 4,
+    "name": "Distillery",
+    "logoFileName": "distillerytech",
+    "webSite": "https://distillery.com/",
+    "twitter": "distillerytech"
+  },
+
+  {
+    "sponsorId": 151,
+    "globalRanking": 4,
+    "name": "IT Prove",
+    "logoFileName": "itprove",
+    "webSite": "https://itprove.com.mx/",
+    "twitter": "itprovecorp"
   }
 ]
