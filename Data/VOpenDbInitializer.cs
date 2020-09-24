@@ -10,243 +10,259 @@ using vopen_api.Models;
 
 namespace vopen_api.Data
 {
-  public static class VOpenDbInitializer
-  {
-    private static readonly string JAVIER_VILLEGAS_ID = Guid.NewGuid().ToString();
-    private static readonly string MARIANO_VAZQUEZ_ID = "global-user1";
-    private static readonly string FERNANDO_SONEGO_ID = Guid.NewGuid().ToString();
-    private static readonly string VICTOR_SILVA_ID = Guid.NewGuid().ToString();
-
-    public static void Seed(DbContextOptions<VOpenDbContext> options)
+    public static class VOpenDbInitializer
     {
-      using (var context = new VOpenDbContext(options))
-      {
-        context.Database.EnsureCreated();
+        private static readonly string JAVIER_VILLEGAS_ID = Guid.NewGuid().ToString();
+        private static readonly string MARIANO_VAZQUEZ_ID = "global-user1";
+        private static readonly string FERNANDO_SONEGO_ID = Guid.NewGuid().ToString();
+        private static readonly string VICTOR_SILVA_ID = Guid.NewGuid().ToString();
 
-        // Create vOpen event
-        var vopenEvent = new Event()
+        public static void Seed(DbContextOptions<VOpenDbContext> options)
         {
-          Id = "vopen",
-          Details = new EventDetail[]
+            using (var context = new VOpenDbContext(options))
             {
+                context.Database.EnsureCreated();
+
+                // Create vOpen event
+                var vopenEvent = new Event()
+                {
+                    Id = "vopen",
+                    Details = new EventDetail[]
+                    {
                 new EventDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen", Description = "El ciclo de eventos de tecnología más importante en Latinoamérica" },
                 new EventDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen", Description = "The most important technology-related cycle of events in Latin America" }
-            },
-        };
+                    },
+                };
 
-        context.Events.Add(vopenEvent);
+                context.Events.Add(vopenEvent);
 
-        var organizers = VOpenDbInitializer.CreateGlobalOrganizers(context);
+                var organizers = VOpenDbInitializer.CreateGlobalOrganizers(context);
 
-        // Create sponsors
-        var microsoft = new Sponsor
-        {
-          Name = "Microsoft",
-          ImageUrl = "https://i.imgur.com/FWdDaGr.png",
-          Url = "https://www.microsoft.com"
-        };
-        var kaizen = new Sponsor
-        {
-          Name = "Kaizen Softworks",
-          ImageUrl = "https://i.imgur.com/njfCNqo.png",
-          Url = "http://kzsoftworks.com"
-        };
-        var endava = new Sponsor
-        {
-          Name = "Endava",
-          ImageUrl = "https://i.imgur.com/U7PZHiu.png",
-          Url = "https://www.endava.com/"
-        };
-        var wyeworks = new Sponsor
-        {
-          Name = "WyeWorks",
-          ImageUrl = "https://i.imgur.com/iGiYWG9.png",
-          Url = "https://www.wyeworks.com"
-        };
-        var elObservador = new Sponsor
-        {
-          Name = "El Observador",
-          ImageUrl = "https://i.imgur.com/R48lvSw.png",
-          Url = "https://elobservador.com.uy"
-        };
-        var antel = new Sponsor
-        {
-          Name = "Antel",
-          ImageUrl = "https://i.imgur.com/T6vHq3x.png",
-          Url = "https://www.antel.com.uy/"
-        };
-        var nareia = new Sponsor
-        {
-          Name = "Nareia",
-          ImageUrl = "https://i.imgur.com/qwHigPt.png",
-          Url = "https://nareia.com.uy/"
-        };
-        var cobrosYa = new Sponsor
-        {
-          Name = "CobrosYA",
-          ImageUrl = "https://i.imgur.com/M2mChJ5.png",
-          Url = "https://www.cobrosya.com/"
-        };
-        var uruIt = new Sponsor
-        {
-          Name = "UruIT",
-          ImageUrl = "https://i.imgur.com/PNKsimP.png",
-          Url = "https://uruit.com/"
-        };
-        var uruguayXXI = new Sponsor
-        {
-          Name = "UruguayXXI",
-          ImageUrl = "https://i.imgur.com/L4dAZKO.png",
-          Url = "https://www.uruguayxxi.gub.uy/"
-        };
-        var tcs = new Sponsor
-        {
-          Name = "TCS",
-          ImageUrl = "https://i.imgur.com/rzNrslT.png",
-          Url = "https://www.tcs.com"
-        };
-        var smartTalent = new Sponsor
-        {
-          Name = "SmartTalent",
-          ImageUrl = "https://i.imgur.com/TfIRhTX.png",
-          Url = "https://www.smarttalent.uy/"
-        };
-        var alianza = new Sponsor
-        {
-          Name = "Alianza",
-          ImageUrl = "https://i.imgur.com/8bT4Zrt.png",
-          Url = "http://www.alianza.edu.uy/"
-        };
-        var practiaGlobal = new Sponsor
-        {
-          Name = "Practia Global",
-          ImageUrl = "https://i.imgur.com/RMiN1j8.png",
-          Url = "http://www.practia.global"
-        };
-        var siderys = new Sponsor
-        {
-          Name = "Siderys",
-          ImageUrl = "https://i.imgur.com/qL1C8lY.png",
-          Url = "http://www.siderys.com/"
-        };
-        var algeiba = new Sponsor
-        {
-          Name = "Algeiba",
-          ImageUrl = "https://i.imgur.com/CWf2Az0.png",
-          Url = "https://www.algeiba.com/"
-        };
-        var iTProve = new Sponsor
-        {
-          Name = "iTProve",
-          ImageUrl = "https://i.imgur.com/nE9pcCY.png",
-          Url = "http://itprove.com.mx"
-        };
-        var softvision = new Sponsor
-        {
-          Name = "Softvision",
-          ImageUrl = "https://www.cognizant.com/content/dam/cognizant_foundation/Dotcomimage/logo-cog-softvision-vertical-large.svg",
-          Url = "http://cognizantsoftvision.com"
-        };
-        var conosurtech = new Sponsor
-        {
-          Name = "ConoSur Tech",
-          ImageUrl = "https://scontent.faep8-1.fna.fbcdn.net/v/t1.0-9/109716192_108806504242136_3119203203024293281_n.jpg?_nc_cat=105&_nc_sid=85a577&_nc_ohc=9Szhj4uBV80AX-AwMJy&_nc_ht=scontent.faep8-1.fna&oh=b6214e9a80c1cab755e17e76ac04f5d8&oe=5F91F4C8",
-          Url = "https://www.facebook.com/ConoSurTech/"
-        };
+                // Create sponsors
+                var microsoft = new Sponsor
+                {
+                    Name = "Microsoft",
+                    ImageUrl = "https://i.imgur.com/FWdDaGr.png",
+                    Url = "https://www.microsoft.com"
+                };
+                var kaizen = new Sponsor
+                {
+                    Name = "Kaizen Softworks",
+                    ImageUrl = "https://i.imgur.com/njfCNqo.png",
+                    Url = "http://kzsoftworks.com"
+                };
+                var endava = new Sponsor
+                {
+                    Name = "Endava",
+                    ImageUrl = "https://i.imgur.com/U7PZHiu.png",
+                    Url = "https://www.endava.com/"
+                };
+                var wyeworks = new Sponsor
+                {
+                    Name = "WyeWorks",
+                    ImageUrl = "https://i.imgur.com/iGiYWG9.png",
+                    Url = "https://www.wyeworks.com"
+                };
+                var elObservador = new Sponsor
+                {
+                    Name = "El Observador",
+                    ImageUrl = "https://i.imgur.com/R48lvSw.png",
+                    Url = "https://elobservador.com.uy"
+                };
+                var antel = new Sponsor
+                {
+                    Name = "Antel",
+                    ImageUrl = "https://i.imgur.com/T6vHq3x.png",
+                    Url = "https://www.antel.com.uy/"
+                };
+                var nareia = new Sponsor
+                {
+                    Name = "Nareia",
+                    ImageUrl = "https://i.imgur.com/qwHigPt.png",
+                    Url = "https://nareia.com.uy/"
+                };
+                var cobrosYa = new Sponsor
+                {
+                    Name = "CobrosYA",
+                    ImageUrl = "https://i.imgur.com/M2mChJ5.png",
+                    Url = "https://www.cobrosya.com/"
+                };
+                var uruIt = new Sponsor
+                {
+                    Name = "UruIT",
+                    ImageUrl = "https://i.imgur.com/PNKsimP.png",
+                    Url = "https://uruit.com/"
+                };
+                var uruguayXXI = new Sponsor
+                {
+                    Name = "UruguayXXI",
+                    ImageUrl = "https://i.imgur.com/L4dAZKO.png",
+                    Url = "https://www.uruguayxxi.gub.uy/"
+                };
+                var tcs = new Sponsor
+                {
+                    Name = "TCS",
+                    ImageUrl = "https://i.imgur.com/rzNrslT.png",
+                    Url = "https://www.tcs.com"
+                };
+                var smartTalent = new Sponsor
+                {
+                    Name = "SmartTalent",
+                    ImageUrl = "https://i.imgur.com/TfIRhTX.png",
+                    Url = "https://www.smarttalent.uy/"
+                };
+                var alianza = new Sponsor
+                {
+                    Name = "Alianza",
+                    ImageUrl = "https://i.imgur.com/8bT4Zrt.png",
+                    Url = "http://www.alianza.edu.uy/"
+                };
+                var practiaGlobal = new Sponsor
+                {
+                    Name = "Practia Global",
+                    ImageUrl = "https://i.imgur.com/RMiN1j8.png",
+                    Url = "http://www.practia.global"
+                };
+                var siderys = new Sponsor
+                {
+                    Name = "Siderys",
+                    ImageUrl = "https://i.imgur.com/qL1C8lY.png",
+                    Url = "http://www.siderys.com/"
+                };
+                var algeiba = new Sponsor
+                {
+                    Name = "Algeiba",
+                    ImageUrl = "https://i.imgur.com/CWf2Az0.png",
+                    Url = "https://www.algeiba.com/"
+                };
+                var iTProve = new Sponsor
+                {
+                    Name = "iTProve",
+                    ImageUrl = "https://i.imgur.com/nE9pcCY.png",
+                    Url = "http://itprove.com.mx"
+                };
+                var softvision = new Sponsor
+                {
+                    Name = "Softvision",
+                    ImageUrl = "https://pbs.twimg.com/profile_images/1108312620312989697/tbQbRXgo_400x400.png",
+                    Url = "http://cognizantsoftvision.com"
+                };
+                var conosurtech = new Sponsor
+                {
+                    Name = "ConoSur Tech",
+                    ImageUrl = "https://scontent.faep8-1.fna.fbcdn.net/v/t1.0-9/109716192_108806504242136_3119203203024293281_n.jpg?_nc_cat=105&_nc_sid=85a577&_nc_ohc=9Szhj4uBV80AX-AwMJy&_nc_ht=scontent.faep8-1.fna&oh=b6214e9a80c1cab755e17e76ac04f5d8&oe=5F91F4C8",
+                    Url = "https://www.facebook.com/ConoSurTech/"
+                };
 
-        var compartimoss = new Sponsor
-        {
-          Name = "Compartimoss",
-          ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIv0TjkapOCGS7enFYUJn8Afa0N7K83i990w&usqp=CAU",
-          Url = "http://www.compartimoss.com/"
-        };
-        var baufest = new Sponsor
-        {
-          Name = "Baufest",
-          ImageUrl = "https://eci2014.dc.uba.ar/logo-baufest.jpg",
-          Url = "http://www.baufest.com"
-        };
+                var compartimoss = new Sponsor
+                {
+                    Name = "Compartimoss",
+                    ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIv0TjkapOCGS7enFYUJn8Afa0N7K83i990w&usqp=CAU",
+                    Url = "http://www.compartimoss.com/"
+                };
+                var baufest = new Sponsor
+                {
+                    Name = "Baufest",
+                    ImageUrl = "https://eci2014.dc.uba.ar/logo-baufest.jpg",
+                    Url = "http://www.baufest.com"
+                };
+                var hexacta = new Sponsor
+                {
+                    Name = "Hexacta",
+                    ImageUrl = "https://pbs.twimg.com/profile_images/881969553235988480/1JCIeFdp_400x400.jpg",
+                    Url = "https://www.hexacta.com/"
+                };
+                var distillery = new Sponsor
+                {
+                    Name = "Distillery",
+                    ImageUrl = "https://i.imgur.com/H7HpSIr.jpg",
+                    Url = "https://distillery.com/"
+                };
 
-        context.Sponsors.Add(iTProve);
-        context.Sponsors.Add(algeiba);
-        context.Sponsors.Add(siderys);
-        context.Sponsors.Add(microsoft);
-        context.Sponsors.Add(kaizen);
-        context.Sponsors.Add(endava);
-        context.Sponsors.Add(wyeworks);
-        context.Sponsors.Add(elObservador);
-        context.Sponsors.Add(antel);
-        context.Sponsors.Add(nareia);
-        context.Sponsors.Add(cobrosYa);
-        context.Sponsors.Add(uruIt);
-        context.Sponsors.Add(uruguayXXI);
-        context.Sponsors.Add(tcs);
-        context.Sponsors.Add(smartTalent);
-        context.Sponsors.Add(alianza);
-        context.Sponsors.Add(practiaGlobal);
-        context.Sponsors.Add(softvision);
-        context.Sponsors.Add(conosurtech);
-        context.Sponsors.Add(compartimoss);
-        context.Sponsors.Add(baufest);
+                context.Sponsors.Add(iTProve);
+                context.Sponsors.Add(algeiba);
+                context.Sponsors.Add(siderys);
+                context.Sponsors.Add(microsoft);
+                context.Sponsors.Add(kaizen);
+                context.Sponsors.Add(endava);
+                context.Sponsors.Add(wyeworks);
+                context.Sponsors.Add(elObservador);
+                context.Sponsors.Add(antel);
+                context.Sponsors.Add(nareia);
+                context.Sponsors.Add(cobrosYa);
+                context.Sponsors.Add(uruIt);
+                context.Sponsors.Add(uruguayXXI);
+                context.Sponsors.Add(tcs);
+                context.Sponsors.Add(smartTalent);
+                context.Sponsors.Add(alianza);
+                context.Sponsors.Add(practiaGlobal);
+                context.Sponsors.Add(softvision);
+                context.Sponsors.Add(conosurtech);
+                context.Sponsors.Add(compartimoss);
+                context.Sponsors.Add(baufest);
+                context.Sponsors.Add(hexacta);
+                context.Sponsors.Add(distillery);
 
-        var globalEdition2020Sponsors = new List<(Sponsor Sponsor, string Type)> 
-        { 
-          (endava, "Gold"), 
-          (softvision, "Gold"),
-          (iTProve, "Gold"),
-          (conosurtech, "Supporter"),
-          (compartimoss, "Supporter"),
-          (nareia, "Gold"),
-          (baufest, "Gold")
-        };
+                var globalEdition2020Sponsors = new List<(Sponsor Sponsor, string Type)>
+                {
+                  (endava, "Gold"),
+                  (softvision, "Gold"),
+                  (iTProve, "Gold"),
+                  (conosurtech, "Supporter"),
+                  (compartimoss, "Supporter"),
+                  (nareia, "Gold"),
+                  (baufest, "Gold"),
+                  (hexacta, "Gold"),
+                  (distillery, "Supporter")
+                };
 
-        // Create global edition
-        var globalEdition2020 = VOpenDbInitializer.CreateEdition2020(context, organizers, globalEdition2020Sponsors, vopenEvent);
+                // Create global edition
+                var globalEdition2020 = VOpenDbInitializer.CreateEdition2020(context, organizers, globalEdition2020Sponsors, vopenEvent);
 
-        // Create global edition
-        var globalEdition = new Edition
-        {
-          Id = "vopen-global-2019",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-          {
+                // Create global edition
+                var globalEdition = new Edition
+                {
+                    Id = "vopen-global-2019",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                  {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2019" },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2019" }
-          },
-          Organizers = organizers.Where(c => c.Id.Contains("global-user")).Select(c => new EditionOrganizer { User = c }).ToList()
-        };
+                  },
+                    Organizers = organizers.Where(c => c.Id.Contains("global-user")).Select(c => new EditionOrganizer { User = c }).ToList()
+                };
 
-        // Create UY Edition
+                // Create UY Edition
 
-        var uyBuyLinks = new List<TicketLink>()
+                var uyBuyLinks = new List<TicketLink>()
           {
               new TicketLink { Label = "PayPal", Url = "https://www.eventbrite.com/e/vopen-19-uruguay-tickets-64989745077" },
               new TicketLink { Label = "CobrosYa", Url = "https://ks.uy/5c7FTJ2vnVytBeTm7" }
           };
-        var camelCaseFormatter = new JsonSerializerSettings();
-        camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
-        var uyBuyLinksJson = JsonConvert.SerializeObject(uyBuyLinks);
+                var camelCaseFormatter = new JsonSerializerSettings();
+                camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                var uyBuyLinksJson = JsonConvert.SerializeObject(uyBuyLinks);
 
-        // Create UY Edition
-        var uyEdition = new Edition
-        {
-          Id = "vopen-uy-2019",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
+                // Create UY Edition
+                var uyEdition = new Edition
+                {
+                    Id = "vopen-uy-2019",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                    {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen UY 2019", Date = "21, 22 y 23 de Octubre" },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen UY 2019", Date = "October 21st, 22nd and 23rd" }
-            },
-          LocationName = "Torre de las Telecomunicaciones, Antel",
-          LocationFullAddress = "Telecommunications Tower, 11800 Montevideo, Departamento de Montevideo, Uruguay",
-          EditionTickets = new List<EditionTicket>()
+                    },
+                    LocationName = "Torre de las Telecomunicaciones, Antel",
+                    LocationFullAddress = "Telecommunications Tower, 11800 Montevideo, Departamento de Montevideo, Uruguay",
+                    EditionTickets = new List<EditionTicket>()
             {
                 new EditionTicket { Name = "Early birds", Price = "20USD", StartDate = "2019-08-19T16:00:00.000-03:00", EndDate = "2019-09-19T00:00:00.000-03:00", BuyLinks = uyBuyLinksJson },
                 new EditionTicket { Name = "Night owl", Price = "40USD", StartDate = "2019-09-19T00:00:00.000-03:00", EndDate = "2019-10-24T00:00:00.000-03:00", BuyLinks = uyBuyLinksJson },
                 // new EditionTicket { Name = "General ticket", Price = "60USD", StartDate = "2019-10-01T00:00:00.000Z", EndDate = "2019-10-24T00:00:00.000Z", BuyLinks = uyBuyLinksJson },
             },
-          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_URUGUAY).Select(c => new EditionOrganizer { User = c }).ToList(),
-          Sponsors = new List<EditionSponsor>()
+                    Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_URUGUAY).Select(c => new EditionOrganizer { User = c }).ToList(),
+                    Sponsors = new List<EditionSponsor>()
             {
                 // use a number for the ID because it is needed for the app mobile (will be removed later on)
                 new EditionSponsor { Id = "1", Sponsor = microsoft, Type = Constants.SPONSOR_DIAMOND },
@@ -264,44 +280,44 @@ namespace vopen_api.Data
                 new EditionSponsor { Id = "13", Sponsor = elObservador, Type = Constants.SPONSOR_SILVER },
                 new EditionSponsor { Id = "14", Sponsor = cobrosYa, Type = Constants.SPONSOR_SILVER },
             },
-          Activities = VOpenDbInitializer.GetUyEditionActivities(context),
-        };
+                    Activities = VOpenDbInitializer.GetUyEditionActivities(context),
+                };
 
-        // Create CL Edition
-        var clEdition = new Edition
-        {
-          Id = "vopen-cl-2019",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
+                // Create CL Edition
+                var clEdition = new Edition
+                {
+                    Id = "vopen-cl-2019",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                    {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CL 2020", Date = "14, 15 y 16 de Mayo"  },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CL 2020", Date = "May 14th, 15th and 16th" }
-            },
-          LocationName = "Duoc UC: Sede Alonso de Ovalle",
-          LocationFullAddress = "Duoc UC: Sede Alonso de Ovalle, Santiago de Chile, Chile",
-          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_CHILE).Select(c => new EditionOrganizer { User = c }).ToList(),
-        };
+                    },
+                    LocationName = "Duoc UC: Sede Alonso de Ovalle",
+                    LocationFullAddress = "Duoc UC: Sede Alonso de Ovalle, Santiago de Chile, Chile",
+                    Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_CHILE).Select(c => new EditionOrganizer { User = c }).ToList(),
+                };
 
-        // Create MX Edition
-        var mxBuyLinks = new List<TicketLink>()
+                // Create MX Edition
+                var mxBuyLinks = new List<TicketLink>()
         {
             new TicketLink { Url = "https://vopen-mx-2020.eventbrite.com" },
         };
-        var mxBuyLinksJson = JsonConvert.SerializeObject(mxBuyLinks);
+                var mxBuyLinksJson = JsonConvert.SerializeObject(mxBuyLinks);
 
-        var mxEdition = new Edition
-        {
-          Id = "vopen-mx-2019",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
+                var mxEdition = new Edition
+                {
+                    Id = "vopen-mx-2019",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                    {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen MX 2020", Date = "26, 27 y 28 de Marzo"  },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen MX 2020", Date = "March 26th, 27th and 28th" }
-            },
-          LocationName = "Tecnológico Nacional de México Campus Tlahuac",
-          LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
-          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
-          Sponsors = new List<EditionSponsor>()
+                    },
+                    LocationName = "Tecnológico Nacional de México Campus Tlahuac",
+                    LocationFullAddress = "Av Estanislao Ramírez Ruiz 301, Ciudad de México, Mexico",
+                    Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_MEXICO).Select(c => new EditionOrganizer { User = c }).ToList(),
+                    Sponsors = new List<EditionSponsor>()
             {
                 // use a number for the ID because it is needed for the app mobile (will be removed later on)
                 new EditionSponsor { Id = "15", Sponsor = microsoft, Type = Constants.SPONSOR_DIAMOND },
@@ -310,935 +326,935 @@ namespace vopen_api.Data
                 new EditionSponsor { Id = "17", Sponsor = siderys, Type = Constants.SPONSOR_DIGITAL },
                 new EditionSponsor { Id = "18", Sponsor = algeiba, Type = Constants.SPONSOR_DIGITAL }
             },
-          EditionTickets = new List<EditionTicket>()
+                    EditionTickets = new List<EditionTicket>()
              {
                 new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2020-03-01T00:00:00.000Z", EndDate = "2020-03-29T00:00:00.000Z", BuyLinks = mxBuyLinksJson },
              },
-        };
+                };
 
-        // Create AR Edition
-        var aryBuyLinks = new List<TicketLink>()
+                // Create AR Edition
+                var aryBuyLinks = new List<TicketLink>()
         {
             new TicketLink { Url = "https://vopen-ar-2019.eventbrite.com" },
         };
-        var arBuyLinksJson = JsonConvert.SerializeObject(aryBuyLinks);
+                var arBuyLinksJson = JsonConvert.SerializeObject(aryBuyLinks);
 
-        var arEdition = new Edition
-        {
-          Id = "vopen-ar-2019",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
+                var arEdition = new Edition
+                {
+                    Id = "vopen-ar-2019",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                    {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen AR 2019", Date = "5 de Octubre" },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen AR 2019", Date = "October 5th" }
-            },
-          LocationName = "Microsoft Argentina",
-          LocationFullAddress = "Bouchard 710, Ciudad Autónoma de Buenos Aires, Argentina",
-          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_ARGENTINA).Select(c => new EditionOrganizer { User = c }).ToList(),
-          EditionTickets = new List<EditionTicket>()
+                    },
+                    LocationName = "Microsoft Argentina",
+                    LocationFullAddress = "Bouchard 710, Ciudad Autónoma de Buenos Aires, Argentina",
+                    Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_ARGENTINA).Select(c => new EditionOrganizer { User = c }).ToList(),
+                    EditionTickets = new List<EditionTicket>()
             {
                 new EditionTicket { Name = "General ticket", Price = "Free", StartDate = "2019-09-01T00:00:00.000Z", EndDate = "2019-10-07T00:00:00.000Z", BuyLinks = arBuyLinksJson },
             },
-          Activities = VOpenDbInitializer.GetArEditionActivities(context),
-        };
+                    Activities = VOpenDbInitializer.GetArEditionActivities(context),
+                };
 
-        // Create CO Edition
-        var coBuyLinks = new List<TicketLink>()
+                // Create CO Edition
+                var coBuyLinks = new List<TicketLink>()
         {
             new TicketLink { Url = "https://vopen-co-2020.eventbrite.com" },
         };
-        var coBuyLinksJson = JsonConvert.SerializeObject(aryBuyLinks);
+                var coBuyLinksJson = JsonConvert.SerializeObject(aryBuyLinks);
 
-        var coEdition = new Edition
-        {
-          Id = "vopen-co-2020",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
+                var coEdition = new Edition
+                {
+                    Id = "vopen-co-2020",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                    {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen CO 2020", Date = "Próximamente" },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen CO 2020", Date = "Soon" }
-            },
-          LocationName = "Bogotá, Colombia",
-          LocationFullAddress = "Bogotá, Colombia",
-          EditionTickets =
+                    },
+                    LocationName = "Bogotá, Colombia",
+                    LocationFullAddress = "Bogotá, Colombia",
+                    EditionTickets =
             {
                 // new EditionTicket { Name = "Early birds", Price = "$120.000", StartDate = "2019-10-01T00:00:00.000-0500", EndDate = "2019-12-14T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
                 // new EditionTicket { Name = "Night owl", Price = "$210.000", StartDate = "2019-12-14T00:00:00.000-0500", EndDate = "2020-02-09T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
                 // new EditionTicket { Name = "General ticket", Price = "$297.900", StartDate = "2020-02-09T00:00:00.000-0500", EndDate = "2020-03-29T00:00:00.000-0500", BuyLinks = coBuyLinksJson },
             },
-          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_COLOMBIA).Select(c => new EditionOrganizer { User = c }).ToList(),
-        };
+                    Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_COLOMBIA).Select(c => new EditionOrganizer { User = c }).ToList(),
+                };
 
-        // Create PE Edition
-        var peEdition = new Edition
-        {
-          Id = "vopen-pe-2019",
-          Event = vopenEvent,
-          Details = new EditionDetail[]
-            {
+                // Create PE Edition
+                var peEdition = new Edition
+                {
+                    Id = "vopen-pe-2019",
+                    Event = vopenEvent,
+                    Details = new EditionDetail[]
+                    {
                 new EditionDetail { Language = Constants.LANGUAGES_SPANISH, Name = "vOpen PE 2019" },
                 new EditionDetail { Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen PE 2019" }
-            },
-          LocationName = "",
-          LocationFullAddress = "Lima, Perú",
-          Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_PERU).Select(c => new EditionOrganizer { User = c }).ToList(),
-        };
+                    },
+                    LocationName = "",
+                    LocationFullAddress = "Lima, Perú",
+                    Organizers = organizers.Where(c => !c.Id.Contains("global-user") && c.Country == Constants.COUNTRIES_PERU).Select(c => new EditionOrganizer { User = c }).ToList(),
+                };
 
-        context.Editions.Add(globalEdition2020);
-        context.Editions.Add(globalEdition);
+                context.Editions.Add(globalEdition2020);
+                context.Editions.Add(globalEdition);
 
-        context.Editions.Add(clEdition);
-        context.Editions.Add(mxEdition);
+                context.Editions.Add(clEdition);
+                context.Editions.Add(mxEdition);
 
-        context.Editions.Add(arEdition);
-        context.Editions.Add(uyEdition);
-        context.Editions.Add(coEdition);
-        context.Editions.Add(peEdition);
+                context.Editions.Add(arEdition);
+                context.Editions.Add(uyEdition);
+                context.Editions.Add(coEdition);
+                context.Editions.Add(peEdition);
 
-        context.SaveChanges();
-      }
-    }
+                context.SaveChanges();
+            }
+        }
 
-    public static void Cleanup(DbContextOptions<VOpenDbContext> options)
-    {
-      using (var context = new VOpenDbContext(options))
-      {
-        context.Database.EnsureCreated();
+        public static void Cleanup(DbContextOptions<VOpenDbContext> options)
+        {
+            using (var context = new VOpenDbContext(options))
+            {
+                context.Database.EnsureCreated();
 
-        context.EditionsActivitiesScores.RemoveRange(context.EditionsActivitiesScores);
-        context.EditionsActivitiesUsers.RemoveRange(context.EditionsActivitiesUsers);
-        context.EditionsActivities.RemoveRange(context.EditionsActivities);
-        context.EditionsOrganizers.RemoveRange(context.EditionsOrganizers);
-        context.EditionsDetails.RemoveRange(context.EditionsDetails);
-        context.EditionsSponsors.RemoveRange(context.EditionsSponsors);
+                context.EditionsActivitiesScores.RemoveRange(context.EditionsActivitiesScores);
+                context.EditionsActivitiesUsers.RemoveRange(context.EditionsActivitiesUsers);
+                context.EditionsActivities.RemoveRange(context.EditionsActivities);
+                context.EditionsOrganizers.RemoveRange(context.EditionsOrganizers);
+                context.EditionsDetails.RemoveRange(context.EditionsDetails);
+                context.EditionsSponsors.RemoveRange(context.EditionsSponsors);
 
-        context.Sponsors.RemoveRange(context.Sponsors);
-        context.UsersProposalsDetails.RemoveRange(context.UsersProposalsDetails);
-        context.UsersDetails.RemoveRange(context.UsersDetails);
-        context.Users.RemoveRange(context.Users);
-        context.Editions.RemoveRange(context.Editions);
-        context.Events.RemoveRange(context.Events);
+                context.Sponsors.RemoveRange(context.Sponsors);
+                context.UsersProposalsDetails.RemoveRange(context.UsersProposalsDetails);
+                context.UsersDetails.RemoveRange(context.UsersDetails);
+                context.Users.RemoveRange(context.Users);
+                context.Editions.RemoveRange(context.Editions);
+                context.Events.RemoveRange(context.Events);
 
-        context.SaveChanges();
-      }
-    }
+                context.SaveChanges();
+            }
+        }
 
-    public static ICollection<User> CreateGlobalOrganizers(VOpenDbContext context)
-    {
-      var user1 = new User
-      {
-        Id = MARIANO_VAZQUEZ_ID,
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/14aAfJW.jpg",
-        Details = new UserDetail[]
-         {
+        public static ICollection<User> CreateGlobalOrganizers(VOpenDbContext context)
+        {
+            var user1 = new User
+            {
+                Id = MARIANO_VAZQUEZ_ID,
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/14aAfJW.jpg",
+                Details = new UserDetail[]
+               {
             new UserDetail { Name = "Mariano Vazquez", Description = "", JobTitle = "Principal Software Engineer", Company = "MuleSoft", Language = Constants.LANGUAGES_SPANISH }
-         },
-        SocialLinks = new UserSocialLink[]
-         {
+               },
+                SocialLinks = new UserSocialLink[]
+               {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/nanovazquez/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/nanovazquez87" },
-         }
-      };
-      var user3 = new User
-      {
-        Id = "global-user2",
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/iY5beT7.jpg",
-        Details = new UserDetail[]
-          {
+               }
+            };
+            var user3 = new User
+            {
+                Id = "global-user2",
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/iY5beT7.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Pablo Di Loreto", Description = "", JobTitle = "Service Manager", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://ar.linkedin.com/in/pablodiloreto" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/pablodiloreto" },
-          }
-      };
-      var user4 = new User
-      {
-        Id = "global-user3",
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/KrNBexb.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user4 = new User
+            {
+                Id = "global-user3",
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/KrNBexb.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Fabian Imaz", Description = "", JobTitle = "CEO", Company = "Siderys", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://uy.linkedin.com/in/siderys" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/fabianimaz" },
-          }
-      };
-      var user5 = new User
-      {
-        Id = "global-user4",
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/vXLIy95.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user5 = new User
+            {
+                Id = "global-user4",
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/vXLIy95.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Fabian Fernandez", Description = "", JobTitle = "VP Global Markets", Company = "Cuti", Language = Constants.LANGUAGES_SPANISH, }
-           },
-        SocialLinks = new UserSocialLink[]
-          {
+                 },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://uy.linkedin.com/in/kzfabi" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/kzfabi" },
-          }
-      };
+                }
+            };
 
-      // UY
+            // UY
 
-      var user6 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/vSPaUor.jpg",
-        Details = new UserDetail[]
-          {
+            var user6 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/vSPaUor.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Federico Bernasconi", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                     new UserSocialLink
                     {
                         Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/federico-bernasconi-48087b56/"
                     },
-          }
-      };
-      var user7 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/7WclQJ9.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user7 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/7WclQJ9.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Brian Hardy", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/brian-hardy-382a9484" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/hardyr93" },
-          }
-      };
-      var user8 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://imgur.com/008xHsD.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user8 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://imgur.com/008xHsD.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Pablo Marcano", Description = "", Language = Constants.LANGUAGES_SPANISH, }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/pablo-m-1b2366124/" },
-          }
-      };
-      var user9 = new User
-      {
-        Id = VICTOR_SILVA_ID,
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://imgur.com/TpW7cPF.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user9 = new User
+            {
+                Id = VICTOR_SILVA_ID,
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://imgur.com/TpW7cPF.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Victor Silva", Description = "", JobTitle = "DevOps and Cloud Architect", Company = "Pyxis", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/vmsilvamolina/" },
-          }
-      };
-      var user23 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/g1l8I4s.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user23 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/g1l8I4s.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Pablo Terevinto",  Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/pterevinto/"}
-          }
-      };
-      var user24 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/JtRrcur.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user24 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/JtRrcur.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Victoria Mato",  Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/Victoria-Mato"}
-          }
-      };
-      var user25 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/3p2UAdT.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user25 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/3p2UAdT.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Martin Mato",  Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/martinmato/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = " https://twitter.com/otamnitram" }
-          }
-      };
+                }
+            };
 
-      // AR
+            // AR
 
-      var user12 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/xxhanh1.jpg",
-        Details = new UserDetail[]
-          {
+            var user12 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/xxhanh1.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Nahir Iberra", Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/niberra" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/na_iberra" },
-          }
-      };
-      var user13 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/gCXf8rh.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user13 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/gCXf8rh.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jorge Bramajo", Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jobramajo" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jorbramajo" },
-          }
-      };
-      var user14 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/FB2hl5h.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user14 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/FB2hl5h.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Esteban Yañez",  Description = "", Language = Constants.LANGUAGES_SPANISH  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/eyanez89" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/Teban3010" },
-          }
-      };
-      var user15 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/4F8teHs.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user15 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/4F8teHs.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Sebastián Pérez", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebasti%C3%A1n-leonardo-p%C3%A9rez-68816599" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/garudasla" },
-          }
-      };
+                }
+            };
 
-      var user2 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/4JpB16z.jpg",
-        Details = new UserDetail[] { new UserDetail { Name = "Guillermo Bellmann", Description = "", Language = Constants.LANGUAGES_SPANISH } },
-        SocialLinks = new UserSocialLink[]
-         {
+            var user2 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/4JpB16z.jpg",
+                Details = new UserDetail[] { new UserDetail { Name = "Guillermo Bellmann", Description = "", Language = Constants.LANGUAGES_SPANISH } },
+                SocialLinks = new UserSocialLink[]
+               {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://ar.linkedin.com/in/gbellmann" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/gjbellmann" },
-         }
-      };
+               }
+            };
 
-      // CL
+            // CL
 
-      var user16 = new User
-      {
-        Country = Constants.COUNTRIES_CHILE,
-        ImageUrl = "https://i.imgur.com/lVxUCBx.jpg",
-        Details = new UserDetail[]
-    {
+            var user16 = new User
+            {
+                Country = Constants.COUNTRIES_CHILE,
+                ImageUrl = "https://i.imgur.com/lVxUCBx.jpg",
+                Details = new UserDetail[]
+          {
               new UserDetail { Name = "Sergio Borromei", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-    },
-        SocialLinks = new UserSocialLink[]
-    {
+          },
+                SocialLinks = new UserSocialLink[]
+          {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sergioborromei" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/SergioBLagash" },
-    }
-      };
-      var user26 = new User
-      {
-        Country = Constants.COUNTRIES_CHILE,
-        ImageUrl = "https://i.imgur.com/RNU3DyU.jpg",
-        Details = new UserDetail[]
-          {
+          }
+            };
+            var user26 = new User
+            {
+                Country = Constants.COUNTRIES_CHILE,
+                ImageUrl = "https://i.imgur.com/RNU3DyU.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Mario Valderrama", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/mario-valderrama-silva-a8253b46/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/MarioChep" },
-          }
-      };
-      var user27 = new User
-      {
-        Country = Constants.COUNTRIES_CHILE,
-        ImageUrl = "https://i.imgur.com/zn3VgQD.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user27 = new User
+            {
+                Country = Constants.COUNTRIES_CHILE,
+                ImageUrl = "https://i.imgur.com/zn3VgQD.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Christian Kus", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christiankus/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/christiankus" },
-          }
-      };
+                }
+            };
 
-      // CO
+            // CO
 
-      var user17 = new User
-      {
-        Country = Constants.COUNTRIES_COLOMBIA,
-        ImageUrl = "https://i.imgur.com/Xtwd1U6.png",
-        Details = new UserDetail[]
-          {
+            var user17 = new User
+            {
+                Country = Constants.COUNTRIES_COLOMBIA,
+                ImageUrl = "https://i.imgur.com/Xtwd1U6.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Mayra Badillo", Description = "", Language = Constants.LANGUAGES_SPANISH, }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/mabvill" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/mabvill" },
-          }
-      };
-      var user18 = new User
-      {
-        Country = Constants.COUNTRIES_COLOMBIA,
-        ImageUrl = "https://i.imgur.com/DQevp7d.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user18 = new User
+            {
+                Country = Constants.COUNTRIES_COLOMBIA,
+                ImageUrl = "https://i.imgur.com/DQevp7d.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Andres Rojas", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[] { }
-      };
-      var user19 = new User
-      {
-        Country = Constants.COUNTRIES_COLOMBIA,
-        ImageUrl = "https://i.imgur.com/U4HO5Py.jpg",
-        Details = new UserDetail[]
-          {
+                },
+                SocialLinks = new UserSocialLink[] { }
+            };
+            var user19 = new User
+            {
+                Country = Constants.COUNTRIES_COLOMBIA,
+                ImageUrl = "https://i.imgur.com/U4HO5Py.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Rogger Rodriguez",Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[] { }
-      };
+                },
+                SocialLinks = new UserSocialLink[] { }
+            };
 
-      // PE
+            // PE
 
-      var user20 = new User
-      {
-        Country = Constants.COUNTRIES_PERU,
-        ImageUrl = "https://i.imgur.com/idbCxF9.jpg",
-        Details = new UserDetail[]
-          {
+            var user20 = new User
+            {
+                Country = Constants.COUNTRIES_PERU,
+                ImageUrl = "https://i.imgur.com/idbCxF9.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Miguel Almeyda", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/miguelalmeyda" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/miguelalmeyda" },
-          }
-      };
-      var user21 = new User
-      {
-        Country = Constants.COUNTRIES_PERU,
-        ImageUrl = "https://i.imgur.com/h1wbE8H.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user21 = new User
+            {
+                Country = Constants.COUNTRIES_PERU,
+                ImageUrl = "https://i.imgur.com/h1wbE8H.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Alberto De Rossi", Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/alberto-de-rossi-46814244/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/albertoderossi" },
-          }
-      };
-      var user22 = new User
-      {
-        Country = Constants.COUNTRIES_PERU,
-        ImageUrl = "https://i.imgur.com/1NLCUGy.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user22 = new User
+            {
+                Country = Constants.COUNTRIES_PERU,
+                ImageUrl = "https://i.imgur.com/1NLCUGy.png",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "German Cayo", Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[] { },
-      };
+                },
+                SocialLinks = new UserSocialLink[] { },
+            };
 
-      // MX
-      var user30 = new User
-      {
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/4OmATPO.jpg",
-        Details = new UserDetail[]
-           {
+            // MX
+            var user30 = new User
+            {
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/4OmATPO.jpg",
+                Details = new UserDetail[]
+                 {
                 new UserDetail { Name = "Christian Romano", Description = "", JobTitle = "Gerente de Infraestructura y Operaciones de TI", Company = "Universidad Latinoamericana", Language = Constants.LANGUAGES_SPANISH }
-           },
-        SocialLinks = new UserSocialLink[]
-           {
+                 },
+                SocialLinks = new UserSocialLink[]
+                 {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christianromanomvp/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/shionfox" },
-           }
-      };
-      var user31 = new User
-      {
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/i3wzW1v.jpg?1",
-        Details = new UserDetail[]
-          {
+                 }
+            };
+            var user31 = new User
+            {
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/i3wzW1v.jpg?1",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Fátima Jaydith Blancas Velázquez", Description = "", JobTitle = "CEO", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fatimablancasv/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/JaydithBV" },
-          }
-      };
-      var user32 = new User
-      {
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/UY8abAH.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user32 = new User
+            {
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/UY8abAH.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Roberto Correa", Description = "", JobTitle = "Gerente de Infraestructura", Company = "Comisión Nacional de Cultura Física y Deporte", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/roberto-correa-mart%C3%ADnez-450b8016/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/Roberto_Correa_" },
-          }
-      };
-      var user33 = new User
-      {
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/jnOvbjH.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user33 = new User
+            {
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/jnOvbjH.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Julio César Leyva", Description = "", JobTitle = "Director de Operaciones", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/julioleyva/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/kexdat" },
-          }
-      };
-      var user34 = new User
-      {
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/iEG62Yn.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user34 = new User
+            {
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/iEG62Yn.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Rodolfo Castro", Description = "", JobTitle = "MS UC Consultant", Company = "Poly", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/rodolfomvp/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ucblogmx" },
-          }
-      };
+                }
+            };
 
-      context.Users.Add(user1);
-      context.Users.Add(user2);
-      context.Users.Add(user3);
-      context.Users.Add(user4);
-      context.Users.Add(user5);
-      context.Users.Add(user6);
-      context.Users.Add(user7);
-      context.Users.Add(user8);
-      context.Users.Add(user9);
-      context.Users.Add(user12);
-      context.Users.Add(user13);
-      context.Users.Add(user14);
-      context.Users.Add(user15);
-      context.Users.Add(user16);
-      context.Users.Add(user17);
-      context.Users.Add(user18);
-      context.Users.Add(user19);
-      context.Users.Add(user20);
-      context.Users.Add(user21);
-      context.Users.Add(user22);
-      context.Users.Add(user23);
-      context.Users.Add(user24);
-      context.Users.Add(user25);
-      context.Users.Add(user26);
-      context.Users.Add(user27);
-      context.Users.Add(user30);
-      context.Users.Add(user31);
-      context.Users.Add(user32);
-      context.Users.Add(user33);
-      context.Users.Add(user34);
+            context.Users.Add(user1);
+            context.Users.Add(user2);
+            context.Users.Add(user3);
+            context.Users.Add(user4);
+            context.Users.Add(user5);
+            context.Users.Add(user6);
+            context.Users.Add(user7);
+            context.Users.Add(user8);
+            context.Users.Add(user9);
+            context.Users.Add(user12);
+            context.Users.Add(user13);
+            context.Users.Add(user14);
+            context.Users.Add(user15);
+            context.Users.Add(user16);
+            context.Users.Add(user17);
+            context.Users.Add(user18);
+            context.Users.Add(user19);
+            context.Users.Add(user20);
+            context.Users.Add(user21);
+            context.Users.Add(user22);
+            context.Users.Add(user23);
+            context.Users.Add(user24);
+            context.Users.Add(user25);
+            context.Users.Add(user26);
+            context.Users.Add(user27);
+            context.Users.Add(user30);
+            context.Users.Add(user31);
+            context.Users.Add(user32);
+            context.Users.Add(user33);
+            context.Users.Add(user34);
 
-      return new List<User>
+            return new List<User>
         {
             user1, user2, user3, user4, user5, user6, user7, user8, user9, user12,
             user13, user14, user15, user16, user17, user18, user19, user20, user21,
             user22, user23, user24, user25, user26, user27, user30, user31, user32, user33, user34
         };
-    }
+        }
 
-    public static ICollection<User> CreateGlobalOrganizers2020(VOpenDbContext context)
-    {
-      var user1 = new User
-      {
-        Id = "global-user-2020-1",
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/vSPaUor.jpg",
-        Details = new UserDetail[]
-          {
+        public static ICollection<User> CreateGlobalOrganizers2020(VOpenDbContext context)
+        {
+            var user1 = new User
+            {
+                Id = "global-user-2020-1",
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/vSPaUor.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Federico Bernasconi", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                     new UserSocialLink
                     {
                         Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/federico-bernasconi-48087b56/"
                     },
-          }
-      };
-      var user2 = new User
-      {
-        Id = "global-user-2020-2",
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/7WclQJ9.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user2 = new User
+            {
+                Id = "global-user-2020-2",
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/7WclQJ9.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Brian Hardy", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/brian-hardy-382a9484" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/hardyr93" },
-          }
-      };
-      var user3 = new User
-      {
-        Id = "global-user-2020-3",
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/g1l8I4s.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user3 = new User
+            {
+                Id = "global-user-2020-3",
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/g1l8I4s.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Pablo Terevinto",  Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/pterevinto/"}
-          }
-      };
-      var user4 = new User
-      {
-        Id = "global-user-2020-4",
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/3p2UAdT.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user4 = new User
+            {
+                Id = "global-user-2020-4",
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/3p2UAdT.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Martin Mato",  Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/martinmato/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = " https://twitter.com/otamnitram" }
-          }
-      };
-      var user5 = new User
-      {
-        Id = "global-user-2020-5",
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/gCXf8rh.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user5 = new User
+            {
+                Id = "global-user-2020-5",
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/gCXf8rh.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jorge Bramajo", Description = "", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jobramajo" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jorbramajo" },
-          }
-      };
-      var user6 = new User
-      {
-        Id = "global-user-2020-6",
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/4F8teHs.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user6 = new User
+            {
+                Id = "global-user-2020-6",
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/4F8teHs.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Sebastián Pérez", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebasti%C3%A1n-leonardo-p%C3%A9rez-68816599" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/garudasla" },
-          }
-      };
-      var user7 = new User
-      {
-        Id = "global-user-2020-7",
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://avatars2.githubusercontent.com/u/49730737?s=460&u=357f7b9e604eb0144002001ec24f9b25fac81d72&v=4",
-        Details = new UserDetail[]
-        {
+                }
+            };
+            var user7 = new User
+            {
+                Id = "global-user-2020-7",
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://avatars2.githubusercontent.com/u/49730737?s=460&u=357f7b9e604eb0144002001ec24f9b25fac81d72&v=4",
+                Details = new UserDetail[]
+              {
           new UserDetail { Name = "Facundo La Rocca", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
           new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/facundo-la-rocca/" },
           new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/TheRockFacu" },
-        }
-      };
-      var user8 = new User
-      {
-        Id = "global-user-2020-8",
-        Country = Constants.COUNTRIES_CHILE,
-        ImageUrl = "https://i.imgur.com/RNU3DyU.jpg",
-        Details = new UserDetail[]
-          {
+              }
+            };
+            var user8 = new User
+            {
+                Id = "global-user-2020-8",
+                Country = Constants.COUNTRIES_CHILE,
+                ImageUrl = "https://i.imgur.com/RNU3DyU.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Mario Valderrama", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/mario-valderrama-silva-a8253b46/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/MarioChep" },
-          }
-      };
-      var user9 = new User
-      {
-        Id = "global-user-2020-9",
-        Country = Constants.COUNTRIES_CHILE,
-        ImageUrl = "https://i.imgur.com/zn3VgQD.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user9 = new User
+            {
+                Id = "global-user-2020-9",
+                Country = Constants.COUNTRIES_CHILE,
+                ImageUrl = "https://i.imgur.com/zn3VgQD.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Christian Kus", Description = "", Language = Constants.LANGUAGES_SPANISH,  }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christiankus/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/christiankus" },
-          }
-      };
-      var user10 = new User
-      {
-        Id = "global-user-2020-10",
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/4OmATPO.jpg",
-        Details = new UserDetail[]
-           {
+                }
+            };
+            var user10 = new User
+            {
+                Id = "global-user-2020-10",
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/4OmATPO.jpg",
+                Details = new UserDetail[]
+                 {
                 new UserDetail { Name = "Christian Romano", Description = "", JobTitle = "Gerente de Infraestructura y Operaciones de TI", Company = "Universidad Latinoamericana", Language = Constants.LANGUAGES_SPANISH }
-           },
-        SocialLinks = new UserSocialLink[]
-           {
+                 },
+                SocialLinks = new UserSocialLink[]
+                 {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christianromanomvp/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/shionfox" },
-           }
-      };
-      var user11 = new User
-      {
-        Id = "global-user-2020-11",
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/i3wzW1v.jpg?1",
-        Details = new UserDetail[]
-          {
+                 }
+            };
+            var user11 = new User
+            {
+                Id = "global-user-2020-11",
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/i3wzW1v.jpg?1",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Fátima Jaydith Blancas Velázquez", Description = "", JobTitle = "CEO", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fatimablancasv/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/JaydithBV" },
-          }
-      };
-      var user12 = new User
-      {
-        Id = "global-user-2020-12",
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/jnOvbjH.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user12 = new User
+            {
+                Id = "global-user-2020-12",
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/jnOvbjH.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Julio César Leyva", Description = "", JobTitle = "Director de Operaciones", Company = "iTProve Corporation", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/julioleyva/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/kexdat" },
-          }
-      };
-      var user13 = new User
-      {
-        Id = "global-user-2020-13",
-        Country = Constants.COUNTRIES_MEXICO,
-        ImageUrl = "https://i.imgur.com/iEG62Yn.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var user13 = new User
+            {
+                Id = "global-user-2020-13",
+                Country = Constants.COUNTRIES_MEXICO,
+                ImageUrl = "https://i.imgur.com/iEG62Yn.jpg",
+                Details = new UserDetail[]
+                {
                 new UserDetail { Name = "Rodolfo Castro", Description = "", JobTitle = "MS UC Consultant", Company = "Poly", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/rodolfomvp/" },
                 new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ucblogmx" },
-          }
-      };
-      var user14 = new User
-      {
-        Id = "global-user-2020-14",
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/wcYR2J5.jpg",
-        Details = new UserDetail[]
-         {
+                }
+            };
+            var user14 = new User
+            {
+                Id = "global-user-2020-14",
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/wcYR2J5.jpg",
+                Details = new UserDetail[]
+               {
               new UserDetail { Name = "Fernando Sonego", Description = "", JobTitle = "Arquitecto de Soluciones", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
-         },
-        SocialLinks = new UserSocialLink[]
-         {
+               },
+                SocialLinks = new UserSocialLink[]
+               {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fernando-sonego-a7378231/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/FernandoSonego" },
-         }
-      };
+               }
+            };
 
-      context.Users.Add(user1);
-      context.Users.Add(user2);
-      context.Users.Add(user3);
-      context.Users.Add(user4);
-      context.Users.Add(user5);
-      context.Users.Add(user6);
-      context.Users.Add(user7);
-      context.Users.Add(user8);
-      context.Users.Add(user9);
-      context.Users.Add(user10);
-      context.Users.Add(user11);
-      context.Users.Add(user12);
-      context.Users.Add(user13);
-      context.Users.Add(user14);
+            context.Users.Add(user1);
+            context.Users.Add(user2);
+            context.Users.Add(user3);
+            context.Users.Add(user4);
+            context.Users.Add(user5);
+            context.Users.Add(user6);
+            context.Users.Add(user7);
+            context.Users.Add(user8);
+            context.Users.Add(user9);
+            context.Users.Add(user10);
+            context.Users.Add(user11);
+            context.Users.Add(user12);
+            context.Users.Add(user13);
+            context.Users.Add(user14);
 
-      return new List<User>
+            return new List<User>
       {
         user1, user2, user3, user4, user5, user6,
         user7, user8, user9, user10, user11, user12,
         user13, user14
       };
-    }
+        }
 
-    public static ICollection<EditionActivity> GetArEditionActivities(VOpenDbContext context)
-    {
-      var arSpeaker1 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/cD0SXUl.jpg",
-        Details = new UserDetail[]
-          {
+        public static ICollection<EditionActivity> GetArEditionActivities(VOpenDbContext context)
+        {
+            var arSpeaker1 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/cD0SXUl.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "María Alejandra Mazzini", Description = "", JobTitle = "Co-Fundadora", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/malejandramazzini/" },
-          }
-      };
-      var arSpeaker2 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/m5W4jCV.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var arSpeaker2 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/m5W4jCV.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Juan Francisco Escudero", Description = "", JobTitle = "Eng. Manager", Company = "Medallia", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
                 new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/juan-francisco-escudero" },
-          }
-      };
-      var arSpeaker3 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/XQD0EcR.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var arSpeaker3 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/XQD0EcR.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jonathan Erlich", Description = "", JobTitle = "Senior Engineer", Company = "Medallia", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jonathan-erlich-4948ba7/" },
-          }
-      };
-      var arSpeaker4 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_STATES,
-        ImageUrl = "https://i.imgur.com/URg9dmD.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var arSpeaker4 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_STATES,
+                ImageUrl = "https://i.imgur.com/URg9dmD.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jonas Stawski", Description = "", JobTitle = "CTO", Company = "FishAngler", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jonasstawski/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jstawski" },
-          }
-      };
-      var arSpeaker5 = context.Users.Find(FERNANDO_SONEGO_ID);
-      var arSpeaker6 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/yGLqySK.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var arSpeaker5 = context.Users.Find(FERNANDO_SONEGO_ID);
+            var arSpeaker6 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/yGLqySK.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Ivana Tilca", Description = "", JobTitle = "Quality Manager", Company = "3XM Group", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/ivanatilca/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ivanatilca" },
-          }
-      };
-      var arSpeaker7 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/oAOvSFW.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var arSpeaker7 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/oAOvSFW.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Angel J Lopez", Description = "", JobTitle = "Software Developer", Company = "IOVLabs", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/ajlopez/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ajlopez" },
-          }
-      };
-      var arSpeaker8 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/TwCIpww.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var arSpeaker8 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/TwCIpww.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Enzo Cano", Description = "", JobTitle = "Lead Software Engineer", Company = "Southworks", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/enzojfcano" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/enz_cano" },
-          }
-      };
+                }
+            };
 
-      context.Users.Add(arSpeaker1);
-      context.Users.Add(arSpeaker2);
-      context.Users.Add(arSpeaker3);
-      context.Users.Add(arSpeaker4);
-      context.Users.Add(arSpeaker5);
-      context.Users.Add(arSpeaker6);
-      context.Users.Add(arSpeaker7);
-      context.Users.Add(arSpeaker8);
+            context.Users.Add(arSpeaker1);
+            context.Users.Add(arSpeaker2);
+            context.Users.Add(arSpeaker3);
+            context.Users.Add(arSpeaker4);
+            context.Users.Add(arSpeaker5);
+            context.Users.Add(arSpeaker6);
+            context.Users.Add(arSpeaker7);
+            context.Users.Add(arSpeaker8);
 
-      var uySpeaker4 = context.Users.Find(JAVIER_VILLEGAS_ID);
+            var uySpeaker4 = context.Users.Find(JAVIER_VILLEGAS_ID);
 
-      return new List<EditionActivity>
+            return new List<EditionActivity>
       {
         new EditionActivity { Type = Constants.ACTIVITY_ACCREDITATION_BREAKFAST, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T08:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Acreditación y desayuno" } } },
         new EditionActivity { Type = Constants.ACTIVITY_OPENING, Day = "Day 1", Track = "Track 1", Duration = "00:30:00", Date = "2019-10-05T09:00:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Apertura" } } },
@@ -1319,533 +1335,533 @@ namespace vopen_api.Data
         },
         new EditionActivity { Type = Constants.ACTIVITY_CLOSURE, Day = "Day 1", Track = "Track 1", Duration = "00:45:00", Date = "2019-10-05T17:30:00.000-03:00", Details = new List<EditionActivityDetail>() {  new EditionActivityDetail() { Language = Constants.LANGUAGES_SPANISH, Title = "Cierre" } } },
       };
-    }
+        }
 
-    public static ICollection<EditionActivity> GetUyEditionActivities(VOpenDbContext context)
-    {
-      var uySpeaker1 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://pbs.twimg.com/profile_images/540333239387557888/BezHW_ii_400x400.jpeg",
-        Details = new UserDetail[]
-          {
+        public static ICollection<EditionActivity> GetUyEditionActivities(VOpenDbContext context)
+        {
+            var uySpeaker1 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://pbs.twimg.com/profile_images/540333239387557888/BezHW_ii_400x400.jpeg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Gastón Milano", Description = "", JobTitle = "CTO", Company = "GeneXus", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/gastonmilano" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/GMilano" },
-          }
-      };
-      var uySpeaker2 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://media.licdn.com/dms/image/C4E03AQH-7vC7lgttOw/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=1XjAiK51c-w-kdXkNADDeawi-igJHEFqjjASx_VN3M4",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker2 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://media.licdn.com/dms/image/C4E03AQH-7vC7lgttOw/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=1XjAiK51c-w-kdXkNADDeawi-igJHEFqjjASx_VN3M4",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Enrique Dutra", Description = "", JobTitle = "Socio Gerente", Company = "Punto Net Soluciones SRL", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/enriquedutra/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/egdutra" },
-          }
-      };
-      var uySpeaker3 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_KINGDOM,
-        ImageUrl = "https://meteatamel.files.wordpress.com/2019/03/meteatamel-2019.jpeg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker3 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_KINGDOM,
+                ImageUrl = "https://meteatamel.files.wordpress.com/2019/03/meteatamel-2019.jpeg",
+                Details = new UserDetail[]
+                {
                new UserDetail { Name = "Mete Atamel", Description = "", JobTitle = "Senior Developer Advocate", Company = "Google", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/meteatamel" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/meteatamel" },
-          }
-      };
-      var uySpeaker4 = new User
-      {
-        Id = JAVIER_VILLEGAS_ID,
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://media.licdn.com/dms/image/C4E03AQGqrFkjImrUbg/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=9hZMihfvDIeiEZ839Xw__kGAD-2Uq700vXpWb3LUCk4",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker4 = new User
+            {
+                Id = JAVIER_VILLEGAS_ID,
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://media.licdn.com/dms/image/C4E03AQGqrFkjImrUbg/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=9hZMihfvDIeiEZ839Xw__kGAD-2Uq700vXpWb3LUCk4",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Javier Villegas", Description = "", JobTitle = "DBA Manager", Company = "Mediterranean Shipping Co.", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/javiervillegas" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/javier_vill" },
-          }
-      };
-      var uySpeaker5 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/EThBZCw.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker5 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/EThBZCw.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Felipe Schneider", Description = "", JobTitle = "DBA Admin", Company = "Pyxis", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/felipe-schneider-03066921/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/Felipes88" },
-          }
-      };
-      var uySpeaker6 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/nTCQW4O.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker6 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/nTCQW4O.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Santiago Pastorino", Description = "", JobTitle = "Fundador", Company = "WyeWorks", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://uy.linkedin.com/in/santiagopastorino" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/spastorino" },
-          }
-      };
-      var uySpeaker7 = new User
-      {
-        Country = Constants.COUNTRIES_BRAZIL,
-        ImageUrl = "https://i.imgur.com/1epkuZZ.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker7 = new User
+            {
+                Country = Constants.COUNTRIES_BRAZIL,
+                ImageUrl = "https://i.imgur.com/1epkuZZ.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Alexandre Brandão Lustosa", Description = "", JobTitle = "IT Director", Company = "Stone Payments", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/abrandaol/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/abrandaolustosa" },
-          }
-      };
+                }
+            };
 
-      var uySpeaker8 = new User
-      {
-        Country = Constants.COUNTRIES_CUBA,
-        ImageUrl = "https://media.licdn.com/dms/image/C4E03AQHfoMQZOieQNQ/profile-displayphoto-shrink_800_800/0?e=1575504000&v=beta&t=bCcx9zY3xXZFKcVYVnrYTW8guvU3l71pWkymykhuw0c",
-        Details = new UserDetail[]
-          {
+            var uySpeaker8 = new User
+            {
+                Country = Constants.COUNTRIES_CUBA,
+                ImageUrl = "https://media.licdn.com/dms/image/C4E03AQHfoMQZOieQNQ/profile-displayphoto-shrink_800_800/0?e=1575504000&v=beta&t=bCcx9zY3xXZFKcVYVnrYTW8guvU3l71pWkymykhuw0c",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Lisandra Armas Águila", Description = "", JobTitle = "Senior QA Engineer", Company = "Abstracta", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/lisandra-armas-aguila/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/lisyarmas" },
-          }
-      };
+                }
+            };
 
-      var uySpeaker9 = new User
-      {
-        Country = Constants.COUNTRIES_BRAZIL,
-        ImageUrl = "https://media.licdn.com/dms/image/C4E03AQFEySIvDgebsA/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=_qxu87Ovo7WkFz5_BUmasXk9rmmiR8_lfnYr6r7VSR8",
-        Details = new UserDetail[]
-          {
+            var uySpeaker9 = new User
+            {
+                Country = Constants.COUNTRIES_BRAZIL,
+                ImageUrl = "https://media.licdn.com/dms/image/C4E03AQFEySIvDgebsA/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=_qxu87Ovo7WkFz5_BUmasXk9rmmiR8_lfnYr6r7VSR8",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Rodrigo Crespi", Description = "", JobTitle = "CTO", Company = "CrespiDB Ltda", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/rodrigocrespi/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/SQLCrespi" },
-          }
-      };
-      var uySpeaker10 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/sQNWlwN.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker10 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/sQNWlwN.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Sebastián Perez", Description = "", JobTitle = "Ethereum Instructor", Company = "Blockchain Academy Chile", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebaleoperez/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/sebaleoperez" },
-          }
-      };
-      var uySpeaker11 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/dUdbx4k.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker11 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/dUdbx4k.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Victoria Perez", Description = "", JobTitle = "Dev con foco en UX", Company = "Pyxis", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/perezmvictoria/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/perezmvictoria" },
-          }
-      };
-      var uySpeaker12 = new User
-      {
-        Country = Constants.COUNTRIES_VENEZUELA,
-        ImageUrl = "https://i.imgur.com/hgdXyLu.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker12 = new User
+            {
+                Country = Constants.COUNTRIES_VENEZUELA,
+                ImageUrl = "https://i.imgur.com/hgdXyLu.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Josmell Chavarri", Description = "", JobTitle = "Especialista en Seguridad", Company = "GuayoyoLabs", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/josmellchavarri/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/j0sm3ll" },
-          }
-      };
-      var uySpeaker13 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_STATES,
-        ImageUrl = "https://media.licdn.com/dms/image/C4E03AQE1QonvgdIp5A/profile-displayphoto-shrink_800_800/0?e=1574294400&v=beta&t=0y8T5at1V6Hnte5Nbz1aS1cYqOiLet9R5tTG05z03Jg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker13 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_STATES,
+                ImageUrl = "https://media.licdn.com/dms/image/C4E03AQE1QonvgdIp5A/profile-displayphoto-shrink_800_800/0?e=1574294400&v=beta&t=0y8T5at1V6Hnte5Nbz1aS1cYqOiLet9R5tTG05z03Jg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jd Marymee", Description = "", JobTitle = "Architect", Company = "Microsoft", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jmarymee/ " }
-          }
-      };
-      var uySpeaker14 = new User
-      {
-        Country = Constants.COUNTRIES_BRAZIL,
-        ImageUrl = "https://aboutme.imgix.net/background/users/g/l/a/glauter_1542132760_393.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker14 = new User
+            {
+                Country = Constants.COUNTRIES_BRAZIL,
+                ImageUrl = "https://aboutme.imgix.net/background/users/g/l/a/glauter_1542132760_393.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Glauter Jannuzzi", Description = "", JobTitle = "CPM", Company = "Microsoft", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jannuzzi/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/glauterj" },
-          }
-      };
-      var uySpeaker15 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://media.licdn.com/dms/image/C4E03AQHQTmJRVUp8CA/profile-displayphoto-shrink_800_800/0?e=1574899200&v=beta&t=9DULpuODChZJqDcLLlz9cJwmKD81Lc9a8izWvJmsmeQ",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker15 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://media.licdn.com/dms/image/C4E03AQHQTmJRVUp8CA/profile-displayphoto-shrink_800_800/0?e=1574899200&v=beta&t=9DULpuODChZJqDcLLlz9cJwmKD81Lc9a8izWvJmsmeQ",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Sebastián Gómez", Description = "", JobTitle = "Sr. Software Engineer", Company = "GeneXus", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebagomez/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/sebagomez" },
-          }
-      };
-      var uySpeaker16 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://elixirconf.com/2019/images/speakers/jorge-bejar.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker16 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://elixirconf.com/2019/images/speakers/jorge-bejar.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jorge Bejar", Description = "", JobTitle = "CTO", Company = "WyeWorks", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jorge-bejar/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jmbejar" },
-          }
-      };
-      var uySpeaker17 = new User
-      {
-        Country = Constants.COUNTRIES_VENEZUELA,
-        ImageUrl = "https://i.imgur.com/b16oH4A.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker17 = new User
+            {
+                Country = Constants.COUNTRIES_VENEZUELA,
+                ImageUrl = "https://i.imgur.com/b16oH4A.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Roygar Briceño", Description = "", JobTitle = "Cloud Solution Architect", Company = "Arkano", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/roygarbriceno/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/roygarbriceno" },
-          }
-      };
-      var uySpeaker18 = new User
-      {
-        Country = Constants.COUNTRIES_BRAZIL,
-        ImageUrl = "https://media.licdn.com/dms/image/C4D03AQF9rOyx-QYLZw/profile-displayphoto-shrink_800_800/0?e=1574294400&v=beta&t=syPlaKRmb7rXPyrD-DyBufZMxAYTxdrYIjIjyEvd2TQ",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker18 = new User
+            {
+                Country = Constants.COUNTRIES_BRAZIL,
+                ImageUrl = "https://media.licdn.com/dms/image/C4D03AQF9rOyx-QYLZw/profile-displayphoto-shrink_800_800/0?e=1574294400&v=beta&t=syPlaKRmb7rXPyrD-DyBufZMxAYTxdrYIjIjyEvd2TQ",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Viviane Martins Ferreira", Description = "", JobTitle = "Security And Analytics Consultant", Company = "IBM", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/vivianemartinsoficial/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/vbanaveia" },
-          }
-      };
-      var uySpeaker19 = new User
-      {
-        Country = Constants.COUNTRIES_BRAZIL,
-        // ImageUrl = "https://i.imgur.com/vu2PtZl.png",
-        ImageUrl = "https://i.imgur.com/SHyfZmK.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker19 = new User
+            {
+                Country = Constants.COUNTRIES_BRAZIL,
+                // ImageUrl = "https://i.imgur.com/vu2PtZl.png",
+                ImageUrl = "https://i.imgur.com/SHyfZmK.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Erick Wendel", Description = "", JobTitle = "Lead Software Architect", Company = "Beetech Global", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/erickwendel/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/erickwendel_" },
-          }
-      };
-      var uySpeaker20 = new User
-      {
-        Country = Constants.COUNTRIES_BRAZIL,
-        ImageUrl = "https://www.sqlsaturday.com/images/speakers/7040-8624a3c6.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker20 = new User
+            {
+                Country = Constants.COUNTRIES_BRAZIL,
+                ImageUrl = "https://www.sqlsaturday.com/images/speakers/7040-8624a3c6.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Luis Nascimento Serra", Description = "", JobTitle = "Socio Proprietario", Company = "Excelência Soluções Empresariais", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/luisgnserra/ " }
-          }
-      };
-      var uySpeaker21 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://media.licdn.com/dms/image/C4E03AQF8DtVxG_clOw/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=nX8jQDQKtbfXq1AZB3fjkaBb2omeI3thi6zNneJxZbM",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker21 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://media.licdn.com/dms/image/C4E03AQF8DtVxG_clOw/profile-displayphoto-shrink_200_200/0?e=1572480000&v=beta&t=nX8jQDQKtbfXq1AZB3fjkaBb2omeI3thi6zNneJxZbM",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Esteban Mellado", Description = "", JobTitle = "Developer", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/esteban-mellado-30179315a/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/m_esteban90" },
-          }
-      };
-      var uySpeaker22 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "http://www.hardkoded.com/img/avatar-icon.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker22 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "http://www.hardkoded.com/img/avatar-icon.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Dario Kondratiuk", Description = "", JobTitle = "Tech Lead", Company = "MultiTracks.com", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/darío-kondratiuk/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/hardkoded" },
-          }
-      };
-      var uySpeaker23 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/i6xy8fD.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker23 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/i6xy8fD.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Sebastián Passaro", Description = "", JobTitle = "FullStack developer", Company = "Urudata Software", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebastian-passaro-50057342/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/spassarop" },
-          }
-      };
-      var uySpeaker24 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/yEHZCpg.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker24 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/yEHZCpg.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Guillermo Skrilec", Description = "", JobTitle = "CEO", Company = "QAlified", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/gskrilec/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/gskrilec" },
-          }
-      };
-      var uySpeaker25 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://pbs.twimg.com/profile_images/819924951419518976/BQOmtetK_400x400.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker25 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://pbs.twimg.com/profile_images/819924951419518976/BQOmtetK_400x400.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Sebastian Gambolati", Description = "", JobTitle = "FullStack developer", Company = "MelonTech", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sgambolati/ " },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/sggambolati" },
-          }
-      };
-      var uySpeaker26 = new User
-      {
-        Id = FERNANDO_SONEGO_ID,
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/wcYR2J5.jpg",
-        Details = new UserDetail[]
-         {
+                }
+            };
+            var uySpeaker26 = new User
+            {
+                Id = FERNANDO_SONEGO_ID,
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/wcYR2J5.jpg",
+                Details = new UserDetail[]
+               {
               new UserDetail { Name = "Fernando Sonego", Description = "", JobTitle = "Arquitecto de Soluciones", Company = "Algeiba", Language = Constants.LANGUAGES_SPANISH }
-         },
-        SocialLinks = new UserSocialLink[]
-         {
+               },
+                SocialLinks = new UserSocialLink[]
+               {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/fernando-sonego-a7378231/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/FernandoSonego" },
-         }
-      };
-      var uySpeaker27 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/2xm6Dwu.jpg",
-        Details = new UserDetail[]
-          {
+               }
+            };
+            var uySpeaker27 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/2xm6Dwu.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Noelia Lencina", Description = "", JobTitle = "Software Developer", Company = "WyeWorks", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/noelia-lencina-alfonso-ab3472130/" },
-          }
-      };
-      var uySpeaker28 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/y2tVHDd.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker28 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/y2tVHDd.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Nicolás Ferraro", Description = "", JobTitle = "Software Developer", Company = "WyeWorks", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[] { }
-      };
-      var uySpeaker29 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/Si1Ru7F.jpg",
-        Details = new UserDetail[]
-          {
+                },
+                SocialLinks = new UserSocialLink[] { }
+            };
+            var uySpeaker29 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/Si1Ru7F.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Tomás Facal", Description = "", JobTitle = "Full Stack Developer", Company = "IBM", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/tomas-facal-0945a6193/" },
-          }
-      };
-      var uySpeaker30 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        ImageUrl = "https://i.imgur.com/TFhYd9Y.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker30 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                ImageUrl = "https://i.imgur.com/TFhYd9Y.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jonathan Smirnoff", Description = "", JobTitle = "Blockchain Developer", Company = "IOV Labs", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jonathan-smirnoff-85272210" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/jonysmirnoff" }
-          }
-      };
-      var uySpeaker31 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/tGNdqfg.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker31 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/tGNdqfg.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Sebastián Vergara", Description = "", JobTitle = "CTO at IBM Uruguay/Paraguay", Company = "IBM", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/sebastian-vergara/" }
-          }
-      };
-      var uySpeaker32 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/fcfOzjA.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker32 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/fcfOzjA.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Jose Panizza", Description = "", JobTitle = "Full Stack Developer", Company = "IBM", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/jose-ignacio-panizza/" }
-          }
-      };
-      var uySpeaker33 = new User
-      {
-        Country = Constants.COUNTRIES_CUBA,
-        ImageUrl = "https://i.imgur.com/S747dlQ.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker33 = new User
+            {
+                Country = Constants.COUNTRIES_CUBA,
+                ImageUrl = "https://i.imgur.com/S747dlQ.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Yoelvis Mulen", Description = "", JobTitle = "Senior Full Stack Engineer", Company = "Modus Create, Inc", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/yoelvismulen/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ymulenll" }
-          }
-      };
-      var uySpeaker34 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/OIvEWKx.jpg",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker34 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/OIvEWKx.jpg",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Abel Quintana", Description = "", JobTitle = "Software Developer Engineer in Test", Company = "TravelGenio", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/abel-quintana-lopez-371a31b9/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/beloquintana" }
-          }
-      };
-      var uySpeaker35 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        ImageUrl = "https://i.imgur.com/trm2Av1.png",
-        Details = new UserDetail[]
-          {
+                }
+            };
+            var uySpeaker35 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                ImageUrl = "https://i.imgur.com/trm2Av1.png",
+                Details = new UserDetail[]
+                {
               new UserDetail { Name = "Alfredo Quintana Lopez", Description = "", JobTitle = "Tech Lead", Company = "TravelGenio", Language = Constants.LANGUAGES_SPANISH }
-          },
-        SocialLinks = new UserSocialLink[]
-          {
+                },
+                SocialLinks = new UserSocialLink[]
+                {
               new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/alfredo-quintana-l%C3%B3pez-b46a3095/" },
               new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/alfreql" }
-          }
-      };
+                }
+            };
 
-      context.Users.Add(uySpeaker1);
-      context.Users.Add(uySpeaker2);
-      context.Users.Add(uySpeaker3);
-      context.Users.Add(uySpeaker4);
-      context.Users.Add(uySpeaker5);
-      context.Users.Add(uySpeaker6);
-      context.Users.Add(uySpeaker7);
-      context.Users.Add(uySpeaker8);
-      context.Users.Add(uySpeaker9);
-      context.Users.Add(uySpeaker10);
-      context.Users.Add(uySpeaker11);
-      context.Users.Add(uySpeaker12);
-      context.Users.Add(uySpeaker13);
-      context.Users.Add(uySpeaker14);
-      context.Users.Add(uySpeaker15);
-      context.Users.Add(uySpeaker16);
-      context.Users.Add(uySpeaker17);
-      context.Users.Add(uySpeaker18);
-      context.Users.Add(uySpeaker19);
-      context.Users.Add(uySpeaker20);
-      context.Users.Add(uySpeaker21);
-      context.Users.Add(uySpeaker22);
-      context.Users.Add(uySpeaker23);
-      context.Users.Add(uySpeaker24);
-      context.Users.Add(uySpeaker25);
-      context.Users.Add(uySpeaker26);
-      context.Users.Add(uySpeaker27);
-      context.Users.Add(uySpeaker28);
-      context.Users.Add(uySpeaker29);
-      context.Users.Add(uySpeaker30);
-      context.Users.Add(uySpeaker31);
-      context.Users.Add(uySpeaker32);
-      context.Users.Add(uySpeaker33);
-      context.Users.Add(uySpeaker34);
-      context.Users.Add(uySpeaker35);
+            context.Users.Add(uySpeaker1);
+            context.Users.Add(uySpeaker2);
+            context.Users.Add(uySpeaker3);
+            context.Users.Add(uySpeaker4);
+            context.Users.Add(uySpeaker5);
+            context.Users.Add(uySpeaker6);
+            context.Users.Add(uySpeaker7);
+            context.Users.Add(uySpeaker8);
+            context.Users.Add(uySpeaker9);
+            context.Users.Add(uySpeaker10);
+            context.Users.Add(uySpeaker11);
+            context.Users.Add(uySpeaker12);
+            context.Users.Add(uySpeaker13);
+            context.Users.Add(uySpeaker14);
+            context.Users.Add(uySpeaker15);
+            context.Users.Add(uySpeaker16);
+            context.Users.Add(uySpeaker17);
+            context.Users.Add(uySpeaker18);
+            context.Users.Add(uySpeaker19);
+            context.Users.Add(uySpeaker20);
+            context.Users.Add(uySpeaker21);
+            context.Users.Add(uySpeaker22);
+            context.Users.Add(uySpeaker23);
+            context.Users.Add(uySpeaker24);
+            context.Users.Add(uySpeaker25);
+            context.Users.Add(uySpeaker26);
+            context.Users.Add(uySpeaker27);
+            context.Users.Add(uySpeaker28);
+            context.Users.Add(uySpeaker29);
+            context.Users.Add(uySpeaker30);
+            context.Users.Add(uySpeaker31);
+            context.Users.Add(uySpeaker32);
+            context.Users.Add(uySpeaker33);
+            context.Users.Add(uySpeaker34);
+            context.Users.Add(uySpeaker35);
 
-      return new List<EditionActivity>
+            return new List<EditionActivity>
         {
             // Dia 1, track 1
 
@@ -2226,50 +2242,50 @@ namespace vopen_api.Data
                 }
             },
         };
-    }
+        }
 
-    private static Edition CreateEdition2020(VOpenDbContext context, ICollection<User> organizers, ICollection<(Sponsor Sponsor, string Type)> sponsors, Event vopenEvent)
-    {
-      var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
+        private static Edition CreateEdition2020(VOpenDbContext context, ICollection<User> organizers, ICollection<(Sponsor Sponsor, string Type)> sponsors, Event vopenEvent)
+        {
+            var organizers2020 = VOpenDbInitializer.CreateGlobalOrganizers2020(context);
 
-      // Create global edition
-      var globalEdition2020 = new Edition
-      {
-        Id = "vopen-global-2020",
-        Event = vopenEvent,
-        Details = new EditionDetail[]
-          {
+            // Create global edition
+            var globalEdition2020 = new Edition
+            {
+                Id = "vopen-global-2020",
+                Event = vopenEvent,
+                Details = new EditionDetail[]
+                {
                 new EditionDetail { Date = "Octubre 3", Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2020" },
                 new EditionDetail { Date = "October 3rd", Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2020" }
-          },
-        Organizers = organizers2020
-          .Concat(organizers.Where(c => c.Id.Contains("global-user")))
-          .Select(c => new EditionOrganizer { User = c })
-          .ToList(),
-        Sponsors = sponsors.Select(s => 
-          new EditionSponsor 
-          { 
-            Sponsor = s.Sponsor,
-            Type = s.Type
-          }).ToList()
-      };
+                },
+                Organizers = organizers2020
+                .Concat(organizers.Where(c => c.Id.Contains("global-user")))
+                .Select(c => new EditionOrganizer { User = c })
+                .ToList(),
+                Sponsors = sponsors.Select(s =>
+                  new EditionSponsor
+                  {
+                      Sponsor = s.Sponsor,
+                      Type = s.Type
+                  }).ToList()
+            };
 
-      context.Editions.Add(globalEdition2020);
+            context.Editions.Add(globalEdition2020);
 
-      var activities2020 = VOpenDbInitializer.CreateActivitiesGlobal2020(context, globalEdition2020);
+            var activities2020 = VOpenDbInitializer.CreateActivitiesGlobal2020(context, globalEdition2020);
 
-      globalEdition2020.Activities = activities2020;
+            globalEdition2020.Activities = activities2020;
 
-      return globalEdition2020;
-    }
+            return globalEdition2020;
+        }
 
-    private static ICollection<EditionActivity> CreateActivitiesGlobal2020(VOpenDbContext context, Edition edition)
-    {
-      var speaker1 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_KINGDOM,
-        Details = new UserDetail[]
+        private static ICollection<EditionActivity> CreateActivitiesGlobal2020(VOpenDbContext context, Edition edition)
         {
+            var speaker1 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_KINGDOM,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Mete Atamel",
@@ -2277,20 +2293,20 @@ namespace vopen_api.Data
             Company = "Google",
             JobTitle = "Senior Developer Advocate",
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/meteatamel" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/meteatamel" },
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1103216597232222209/YyYjS3qI_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1103216597232222209/YyYjS3qI_400x400.jpg"
+            };
 
-      var speaker2 = new User
-      {
-        Country = Constants.COUNTRIES_NEW_ZELAND,
-        Details = new UserDetail[]
-        {
+            var speaker2 = new User
+            {
+                Country = Constants.COUNTRIES_NEW_ZELAND,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Matias Iacono",
@@ -2298,20 +2314,20 @@ namespace vopen_api.Data
             Company = "Cucumber",
             JobTitle = "Software Engineer"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/matiasiacono" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/matiasiacono" },
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1295527863920103425/pU5RK8xb_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1295527863920103425/pU5RK8xb_400x400.jpg"
+            };
 
-      var speaker3 = new User
-      {
-        Country = Constants.COUNTRIES_URUGUAY,
-        Details = new UserDetail[]
-        {
+            var speaker3 = new User
+            {
+                Country = Constants.COUNTRIES_URUGUAY,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Martín Loskin",
@@ -2319,20 +2335,20 @@ namespace vopen_api.Data
             Company = "Jigso Labs",
             JobTitle = "UX Expert"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/martinloskin/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/loskinoficial" },
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/936434480197328896/RHWRUO47_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/936434480197328896/RHWRUO47_400x400.jpg"
+            };
 
-      var speaker4 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_STATES,
-        Details = new UserDetail[]
-        {
+            var speaker4 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_STATES,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Guy Royse",
@@ -2340,20 +2356,20 @@ namespace vopen_api.Data
             Company = "Redis Labs",
             JobTitle = "Developer Advocate"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/groyse/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/guyroyse" },
-        },
-        ImageUrl = "https://media-exp1.licdn.com/dms/image/C4E03AQEUx0DEbKQ21g/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=PxaCEeJICyuBBCPwK5_rdJ5_BzxOxk22BUm-i4BNTMo"
-      };
+              },
+                ImageUrl = "https://media-exp1.licdn.com/dms/image/C4E03AQEUx0DEbKQ21g/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=PxaCEeJICyuBBCPwK5_rdJ5_BzxOxk22BUm-i4BNTMo"
+            };
 
-      var speaker5 = new User
-      {
-        Country = Constants.COUNTRIES_CHILE,
-        Details = new UserDetail[]
-        {
+            var speaker5 = new User
+            {
+                Country = Constants.COUNTRIES_CHILE,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Néstor Campos",
@@ -2361,20 +2377,20 @@ namespace vopen_api.Data
             Company = "EY",
             JobTitle = "Senior Architect"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/nescampos/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/nes_campos" },
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1187838729274220545/ARPXYyft_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1187838729274220545/ARPXYyft_400x400.jpg"
+            };
 
-      var speaker6 = new User
-      {
-        Country = Constants.COUNTRIES_NORWAY,
-        Details = new UserDetail[]
-        {
+            var speaker6 = new User
+            {
+                Country = Constants.COUNTRIES_NORWAY,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Håkan Silfvernagel",
@@ -2382,20 +2398,20 @@ namespace vopen_api.Data
             Company = "Miles AS",
             JobTitle = "Manager AI and Big Data"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/hakansilfvernagel" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/agrevlis" },
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1009177368320249856/c5MRhLYi_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1009177368320249856/c5MRhLYi_400x400.jpg"
+            };
 
-      var speaker7 = new User
-      {
-        Country = Constants.COUNTRIES_COSTA_RICA,
-        Details = new UserDetail[]
-        {
+            var speaker7 = new User
+            {
+                Country = Constants.COUNTRIES_COSTA_RICA,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Ivonne Chaves Ríos",
@@ -2403,20 +2419,20 @@ namespace vopen_api.Data
             Company = "Microsoft",
             JobTitle = "Cloud Solution Architect - Data & AI"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/shirivo" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/shirivo" },
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1300605958423482369/VSVF8-1O_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1300605958423482369/VSVF8-1O_400x400.jpg"
+            };
 
-      var speaker8 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        Details = new UserDetail[]
-        {
+            var speaker8 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Joel Alejandro Villarreal Bertoldi",
@@ -2424,20 +2440,20 @@ namespace vopen_api.Data
             Company = "CoDeAr/Mercado Libre",
             JobTitle = "Co-Founder/Tech Lead"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/joelvillarrealbertoldi" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/joelalejandro" },
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1274885769019228161/U538bRxk_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1274885769019228161/U538bRxk_400x400.jpg"
+            };
 
-      var speaker9 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        Details = new UserDetail[]
-        {
+            var speaker9 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Vanesa Cillo",
@@ -2445,19 +2461,19 @@ namespace vopen_api.Data
             Company = "Mulesoft",
             JobTitle = "Director of Engineering"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/vanesacillo/" }
-        },
-        ImageUrl = "https://media-exp1.licdn.com/dms/image/C5103AQGV3Wiv6VuuSw/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=6EaJYhsE1SQO004VcWaZ_eTBX_TtdrjkPz5Hh0T1tw0"
-      };
+              },
+                ImageUrl = "https://media-exp1.licdn.com/dms/image/C5103AQGV3Wiv6VuuSw/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=6EaJYhsE1SQO004VcWaZ_eTBX_TtdrjkPz5Hh0T1tw0"
+            };
 
-      var speaker10 = new User
-      {
-        Country = Constants.COUNTRIES_GERMANY,
-        Details = new UserDetail[]
-        {
+            var speaker10 = new User
+            {
+                Country = Constants.COUNTRIES_GERMANY,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Nikita Malyschkin",
@@ -2465,20 +2481,20 @@ namespace vopen_api.Data
             Company = "INFORM GmbH",
             JobTitle = "Software Architect"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/nikita-malyschkin-152aa9190/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/nmalyschkin" }
-        },
-        ImageUrl = "https://media-exp1.licdn.com/dms/image/C5603AQEW36Nu5IS8dA/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=rEZ2vdcGhJEetKXmJuI7bC18H5wB-QN5TX47iblVDiM"
-      };
+              },
+                ImageUrl = "https://media-exp1.licdn.com/dms/image/C5603AQEW36Nu5IS8dA/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=rEZ2vdcGhJEetKXmJuI7bC18H5wB-QN5TX47iblVDiM"
+            };
 
-      var speaker11 = new User
-      {
-        Country = Constants.COUNTRIES_MEXICO,
-        Details = new UserDetail[]
-        {
+            var speaker11 = new User
+            {
+                Country = Constants.COUNTRIES_MEXICO,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Yosele Angulo",
@@ -2486,19 +2502,19 @@ namespace vopen_api.Data
             Company = "Distillery",
             JobTitle = "Country Manager"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/yoseleanguloorozco-4ba96851" }
-        },
-        ImageUrl = "https://media-exp1.licdn.com/dms/image/C4E03AQE6cOQkUVfmEw/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=dpxyK7wkhWfhyqCc5F9LusazdPyQytRgKHGb3DH-DjE"
-      };
+              },
+                ImageUrl = "https://media-exp1.licdn.com/dms/image/C4E03AQE6cOQkUVfmEw/profile-displayphoto-shrink_800_800/0?e=1605744000&v=beta&t=dpxyK7wkhWfhyqCc5F9LusazdPyQytRgKHGb3DH-DjE"
+            };
 
-      var speaker12 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_STATES,
-        Details = new UserDetail[]
-        {
+            var speaker12 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_STATES,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Tammy Guns",
@@ -2506,20 +2522,20 @@ namespace vopen_api.Data
             Company = "CanCorp LLC",
             JobTitle = "CEO"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/tammylynnguns/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/GunsTammy" }
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/638201182490521600/4nVw6f-E_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/638201182490521600/4nVw6f-E_400x400.jpg"
+            };
 
-      var speaker13 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_STATES,
-        Details = new UserDetail[]
-        {
+            var speaker13 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_STATES,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Christopher Salem",
@@ -2527,20 +2543,20 @@ namespace vopen_api.Data
             Company = "CRS Group Holdings, LLC",
             JobTitle = "CEO - Executive Coach"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/christophersalem" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/whealthteam" }
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/891814181565079552/U5z6TK7o_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/891814181565079552/U5z6TK7o_400x400.jpg"
+            };
 
-      var speaker14 = new User
-      {
-        Country = Constants.COUNTRIES_PERU,
-        Details = new UserDetail[]
-        {
+            var speaker14 = new User
+            {
+                Country = Constants.COUNTRIES_PERU,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Alberto De Rossi",
@@ -2548,20 +2564,20 @@ namespace vopen_api.Data
             Company = "dbLearner",
             JobTitle = "Consultor Data Platform"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/alberto-de-rossi-46814244/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/albertoderossi" }
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1260309752774569984/bvuG0Tl0_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1260309752774569984/bvuG0Tl0_400x400.jpg"
+            };
 
-      var speaker15 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        Details = new UserDetail[]
-        {
+            var speaker15 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Ivana Tilca",
@@ -2569,20 +2585,20 @@ namespace vopen_api.Data
             Company = "3XM Group",
             JobTitle = "Quality Manager/Microsoft MVP AI"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/ivanatilca/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ivanatilca" }
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1296925134100533248/5-6Dj05n_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1296925134100533248/5-6Dj05n_400x400.jpg"
+            };
 
-      var speaker16 = new User
-      {
-        Country = Constants.COUNTRIES_UNITED_STATES,
-        Details = new UserDetail[]
-        {
+            var speaker16 = new User
+            {
+                Country = Constants.COUNTRIES_UNITED_STATES,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Dan Seidman",
@@ -2590,20 +2606,20 @@ namespace vopen_api.Data
             Company = "Read Emotions",
             JobTitle = "Managing Director"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/salesautopsy/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/ReadEmotions" }
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1093164073867505664/l8hDKWor_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1093164073867505664/l8hDKWor_400x400.jpg"
+            };
 
-      var speaker17 = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        Details = new UserDetail[]
-        {
+            var speaker17 = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "Christopher Louis Chancé",
@@ -2611,58 +2627,58 @@ namespace vopen_api.Data
             Company = "DataXype",
             JobTitle = "CEO"
           }
-        },
-        SocialLinks = new UserSocialLink[]
-        {
+              },
+                SocialLinks = new UserSocialLink[]
+              {
             new UserSocialLink { Type = Constants.SOCIAL_LINKEDIN, Url = "https://www.linkedin.com/in/chrischance67/" },
             new UserSocialLink { Type = Constants.SOCIAL_TWITTER, Url = "https://twitter.com/chrischance67" }
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1305056761578127360/Ec7pOCsK_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1305056761578127360/Ec7pOCsK_400x400.jpg"
+            };
 
-      var vOpenUser = new User
-      {
-        Country = Constants.COUNTRIES_ARGENTINA,
-        Details = new UserDetail[]
-        {
+            var vOpenUser = new User
+            {
+                Country = Constants.COUNTRIES_ARGENTINA,
+                Details = new UserDetail[]
+              {
           new UserDetail
           {
             Name = "vOpen Team",
             Language = Constants.LANGUAGES_SPANISH
           }
-        },
-        ImageUrl = "https://pbs.twimg.com/profile_images/1153603294281064448/_0X-eqH1_400x400.jpg"
-      };
+              },
+                ImageUrl = "https://pbs.twimg.com/profile_images/1153603294281064448/_0X-eqH1_400x400.jpg"
+            };
 
-      context.Users.Add(speaker1);
-      context.Users.Add(speaker2);
-      context.Users.Add(speaker3);
-      context.Users.Add(speaker4);
-      context.Users.Add(speaker5);
-      context.Users.Add(speaker6);
-      context.Users.Add(speaker7);
-      context.Users.Add(speaker8);
-      context.Users.Add(speaker9);
-      context.Users.Add(speaker10);
-      context.Users.Add(speaker11);
-      context.Users.Add(speaker12);
-      context.Users.Add(speaker13);
-      context.Users.Add(speaker14);
-      context.Users.Add(speaker15);
-      context.Users.Add(speaker16);
-      context.Users.Add(speaker17);
-      context.Users.Add(vOpenUser);
+            context.Users.Add(speaker1);
+            context.Users.Add(speaker2);
+            context.Users.Add(speaker3);
+            context.Users.Add(speaker4);
+            context.Users.Add(speaker5);
+            context.Users.Add(speaker6);
+            context.Users.Add(speaker7);
+            context.Users.Add(speaker8);
+            context.Users.Add(speaker9);
+            context.Users.Add(speaker10);
+            context.Users.Add(speaker11);
+            context.Users.Add(speaker12);
+            context.Users.Add(speaker13);
+            context.Users.Add(speaker14);
+            context.Users.Add(speaker15);
+            context.Users.Add(speaker16);
+            context.Users.Add(speaker17);
+            context.Users.Add(vOpenUser);
 
-      var aperturaTech = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:30",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T09:00:00.000-05:00",
-        Type = "Opening",
-        Details = new List<EditionActivityDetail>
+            var aperturaTech = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:30",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T09:00:00.000-05:00",
+                Type = "Opening",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2670,20 +2686,20 @@ namespace vopen_api.Data
             Title = "Keynote"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkTech1 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T09:30:00.000-05:00",
-        Type = "Talk",
-        Tags = "Google Cloud",
-        Details = new List<EditionActivityDetail>
+            var talkTech1 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T09:30:00.000-05:00",
+                Type = "Talk",
+                Tags = "Google Cloud",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2691,20 +2707,20 @@ namespace vopen_api.Data
             Title = "An app modernization story with Cloud Run",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker1 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker1 } }
+            };
 
-      var talkTech2 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T10:15:00.000-05:00",
-        Type = "Talk",
-        Tags = "Testing, TDD",
-        Details = new List<EditionActivityDetail>
+            var talkTech2 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T10:15:00.000-05:00",
+                Type = "Talk",
+                Tags = "Testing, TDD",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2712,19 +2728,19 @@ namespace vopen_api.Data
             Title = "Los tests unitarios son necesarios? Y porqué TDD?",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker2 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker2 } }
+            };
 
-      var lightningTalk1 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T11:00:00.000-05:00",
-        Type = "LightningTalk",
-        Details = new List<EditionActivityDetail>
+            var lightningTalk1 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T11:00:00.000-05:00",
+                Type = "LightningTalk",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2732,20 +2748,20 @@ namespace vopen_api.Data
             Title = "Lightning Talk"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkTech3 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T11:15:00.000-05:00",
-        Type = "Talk",
-        Tags = "General",
-        Details = new List<EditionActivityDetail>
+            var talkTech3 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T11:15:00.000-05:00",
+                Type = "Talk",
+                Tags = "General",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2753,20 +2769,20 @@ namespace vopen_api.Data
             Title = "Cuídalos: de la idea hasta la salida a producción",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker17 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker17 } }
+            };
 
-      var talkTech4 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T12:00:00.000-05:00",
-        Type = "Talk",
-        Tags = "UX",
-        Details = new List<EditionActivityDetail>
+            var talkTech4 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T12:00:00.000-05:00",
+                Type = "Talk",
+                Tags = "UX",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2774,19 +2790,19 @@ namespace vopen_api.Data
             Title = "¿Y el usuario? Consejos prácticos de UX",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker3 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker3 } }
+            };
 
-      var break1 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T12:45:00.000-05:00",
-        Type = "Break",
-        Details = new List<EditionActivityDetail>
+            var break1 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T12:45:00.000-05:00",
+                Type = "Break",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2794,20 +2810,20 @@ namespace vopen_api.Data
             Title = "Juego"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkTech5 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T13:00:00.000-05:00",
-        Type = "Talk",
-        Tags = "Graph DB",
-        Details = new List<EditionActivityDetail>
+            var talkTech5 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T13:00:00.000-05:00",
+                Type = "Talk",
+                Tags = "Graph DB",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2815,20 +2831,20 @@ namespace vopen_api.Data
             Title = "Dungeons, Dragons, and Graph Databases",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker4 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker4 } }
+            };
 
-      var talkTech6 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T13:45:00.000-05:00",
-        Type = "Talk",
-        Tags = "AI, Alibaba CLoud",
-        Details = new List<EditionActivityDetail>
+            var talkTech6 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T13:45:00.000-05:00",
+                Type = "Talk",
+                Tags = "AI, Alibaba CLoud",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2836,19 +2852,19 @@ namespace vopen_api.Data
             Title = "Inteligencia artificial aplicada con Alibaba Cloud",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker5 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker5 } }
+            };
 
-      var break2 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T14:30:00.000-05:00",
-        Type = "Break",
-        Details = new List<EditionActivityDetail>
+            var break2 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T14:30:00.000-05:00",
+                Type = "Break",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2856,20 +2872,20 @@ namespace vopen_api.Data
             Title = "Juego"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkTech7 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T14:45:00.000-05:00",
-        Type = "Talk",
-        Tags = "Machine Learning, JS",
-        Details = new List<EditionActivityDetail>
+            var talkTech7 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T14:45:00.000-05:00",
+                Type = "Talk",
+                Tags = "Machine Learning, JS",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2877,20 +2893,20 @@ namespace vopen_api.Data
             Title = "Machine learning in the browser using TensorFlow.js",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker6 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker6 } }
+            };
 
-      var talkTech8 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T15:30:00.000-05:00",
-        Type = "Talk",
-        Tags = "Azure, AI, Cognitive Services",
-        Details = new List<EditionActivityDetail>
+            var talkTech8 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T15:30:00.000-05:00",
+                Type = "Talk",
+                Tags = "Azure, AI, Cognitive Services",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2898,19 +2914,19 @@ namespace vopen_api.Data
             Title = "Servicios cognitivos aplicados en el día a día",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker7 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker7 } }
+            };
 
-      var lightningTalk2 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T16:15:00.000-05:00",
-        Type = "LightningTalk",
-        Details = new List<EditionActivityDetail>
+            var lightningTalk2 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T16:15:00.000-05:00",
+                Type = "LightningTalk",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2918,20 +2934,20 @@ namespace vopen_api.Data
             Title = "Lightning Talk"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkTech9 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "01:00",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T16:30:00.000-05:00",
-        Type = "Talk",
-        Tags = "ReactJS, JS, FE",
-        Details = new List<EditionActivityDetail>
+            var talkTech9 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "01:00",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T16:30:00.000-05:00",
+                Type = "Talk",
+                Tags = "ReactJS, JS, FE",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2939,19 +2955,19 @@ namespace vopen_api.Data
             Title = "useReact('better'): El hook de las buenas prácticas",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker8 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker8 } }
+            };
 
-      var cierreTech = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:30",
-        Edition = edition,
-        Level = "100",
-        Track = "Techie",
-        Date = "2020-10-03T17:30:00.000-05:00",
-        Type = "Closing",
-        Details = new List<EditionActivityDetail>
+            var cierreTech = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:30",
+                Edition = edition,
+                Level = "100",
+                Track = "Techie",
+                Date = "2020-10-03T17:30:00.000-05:00",
+                Type = "Closing",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2959,19 +2975,19 @@ namespace vopen_api.Data
             Title = "Keynote"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var aperturaBusiness = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T09:00:00.000-05:00",
-        Type = "Opening",
-        Details = new List<EditionActivityDetail>
+            var aperturaBusiness = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T09:00:00.000-05:00",
+                Type = "Opening",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -2979,20 +2995,20 @@ namespace vopen_api.Data
             Title = "Keynote"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkBusiness1 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T09:30:00.000-05:00",
-        Type = "Talk",
-        Tags = "Innovation",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness1 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T09:30:00.000-05:00",
+                Type = "Talk",
+                Tags = "Innovation",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3000,20 +3016,20 @@ namespace vopen_api.Data
             Title = "Emprender e innovar en una corporación como plan de carrera",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker9 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker9 } }
+            };
 
-      var talkBusiness2 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T10:15:00.000-05:00",
-        Type = "Talk",
-        Tags = "Soft Skills",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness2 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T10:15:00.000-05:00",
+                Type = "Talk",
+                Tags = "Soft Skills",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3021,19 +3037,19 @@ namespace vopen_api.Data
             Title = "Develop yourself, not software",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker10 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker10 } }
+            };
 
-      var lightningTalk3 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T11:00:00.000-05:00",
-        Type = "LightningTalk",
-        Details = new List<EditionActivityDetail>
+            var lightningTalk3 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T11:00:00.000-05:00",
+                Type = "LightningTalk",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3041,20 +3057,20 @@ namespace vopen_api.Data
             Title = "Lightning Talk"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkBusiness3 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T11:15:00.000-05:00",
-        Type = "Talk",
-        Tags = "Management",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness3 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T11:15:00.000-05:00",
+                Type = "Talk",
+                Tags = "Management",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3062,20 +3078,20 @@ namespace vopen_api.Data
             Title = "El principio de la 'P' para administrar una empresa remota",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker11 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker11 } }
+            };
 
-      var talkBusiness4 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T12:00:00.000-05:00",
-        Type = "Talk",
-        Tags = "Soft Skills",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness4 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T12:00:00.000-05:00",
+                Type = "Talk",
+                Tags = "Soft Skills",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3083,19 +3099,19 @@ namespace vopen_api.Data
             Title = "Is the FEAR of Change Causing Your System to Crash?",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker12 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker12 } }
+            };
 
-      var break3 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T12:45:00.000-05:00",
-        Type = "Break",
-        Details = new List<EditionActivityDetail>
+            var break3 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T12:45:00.000-05:00",
+                Type = "Break",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3103,19 +3119,19 @@ namespace vopen_api.Data
             Title = "Juego"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkBusiness5 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T13:00:00.000-05:00",
-        Type = "Talk",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness5 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T13:00:00.000-05:00",
+                Type = "Talk",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3123,19 +3139,19 @@ namespace vopen_api.Data
             Title = "Panel: Mujeres en Technologia",
           }
         }
-      };
+            };
 
-      var talkBusiness6 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T13:45:00.000-05:00",
-        Type = "Talk",
-        Tags = "Innovation",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness6 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T13:45:00.000-05:00",
+                Type = "Talk",
+                Tags = "Innovation",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3143,19 +3159,19 @@ namespace vopen_api.Data
             Title = "Fostering Innovation in the New Workplace",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker13 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker13 } }
+            };
 
-      var break4 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T14:30:00.000-05:00",
-        Type = "Break",
-        Details = new List<EditionActivityDetail>
+            var break4 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T14:30:00.000-05:00",
+                Type = "Break",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3163,20 +3179,20 @@ namespace vopen_api.Data
             Title = "Juego"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkBusiness7 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T14:45:00.000-05:00",
-        Type = "Talk",
-        Tags = "Power BI",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness7 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T14:45:00.000-05:00",
+                Type = "Talk",
+                Tags = "Power BI",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3184,20 +3200,20 @@ namespace vopen_api.Data
             Title = "Lineaje de datos: conceptos y gestión con Power BI",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker14 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker14 } }
+            };
 
-      var talkBusiness8 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:45",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T15:30:00.000-05:00",
-        Type = "Talk",
-        Tags = "AI",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness8 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:45",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T15:30:00.000-05:00",
+                Type = "Talk",
+                Tags = "AI",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3205,19 +3221,19 @@ namespace vopen_api.Data
             Title = "Uso de IA preconstruida para resolver desafíos empresariales",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker15 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker15 } }
+            };
 
-      var lightningTalk4 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:15",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T16:15:00.000-05:00",
-        Type = "LightningTalk",
-        Details = new List<EditionActivityDetail>
+            var lightningTalk4 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:15",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T16:15:00.000-05:00",
+                Type = "LightningTalk",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3225,20 +3241,20 @@ namespace vopen_api.Data
             Title = "Lightning Talk"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      var talkBusiness9 = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "01:00",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T16:30:00.000-05:00",
-        Type = "Talk",
-        Tags = "Soft Skills",
-        Details = new List<EditionActivityDetail>
+            var talkBusiness9 = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "01:00",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T16:30:00.000-05:00",
+                Type = "Talk",
+                Tags = "Soft Skills",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3246,19 +3262,19 @@ namespace vopen_api.Data
             Title = "Read (Hidden) Emotions - gain access to information you've never had - knowing what others feel",
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker16 } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker16 } }
+            };
 
-      var cierreBusiness = new EditionActivity
-      {
-        Day = "Day 1",
-        Duration = "00:30",
-        Edition = edition,
-        Level = "100",
-        Track = "Business",
-        Date = "2020-10-03T17:30:00.000-05:00",
-        Type = "Closing",
-        Details = new List<EditionActivityDetail>
+            var cierreBusiness = new EditionActivity
+            {
+                Day = "Day 1",
+                Duration = "00:30",
+                Edition = edition,
+                Level = "100",
+                Track = "Business",
+                Date = "2020-10-03T17:30:00.000-05:00",
+                Type = "Closing",
+                Details = new List<EditionActivityDetail>
         {
           new EditionActivityDetail
           {
@@ -3266,46 +3282,46 @@ namespace vopen_api.Data
             Title = "Cierre"
           }
         },
-        Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
-      };
+                Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
+            };
 
-      context.EditionsActivities.Add(aperturaTech);
-      context.EditionsActivities.Add(talkTech1);
-      context.EditionsActivities.Add(talkTech2);
-      context.EditionsActivities.Add(lightningTalk1);
-      context.EditionsActivities.Add(talkTech3);
-      context.EditionsActivities.Add(talkTech4);
-      context.EditionsActivities.Add(break1);
-      context.EditionsActivities.Add(talkTech5);
-      context.EditionsActivities.Add(talkTech6);
-      context.EditionsActivities.Add(break2);
-      context.EditionsActivities.Add(talkTech7);
-      context.EditionsActivities.Add(talkTech8);
-      context.EditionsActivities.Add(lightningTalk2);
-      context.EditionsActivities.Add(talkTech9);
-      context.EditionsActivities.Add(cierreTech);
+            context.EditionsActivities.Add(aperturaTech);
+            context.EditionsActivities.Add(talkTech1);
+            context.EditionsActivities.Add(talkTech2);
+            context.EditionsActivities.Add(lightningTalk1);
+            context.EditionsActivities.Add(talkTech3);
+            context.EditionsActivities.Add(talkTech4);
+            context.EditionsActivities.Add(break1);
+            context.EditionsActivities.Add(talkTech5);
+            context.EditionsActivities.Add(talkTech6);
+            context.EditionsActivities.Add(break2);
+            context.EditionsActivities.Add(talkTech7);
+            context.EditionsActivities.Add(talkTech8);
+            context.EditionsActivities.Add(lightningTalk2);
+            context.EditionsActivities.Add(talkTech9);
+            context.EditionsActivities.Add(cierreTech);
 
-      context.EditionsActivities.Add(aperturaBusiness);
-      context.EditionsActivities.Add(talkBusiness1);
-      context.EditionsActivities.Add(talkBusiness2);
-      context.EditionsActivities.Add(lightningTalk3);
-      context.EditionsActivities.Add(talkBusiness3);
-      context.EditionsActivities.Add(talkBusiness4);
-      context.EditionsActivities.Add(break3);
-      context.EditionsActivities.Add(talkBusiness5);
-      context.EditionsActivities.Add(talkBusiness6);
-      context.EditionsActivities.Add(break4);
-      context.EditionsActivities.Add(talkBusiness7);
-      context.EditionsActivities.Add(talkBusiness8);
-      context.EditionsActivities.Add(lightningTalk4);
-      context.EditionsActivities.Add(talkBusiness9);
-      context.EditionsActivities.Add(cierreBusiness);
+            context.EditionsActivities.Add(aperturaBusiness);
+            context.EditionsActivities.Add(talkBusiness1);
+            context.EditionsActivities.Add(talkBusiness2);
+            context.EditionsActivities.Add(lightningTalk3);
+            context.EditionsActivities.Add(talkBusiness3);
+            context.EditionsActivities.Add(talkBusiness4);
+            context.EditionsActivities.Add(break3);
+            context.EditionsActivities.Add(talkBusiness5);
+            context.EditionsActivities.Add(talkBusiness6);
+            context.EditionsActivities.Add(break4);
+            context.EditionsActivities.Add(talkBusiness7);
+            context.EditionsActivities.Add(talkBusiness8);
+            context.EditionsActivities.Add(lightningTalk4);
+            context.EditionsActivities.Add(talkBusiness9);
+            context.EditionsActivities.Add(cierreBusiness);
 
-      return new List<EditionActivity>
+            return new List<EditionActivity>
       {
         aperturaTech, talkTech1, talkTech2, lightningTalk1, talkTech3, talkTech4, break1, talkTech5, talkTech6, break2, talkTech7, talkTech8, lightningTalk2, talkTech9, cierreTech,
         aperturaBusiness, talkBusiness1, talkBusiness2, lightningTalk3, talkBusiness3, talkBusiness4, break3, talkBusiness5, talkBusiness6, break4, talkBusiness7, talkBusiness8, lightningTalk4, talkBusiness9, cierreBusiness
       };
+        }
     }
-  }
 }
