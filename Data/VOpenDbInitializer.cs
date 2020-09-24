@@ -169,7 +169,7 @@ namespace vopen_api.Data
                 var hexacta = new Sponsor
                 {
                     Name = "Hexacta",
-                    ImageUrl = "https://pbs.twimg.com/profile_images/881969553235988480/1JCIeFdp_400x400.jpg",
+                    ImageUrl = "https://i.imgur.com/KivtHyC.png",
                     Url = "https://www.hexacta.com/"
                 };
                 var distillery = new Sponsor
@@ -2257,14 +2257,15 @@ namespace vopen_api.Data
                 {
                 new EditionDetail { Date = "Octubre 3", Language = Constants.LANGUAGES_SPANISH, Name = "vOpen Global 2020" },
                 new EditionDetail { Date = "October 3rd", Language = Constants.LANGUAGES_ENGLISH, Name = "vOpen Global 2020" }
-                },
+          },
                 Organizers = organizers2020
-                .Concat(organizers.Where(c => c.Id.Contains("global-user")))
-                .Select(c => new EditionOrganizer { User = c })
-                .ToList(),
-                Sponsors = sponsors.Select(s =>
+          .Concat(organizers.Where(c => c.Id.Contains("global-user")))
+          .Select(c => new EditionOrganizer { User = c })
+          .ToList(),
+                Sponsors = sponsors.Select((s, i) =>
                   new EditionSponsor
                   {
+                      Id = (i + 20).ToString(),
                       Sponsor = s.Sponsor,
                       Type = s.Type
                   }).ToList()
