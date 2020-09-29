@@ -178,6 +178,12 @@ namespace vopen_api.Data
                     ImageUrl = "https://i.imgur.com/H7HpSIr.jpg",
                     Url = "https://distillery.com/"
                 };
+                var southworks = new Sponsor
+                {
+                    Name = "Southworks",
+                    ImageUrl = "https://i.imgur.com/29VaRrQ.jpg",
+                    Url = "https://www.southworks.com/"
+                };
 
                 context.Sponsors.Add(iTProve);
                 context.Sponsors.Add(algeiba);
@@ -202,18 +208,20 @@ namespace vopen_api.Data
                 context.Sponsors.Add(baufest);
                 context.Sponsors.Add(hexacta);
                 context.Sponsors.Add(distillery);
+                context.Sponsors.Add(southworks);
 
                 var globalEdition2020Sponsors = new List<(Sponsor Sponsor, string Type)>
                 {
-                  (endava, "Gold"),
-                  (softvision, "Gold"),
-                  (iTProve, "Gold"),
-                  (conosurtech, "Supporter"),
-                  (compartimoss, "Supporter"),
-                  (nareia, "Gold"),
-                  (baufest, "Gold"),
-                  (hexacta, "Gold"),
-                  (distillery, "Supporter")
+                    (endava, "Gold"),
+                    (softvision, "Gold"),
+                    (iTProve, "Gold"),
+                    (conosurtech, "Supporter"),
+                    (compartimoss, "Supporter"),
+                    (nareia, "Gold"),
+                    (baufest, "Gold"),
+                    (hexacta, "Gold"),
+                    (distillery, "Supporter"),
+                    (southworks, "Gold")
                 };
 
                 // Create global edition
@@ -235,10 +243,10 @@ namespace vopen_api.Data
                 // Create UY Edition
 
                 var uyBuyLinks = new List<TicketLink>()
-          {
-              new TicketLink { Label = "PayPal", Url = "https://www.eventbrite.com/e/vopen-19-uruguay-tickets-64989745077" },
-              new TicketLink { Label = "CobrosYa", Url = "https://ks.uy/5c7FTJ2vnVytBeTm7" }
-          };
+                {
+                    new TicketLink { Label = "PayPal", Url = "https://www.eventbrite.com/e/vopen-19-uruguay-tickets-64989745077" },
+                    new TicketLink { Label = "CobrosYa", Url = "https://ks.uy/5c7FTJ2vnVytBeTm7" }
+                };
                 var camelCaseFormatter = new JsonSerializerSettings();
                 camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 var uyBuyLinksJson = JsonConvert.SerializeObject(uyBuyLinks);
@@ -3218,8 +3226,8 @@ namespace vopen_api.Data
         {
           new EditionActivityDetail
           {
-            Language = "es-AR",
-            Title = "Uso de IA preconstruida para resolver desafíos empresariales",
+            Language = "en-US",
+            Title = "Using pre-built AI to solve business challenges",
           }
         },
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = speaker15 } }

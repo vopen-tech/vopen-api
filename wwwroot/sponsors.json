@@ -1138,5 +1138,14 @@
     "logoFileName": "itprove",
     "webSite": "https://itprove.com.mx/",
     "twitter": "itprovecorp"
+  },
+
+  {
+    "sponsorId": 152,
+    "globalRanking": 4,
+    "name": "Southworks",
+    "logoFileName": "southworks",
+    "webSite": "https://www.southworks.com/",
+    "twitter": "southworks"
   }
 ]
