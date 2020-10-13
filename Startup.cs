@@ -64,11 +64,11 @@ namespace vopen_api
             services.AddScoped<EditionsActivitiesScoresRepository, EditionsActivitiesScoresRepository>();
             services.AddScoped<LegacyGlobalRepository, LegacyGlobalRepository>();
 
-            // TODO: remove
-            // var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
-            // optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            // VOpenDbInitializer.Cleanup(optionsBuilder.Options);
-            // VOpenDbInitializer.Seed(optionsBuilder.Options);
+            //TODO: remove
+            //var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
+            //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            //VOpenDbInitializer.Cleanup(optionsBuilder.Options);
+            //VOpenDbInitializer.Seed(optionsBuilder.Options);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
