@@ -50,7 +50,9 @@ namespace vopen_api.Models
                 return new List<UserDTO>();
             }
 
-            return editionActivityUsers.Select(editionActivityUser => UserUtils.ToUserDTO(editionActivityUser.User, language)).ToList();
+            return editionActivityUsers
+                .Where(editionActivityUser => editionActivityUser.User.Details.Any(detail => detail.Name == "vOpen Team") == false)
+                .Select(editionActivityUser => UserUtils.ToUserDTO(editionActivityUser.User, language)).ToList();
         }
 
         public static ICollection<UserDTO> ToUsersDTO(IEnumerable<User> users, string language)
