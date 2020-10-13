@@ -132,7 +132,7 @@ namespace vopen_api.Data
                 var algeiba = new Sponsor
                 {
                     Name = "Algeiba",
-                    ImageUrl = "https://i.imgur.com/CWf2Az0.png",
+                    ImageUrl = "https://i.imgur.com/Ck8CwGs.png",
                     Url = "https://www.algeiba.com/"
                 };
                 var iTProve = new Sponsor
@@ -144,13 +144,13 @@ namespace vopen_api.Data
                 var softvision = new Sponsor
                 {
                     Name = "Softvision",
-                    ImageUrl = "https://pbs.twimg.com/profile_images/1108312620312989697/tbQbRXgo_400x400.png",
+                    ImageUrl = "https://i.imgur.com/vkvmrbA.jpg",
                     Url = "http://cognizantsoftvision.com"
                 };
                 var conosurtech = new Sponsor
                 {
                     Name = "ConoSur Tech",
-                    ImageUrl = "https://scontent.faep8-1.fna.fbcdn.net/v/t1.0-9/109716192_108806504242136_3119203203024293281_n.jpg?_nc_cat=105&_nc_sid=85a577&_nc_ohc=9Szhj4uBV80AX-AwMJy&_nc_ht=scontent.faep8-1.fna&oh=b6214e9a80c1cab755e17e76ac04f5d8&oe=5F91F4C8",
+                    ImageUrl = "https://i.imgur.com/K3r2cDX.jpg",
                     Url = "https://www.facebook.com/ConoSurTech/"
                 };
 
@@ -163,7 +163,7 @@ namespace vopen_api.Data
                 var baufest = new Sponsor
                 {
                     Name = "Baufest",
-                    ImageUrl = "https://eci2014.dc.uba.ar/logo-baufest.jpg",
+                    ImageUrl = "https://i.imgur.com/MnRLfw2.jpg",
                     Url = "http://www.baufest.com"
                 };
                 var hexacta = new Sponsor
@@ -183,6 +183,12 @@ namespace vopen_api.Data
                     Name = "Southworks",
                     ImageUrl = "https://i.imgur.com/29VaRrQ.jpg",
                     Url = "https://www.southworks.com/"
+                };
+                var mug = new Sponsor
+                {
+                    Name = "MUG",
+                    ImageUrl = "https://i.imgur.com/ghNTejz.png",
+                    Url = "http://www.mug-it.org.ar/"
                 };
 
                 context.Sponsors.Add(iTProve);
@@ -209,6 +215,7 @@ namespace vopen_api.Data
                 context.Sponsors.Add(hexacta);
                 context.Sponsors.Add(distillery);
                 context.Sponsors.Add(southworks);
+                context.Sponsors.Add(mug);
 
                 var globalEdition2020Sponsors = new List<(Sponsor Sponsor, string Type)>
                 {
@@ -221,7 +228,10 @@ namespace vopen_api.Data
                     (baufest, "Gold"),
                     (hexacta, "Gold"),
                     (distillery, "Supporter"),
-                    (southworks, "Gold")
+                    (mug, "Supporter"),
+                    (southworks, "Gold"),
+                    (algeiba, "Gold"),
+                    (kaizen, "Silver")
                 };
 
                 // Create global edition
@@ -2650,11 +2660,11 @@ namespace vopen_api.Data
                 Country = Constants.COUNTRIES_ARGENTINA,
                 Details = new UserDetail[]
               {
-          new UserDetail
-          {
-            Name = "vOpen Team",
-            Language = Constants.LANGUAGES_SPANISH
-          }
+              new UserDetail
+              {
+                Name = "vOpen Team",
+                Language = Constants.LANGUAGES_SPANISH
+              }
               },
                 ImageUrl = "https://pbs.twimg.com/profile_images/1153603294281064448/_0X-eqH1_400x400.jpg"
             };
@@ -2981,7 +2991,7 @@ namespace vopen_api.Data
           new EditionActivityDetail
           {
             Language = "es-AR",
-            Title = "Keynote"
+            Title = "Cierre"
           }
         },
                 Users = new List<EditionActivityUser> { new EditionActivityUser { User = vOpenUser } }
@@ -3145,7 +3155,7 @@ namespace vopen_api.Data
           new EditionActivityDetail
           {
             Language = "es-AR",
-            Title = "Panel: Mujeres en Technologia",
+            Title = "Panel: Mujeres en Tecnologia",
           }
         }
             };
