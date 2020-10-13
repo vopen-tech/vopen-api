@@ -64,7 +64,7 @@ namespace vopen_api
             services.AddScoped<EditionsActivitiesScoresRepository, EditionsActivitiesScoresRepository>();
             services.AddScoped<LegacyGlobalRepository, LegacyGlobalRepository>();
 
-            //TODO: remove
+            // TODO: remove
             //var optionsBuilder = new DbContextOptionsBuilder<VOpenDbContext>();
             //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             //VOpenDbInitializer.Cleanup(optionsBuilder.Options);
