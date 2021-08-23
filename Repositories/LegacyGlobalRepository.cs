@@ -12,9 +12,9 @@ namespace vopen_api.Repositories
 {
     public class LegacyGlobalRepository
     {
-        private IHostingEnvironment hostingEnvironment;
+        private IWebHostEnvironment hostingEnvironment;
 
-        public LegacyGlobalRepository(IHostingEnvironment hostingEnvironment)
+        public LegacyGlobalRepository(IWebHostEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
         }
