@@ -27,19 +27,19 @@ namespace vopen_api.Models
     {
         public static UserDTO ToUserDTO(User user, string language)
         {
-            var userDetail = user.Details.FirstOrDefault(item => item.Language == language) ?? user.Details.First();
+            var userDetail = user?.Details?.FirstOrDefault(item => item.Language == language) ?? user?.Details?.First();
 
             return new UserDTO
             {
-                Id = userDetail.Id,
+                Id = userDetail?.Id,
                 Language = language,
-                Country = user.Country,
-                ImageUrl = user.ImageUrl,
-                Name = userDetail.Name,
-                Description = userDetail.Description,
-                JobTitle = userDetail.JobTitle,
-                Company = userDetail.Company,
-                SocialLinks = user.SocialLinks.Select(c => new UserSocialLinkDTO { Type = c.Type, Url = c.Url }).ToList()
+                Country = user?.Country,
+                ImageUrl = user?.ImageUrl,
+                Name = userDetail?.Name,
+                Description = userDetail?.Description,
+                JobTitle = userDetail?.JobTitle,
+                Company = userDetail?.Company,
+                SocialLinks = user?.SocialLinks?.Select(c => new UserSocialLinkDTO { Type = c.Type, Url = c.Url }).ToList()
             };
         }
 

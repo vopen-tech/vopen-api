@@ -18,13 +18,13 @@ namespace vopen_api.Data
         public string Country { get; set; }
 
         [Required]
-        public ICollection<UserDetail> Details { get; set; }
+        public ICollection<UserDetail> Details { get; set; } = new List<UserDetail>();
 
         [Required]
-        public ICollection<UserSocialLink> SocialLinks { get; set; }
+        public ICollection<UserSocialLink> SocialLinks { get; set; } = new List<UserSocialLink>();
 
         [Required]
-        public ICollection<UserProposal> Proposals { get; set; }
+        public ICollection<UserProposal> Proposals { get; set; } = new List<UserProposal>();
     }
 
     [Table("UsersDetails")]

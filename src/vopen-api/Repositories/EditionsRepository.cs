@@ -32,7 +32,7 @@ namespace vopen_api.Repositories
 
         public async Task<EditionDTO> GetByLanguageAndId(string language, string id)
         {
-            var result = await this.dbContext
+            var query = this.dbContext
                 .Set<Edition>()
                 .Include(item => item.Details)
                 .Include(item => item.Event)
@@ -57,8 +57,9 @@ namespace vopen_api.Repositories
                     .ThenInclude(editionActivityUser => editionActivityUser.User)
                     .ThenInclude(presenter => presenter.SocialLinks)
                 .Include(item => item.Activities)
-                    .ThenInclude(editionActivity => editionActivity.Scores)
-                .FirstOrDefaultAsync(item => item.Id == id);
+                    .ThenInclude(editionActivity => editionActivity.Scores);
+
+            var result = await query.FirstOrDefaultAsync(item => item.Id == id);
 
             if (result == null)
             {
