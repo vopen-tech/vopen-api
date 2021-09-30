@@ -13,7 +13,7 @@ namespace vopen_api.Data
         public string Id { get; set; }
 
         [Required]
-        public ICollection<EditionDetail> Details { get; set; }
+        public ICollection<EditionDetail> Details { get; set; } = new List<EditionDetail>();
 
         [Required]
         public Event Event { get; set; }
@@ -22,25 +22,16 @@ namespace vopen_api.Data
 
         public string LocationFullAddress { get; set; }
 
-        public ICollection<EditionTicket> EditionTickets { get; set; }
+        public ICollection<EditionTicket> EditionTickets { get; set; } = new List<EditionTicket>();
 
         [Required]
-        public ICollection<EditionOrganizer> Organizers { get; set; }
+        public ICollection<EditionOrganizer> Organizers { get; set; } = new List<EditionOrganizer>();
 
         [Required]
-        public ICollection<EditionSponsor> Sponsors { get; set; }
+        public ICollection<EditionSponsor> Sponsors { get; set; } = new List<EditionSponsor>();
 
         [Required]
-        public ICollection<EditionActivity> Activities { get; set; }
-
-        public Edition()
-        {
-            this.Details = new List<EditionDetail>();
-            this.EditionTickets = new List<EditionTicket>();
-            this.Organizers = new List<EditionOrganizer>();
-            this.Sponsors = new List<EditionSponsor>();
-            this.Activities = new List<EditionActivity>();
-        }
+        public ICollection<EditionActivity> Activities { get; set; } = new List<EditionActivity>();
     }
 
     [Table("EditionsDetails")]
@@ -133,13 +124,13 @@ namespace vopen_api.Data
         public Edition Edition { get; set; }
 
         [Required]
-        public ICollection<EditionActivityDetail> Details { get; set; }
+        public ICollection<EditionActivityDetail> Details { get; set; } = new List<EditionActivityDetail>();
         
         [Required]
-        public ICollection<EditionActivityUser> Users { get; set; }
+        public ICollection<EditionActivityUser> Users { get; set; } = new List<EditionActivityUser>();
 
         [Required]
-        public ICollection<EditionActivityScore> Scores { get; set; }
+        public ICollection<EditionActivityScore> Scores { get; set; } = new List<EditionActivityScore>();
 
         [Required]
         public string Type { get; set; }
@@ -159,13 +150,6 @@ namespace vopen_api.Data
         public string Tags { get; set; }
 
         public string Level { get; set; }
-
-        public EditionActivity()
-        {
-            this.Details = new List<EditionActivityDetail>();
-            this.Users = new List<EditionActivityUser>();
-            this.Scores = new List<EditionActivityScore>();
-        }
     }
 
     [Table("EditionsActivitiesDetails")]

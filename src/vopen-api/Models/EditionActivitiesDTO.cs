@@ -7,19 +7,19 @@ namespace vopen_api.Models
 {
     public class EditionActivitiesDTO
     {
-        public IEnumerable<EditionActivityDayDTO> Days;
+        public IEnumerable<EditionActivityDayDTO> Days { get; set; }
     }
 
     public class EditionActivityDayDTO
     {
         public string Name;
-        public IEnumerable<EditionActivityTrackDTO> Tracks;
+        public IEnumerable<EditionActivityTrackDTO> Tracks { get; set; }
     }
 
     public class EditionActivityTrackDTO
     {
         public string Name;
-        public IEnumerable<EditionActivityDTO> Activities;
+        public IEnumerable<EditionActivityDTO> Activities { get; set; }
     }
 
     public class EditionActivityDTO
@@ -61,7 +61,9 @@ namespace vopen_api.Models
                 return editionActivitiesDTO;
             }
 
-            var activities = editionActivies.Select(editionActivity => EditionActivityUtils.ToEditionActivityDTO(editionActivity, language));
+            var activities = editionActivies
+                .Select(editionActivity => EditionActivityUtils.ToEditionActivityDTO(editionActivity, language))
+                .ToList();
 
             editionActivitiesDTO.Days = activities
                 .GroupBy(c => c.Day).OrderBy(c => c.Key)
@@ -72,16 +74,18 @@ namespace vopen_api.Models
                         .Select(item => new EditionActivityTrackDTO
                         {
                             Name = item.Key,
-                            Activities = item.OrderBy(activity => activity.Date)
+                            Activities = item.OrderBy(activity => activity.Date).ToList()
                         })
-                });
+                        .ToList()
+                })
+                .ToList();
 
             return editionActivitiesDTO;
         }
 
         public static EditionActivityDTO ToEditionActivityDTO(EditionActivity editionActivity, string language)
         {
-            var details = editionActivity.Details.FirstOrDefault(item => item.Language == language) ?? editionActivity.Details.First();
+            var details = editionActivity?.Details.FirstOrDefault(item => item.Language == language) ?? editionActivity.Details.FirstOrDefault();
             return new EditionActivityDTO
             {
                 Id = editionActivity.Id,
@@ -92,8 +96,8 @@ namespace vopen_api.Models
                 Tags = editionActivity.Tags,
                 Level = editionActivity.Level,
                 Duration = editionActivity.Duration,
-                Title = details.Title,
-                Description = details.Description,
+                Title = details?.Title,
+                Description = details?.Description,
                 Presenters = UserUtils.ToUsersDTO(editionActivity.Users, language),
             };
         }
