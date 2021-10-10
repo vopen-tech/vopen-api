@@ -1974,7 +1974,7 @@
 
   {
     "speakerId": 94,
-    "countryId": 1, // Canada
+    "countryId": 1,
     "fullName": "Sebastian Gomez",
     "company": "Container Solutions",
     "jobTitle": "Cloud Native Engineer",
@@ -4739,7 +4739,7 @@
 
   {
     "speakerId": 222,
-    "countryId": 1, // Switzerland
+    "countryId": 1,
     "fullName": "Annie Talvasto",
     "jobTitle": "Product Marketing Manager",
     "company": "CAST AI",
@@ -4760,7 +4760,7 @@
 
   {
     "speakerId": 223,
-    "countryId": 1, // The Netherlands
+    "countryId": 1,
     "fullName": "Lindy Hutz",
     "jobTitle": "Software Engineer",
     "company": "Team Rockstars IT",
@@ -4781,7 +4781,7 @@
 
   {
     "speakerId": 224,
-    "countryId": 1, // The Netherlands
+    "countryId": 1,
     "fullName": "David de Hoop",
     "jobTitle": "Special Agent",
     "company": "Team Rockstars IT",
@@ -4802,7 +4802,7 @@
 
   {
     "speakerId": 225,
-    "countryId": 1, // USA
+    "countryId": 1,
     "fullName": "Laurent Gil",
     "jobTitle": "CPO",
     "company": "CAST AI",
@@ -4823,7 +4823,7 @@
 
   {
     "speakerId": 226,
-    "countryId": 1, // Bosnia & Herzegovina
+    "countryId": 1,
     "fullName": "Mustafa Toroman",
     "jobTitle": "Solution Architect",
     "company": "CLOUDEON",
@@ -4844,7 +4844,7 @@
 
   {
     "speakerId": 227,
-    "countryId": 1, // Argentina
+    "countryId": 1,
     "fullName": "Facundo Giuliani",
     "jobTitle": "Developer Relations Engineer",
     "company": "Storyblok",
@@ -4865,7 +4865,7 @@
 
   {
     "speakerId": 228,
-    "countryId": 1, // Poland
+    "countryId": 1,
     "fullName": "Jakub Waliszewski",
     "jobTitle": "Azure Cloud Architect",
     "company": "Transition Technologiesc PSC",
