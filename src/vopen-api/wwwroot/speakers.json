@@ -1974,21 +1974,21 @@
 
   {
     "speakerId": 94,
-    "countryId": 1,
+    "countryId": 1, // Canada
     "fullName": "Sebastian Gomez",
-    "company": "Genexus",
-    "jobTitle": "Sr. Software Engineer",
+    "company": "Container Solutions",
+    "jobTitle": "Cloud Native Engineer",
     "linkedIn": "https://www.linkedin.com/in/sebagomez/",
     "twitter": "sebagomez",
     "avatarFileName": "SebastianGomez",
     "bios": [
       {
         "languageId": 1,
-        "text": "Everything software. Passionate about making machines do the boring part."
+        "text": "Plomero de Jenkins de día, padre de tres hijos por la noche, Sebastián ha incursionado en el mundo de IT por más de 20 años. Todo empezó con un "echo Hello mamá" en el AUTOEXEC.BAT de la computadora de su madre, desde donde desarrolló la pasión por la programación para posteriormente pasar a la automatización (de todo lo automatizable). Actualmente se desempeña como Cloud Native Engineer en Container Solutions, donde ayuda a distintas empresas a adoptar metodologías Cloud Native, e intenta dejar al mundo un poquito más seguro, un secreto a la vez."
       },
       {
         "languageId": 2,
-        "text": "Everything software. Passionate about making machines do the boring part."
+        "text": "Plomero de Jenkins de día, padre de tres hijos por la noche, Sebastián ha incursionado en el mundo de IT por más de 20 años. Todo empezó con un "echo Hello mamá" en el AUTOEXEC.BAT de la computadora de su madre, desde donde desarrolló la pasión por la programación para posteriormente pasar a la automatización (de todo lo automatizable). Actualmente se desempeña como Cloud Native Engineer en Container Solutions, donde ayuda a distintas empresas a adoptar metodologías Cloud Native, e intenta dejar al mundo un poquito más seguro, un secreto a la vez."
       }
     ]
   },
@@ -2862,11 +2862,11 @@
     "bios": [
       {
         "languageId": 1,
-        "text": "Mete is a Developer Advocate at Google, focused on helping developers with Google Cloud. As a long-time Java and C# developer, he likes to compare the two ecosystems. Prior to Google, he worked at Microsoft, Skype, Adobe, EMC, and Nokia building apps and services on various web, mobile and cloud platforms. Originally from the island of Cyprus, he currently lives in Greenwich of London, not too far away from the prime meridian."
+        "text": "I'm a Developer Advocate at Google, currently focused on helping developers with Google Cloud Platform. As a long-time Java and a recent C# developer, I like to compare the two ecosystems. Prior to Google, I worked at Microsoft, Skype, Adobe, EMC, and Nokia building apps and services on various web, mobile and cloud platforms. Originally from Cyprus, I currently live in Greenwich, not too far away from the prime meridian."
       },
       {
         "languageId": 2,
-        "text": "Mete is a Developer Advocate at Google, focused on helping developers with Google Cloud. As a long-time Java and C# developer, he likes to compare the two ecosystems. Prior to Google, he worked at Microsoft, Skype, Adobe, EMC, and Nokia building apps and services on various web, mobile and cloud platforms. Originally from the island of Cyprus, he currently lives in Greenwich of London, not too far away from the prime meridian."
+        "text": "I'm a Developer Advocate at Google, currently focused on helping developers with Google Cloud Platform. As a long-time Java and a recent C# developer, I like to compare the two ecosystems. Prior to Google, I worked at Microsoft, Skype, Adobe, EMC, and Nokia building apps and services on various web, mobile and cloud platforms. Originally from Cyprus, I currently live in Greenwich, not too far away from the prime meridian."
       }
     ]
   },
@@ -4735,7 +4735,153 @@
         "text": "Over 10 years working building software systems, with improved functionality and productivity, in areas like Education, Entertainment, Industry and Business. Azure and .Net certified professional with deep understanding of object-oriented analysis and design. Passion for mathematical and algorithmic problems. Also, passionate about technology and using it in new contexts, I'm a geek."
       }
     ]
-  }
+  },
 
+  {
+    "speakerId": 222,
+    "countryId": 1, // Switzerland
+    "fullName": "Annie Talvasto",
+    "jobTitle": "Product Marketing Manager",
+    "company": "CAST AI",
+    "linkedIn": "https://www.linkedin.com/in/talvasto/",
+    "avatarFileName": "AnnieTalvasto",
+    "twitter": "annietalvasto",
+    "bios": [
+      {
+        "languageId": 1,
+        "text": "Annie Talvasto is an international technology speaker, CNCF Ambassador, Azure MVP and specialist in Kubernetes & cloud native ecosystem. Annie hosts & produces the Cloud Gossip podcast and has been a co-organizer of Kubernetes & CNCF Finland meetup since 2017. She has worked at various tech companies from cloud start-ups to enterprises, now working at a Kubernetes cost optimization startup CAST AI. Annie has spoken at tech conferences on multiple continents, including Techorama, Global Azure, Future Tech, The Cloud First, C# corner and more. During her career she has spoken to more than 10,000 developers at User Groups meetings & Conferences."
+      },
+      {
+        "languageId": 2,
+        "text": "Annie Talvasto is an international technology speaker, CNCF Ambassador, Azure MVP and specialist in Kubernetes & cloud native ecosystem. Annie hosts & produces the Cloud Gossip podcast and has been a co-organizer of Kubernetes & CNCF Finland meetup since 2017. She has worked at various tech companies from cloud start-ups to enterprises, now working at a Kubernetes cost optimization startup CAST AI. Annie has spoken at tech conferences on multiple continents, including Techorama, Global Azure, Future Tech, The Cloud First, C# corner and more. During her career she has spoken to more than 10,000 developers at User Groups meetings & Conferences."
+      }
+    ]
+  },
+
+  {
+    "speakerId": 223,
+    "countryId": 1, // The Netherlands
+    "fullName": "Lindy Hutz",
+    "jobTitle": "Software Engineer",
+    "company": "Team Rockstars IT",
+    "linkedIn": "https://www.linkedin.com/in/lindyhutz/",
+    "avatarFileName": "LindyHutz",
+    "twitter": "",
+    "bios": [
+      {
+        "languageId": 1,
+        "text": "Software engineer with a passion for finding elegant and simple solutions to complex problems. Getting software working is one thing, but Lindy is only satisfied when the architecture fits well with the problem at hand and the code is so simple and clear that you can read it like a book. Only then you can maintain the software well and proudly transfer it to the next engineer. In her free time, she loves drinking whisky, brewing beer, and horse riding (not in that order)."
+      },
+      {
+        "languageId": 2,
+        "text": "Software engineer with a passion for finding elegant and simple solutions to complex problems. Getting software working is one thing, but Lindy is only satisfied when the architecture fits well with the problem at hand and the code is so simple and clear that you can read it like a book. Only then you can maintain the software well and proudly transfer it to the next engineer. In her free time, she loves drinking whisky, brewing beer, and horse riding (not in that order)."
+      }
+    ]
+  },
+
+  {
+    "speakerId": 224,
+    "countryId": 1, // The Netherlands
+    "fullName": "David de Hoop",
+    "jobTitle": "Special Agent",
+    "company": "Team Rockstars IT",
+    "linkedIn": "https://www.linkedin.com/in/daviddehoop/",
+    "avatarFileName": "DavidDeHoop",
+    "twitter": "",
+    "bios": [
+      {
+        "languageId": 1,
+        "text": "David de Hoop is Special Agent (thought leader) at Team Rockstars IT. With more than 8 years of experience in Solution Architecture and working DevOps, he is an evangelist when it comes to the latest developments and trends within the DevOps Community. David is also a open-source contributor to the GitLab project."
+      },
+      {
+        "languageId": 2,
+        "text": "David de Hoop is Special Agent (thought leader) at Team Rockstars IT. With more than 8 years of experience in Solution Architecture and working DevOps, he is an evangelist when it comes to the latest developments and trends within the DevOps Community. David is also a open-source contributor to the GitLab project."
+      }
+    ]
+  },
+
+  {
+    "speakerId": 225,
+    "countryId": 1, // USA
+    "fullName": "Laurent Gil",
+    "jobTitle": "CPO",
+    "company": "CAST AI",
+    "linkedIn": "https://www.linkedin.com/in/laurentgil/",
+    "avatarFileName": "LaurentGil",
+    "twitter": "laurentgil",
+    "bios": [
+      {
+        "languageId": 1,
+        "text": "Laurent is a co-founder of CAST.AI and runs product and business development. Prior to that, Laurent was co-founder Chief Product and Business Officer at Zenedge, a cloud native cybersecurity company acquired by Oracle Corporation in early 2018. Prior to Zenedge, Laurent was CEO and co-founder of facial recognition and machine learning company Viewdle, which was acquired by Google in 2012."
+      },
+      {
+        "languageId": 2,
+        "text": "Laurent is a co-founder of CAST.AI and runs product and business development. Prior to that, Laurent was co-founder Chief Product and Business Officer at Zenedge, a cloud native cybersecurity company acquired by Oracle Corporation in early 2018. Prior to Zenedge, Laurent was CEO and co-founder of facial recognition and machine learning company Viewdle, which was acquired by Google in 2012."
+      }
+    ]
+  },
+
+  {
+    "speakerId": 226,
+    "countryId": 1, // Bosnia & Herzegovina
+    "fullName": "Mustafa Toroman",
+    "jobTitle": "Solution Architect",
+    "company": "CLOUDEON",
+    "linkedIn": "https://www.linkedin.com/in/mustafa-toroman/",
+    "avatarFileName": "MustafaToroman",
+    "twitter": "toromust",
+    "bios": [
+      {
+        "languageId": 1,
+        "text": "Mustafa Toroman is a solution architect focused on cloud-native applications and migrating existing systems to the cloud. He is very interested in DevOps processes and cyber security, and he is also an Infrastructure-as-Code enthusiast and DevOps Institute Ambassador. Mustafa often speaks at international conferences about cloud technologies. He has been awarded MVP for Microsoft Azure since 2016 and C# Corner MVP since 2020. Mustafa also authored several books about Microsoft Azure and cloud computing."
+      },
+      {
+        "languageId": 2,
+        "text": "Mustafa Toroman is a solution architect focused on cloud-native applications and migrating existing systems to the cloud. He is very interested in DevOps processes and cyber security, and he is also an Infrastructure-as-Code enthusiast and DevOps Institute Ambassador. Mustafa often speaks at international conferences about cloud technologies. He has been awarded MVP for Microsoft Azure since 2016 and C# Corner MVP since 2020. Mustafa also authored several books about Microsoft Azure and cloud computing."
+      }
+    ]
+  },
+
+  {
+    "speakerId": 227,
+    "countryId": 1, // Argentina
+    "fullName": "Facundo Giuliani",
+    "jobTitle": "Developer Relations Engineer",
+    "company": "Storyblok",
+    "linkedIn": "https://www.linkedin.com/in/facundogiuliani/",
+    "avatarFileName": "FacundoGiuliani",
+    "twitter": "facundozurdo",
+    "bios": [
+      {
+        "languageId": 1,
+        "text": "Facundo is a Developer Relations Engineer at Storyblok. From Buenos Aires, Argentina, he has more than 15 years of experience in software development. Systems Engineer graduated from the National Technological University from Argentina. Full Stack Developer. Auth0 Ambassador. Prisma Ambassador. Cloudinary Media Developer Expert. GitKraken Ambassador. He is also an open-source contributor."
+      },
+      {
+        "languageId": 2,
+        "text": "Facundo is a Developer Relations Engineer at Storyblok. From Buenos Aires, Argentina, he has more than 15 years of experience in software development. Systems Engineer graduated from the National Technological University from Argentina. Full Stack Developer. Auth0 Ambassador. Prisma Ambassador. Cloudinary Media Developer Expert. GitKraken Ambassador. He is also an open-source contributor."
+      }
+    ]
+  },
+
+  {
+    "speakerId": 228,
+    "countryId": 1, // Poland
+    "fullName": "Jakub Waliszewski",
+    "jobTitle": "Azure Cloud Architect",
+    "company": "Transition Technologiesc PSC",
+    "linkedIn": "https://www.linkedin.com/in/jakub-waliszewski/",
+    "avatarFileName": "JakubWaliszewski",
+    "twitter": "__JakobW__",
+    "bios": [
+      {
+        "languageId": 1,
+        "text": "For several years, has been closely associated with the Microsoft Azure cloud computing, implementing projects for large companies related to the industrial, tourist, medical and automotive industries. In free time, father of two children, passionate about Automotive, Car Racing and Ski."
+      },
+      {
+        "languageId": 2,
+        "text": "For several years, has been closely associated with the Microsoft Azure cloud computing, implementing projects for large companies related to the industrial, tourist, medical and automotive industries. In free time, father of two children, passionate about Automotive, Car Racing and Ski."
+      }
+    ]
+  }
 
 ]
